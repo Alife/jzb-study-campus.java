@@ -40,6 +40,6 @@ public class Test {
      *             if something fails during the execution
      */
     public void doIt(String[] args) throws Exception {
-        System.out.println("Hola mundo cruel");
+        System.out.println("Hola mundo");
     }
 }
