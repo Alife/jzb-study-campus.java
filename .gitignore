@@ -1,0 +1,4 @@
+# ficheros y carpetas a ser ignorados al subir código al repositorio
+bin/
+*.class
+
