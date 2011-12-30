@@ -1,0 +1,418 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:y="http://www.yworks.com/demo">
+<head>
+<title>Hierarchy Demo Help</title>
+<style type="text/css">
+<!--
+              body {
+  font-family:Verdana, sans-serif; 
+  margin-left:12px;
+  margin-right:12px;
+  margin-top:12px;
+  margin-bottom:12px;
+}
+
+h1 { 
+  padding-left:8px;
+  padding-top:8px;
+  padding-bottom:8px;
+  background-color:#d0d0d0;
+  color:#4079ea;
+/*  color:#4d88ff; */
+  font-size:18px;
+  margin-bottom:5px;
+}
+
+p {   
+  padding-bottom:0px;
+  padding-top:0px;
+  margin-top:3px;
+  margin-bottom:0px;
+/*  margin-left:10px; */
+  margin-left:8px;
+  font-size:12px;
+  color:#000000;
+}
+
+h2 { 
+  font-size:14px; 
+  color:#4079ea; 
+  margin-top:10px; 
+  margin-bottom:0px; 
+}
+
+h3 { 
+  font-size:13px; 
+/*  margin-left:10px; */
+  margin-left:8px;
+  margin-top:8px; 
+  margin-bottom:2px; 
+}
+
+table {
+/*  margin-left:10px; */
+  margin-left: 8px;
+  margin-top: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid white;
+  vertical-align: baseline;
+  border-collapse: collapse;
+}
+
+td { 
+  font-size:12px;
+  background-color: #E3EEFE;
+  vertical-align:top;
+  border: 1px solid white;
+  vertical-align: baseline;
+}
+
+th {
+  font-size:12px; 
+  background-color:#a4b9ea;
+  text-align: left;
+}
+
+a {
+  color: #AA5522; font-weight:bold;
+}
+a:link {
+  text-decoration:none;
+}
+a:visited {
+  text-decoration:none; color:#772200;
+}
+a:active, 
+a:focus, 
+a:hover {
+  text-decoration: underline;
+}
+
+div.li1 {
+  font-size:12px;
+  margin-top:8px; 
+  margin-bottom:0px; 
+  margin-left:10px; 
+}
+div.li2 { 
+  margin-left:20px;
+  margin-top:2px; 
+  margin-bottom:2px; 
+  font-weight:bold;
+  font-size:12px; 
+}
+
+dl { 
+  font-size:12px;
+  margin-top:2px;
+  margin-bottom:2px;
+  margin-left:15px;
+}
+dt { 
+  font-weight:bold;
+  margin-top:4px;
+/*  color:#000000; */
+  color:#333366;
+}
+dd { 
+  margin-left:15px;
+}
+
+li { 
+  /* does not work in pre-1.5 Java JEditorPane :-( */
+/*  list-style-type:none; */
+  font-size:12px;
+}
+
+caption {
+  font-size:12px;
+}
+
+.copyright { 
+  font-size: 10px;
+  font-style:italic;
+  text-align:right;
+  margin-top:20px;
+}
+
+code, tt { 
+  font-family:monospace;
+  font-size:12px;
+  color:#0000C0;
+}
+
+            -->
+</style>
+</head>
+<body>
+    <h1>Hierarchy Demo Help</h1>
+    
+    <p>
+      Tutorial source code demo <a href="HierarchyDemo.java">HierarchyDemo</a> exhibits
+      the <b>Nested Graph Hierarchy</b> and the <b>Node Grouping</b> technologies
+      that are a modular part of the yFiles library.
+    </p>
+
+    <h2>Nested Graph Hierarchy</h2>
+    
+    <p>
+      <b>Nested Graph Hierarchy</b> basically provides the possibility to
+      put a graph inside a node which itself is contained in another
+      graph. 
+      A node that contains another graph is called an 
+      <b>anchor node</b> or a <b>folder node</b>
+      A tree-like hierarchy of graphs will be induced by a nesting
+      of graphs inside of other nodes. The toplevel graph of this hierarchy
+      of graphs is called the <b>root graph</b>. A graph that
+      contains a nested graph is called the <b>parent graph</b> of
+      that nested graph.
+    </p>
+
+    <h2>Node Grouping/Nesting</h2>
+    <p>
+    <b>Node Grouping</b> complements the <i>Nested Graph Hierarchy</i>
+    technology. It is a feature mainly provided by the viewer component. Nodes
+    of all kind can be put together in a group, that will be visualized by a
+    group node, which will be painted in the background of it's child nodes. 
+    In contrast to the <i>Nested Graph Hierarchy</i> technology, all nodes,
+    <i>group nodes</i> and their <i>child nodes</i> reside in the top level 
+    graph at the same time. However the view suggests that at all times, child
+    nodes lie within their respective parent group nodes. This makes it possible
+    to connect nodes of different logical hierarchy levels with each other
+    visually.
+    </p>
+
+    <p>
+    This application demonstrates the use of these two technologies. Since both 
+    of them can be used to describe a hierarchy of nodes, it is possible to
+    simply switch between the two different technologies. The actions that are
+    made accessible through this application can be used to edit the graph/node
+    hierarchy and the visual presentation of the hierarchy.
+    </p>
+
+    <center>
+      <table>
+	<caption align="bottom">A hierarchical graph with
+	  folder nodes, that contain graphs themselves.
+	</caption>
+	<tr>
+            <td>
+              <img src="resource/hierarchy1.jpg" alt="Sample Image"/>
+            </td>
+          </tr>
+      </table>
+    </center>
+
+    <p>
+      A noteworthy feature of the yFiles <b>Nested Graph Hierarchy</b> is
+      that one can move parts of a graph to another level within the
+      hierarchy of graphs. The edges connecting the part that has
+      been moved with the rest of the graph won't get lost though.
+      Original edges will be represented by edges connecting to the
+      node the subgraph is nested in. When unpacking the contents of a
+      node again, the original edges will be restored. Hence the
+      topology of a graph won't be destroyed by a sequence of
+      nesting operations.
+    </p>
+
+    <h2>Using HierarchyDemo</h2>
+
+    <p>
+      HierarchyDemo displays three views of a nested graph hierarchy.
+      On the left there is a classic tree view that shows the complete
+      graph hierarchy and all of the nodes contained within it.
+      The main view of HierarchyDemo displays the graph hierarchy
+      from a specific hierarchy level on downward.
+      The graphs that are nested within folder-nodes are displayed
+      as well. Group nodes look similar to folder-nodes but behave differently.
+      While it is possible to resize and move folder-nodes freely, the position
+      and size of a group-node is induced by the positions and sizes of the child
+      nodes that belong to the respective group. While a folder-node only
+      displays the child nodes it contains, the children of a group node still belong
+      to the graph structure and can be treated like normal nodes.
+      The third view of HierarchyDemo is located above the tree view.
+      It acts as an overview display of the graph that is visualized in
+      the main view.
+      </p>
+
+    <h2>The Main view</h2>
+
+    <p>
+      This section describes which hierarchy-related and grouping-related
+      operations are available within the main view.
+    </p>
+
+    <h3>The Popup Menu</h3>
+
+    <p>
+    By right clicking on the main view a popup menu will become
+    visible. The following menu items manipulate the graph hierarchy
+    or the view on the graph hierarchy:
+    </p>
+
+    <table class="toplevel">
+      <tr>
+        <th>Menu Item</th>
+        <th>Description</th>
+      </tr>
+
+      <tr>
+        <td>Group Selection</td>
+	    <td>
+	  Selected nodes will be grouped. This is done by creating a new group
+          node and making the selected nodes logically children of the newly
+          created group node. If no nodes are selected, an empty group node will
+          be created.
+	    </td>
+      </tr>
+      <tr>
+        <td>Ungroup Selection</td>
+	    <td>
+	  Selected nodes will be ungrouped, i.e. they will become child nodes of the
+          parent of their current parent node. Empty group nodes will not be
+          removed, but stay in the graph structure.
+	    </td>
+      </tr>
+
+      <tr>
+        <td>Close Group</td>
+	    <td>
+          This action can be invoked on selected group nodes. This will actually
+          switch the node from <i>Node Grouping</i> techology to <i>Nested
+          Graph</i> technology. This can be undone by invoking <i>Open
+          Folder</i> on the closed group node.
+	    </td>
+      </tr>
+
+      <tr>
+        <td>Create Folder</td>
+	    <td>
+	  Creates a new folder node containing an empty graph.
+	    </td>
+      </tr>
+      <tr>
+	    <td>Fold Selection</td>
+	    <td>
+	  This method folds the subgraph induced by the selected
+	  nodes inside a newly created folder node.
+	    </td>
+      </tr>
+      <tr>
+	    <td>Unfold Selection</td>
+	    <td>
+	  This method moves the subgraph induced by the selected
+	  nodes to the parent graph. This operation is only available
+	  if the graph displayed in the main view is not the root
+	  graph. Otherwise there would be no parent graph to unfold
+	  the selection to.
+	    </td>
+      </tr>
+      <tr>
+	    <td>Extract Folder</td>
+	    <td>
+	  Extract the contents of the folder-node on which the
+	  popup menu has been opended upon and remove the then
+	  empty folder.
+	    </td>
+      </tr>
+      <tr>
+	    <td>Open Folder</td>
+	    <td>
+          Opens the currently selected folder-node, thus transforming it
+          into a group-node. This is the reverse operation of <i>Close
+          Group</i>.
+	    </td>
+      </tr>
+    </table>
+
+    <h3>The Menu Bar</h3>
+
+    <table class="toplevel">
+      <tr>
+        <th>Menu Item</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+	    <td>
+              <a name="view_parent"/>Toolbar - View Parent</td>
+	    <td>
+	  View the parent graph of the currently display graph in
+	  the main view. This operation is only available
+	  if the graph displayed in the main view is not the root
+	  graph. Otherwise there would be no parent graph to unfold
+	  the selection to.
+	    </td>
+      </tr>
+      <tr>
+	    <td>Tools - Unfold All</td>
+	    <td>
+	      This method recursively unfolds the contents of all
+          folder nodes within the displayed graph.
+	    </td>
+      </tr>
+      <tr>
+	    <td>Tools - Fold Selection</td>
+	    <td>
+	  Creates for each connected component of the displayed graph
+	  a new folder-node. Each connected component will be moved
+	  from the displayed graph to the corresponding folder-node.
+	    </td>
+      </tr>
+      <tr>
+	    <td>Tools - Fold Subtrees</td>
+	    <td>
+	  This method finds tree-structures that are part of the
+	  displayed graph. For each of these trees a new
+	  folder-node will be created. Each tree will be
+	  moved from the displayed graph to the corrsponding folder node.
+	  Each nested tree will be automatically layed out using
+	  ballon layouter. The size-ratio of the folder-nodes will be
+	  automatically adjusted to the size of the nested trees.
+          <br/>
+          Please note that the code to automatically layout the subgraphs
+          is commented out by default in order to make this demo complie even if
+          only the yFiles viewer package is available.
+          Uncomment the code lines if the layout package is available to
+          activate the layouter.
+	    </td>
+      </tr>
+    </table>
+
+    <h3>Hierarchic View Mode</h3>
+    
+    <p>
+    There are some additional hierarchy-related operations
+    available on the main view that are triggered by mouse gestures.  
+    </p>
+    
+    <ul>
+      <li>
+	Dropping a selection of nodes onto a group-node while pressing the
+        "shift" modifier key
+	will make the selected nodes part of the group that is visualized by
+	the group-node.
+	The location of the mouse cursor must be on a group-node
+	when the mouse button gets released.
+      </li>
+      <li>
+	Pressing the "shift" modifier key before starting to drag a selection of
+        nodes will ungroup the selected nodes.
+      </li>
+      <li>
+	Double-clicking on a folder-node navigates into the folder.
+      </li>
+    </ul>
+    
+    <h2>The Tree View</h2>
+    
+    <p>
+    Double-clicking on a node that is displayed 
+    in the tree view transfers the focus of the main view
+    to that node.
+    Focusing a node in the main view involves two things: 
+    The nested graph that contains the focused node gets 
+    displayed in the main view. And the focused node will
+    be displayed in the center of the view.
+    </p>
+  </body>
+</html>

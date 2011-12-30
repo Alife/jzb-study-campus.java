@@ -1,0 +1,2851 @@
+<html>
+  <head>
+    <title>yFiles Change Log</title>
+    <link rel="stylesheet" type="text/css" href="doc/yfiles.css"/>
+  </head>
+  <body>
+    <h1>yFiles Change Log</h1>
+
+    <p>This file documents the feature enhancements and API changes to previous yFiles versions.</p>
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--////-->
+<!--/////////////////////////////////////////////////////////////////////////-->
+    <h1>yFiles 2.5 - Changes Since 2.4.0.3</h1>
+
+    <h2>Major Features Added</h2>
+    <h3>Incremental Hierarchical Layout Enhanced</h3>
+    <ul>
+      <li>
+      Class <a href="doc/api/y/layout/hierarchic/IncrementalHierarchicLayouter.html">IncrementalHierarchicLayouter</a> now supports hierarchically 
+      organized graphs. 
+      Both incremental as well as non-incremental ("from-scratch") layout mode have 
+      been enhanced to handle group nodes and their contents when calculating hierarchical 
+      layouts.
+      <br/>
+      <a href="doc/developers-guide/incremental_hierarchical_layouter.html#incremental_hierarchical_advanced">[To the corresponding section in the yFiles Developer's Guide...]</a>
+      </li>
+    </ul>
+    
+    <h3>Hierarchical Layout Enhanced</h3>
+    <ul>
+      <li>
+      Class <a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html">HierarchicLayouter</a> now supports the notion of 
+      "constrained layering." 
+      New layerer implementation <a href="doc/api/y/layout/hierarchic/ConstraintLayerer.html">ConstraintLayerer</a> enables 
+      user-defined constrained layering, where nodes can be specified to be placed 
+      into the topmost or bottommost layer, or can be specified to be placed into 
+      the same layer or a layer preceding/following that of a given reference node.
+      <br/>
+      <a href="doc/developers-guide/hierarchical_layouter.html#hierarchical_layer_assignment_constraints">[To the corresponding section in the yFiles Developer's Guide...]</a>
+      </li>
+    </ul>
+    
+    <h3>New Label Customization Support</h3>
+    <ul>
+      <li>
+      Class <a href="doc/api/y/view/YLabel.html">YLabel</a> now supports user-defined configurations for node and 
+      edge labels. 
+      Configurations provide fine-grained control over all aspects of label look 
+      and feel, and simplify the implementation of custom painting behavior for 
+      labels.
+      <br/>
+      <a href="doc/developers-guide/realizer_related.html#labels_customization">[To the corresponding section in the yFiles Developer's Guide...]</a>
+      </li>
+    </ul>
+    
+    <h3>Full Viewer/Editor Support for Orthogonal Edge Paths</h3>
+    <ul>
+      <li>
+      Class <a href="doc/api/y/view/EditMode.html">EditMode</a> and its associated child modes provide advanced support 
+      for edges having orthogonal paths. 
+      This includes in particular edge creation, moving edge segments, creating 
+      new bends/edge segments, and moving edge ports. 
+      Furthermore, resizing nodes and moving nodes/bends have also been modified 
+      to take orthogonal edge paths into account. 
+      <p>
+      <a href="doc/api/y/view/CreateEdgeMode.html">CreateEdgeMode</a> has been improved to support the creation of orthogonal 
+      edges.
+      <a href="doc/api/y/view/MovePortMode.html">MovePortMode</a>, <a href="doc/api/y/view/HotSpotMode.html">HotSpotMode</a>, <a href="doc/api/y/view/MoveSelectionMode.html">MoveSelectionMode</a>, and 
+      the new <a href="doc/api/y/view/OrthogonalMoveBendsMode.html">OrthogonalMoveBendsMode</a> have been improved to treat orthogonally 
+      routed edges specially so that they will always stay orthogonally routed during 
+      user interactions.
+      </p>
+      <a href="doc/developers-guide/mvc_controller.html#orthogonal_edge_paths">[To the corresponding section in the yFiles Developer's Guide...]</a>
+      </li>
+    </ul>
+    
+    <h3>New Magnifying Glass Tool</h3>
+    <ul>
+      <li>
+      New view mode <a href="doc/api/y/view/MagnifierViewMode.html">MagnifierViewMode</a> provides a magnifying glass "tool"
+      which enables local zooming in a Graph2DView.
+      <br/>
+      <a href="doc/developers-guide/mvc_controller.html#cls_MagnifierViewMode">[To the corresponding section in the yFiles Developer's Guide...]</a>
+      </li>
+    </ul>
+    
+    <h3>New Compact Orthogonal Layout Algorithm</h3>
+    <ul>
+      <li>
+      New orthogonal layout class <a href="doc/api/y/layout/orthogonal/CompactOrthogonalLayouter.html">CompactOrthogonalLayouter</a> 
+      uses a divide-and-conquer approach to provide compact orthogonal layouts that 
+      fit into a specified aspect ratio.
+      <br/>
+      CompactOrthogonalLayouter is an extension of new layout stage class <a href="doc/api/y/layout/PartitionLayouter.html">PartitionLayouter</a> 
+      which offers general support for a four-phase layout process where node partitions 
+      are found according to a customizable scheme, then a layout is calculated 
+      for each partition, afterwards the partitions are arranged in a compact manner, 
+      and finally their inter-connecting edges are routed.
+      <p>
+      New layout module class <a href="doc/api/y/module/CompactOrthogonalLayoutModule.html">CompactOrthogonalLayoutModule</a> demonstrates 
+      how to set up compact orthogonal layout.
+      </p>
+      <a href="doc/developers-guide/compact_orthogonal_layouter.html">[To the corresponding section in the yFiles Developer's Guide...]</a>
+      </li>
+    </ul>
+    
+    <h3>New Line-Wrapping Layout Algorithm</h3>
+    <ul>
+      <li>
+      New layout stage class <a href="doc/api/y/layout/GraphLayoutLineWrapper.html">GraphLayoutLineWrapper</a> can be used to 'line-wrap' 
+      or 'column-wrap' graph layouts. 
+      GraphLayoutLineWrapper allows to specify width (height) or aspect ratio for 
+      the resulting line-wrapped (column-wrapped) diagram.
+      <br/>
+      <a href="doc/developers-guide/layout_stages_GraphLayoutLineWrapper.html">[To the corresponding section in the yFiles Developer's Guide...]</a>
+      </li>
+    </ul>
+
+    <h3>Orthogonal Edge Router Enhanced</h3>
+    <ul>
+      <li>
+      In addition to the concept of port constraints, class <a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html">OrthogonalEdgeRouter</a> 
+      now also provides support for PortCandidates, which can be used to specify 
+      a set of allowed connection points for an edge end.
+      <br/>
+      <a href="doc/developers-guide/orthogonal_edge_router.html#orthogonal_router_advanced">[To the corresponding section in the yFiles Developer's Guide...]</a>
+      </li>
+    </ul>
+    
+    <h3>New Orthogonal Edge Routing Algorithm</h3>
+    <ul>
+      <li>
+      Class <a href="doc/api/y/layout/router/ChannelEdgeRouter.html">ChannelEdgeRouter</a> has been added to the suite of orthogonal 
+      edge routing algorithms. 
+      It uses a two step approach to find orthogonal edge routes and nicely exposes 
+      bus-like structures, i.e., sets of parallel edges between common nodes.
+      <br/>
+      <a href="doc/developers-guide/channel_edge_router.html">[To the corresponding section in the yFiles Developer's Guide...]</a>
+      </li>
+    </ul>
+    
+    <h2>Minor Features Added</h2>
+    <h3>Automatic Layout</h3>
+    <ul>
+      <li>
+      Class <a href="doc/api/y/layout/ComponentLayouter.html">ComponentLayouter</a> now supports arranging components from sketch 
+      and introduces a new data provider look-up key to allow external declaration 
+      of components via a data provider.
+      </li>
+      <li>
+      New layout stage class <a href="doc/api/y/layout/PortConstraintEnforcementStage.html">PortConstraintEnforcementStage</a> can be used 
+      to enforce that a layout algorithm will not change the relative coordinates 
+      of ports that are associated with a strong port constraint.
+      </li>
+      <li>
+      Class <a href="doc/api/y/layout/DefaultLayoutGraph.html">DefaultLayoutGraph</a> now allows to specify multiple labels 
+      per node.
+      </li>
+      <li>
+      <a href="doc/api/y/layout/organic/SmartOrganicLayouter.html">SmartOrganicLayouter</a> optionally uses a smarter component 
+      layouting technique if a subset of nodes should be arranged only.
+      </li>
+      <li>
+      <a href="doc/api/y/layout/organic/ShuffleLayouter.html">ShuffleLayouter</a> introduces a new data provider look-up 
+      key to enable specification of nodes that should be pinned to their locations 
+      during shuffling.
+      </li>
+      <li>
+      Improved handling of port constraints with bad orthogonal edges in <a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html">OrthogonalEdgeRouter</a>.
+      </li>
+    </ul>
+    
+    <h3>Input and Output</h3>
+    <ul>
+      <li>
+      Class <a href="doc/api/y/view/Graph2DPrinter.html">Graph2DPrinter</a> optionally adds a footer drawable below a printed 
+      graph.
+      </li>
+      <li>
+      Improved GML parsing and encoding of numbers and unicode entities in <a href="doc/api/y/io/GMLIOHandler.html">GMLIOHandler</a>.
+      </li>
+    </ul>
+    
+    <h3>Viewer/Editor Interaction</h3>
+    <ul>
+      <li>
+      New class <a href="doc/api/y/view/hierarchy/HierarchyTreeTransferHandler.html">HierarchyTreeTransferHandler</a> adds drag-and-drop
+      functionality to HierarchyJTree which allows changing the graph hierarchy
+      using simple mouse drag gestures.
+      </li>
+      <li>
+      <a href="doc/api/y/view/Graph2DViewActions.html">Graph2DViewActions</a> adds a 'Select All' action that is bound to Ctrl-A, 
+      resp. Command-A (on Mac OS X). 
+      Also, usage of this class has been simplified.
+      </li>
+      <li>
+      <a href="doc/api/y/view/Graph2DView.html">Graph2DView</a> introduces new client property "<code>UnitIncrementPixels</code>" 
+      which allows to specify the unit increment of the scroll bars in view coordinates.
+      </li>
+    </ul>
+    
+    <h3>Realizers and Rendering</h3>
+    <ul>
+      <li>
+      Class <a href="doc/api/y/view/DefaultGraph2DRenderer.html">DefaultGraph2DRenderer</a> provides new methods that allow for 
+      partitioning the rendering order into several layers.
+      Sloppy painting now also supports the various painting orders.
+      </li>
+      <li>
+      <a href="doc/api/y/view/Graph2DView.html">Graph2DView</a> features new client properties and new method <a href="doc/api/y/view/Graph2DView.html#paintSelectionBox(java.awt.Graphics2D, java.awt.geom.Rectangle2D)">paintSelectionBox</a> 
+      that enable extensive customization of selection box look. 
+      The client properties include selection box stroke, color, fill color, and 
+      shape.
+      </li>
+      <li>
+      <a href="doc/api/y/view/YLabel.html">YLabel</a> enables programmatically specifying a label's size along with 
+      an option to automatically adjust the size of a (node) label to the size of 
+      the node it belongs to.
+      </li>
+      <li>
+      <a href="doc/api/y/view/Graph2DUndoManager.html">Graph2DUndoManager</a> allows to control whether the selection state 
+      of realizers should be adjusted via method <a href="doc/api/y/view/Graph2DUndoManager.html#setSelectionStateAdjusting(boolean)">setSelectionStateAdjusting</a>.
+      </li>
+      <li>
+      New view mode class <a href="doc/api/y/view/OrthogonalMoveBendsMode.html">OrthogonalMoveBendsMode</a> that can be used to conveniently 
+      edit orthogonally routed edges. 
+      It supports moving and creating new bends/edge segments in such a way that 
+      an edge's path is always orthogonal.
+      </li>
+      <li>
+      Additional getter methods in <a href="doc/api/y/view/ViewMode.html">ViewMode</a> allow to determine the parent 
+      and child ViewModes.
+      </li>
+      <li>
+      <a href="doc/api/y/view/CreateEdgeMode.html">CreateEdgeMode</a> optionally cancels accidental edge creation early 
+      on. 
+      See method <a href="doc/api/y/view/CreateEdgeMode.html#setEarlyEdgeCancelingEnabled(boolean)">setEarlyEdgeCancelingEnabled</a>.
+      </li>
+      <li>
+      Class <a href="doc/api/y/view/hierarchy/HierarchyTreeSelectionModel.html">HierarchyTreeSelectionModel</a> optionally disallows 
+      mixed selections of nodes and edges. 
+      See method <a href="doc/api/y/view/hierarchy/HierarchyTreeSelectionModel.html#setMixedSelectionAllowed(boolean)">setMixedSelectionAllowed</a>.
+      </li>
+      <li>
+      <a href="doc/api/y/view/Graph2D.html">Graph2D</a> uses automatic dirty flagging for edges that were changed 
+      using one of the <code>changeEdge</code> and <code>reverseEdge</code> methods.
+      </li>
+      <li>
+      <a href="doc/api/y/view/HitInfo.html">HitInfo</a> adds new convenient constructors for hit-testing with focus 
+      on only a specified type of graph elements.
+      </li>
+    </ul>
+    
+    <h3>Graph Structure Functionality</h3>
+    <ul>
+      <li>
+      New utility class <a href="doc/api/y/util/GraphCopier.html">GraphCopier</a> makes it easy to copy a graph's contents 
+      to another graph or create a copy of a graph.
+      </li>
+      <li>
+      <a href="doc/api/y/base/YList.html">YList</a> provides new method <a href="doc/api/y/base/YList.html#getCell(int)">getCell</a> to retrieve a list cell 
+      by index.
+      </li>
+    </ul>
+    
+    <h3>Language Support</h3>
+    <ul>
+      <li>
+      New utility class <a href="doc/api/y/util/Generics.html">Generics</a> provides support for Java 5 language features 
+      enabling convenient iteration over the graph structure using the enhanced 
+      <code>for</code> loop construct.
+      </li>
+    </ul>
+
+    <h2>Demos Added</h2>
+    <ul>
+      <li>
+        <a href="src/demo/view/layout/hierarchic/IncrementalHierarchicGroupDemo.java">IncrementalHierarchicGroupDemo</a> 
+        shows how IncrementalHierarchicLayouter can be used to fully or incrementally 
+        layout hierarchically organized graphs. 
+        The demo supports automatic re-layout after expanding folder nodes and collapsing 
+        group nodes.
+      </li>
+      <li>
+        <a href="src/demo/view/viewmode/MagnifierViewModeDemo.java">MagnifierViewModeDemo</a>
+        features the magnifying glass "tool" which enables local zooming in a Graph2DView.
+      </li>
+      <li>
+        <a href="src/demo/view/advanced/EdgeConnectorDemo.java">EdgeConnectorDemo</a>
+        demonstrates edge-to-edge connections (i.e., edges between edges) and connections
+        between nodes and edges in the view.
+      </li>
+      <li>
+        <a href="src/demo/view/layout/tree/DendrogramLayouterDemo.java">DendrogramLayouterDemo</a>
+        demonstrates dendrogram-like tree layout.
+      </li>
+      <li>
+        <a href="src/demo/view/realizer/YLabelConfigurationDemo.java">YLabelConfigurationDemo</a> 
+        shows how to customize the rendering of labels.
+      </li>
+      <li>
+        <a href="src/demo/view/viewmode/OrthogonalEdgeViewModeDemo.java">OrthogonalEdgeViewModeDemo</a>
+        demonstrates the ability of EditMode and its minor view modes to deal with 
+        orthogonally routed edges.
+      </li>
+    </ul>
+
+    <h2>Incompatible API Changes</h2>
+    <ul>
+      <li>
+        <a href="doc/api/y/view/YLabel.html">YLabel</a>: removed method <code>setSize(double, double)</code>. 
+        Calling this method had not the desired effect and therefore made no sense. 
+        <a href="doc/api/y/view/YLabel.html#setContentSize(double, double)">setContentSize</a> has been introduced as a replacement that 
+        can now be used to specify the size of a label's content.
+      </li>
+      <li>
+        <a href="doc/api/y/view/NodeLabel.html">NodeLabel</a>: static field <code>AUTOSIZE_CONTENT</code> has been 
+        moved to superclass <a href="doc/api/y/view/YLabel.html">YLabel</a>
+      </li>
+      <li>
+        <a href="doc/api/y/base/Graph.html">Graph</a>: calls to <a href="doc/api/y/base/Graph.html#disposeNodeMap(y.base.NodeMap)">disposeNodeMap</a> or <a href="doc/api/y/base/Graph.html#disposeEdgeMap(y.base.EdgeMap)">disposeEdgeMap</a>
+        will now throw IllegalArgumentException if the given map had not been created
+        with this specific instance.
+        Dispose your maps on the correct Graph to avoid those exceptions.
+      </li>
+      <li>
+        <a href="doc/api/y/view/Graph2DView.html">Graph2DView</a>: corrected method name <code>getVerticalScrollBarPolicy</code> 
+        to <a href="doc/api/y/view/Graph2DView.html#setVerticalScrollBarPolicy(int)">setVerticalScrollBarPolicy</a>
+      </li>
+      <li>
+        Removed deprecated <code>listeners</code> field of class <a href="doc/api/y/base/Graph.html">Graph</a> 
+        and switched to a better performing internal implementation.
+      </li>
+      <li>
+        Removed deprecated API in <a href="doc/api/y/view/YLabel.html">YLabel</a> in favor of <a href="doc/api/y/view/YLabel.html#setBackgroundColor(java.awt.Color)">setBackgroundColor</a>.
+      </li>
+      <li>
+        <a href="doc/api/y/view/Graph2DViewActions.html">Graph2DViewActions</a>: now by default includes a new 'Select All' 
+        action that is bound to Ctrl-A, resp. Command-A (on Mac OS X)
+      </li>
+    </ul>
+
+    <h2>Bugfixes</h2>
+    <ul>
+      <li>
+        <a href="doc/api/y/layout/organic/RemoveOverlapsLayoutStage.html">RemoveOverlapsLayoutStage</a>: for certain input graphs the 
+        minimum distances between nodes were much larger than necessary
+      </li>
+      <li>
+        Fixed a possible ClassCastException when using <a href="doc/api/y/layout/hierarchic/incremental/PCListOptimizer.html">PCListOptimizer</a>.
+      </li>
+    </ul>
+
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--////-->
+<!--/////////////////////////////////////////////////////////////////////////-->
+    <h1>yFiles 2.4.0.3 - Changes Since 2.4.0.2</h1>
+
+    <h2>Minor Features Added</h2>
+    <ul>
+      <li>
+        Class <a href="doc/api/y/view/hierarchy/HierarchyManager.html">HierarchyManager</a>: added convenience methods <a href="doc/api/y/view/hierarchy/HierarchyManager.html#setParentNode(y.base.Node, y.base.Node)">setParentNode</a>
+        and <a href="doc/api/y/view/hierarchy/HierarchyManager.html#setParentNode(y.base.NodeList, y.base.Node)">setParentNode</a>.
+      </li>
+      <li>
+        Class <a href="doc/api/y/view/AutoRotationSliderEdgeLabelModel.html">AutoRotationSliderEdgeLabelModel</a>: added protected method
+        <a href="doc/api/y/view/AutoRotationSliderEdgeLabelModel.html#getPointPath(y.layout.EdgeLayout, y.layout.NodeLayout, y.layout.NodeLayout)">getPointPath</a>.
+      </li>
+      <li>
+        Class <a href="doc/api/y/layout/grouping/InsetsGroupBoundsCalculator.html">InsetsGroupBoundsCalculator</a>: added protected method
+        <a href="doc/api/y/layout/grouping/InsetsGroupBoundsCalculator.html#createEnlargedBounds(y.layout.LayoutGraph, y.base.Node, y.base.NodeList, java.awt.geom.Rectangle2D)">createEnlargedBounds</a>.
+      </li>
+      <li>
+        Class <a href="doc/api/y/algo/GraphConnectivity.html">GraphConnectivity</a>: added methods
+        <a href="doc/api/y/algo/GraphConnectivity.html#getNeighbors(y.base.Graph, y.base.NodeList, int)">getNeighbors</a>,
+        <a href="doc/api/y/algo/GraphConnectivity.html#getSuccessors(y.base.Graph, y.base.NodeList, int)">getSuccessors</a>, and
+        <a href="doc/api/y/algo/GraphConnectivity.html#getPredecessors(y.base.Graph, y.base.NodeList, int)">getPredecessors</a>.
+      </li>
+      <li>
+        Class <a href="doc/api/y/layout/tree/TreeLayouter.html">TreeLayouter</a> regression: unlike in v2.3 <a href="doc/api/y/layout/tree/XCoordComparator.html">XCoordComparator</a>
+        is not set as default child comparator of this layout algorithm. Changed this to reflect original behavior.
+      </li>
+      <li>
+        Class <a href="doc/api/y/io/ImageOutputHandler.html">ImageOutputHandler</a>: added method <a href="doc/api/y/io/ImageOutputHandler.html#write(y.view.Graph2DView, java.io.OutputStream)">write</a>.
+      </li>
+    </ul>
+
+    <h2>Bugfixes</h2>
+    <ul>
+      <li>
+        Class <a href="doc/api/y/view/MovePortMode.html">MovePortMode</a>: improved clip bounds for visible port candidates.
+      </li>
+      <li>
+        Class <a href="doc/api/y/layout/hierarchic/SimplexDrawer.html">SimplexDrawer</a>: fixed occasional NullPointerException when using
+        custom layering.
+      </li>
+      <li>
+        Class <a href="doc/api/y/layout/CopiedLayoutGraph.html">CopiedLayoutGraph</a>: using constructor
+        <a href="doc/api/y/layout/CopiedLayoutGraph.html#CopiedLayoutGraph(y.base.GraphInterface, y.layout.GraphLayout)">CopiedLayoutGraph</a> raised a
+        ClassCastException under certain circumstances. This is a regression to yFiles 2.3. To fix this problem
+        a small but incompatible API change (see below) was the only proper solution.
+      </li>
+      <li>Class <a href="doc/api/y/layout/tree/ARTreeLayouter.html">ARTreeLayouter</a>: Fixed a rare bug that resulted in bad
+      edge routing if the graph was not a normalized tree.</li>
+      <li>Class <a href="doc/api/y/layout/LabelLayoutDataRefinement.html">LabelLayoutDataRefinement</a>: Fixed a bug that resulted in a
+        ClassCastException when using unbuffered layout.</li>
+      <li>Class <a href="doc/api/y/layout/hierarchic/TreeDrawer.html">TreeDrawer</a>: switched to using GenericTreeLayouter, since
+        the previous approach sometimes produced node overlaps.</li>
+    </ul>
+
+    <h2>Incompatible API Changes</h2>
+    <ul>
+      <li>
+        Class <a href="doc/api/y/layout/CopiedLayoutGraph.html">CopiedLayoutGraph</a>: changed signature of method
+        <code>createNode(y.base.Node)</code> to <a href="doc/api/y/layout/CopiedLayoutGraph.html#createNode(java.lang.Object)">createNode</a>.
+      </li>
+      <li>
+        Class <a href="doc/api/y/layout/CopiedLayoutGraph.html">CopiedLayoutGraph</a>: changed signature of method
+        <code>createEdge(y.base.Edge)</code> to <a href="doc/api/y/layout/CopiedLayoutGraph.html#createEdge(java.lang.Object)">createEdge</a>.
+      </li>
+    </ul>
+
+    <h2>Demo Changes</h2>
+    <ul>
+      <li>
+      The free Java bytecode obfuscator and shrinker yGuard 2.0 is now part of the
+      yFiles tutorial demo applications.
+      <br/>
+      It provides Java bytecode shrinking functionality and features new XML syntax.
+      </li>
+    </ul>
+
+    <h2>yEd Improvements</h2>
+    <ul>
+      <li>
+      Improved HTML image map output.
+      HTML <code>&lt;area></code> elements are only generated for nodes and edges
+      that actually have descriptive tooltips and/or links associated.
+      <br/>
+      Also, tooltip visibility in the browser window and behavior in Microsoft Internet
+      Explorer has been improved.
+      </li>
+    </ul>
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--////-->
+<!--/////////////////////////////////////////////////////////////////////////-->
+    <h1>yFiles 2.4.0.2 - Changes Since 2.4.0.1</h1>
+    <h2>Bugfixes</h2>
+    <ul>
+      <li>
+        <a href="doc/api/y/view/hierarchy/Graph2DHierarchyClipboard.html">Graph2DHierarchyClipboard</a> did not use the
+        GraphFactory set with <a href="doc/api/y/view/hierarchy/Graph2DHierarchyClipboard.html#setGraphFactory(y.base.GraphFactory)">setGraphFactory</a> to create
+        node and edge copies.
+      </li>
+      <li>
+        <a href="doc/api/y/layout/hierarchic/IncrementalHierarchicLayouter.html">IncrementalHierarchicLayouter</a>: Fixed an edge labeling and edge routing problem
+        for edge labels that are not centered on their edge.
+      </li>
+      <li>
+        Class <a href="doc/api/y/view/GenericEdgeRealizer.html">GenericEdgeRealizer</a>: fixed a NullPointerException during copy creation when there were bends in
+        the original edge.
+      </li>
+      <li>
+        Class <a href="doc/api/y/layout/organic/SmartOrganicLayouter.html">SmartOrganicLayouter</a>: fixed memory leak and possible stack overflow errors
+        when the instance was reused multiple times.
+      </li>
+      <li>
+        Class <a href="doc/api/y/layout/tree/GenericTreeLayouter.html">GenericTreeLayouter</a>: fixed NodePlacer implementations that did not always honor PortConstraints
+        at leaf nodes.
+      </li>
+      <li>
+        Class <a href="doc/api/y/option/OptionHandler.html">OptionHandler</a>: fixed bad display of values in bound double item
+      </li>
+      <li>
+        Class <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html">OrthogonalLayouter</a>: fixed rare ArrayIndexOutOfBoundsException if nodes had
+        small dimensions.
+      </li>
+    </ul>
+
+
+    <h2>Features Added</h2>
+    <ul>
+      <li>
+        Class <a href="doc/api/y/io/YGFIOHandler.html">YGFIOHandler</a>: added inner interface <a href="doc/api/y/io/YGFIOHandler.DataHandler.html">YGFIOHandler.DataHandler</a> that allows
+        to serialize additional data for nodes, edges, and graphs.
+      </li>
+      <li>
+        Class <a href="doc/api/y/option/ColorOptionItem.html">ColorOptionItem</a>: added attribute <a href="doc/api/y/option/ColorOptionItem.html#ATTRIBUTE_SHOW_ALPHA">ATTRIBUTE_SHOW_ALPHA</a> to allow editing of ARGB colors.
+      </li>
+      <li>
+        Class <a href="doc/api/y/option/FileOptionItem.html">FileOptionItem</a>: added attribute <a href="doc/api/y/option/FileOptionItem.html#ATTRIBUTE_PREFIX_FILE_PROTOCOL">ATTRIBUTE_PREFIX_FILE_PROTOCOL</a>.
+      </li>
+    </ul>
+
+
+    <h2>Features Added to yEd</h2>
+    <ul>
+      <li>
+        Added module to measure and visualize diverse centrality indices for graphs.
+      </li>
+      <li>
+        Added URL and a description property to nodes and edges. The associated URLs can be
+        opened in a web browser.
+      </li>
+      <li>
+        Added HTML image map output that supports the display of descriptive tooltips and object linking.
+      </li>
+      <li>
+        Improved SVG output that now supports the display of descriptive tooltips and object linking.
+      </li>
+    </ul>
+
+
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--////-->
+<!--/////////////////////////////////////////////////////////////////////////-->
+   <h1>yFiles 2.4.0.1 - Changes Since 2.4</h1>
+    <h2>Bugfixes</h2>
+    <ul>
+      <li>
+        Class <a href="doc/api/y/view/GenericEdgeRealizer.html">GenericEdgeRealizer</a>: fixed YGF serialization
+      </li>
+      <li>
+        Class <a href="doc/api/y/view/ViewControl.html">ViewControl</a>: when using method <a href="doc/api/y/view/ViewControl.html#activateMode(y.view.Graph2DView, y.view.ViewMode)">activateMode</a>
+        the view mode method <a href="doc/api/y/view/ViewMode.html#activate(boolean)">activate</a> was invoked twice instead of just once
+      </li>
+      <li>
+        Class <a href="doc/api/y/util/pq/ArrayIntNodePQ.html">ArrayIntNodePQ</a>: fixed a memory leak which caused some dependent algorithms (most notably
+        <a href="doc/api/y/layout/hierarchic/IncrementalHierarchicLayouter.html">IncrementalHierarchicLayouter</a> and <a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html">HierarchicLayouter</a>)
+        to leak memory in specific situations
+      </li>
+    </ul>
+
+    <h2>Features Added</h2>
+    <ul>
+      <li>
+        Class <a href="doc/api/y/algo/Cycles.html">Cycles</a>: added method <a href="doc/api/y/algo/Cycles.html#findCycleEdges(y.base.Graph, y.base.EdgeMap, y.base.DataProvider)">findCycleEdges</a>
+      </li>
+      <li>
+        Class <a href="doc/api/y/algo/NodeOrders.html">NodeOrders</a>: added methods <a href="doc/api/y/algo/NodeOrders.html#st(y.base.Graph, int[], y.base.Edge)">st</a>,
+        <a href="doc/api/y/algo/NodeOrders.html#toNodeMap(y.base.Graph, int[], y.base.NodeMap)">toNodeMap</a>, and
+        <a href="doc/api/y/algo/NodeOrders.html#toNodeMap(y.base.NodeList, y.base.NodeMap)">toNodeMap</a>
+      </li>
+      <li>
+        Class <a href="doc/api/y/view/MovePortMode.html">MovePortMode</a>: improved port highlighting and cursor configurability. Methods
+        <a href="doc/api/y/view/MovePortMode.html#drawPortCandidate(java.awt.Graphics2D, y.geom.YPoint, y.base.Node, y.base.Edge, boolean, boolean)">drawPortCandidate</a>,
+        <a href="doc/api/y/view/MovePortMode.html#getMovePortCursor()">getMovePortCursor</a>, and
+        <a href="doc/api/y/view/MovePortMode.html#getDefaultCursor()">getDefaultCursor</a> have been added.
+      </li>
+      <li>
+         Class <a href="doc/api/y/view/EditMode.html">EditMode</a>: now displays a special hand cursor when the mouse is over a draggable port point
+      </li>
+    </ul>
+
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--////-->
+<!--/////////////////////////////////////////////////////////////////////////-->
+    <h1>yFiles 2.4 - Changes Since 2.3.1.1</h1>
+
+    <h2>Major Features Added</h2>
+    <h3>Animation Framework</h3>
+    <ul>
+      <li>
+      The general animation framework from package <a href="doc/api/y/anim/package-summary.html">y.anim</a> has been reworked to
+      provide high-quality animations and visual effects for node realizers, edge
+      realizers, and also drawables.
+      Predefined, yet customizable animations and effects include moving, resizing,
+      and scaling of nodes, color transformations with nodes and making nodes blink,
+      fading in and out, blurring, and also explosions are supported.
+      <br/>
+      Animations can be arbitrarily combined and be played in parallel or sequentially,
+      new class <a href="doc/api/y/anim/AnimationFactory.html">AnimationFactory</a> provides the means to define the structure
+      of a compound animation process.
+      New class <a href="doc/api/y/view/ViewAnimationFactory.html">ViewAnimationFactory</a> can be used to create predefined generic
+      animation objects.
+      <br/>
+      <a href="../doc/developers-guide/animation.html">[Show me the corresponding section in the yFiles Developer's Guide]</a>
+      </li>
+    </ul>
+
+    <h3>Fully Interactive Swing User Interface Components in the View</h3>
+    <ul>
+      <li>
+      The yFiles library now supports Java Swing User Interface (UI) components
+      to be used inside the view.
+      Similar to the mechanism provided by Swing's cell renderer and corresponding
+      cell editor classes, yFiles interfaces <a href="doc/api/y/view/NodeCellRenderer.html">NodeCellRenderer</a> and <a href="doc/api/y/view/NodeCellEditor.html">NodeCellEditor</a>
+      can be used to create proper interactive editors for arbitrary node-related
+      data.
+      <br/>
+      The created editors serve as the visual representation for nodes, they are
+      fully interactive and provide the full range of mouse-based user interaction,
+      i.e., they can be selected, resized, and moved just like regular nodes.
+      Furthermore, they can also be zoomed in and out, and remain editable even
+      when zoomed.
+      <br/>
+      New view mode class <a href="doc/api/y/view/CellEditorMode.html">CellEditorMode</a> governs proper interaction with
+      such UI components.
+      <br/>
+      <a href="../doc/developers-guide/jcomponent_support.html">[Show me the corresponding section in the yFiles Developer's Guide]</a>
+      </li>
+    </ul>
+
+    <h3>New Directed Orthogonal Layout Algorithm</h3>
+    <ul>
+      <li>
+      Class <a href="doc/api/y/layout/orthogonal/DirectedOrthogonalLayouter.html">DirectedOrthogonalLayouter</a> has been added to the
+      suite of orthogonal layout algorithms.
+      It generates drawings with a strong focus on edge routing that satisfies sophisticated
+      edge path-related constraints.
+      <br/>
+      Supported is advanced edge path generation with respect to the diagram's main
+      layout direction and also <a href="doc/api/y/layout/PortConstraintKeys.html">bus-style edge routing</a>.
+      Together, these features enable sophisticated layout of UML-style class diagrams.
+      <br/>
+      <a href="../doc/developers-guide/directed_orthogonal_layouter.html">[Show me the corresponding section in the yFiles Developer's Guide]</a>
+      </li>
+    </ul>
+
+    <h3>New Interactive Organic Layout Algorithm</h3>
+    <ul>
+      <li>
+      Class <a href="doc/api/y/layout/organic/InteractiveOrganicLayouter.html">InteractiveOrganicLayouter</a> has been added to the
+      suite of organic layout algorithms.
+      It is capable of generating continuous updates to the layout of a graph during
+      calculation.
+      <br/>
+      Also, it allows a user to seemingly simultaneously modify a graph and have
+      the modifications subsequently being accounted for in the layout calculation.
+      <br/>
+      <a href="../doc/developers-guide/interactive_organic_layouter.html">[Show me the corresponding section in the yFiles Developer's Guide]</a>
+      </li>
+    </ul>
+
+    <h3>Generic Tree Layout Algorithm Enhanced</h3>
+    <ul>
+      <li>
+      Class <a href="doc/api/y/layout/tree/GenericTreeLayouter.html">GenericTreeLayouter</a> now features new <a href="doc/api/y/layout/tree/NodePlacer.html">NodePlacer</a>
+      implementations that support rotation of subtrees.
+      The new node placers classes are <a href="doc/api/y/layout/tree/AssistantPlacer.html">AssistantPlacer</a>, <a href="doc/api/y/layout/tree/BusPlacer.html">BusPlacer</a>,
+      <a href="doc/api/y/layout/tree/DoubleLinePlacer.html">DoubleLinePlacer</a>, <a href="doc/api/y/layout/tree/FreePlacer.html">FreePlacer</a>, <a href="doc/api/y/layout/tree/LeftRightPlacer.html">LeftRightPlacer</a>,
+      and <a href="doc/api/y/layout/tree/SimpleNodePlacer.html">SimpleNodePlacer</a>.
+      <br/>
+      All node placers support <a href="doc/api/y/layout/PortConstraint.html">port constraints</a>.
+      Also, layout from sketch, which can be used to incrementally add new elements
+      to the current diagram, is supported by the majority of node placers.
+      <br/>
+      <a href="../doc/developers-guide/cls_GenericTreeLayouter.html">[Show me the corresponding section in the yFiles Developer's Guide]</a>
+      </li>
+    </ul>
+
+    <h3>Bridges for Edge Paths</h3>
+    <ul>
+      <li>
+      The ambiguity induced by intersecting edge paths (a.k.a. edge crossings) can
+      be resolved by so-called "bridges," convenient augmentations to the edge path
+      that can be inserted in a number of different styles.
+      <br/>
+      <a href="doc/api/y/view/DefaultGraph2DRenderer.html">DefaultGraph2DRenderer</a> has been enhanced to use the services of new
+      class <a href="doc/api/y/view/BridgeCalculator.html">BridgeCalculator</a> to have straight line edge segments augmented.
+      <br/>
+      <a href="../doc/developers-guide/mvc_view.html#renderer">[Show me the corresponding section in the yFiles Developer's Guide]</a>
+      </li>
+    </ul>
+
+    <h2>Minor Features Added</h2>
+    <h3>Automatic Layout</h3>
+    <ul>
+      <li>
+      <a href="doc/api/y/layout/tree/TreeLayouter.html">TreeLayouter</a> now supports integrated labeling, which can be
+      enabled using <a href="doc/api/y/layout/tree/TreeLayouter.html#setIntegratedEdgeLabeling(boolean)">setIntegratedEdgeLabeling</a> and <a href="doc/api/y/layout/tree/TreeLayouter.html#setIntegratedNodeLabeling(boolean)">setIntegratedNodeLabeling</a>.
+      Also, new node and edge alignment options are available: <a href="doc/api/y/layout/tree/TreeLayouter.html#setVerticalAlignment(double)">setVerticalAlignment</a>
+      and <a href="doc/api/y/layout/tree/TreeLayouter.html#setBusAlignment(double)">setBusAlignment</a>.
+      </li>
+      <li>
+      <a href="doc/api/y/layout/tree/GenericTreeLayouter.html">GenericTreeLayouter</a> now supports integrated labeling, which
+      can be enabled using <a href="doc/api/y/layout/tree/GenericTreeLayouter.html#setIntegratedEdgeLabeling(boolean)">setIntegratedEdgeLabeling</a> and <a href="doc/api/y/layout/tree/GenericTreeLayouter.html#setIntegratedNodeLabeling(boolean)">setIntegratedNodeLabeling</a>.
+      </li>
+      <li>
+    	<a href="doc/api/y/layout/circular/CircularLayouter.html">CircularLayouter</a>: added new feature to specify customized
+      sets of nodes which will be used to form circles.
+      The sets of nodes can be specified using the DataProvider key <a href="doc/api/y/layout/circular/CircularLayouter.html#CIRCULAR_CUSTOM_GROUPS_DPKEY">CIRCULAR_CUSTOM_GROUPS_DPKEY</a>.
+      </li>
+     	<li>
+    	<a href="doc/api/y/layout/circular/CircularLayouter.html">CircularLayouter</a> provides new "disk" layout styles for
+      node partitions: <a href="doc/api/y/layout/circular/CircularLayouter.html#PARTITION_LAYOUTSTYLE_DISK">PARTITION_LAYOUTSTYLE_DISK</a> and <a href="doc/api/y/layout/circular/CircularLayouter.html#PARTITION_LAYOUTSTYLE_ORGANIC">PARTITION_LAYOUTSTYLE_ORGANIC</a>,
+      which can be set using method <a href="doc/api/y/layout/circular/CircularLayouter.html#setPartitionLayoutStyle(byte)">setPartitionLayoutStyle</a>.
+      </li>
+     	<li>
+     	<a href="doc/api/y/layout/hierarchic/IncrementalHierarchicLayouter.html">IncrementalHierarchicLayouter</a> now enables nodes to be
+      optimally inserted into a specified layer.
+      Additionally, it now also supports incremental node placement with respect
+      to actual node coordinates.
+      Besides the logical insertion of incrementally added nodes using their location
+      relative to other, already placed nodes, this completes advanced node placement
+      in sketch-driven hierarchical layout.
+      <br/>
+      Specifying nodes for incremental placement with respect to their actual coordinates
+      is done using special hint objects as returned by the default IncrementalHintsFactory
+      object registered with IncrementalHierarchicLayouter.
+      The new hint objects are created by methods
+      <a href="doc/api/y/layout/hierarchic/incremental/IncrementalHintsFactory.html#createUseExactCoordinatesHint(y.base.Node)">createUseExactCoordinatesHint</a>,
+      <a href="doc/api/y/layout/hierarchic/incremental/IncrementalHintsFactory.html#createUseExactLayerCoordinatesHint(y.base.Node)">createUseExactLayerCoordinatesHint</a>, and
+      <a href="doc/api/y/layout/hierarchic/incremental/IncrementalHintsFactory.html#createUseExactSequenceCoordinatesHint(y.base.Node)">createUseExactSequenceCoordinatesHint</a>.
+      </li>
+     	<li>
+     	Added new so-called port candidates that allow to restrict anchor locations
+      at a node and also associate costs with a given anchor location.
+      Classes <a href="doc/api/y/layout/PortCandidate.html">PortCandidate</a> and <a href="doc/api/y/layout/PortCandidateSet.html">PortCandidateSet</a> can be used
+      to define a set of allowed anchor locations at a node.
+      </li>
+     	<li>
+     	<a href="doc/api/y/layout/hierarchic/IncrementalHierarchicLayouter.html">IncrementalHierarchicLayouter</a> now supports the concept
+     	of port candidates:
+     	<a href="doc/api/y/layout/PortCandidateSet.html">PortCandidateSet</a> objects that are registered for the nodes of a
+      graph by means of a data provider using the look-up key <a href="doc/api/y/layout/PortCandidateSet.html#NODE_DP_KEY">NODE_DP_KEY</a>
+      are obeyed for restricting the allowed anchor locations for edges at a given
+      node.
+      <br/>
+      Additionally, the data provider keys <a href="doc/api/y/layout/PortCandidate.html#SOURCE_PCLIST_DPKEY">SOURCE_PCLIST_DPKEY</a>
+      and <a href="doc/api/y/layout/PortCandidate.html#TARGET_PCLIST_DPKEY">TARGET_PCLIST_DPKEY</a> are supported to enable advanced
+      port candidate matching at nodes.
+      </li>
+     	<li>
+     	New factory class <a href="doc/api/y/layout/organic/OutputRestriction.html">OutputRestriction</a> allows to create so-called
+      output restrictions that can be used in conjunction with SmartOrganicLayouter
+      and InteractiveOrganicLayouter to restrict the resulting graph layout to fit
+      into a specified region, e.g., a rectangle or a circle.
+      </li>
+     	<li>
+     	New layout stage <a href="doc/api/y/layout/router/EdgeGroupRouterStage.html">EdgeGroupRouterStage</a> adds support for edge/port
+      groups, i.e., bus-style edge routing to OrthogonalEdgeRouter.
+      </li>
+		</ul>
+
+    <h3>Realizers and Rendering</h3>
+    <ul>
+			<li>
+			Added flexible EdgeRealizer implementation <a href="doc/api/y/view/GenericEdgeRealizer.html">GenericEdgeRealizer</a> that
+		  can be used to easily create customized edge appearances without subclassing.
+      <br/>
+      Utility and convenience classes that can be used in conjunction with this
+      realizer are
+      <a href="doc/api/y/view/GenericEdgePainter.html">GenericEdgePainter</a>, <a href="doc/api/y/view/SimpleBendHandler.html">SimpleBendHandler</a>, and <a href="doc/api/y/view/PolyLinePathCalculator.html">PolyLinePathCalculator</a>.
+			</li>
+			<li>
+			Added several static inner interfaces to class GenericNodeRealizer to allow
+			for convenient customization of arbitrary functionality.
+			The new interfaces include:
+			<a href="doc/api/y/view/GenericNodeRealizer.BoundsChangedHandler.html">GenericNodeRealizer.BoundsChangedHandler</a>, <a href="doc/api/y/view/GenericNodeRealizer.PortCandidateListProvider.html">GenericNodeRealizer.PortCandidateListProvider</a>,
+			and <a href="doc/api/y/view/GenericNodeRealizer.GenericMouseInputEditorProvider.html">GenericNodeRealizer.GenericMouseInputEditorProvider</a>.
+			</li>
+			<li>
+			Added advanced alpha transparency support for class ImageNodeRealizer.
+			Using an image's alpha values allows to modify the behavior of containment
+      testing, which (among other things) is used to calculate edge intersection
+      points.
+			Method <a href="doc/api/y/view/ImageNodeRealizer.html#setAlphaImageUsed(boolean)">setAlphaImageUsed</a> can be used to
+      enable alpha transparency support.
+			</li>
+			<li>
+			Added methods <a href="doc/api/y/view/NodeRealizer.html#repaint()">repaint</a> and <a href="doc/api/y/view/EdgeRealizer.html#repaint()">repaint</a>
+			to classes NodeRealizer and EdgeRealizer.
+			</li>
+			<li>
+			Improved path calculation support in class EdgeRealizer which also comprises
+      improved rendering in conjunction with graphical decorations at an edge's
+      ends (provided by class <a href="doc/api/y/view/Arrow.html">Arrow</a>).
+      Static method
+      <a href="doc/api/y/view/EdgeRealizer.html#calculateClippingAndIntersection(y.view.EdgeRealizer, java.awt.geom.GeneralPath, java.awt.geom.GeneralPath, java.awt.geom.Point2D, java.awt.geom.Point2D)">calculateClippingAndIntersection</a>
+      provides proper clipping support for an edge path.
+			</li>
+			<li>
+			Class Arrow allows to define a distance between arrowhead tip and node border:
+			<a href="doc/api/y/view/Arrow.html#setDefaultClipLength(double)">setDefaultClipLength</a>.
+			Also, the position of the edge path's end can be defined relative to an arrowhead's
+      tip, too: <a href="doc/api/y/view/Arrow.html#getArrowLength()">getArrowLength</a>.
+			</li>
+    </ul>
+
+    <h3>Viewer/Editor Interaction</h3>
+    <ul>
+			<li>
+			Class EditMode now supports additional child modes: <a href="doc/api/y/view/MouseInputMode.html">MouseInputMode</a>,
+			and <a href="doc/api/y/view/MoveViewPortMode.html">MoveViewPortMode</a>.
+      Support includes creation methods and setter/getter methods, for example:
+      <a href="doc/api/y/view/EditMode.html#createMouseInputMode()">createMouseInputMode</a>, <a href="doc/api/y/view/EditMode.html#setMouseInputMode(y.view.MouseInputMode)">setMouseInputMode</a>,
+      and <a href="doc/api/y/view/EditMode.html#getMouseInputMode()">getMouseInputMode</a>.
+      <br/>
+      Also, a node editing mode such as <a href="doc/api/y/view/CellEditorMode.html">CellEditorMode</a> can be registered
+      using the corresponding new setter method.
+			</li>
+      <li>
+      New class <a href="doc/api/y/view/MouseInputMode.html">MouseInputMode</a> delegates mouse input to implementations
+      of new interface <a href="doc/api/y/view/MouseInputEditor.html">MouseInputEditor</a> using double precision mouse events.
+      The concept of MouseInputEditor enables convenient user interaction with node
+      realizers, edge realizers, and also drawables.
+      <br/>
+      <a href="doc/api/y/view/AbstractMouseInputEditor.html">AbstractMouseInputEditor</a> serves as a base implementation.
+			</li>
+			<li>
+			Class <a href="doc/api/y/view/EditMode.html">EditMode</a> has been added a number of further setter methods
+      to enable/disable specific functionality, like, e.g., node editing (<a href="doc/api/y/view/EditMode.html#allowNodeEditing(boolean)">allowNodeEditing</a>),
+      moving labels (<a href="doc/api/y/view/EditMode.html#allowMoveLabels(boolean)">allowMoveLabels</a>), or moving ports (<a href="doc/api/y/view/EditMode.html#allowMovePorts(boolean)">allowMovePorts</a>).
+      </li>
+			<li>
+			Other methods added to class <a href="doc/api/y/view/EditMode.html">EditMode</a> relate to node editing (methods
+      <a href="doc/api/y/view/EditMode.html#isEditNodeGesture(y.base.Node, java.awt.event.MouseEvent, java.awt.event.MouseEvent, java.awt.event.MouseEvent)">isEditNodeGesture</a>,
+      <a href="doc/api/y/view/EditMode.html#editNode(y.base.Node, java.util.EventObject)">editNode</a>, <a href="doc/api/y/view/EditMode.html#startEditor(y.view.MouseInputEditor)">startEditor</a>,
+      etc.), controlling the default
+      cursor (methods <a href="doc/api/y/view/EditMode.html#setDefaultCursor(java.awt.Cursor)">setDefaultCursor</a> and <a href="doc/api/y/view/EditMode.html#getDefaultCursor()">getDefaultCursor</a>),
+      and also callbacks for convenient bend creation notification (methods <a href="doc/api/y/view/EditMode.html#createBend(y.view.Graph2D, y.base.Edge, double, double)">createBend</a>
+      and <a href="doc/api/y/view/EditMode.html#bendCreated((y.view.Graph2D, y.base.Edge, y.view.Bend, double, double)">bendCreated</a>).
+      </li>
+			<li>
+			Added method <a href="doc/api/y/view/View.html#updateView(double, double, double, double)">updateView</a> to interface
+      <a href="doc/api/y/view/View.html">View</a> to enable locally confined repaints. 
+			</li>
+			<li>
+			New view mode class <a href="doc/api/y/view/AreaZoomMode.html">AreaZoomMode</a> allows to zoom a given selected 
+      area, i.e., adjusting the view port to show only that part of a graph that 
+      is inside a selection rectangle. 
+			</li>
+    </ul>
+    
+    <h3>Input and Output</h3>
+    <ul>
+      <li>
+      Added class <a href="doc/api/y/io/ImageIoOutputHandler.html">ImageIoOutputHandler</a>: this class allows access to image 
+      writer plugins available with Java Image I/O API (enables writing Portable 
+      Network Graphics, i.e., PNG image file format, for example). 
+      <br/>
+      Note that using the Java Image I/O API functionality depends classes only 
+      available in J2SE 1.4 or higher. 
+			</li>
+    </ul>
+    
+    <h3>Graph Analysis</h3>
+    <ul>
+      <li>
+      Added class <a href="doc/api/y/algo/Centrality.html">Centrality</a> that offers several centrality measures such 
+      as 
+      <a href="doc/api/y/algo/Centrality.html#nodeBetweenness(y.base.Graph, y.base.NodeMap, boolean, y.base.DataProvider)">nodeBetweenness</a>, 
+      <a href="doc/api/y/algo/Centrality.html#edgeBetweenness(y.base.Graph, y.base.EdgeMap, boolean, y.base.DataProvider)">edgeBetweenness</a>, 
+      or 
+      <a href="doc/api/y/algo/Centrality.html#closenessCentrality(y.base.Graph, y.base.NodeMap, boolean, y.base.DataProvider)">closenessCentrality</a>, 
+      for nodes and edges of a graph. 
+      </li>
+      <li>
+      Added class <a href="doc/api/y/algo/Groups.html">Groups</a> which provides support for automatic graph clustering, 
+      i.e., node grouping, using centrality measures. 
+      </li>
+    </ul>
+    
+    <h2>Demos Added</h2>
+    <p>
+    The structure of subpackages inside the demo/ package has been changed. 
+    Many new subpackages have been created to better match the package/subpackage 
+    structure of the classes that are discussed. 
+    <br/>
+    Also, DemoBrowser, a "shell" application which allows convenient navigation 
+    through all yFiles tutorial demo applications has been added. 
+    It features execution of the demos, and also display of both source code and 
+    documentation. 
+    </p>
+    <ul>
+      <li>
+      Animation Framework: demos
+      <a href="demo/view/anim/EaseInEaseOutDemo.java">EaseInEaseOutDemo</a>,
+      <a href="demo/view/anim/FadeInFadeOutDemo.java">FadeInFadeOutDemo</a>, 
+      <a href="demo/view/anim/LabelAnimationDemo.java">LabelAnimationDemo</a>, and 
+      <a href="demo/view/anim/AnimationEffectsDemo.java">AnimationEffectsDemo</a> 
+      (together with <a href="demo/view/anim/AnimationEffectsDemoBase.java">AnimationEffectsDemoBase</a>) 
+      have been added. 
+      <br/>
+		  They demonstrate usage of the animation framework and also many of the effects 
+      provided by factory class ViewAnimations. 
+      </li>
+      <li>
+      <a href="demo/view/realizer/SwingRendererDemo.java">SwingRendererDemo</a> 
+      presents how to use Java Swing UI components as NodeRealizers. 
+      </li>
+      <li>
+      DirectedOrthogonalLayouter: 
+      <a href="demo/view/layout/orthogonal/UMLClassDiagramLayouterDemo.java">UMLClassDiagramLayouterDemo</a> 
+      has been added to demonstrate directed orthogonal layout for UML class diagrams. 
+      </li>
+      <li>
+      GenericTreeLayouter: demos 
+      <a href="demo/view/layout/tree/AssistantPlacerDemo.java">AssistantPlacerDemo</a>, 
+      <a href="demo/view/layout/tree/RotatableNodePlacersDemo.java">RotatableNodePlacersDemo</a>, 
+      and 
+      <a href="demo/view/layout/tree/TreeLayoutConfigurationDemo.java">TreeLayoutConfigurationDemo</a> 
+      (together with <a href="demo/view/layout/tree/TreeLayoutConfiguration.java">TreeLayoutConfiguration</a>) 
+      have been added to show setup and usage of GenericTreeLayouter with NodePlacer 
+      implementations that support subtree rotation. 
+      </li>
+      <li>
+      InteractiveOrganicLayouter: demos 
+      <a href="demo/view/layout/organic/InteractiveOrganicDemo.java">InteractiveOrganicDemo</a>, 
+      <a href="demo/view/layout/organic/NavigationDemo.java">NavigationDemo</a>, 
+      and 
+      <a href="demo/view/layout/organic/AnimatedNavigationDemo.java">AnimatedNavigationDemo</a> 
+      have been added to show setup and usage of InteractiveOrganicLayouter in an 
+      interactive environment that allows a user to "live"-drag nodes. 
+      </li>
+      <li>
+      The demos 
+      <a href="demo/view/viewmode/MouseInputDemo.java">MouseInputDemo</a> and 
+      <a href="demo/view/realizer/ScrollingNodeRealizer.java">ScrollingNodeRealizer</a> 
+      demonstrate the MouseInputEditor concept, which can be used to conveniently 
+      support user interaction with arbitrary (graph) elements in the view. 
+      </li>
+      <li>
+      <a href="demo/view/realizer/GenericEdgeRealizerDemo.java">GenericEdgeRealizerDemo</a> 
+      has been added to present creation and customization of GenericEdgeRealizer 
+      configurations. 
+      </li>
+      <li>
+      <a href="demo/view/rendering/BridgeDemo.java">BridgeDemo</a> demonstrates 
+      how the bridging functionality of DefaultGraph2DRenderer is enabled, 
+      <a href="demo/view/realizer/BridgeEdgeRealizerDemo.java">BridgeEdgeRealizerDemo</a> 
+      shows how to enable so-called "bridges" in conjunction with class GenericEdgeRealizer. 
+      </li>
+      <li>
+      <a href="demo/view/layout/hierarchic/FlowChartDemo.java">FlowChartDemo</a> 
+      has been added to show port candidate support provided by incremental hierarchical 
+      layout. 
+      </li>
+    </ul>
+ 		
+ 		<h2>Features Added to yEd</h2>
+    <ul>
+      <li>
+      "Bridges" can be enabled for all edges to resolve the visual ambiguity induced 
+      by intersecting edge paths. 
+      </li>
+      <li>
+      Added new UML-style orthogonal layout algorithm to the suite of orthogonal 
+      layout algorithms. 
+      </li>
+      <li>
+      Added disk arrangement styles for node partitions in the layout module of 
+      circular layout. 
+      </li>
+      <li>
+      Added automatic clustering capabilities to the grouping tool that support 
+      biconnected components and "natural clustering." 
+      </li>
+    </ul>
+    
+    <h2>Incompatible Changes</h2>
+    <ul>
+      <li>
+        HierarchyTreeSelectionModel: Changed validation of paths. Only done on the last POST_EVENT (with bracket depth==0)
+      </li>
+      <li>
+      The rework of package y.anim has lead to a new animation scheme where an animation 
+      no longer has an absolute number of frames, but instead returns frames that 
+      best match a given relative time. 
+      <br/>
+      Also, implementations for interface <a href="doc/api/y/anim/AnimationListener.html">AnimationListener</a> have to be 
+      registered with class AnimationPlayer in order to get properly notified of 
+      animation progress. 
+      </li>
+      <li>
+      AnimationObject: 
+      Method calcNextFrame(int, int) has been replaced by <a href="doc/api/y/anim/AnimationObject.html#calcFrame(double)">calcFrame</a>. 
+      Methods getAnimationLength() and getAnimationListener() have been removed. 
+      <br/>
+      AnimationEvent: 
+      Constructor has new signature; removed optimization constants. 
+      <br/>
+      AnimationPlayer: 
+      Methods setSynchronizedMode(boolean) and getSynchronizedMode() have been replaced 
+      by <a href="doc/api/y/anim/AnimationPlayer.html#setSynchronized(boolean)">setSynchronized</a> and <a href="doc/api/y/anim/AnimationPlayer.html#isSynchronized()">isSynchronized</a>. 
+      </li>
+      <li>
+      YLabel: 
+      The rotation angle for a label is given in double now instead of int, i.e., 
+      the signature of getter/setter methods <a href="doc/api/y/view/YLabel.html#getRotationAngle()">getRotationAngle</a> 
+      and <a href="doc/api/y/view/YLabel.html#setRotationAngle(double)">setRotationAngle</a> has changed. 
+      </li>
+      <li>
+      EdgeRealizer: 
+      Method calculatePath() has been replaced by <a href="doc/api/y/view/EdgeRealizer.html#calculatePath(java.awt.geom.Point2D, java.awt.geom.Point2D)">calculatePath</a>. 
+      </li>
+    </ul>
+
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--////-->
+<!--/////////////////////////////////////////////////////////////////////////-->
+		<h1>yFiles 2.3.1.1 - Changes Since 2.3.1</h1>
+
+    <h2>Bugfixes</h2>
+    <ul>
+    	<li>
+    		Class <a href="doc/api/y/view/hierarchy/GroupNodeRealizer.html">GroupNodeRealizer</a>: 
+				method <a href="doc/api/y/view/hierarchy/GroupNodeRealizer.html#GroupNodeRealizer(y.view.NodeRealizer)">GroupNodeRealizer</a>
+				label settings of NodeRealizer argument were ignored.
+			</li>
+		</ul>
+
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--////-->
+<!--/////////////////////////////////////////////////////////////////////////-->
+		<h1>yFiles 2.3.1 - Changes Since 2.3.0.3</h1>
+    
+    <h2>Features Added</h2>
+    
+    	<h3>Viewer/Editor Interaction</h3>
+    
+    	<ul>
+    
+	    <li>Class <a href="doc/api/y/view/Graph2DView.html">Graph2DView</a>: added method <a href="doc/api/y/view/Graph2DView.html#getViewModes()">getViewModes</a>.
+			</li>
+			
+      <li>Class <a href="doc/api/y/view/Graph2DViewMouseWheelZoomListener.html">Graph2DViewMouseWheelZoomListener</a>: added methods
+      	<a href="doc/api/y/view/Graph2DViewMouseWheelZoomListener.html#setMaximumZoom(double)">setMaximumZoom</a>, <a href="doc/api/y/view/Graph2DViewMouseWheelZoomListener.html#setMinimumZoom(double)">setMinimumZoom</a> and
+      	<a href="doc/api/y/view/Graph2DViewMouseWheelZoomListener.html#calcZoom(double, int)">calcZoom</a>.
+    	</li>
+      <li>Class <a href="doc/api/y/view/Graph2DViewActions.html">Graph2DViewActions</a>: added new actions
+      	<a href="doc/api/y/view/Graph2DViewActions.html#SELECT_LEFT_EDGE">SELECT_LEFT_EDGE</a>, <a href="doc/api/y/view/Graph2DViewActions.html#SELECT_RIGHT_EDGE">SELECT_RIGHT_EDGE</a>, <a href="doc/api/y/view/Graph2DViewActions.html#SELECT_TOP_EDGE">SELECT_TOP_EDGE</a> and
+      	<a href="doc/api/y/view/Graph2DViewActions.html#SELECT_BOTTOM_EDGE">SELECT_BOTTOM_EDGE</a>.  
+    	</li>
+      
+    	<li>Class <a href="doc/api/y/view/ViewMode.html">ViewMode</a>: added <a href="doc/api/y/view/ViewMode.html#addPropertyChangeListener(java.beans.PropertyChangeListener)">addPropertyChangeListener</a> 
+      methods that allow to register PropertyChangeListeners with a view mode.
+			PropertyChangeListeners can listen for changes of the ViewMode properties
+			<a href="doc/api/y/view/ViewMode.html#ACTIVE_PROPERTY">ACTIVE_PROPERTY</a>, 
+			<a href="doc/api/y/view/ViewMode.html#CHILD_MODE_PROPERTY">CHILD_MODE_PROPERTY</a>,
+			<a href="doc/api/y/view/ViewMode.html#ACTIVE_VIEW_PROPERTY">ACTIVE_VIEW_PROPERTY</a>,
+			<a href="doc/api/y/view/ViewMode.html#GRAB_FOCUS_ENABLED_PROPERTY">GRAB_FOCUS_ENABLED_PROPERTY</a>,
+			<a href="doc/api/y/view/ViewMode.html#PARENT_MODE_PROPERTY">PARENT_MODE_PROPERTY</a>,
+			<a href="doc/api/y/view/ViewMode.html#NAME_PROPERTY">NAME_PROPERTY</a>,
+			<a href="doc/api/y/view/ViewMode.html#MODIFIER_MASK_PROPERTY">MODIFIER_MASK_PROPERTY</a> and
+			<a href="doc/api/y/view/ViewMode.html#EDITING_PROPERTY">EDITING_PROPERTY</a>.
+			</li>
+			
+			<li>Class <a href="doc/api/y/view/ViewMode.html">ViewMode</a>: added methods <a href="doc/api/y/view/ViewMode.html#isEditing()">isEditing</a> and
+			<a href="doc/api/y/view/ViewMode.html#setEditing(boolean)">setEditing</a>. Changes of the edit property will be propagated
+			to all registered PropertyChangeListeners. Subclasses of ViewMode should 
+			set and reset the edit property to signal the start and end of their 
+			edit action.
+			</li>
+			
+			<li>Class <a href="doc/api/y/view/ViewMode.html">ViewMode</a>: added method <a href="doc/api/y/view/ViewMode.html#cancelEditing()">cancelEditing</a> that will 
+			allow clients to cancel an active edit action of a ViewMode.
+			</li>
+		
+			<li>
+			All subclasses of ViewMode have been updated to signal property changes
+			to all registered PropertychangeListeners.
+			</li>
+
+		  </ul>
+			
+			<h3>Data Structures</h3>
+   	
+   		<ul>
+   		<li>Class <a href="doc/api/y/base/Graph.html">Graph</a>: various sanity checks have been added 
+			to enforce that a graph won't act on elements that do not belong 
+			to it.
+			</li>
+			
+			<li>Class <a href="doc/api/y/base/YList.html">YList</a>: now implements the Java list interface
+			<code>java.util.List</code>.
+			</li>
+			</ul>
+			
+			<h3>Automatic Layout</h3>
+			
+			<ul>
+			<li>Class <a href="doc/api/y/layout/SelfLoopLayouter.html">SelfLoopLayouter</a>: now allows to constrain
+			the set of self-loops that should be laid out by this algorithm.
+			</li>
+			<li>Added class <a href="doc/api/y/layout/LayoutMultiplexer.html">LayoutMultiplexer</a>: this layout stage
+				delegates its layout calls to a core layout algorithm 
+				that is dynamically chosen at runtime by inspecting the 
+        nodes of the input graph.
+    	</li>
+      <li>Added class <a href="doc/api/y/layout/router/GroupNodeRouterStage.html">GroupNodeRouterStage</a>: this layout stage
+				will enable <a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html">OrthogonalEdgeRouter</a> to
+        properly route edges of hierarchically grouped graphs.
+    	</li>
+      <li>Added class <a href="doc/api/y/layout/tree/TreeReductionStage.html">TreeReductionStage</a>: this layout stage
+				helps to layout non-tree graphs with tree layout algorithms.
+    	</li>
+      <li>Class <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html">OrthogonalLayouter</a>: added 
+        new layout styles <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html#FIXED_MIXED_STYLE">FIXED_MIXED_STYLE</a> and <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html#FIXED_BOX_STYLE">FIXED_BOX_STYLE</a>.
+        These are node-size-preserving variants of the styles
+        <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html#MIXED_STYLE">MIXED_STYLE</a> and <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html#BOX_STYLE">BOX_STYLE</a>, respectively.
+    	</li>
+      <li>Class <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html">OrthogonalLayouter</a>: feature
+        <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html#setPerceivedBendsOptimizationEnabled(boolean)">perceivedBendsOptimization</a>
+	      now applicable to all layout styles.
+    	</li>
+      <li>Class <a href="doc/api/y/view/PrintPreviewPanel.html">PrintPreviewPanel</a>: added missing 
+        <a href="doc/api/y/view/PrintPreviewPanel.html#getPageFormat()">getter</a> and <a href="doc/api/setter.html#setPageFormat(java.awt.print.PageFormat)">setPageFormat</a> for the
+        PageFormat used internally.
+    	</li>
+      <li>Class <a href="doc/api/y/layout/labeling/SALabeling.html">SALabeling</a>: 
+        added methods
+        <a href="doc/api/y/layout/labeling/SALabeling.html#setDeterministicModeEnabled(boolean)">setDeterministicModeEnabled</a> and
+        <a href="doc/api/y/layout/labeling/SALabeling.html#isDeterministicModeEnabled()">isDeterministicModeEnabled</a>.
+    	</li>
+      </ul>
+      	
+			<h3>Modules</h3>
+			
+			<ul>
+			<li>
+			Package <a href="doc/api/y/module/package-summary.html">y.module</a>: Now contains a flexible module <a href="doc/api/y/module/IncrementalHierarchicLayoutModule.html">IncrementalHierarchicLayoutModule</a>
+                        that configures the new hierarchical layout algorithm.
+			</li>
+			<li>Package <a href="doc/api/y/module/package-summary.html">y.module</a>: Added listener support to module base class
+				<a href="doc/api/y/module/YModule.html">YModule</a>. Clients can now register implementations of 
+				the newly added interface <a href="doc/api/y/module/ModuleListener.html">ModuleListener</a> in order to
+				receive notification of the module state during its execution.
+				Notification will be sent in the form of the newly added event class
+				<a href="doc/api/y/module/ModuleEvent.html">ModuleEvent</a>.
+			</li>
+		
+			<li>Class <a href="doc/api/y/module/YModule.html">YModule</a>: improved implementation 
+			of method <a href="doc/api/y/module/YModule.html#startAsThread(y.view.Graph2D)">startAsThread</a>. 
+			</li>
+
+			<li>Class <a href="doc/api/y/module/TreeLayoutModule.html">TreeLayoutModule</a>: added layout support for
+        non-tree graphs.
+    	</li>
+			</ul>
+      
+			<h3>Settings Framework</h3>
+			
+			<ul>
+			<li>Class <a href="doc/api/y/option/ConstraintManager.html">ConstraintManager</a>: added a flexible mechanism
+			that allows to trigger arbitrary editor actions whenever a certain condition
+			is met or a property changes value. The newly added classes <a href="doc/api/y/option/ConstraintManager.EditorAction.html">ConstraintManager.EditorAction</a> and <a href="doc/api/y/option/ConstraintManager.Condition.html">ConstraintManager.Condition</a>
+			can be used to model actions and conditions. Methods 
+			<a href="doc/api/y/option/ConstraintManager.html#performActionOnCondition(y.option.ConstraintManager.EditorAction, y.option.ConstraintManager.Condition)">performActionOnCondition</a>
+			and
+			<a href="doc/api/y/option/ConstraintManager.html#performActionOnPropertyChange(y.option.ConstraintManager.EditorAction, y.option.OptionItem)">performActionOnPropertyChange</a>
+			can be used to associate a condition or property change with an action.
+			</li>
+			</ul>
+
+			<h3>Graph Analysis</h3>
+				
+			<ul>
+			<li>Class <a href="doc/api/y/algo/Paths.html">Paths</a>: added path-related methods
+        <a href="doc/api/y/algo/Paths.html#constructNodePath(y.base.EdgeList)">constructNodePath</a> and
+        <a href="doc/api/y/algo/Paths.html#findAllChains(y.base.Graph, boolean)">findAllChains</a>.
+    	</li>
+      <li>Class <a href="doc/api/y/algo/NetworkFlows.html">NetworkFlows</a>: added method
+   	 			<a href="doc/api/y/algo/NetworkFlows.html#calcMaxFlowMinCut(y.base.Graph, y.base.Node, y.base.Node, y.base.DataProvider, y.base.EdgeMap, y.base.NodeMap)">calcMaxFlowMinCut</a>.
+      </li>
+			</ul>
+      
+      <h3>yEd Graph Editor Demo</h3>
+      
+      <ul>
+      <li>
+      Added the <a href="doc/api/y/module/IncrementalHierarchicLayoutModule.html">IncrementalHierarchicLayoutModule</a> to the list of available layout modules.
+      </li>
+      <li>Node and edge properties are now presented inside a table editor.
+      </li>
+      <li>Layout modules will be launched in a separate thread to allow GUI repaints
+		      during layout calculation.
+      </li>
+      <li>Auto grouping tool now supports grouping of chains.
+      </li>
+      </ul>
+      
+	 <h2>Demos Added</h2>
+    <ul>
+      <li>
+				The <a href="demo/module/IncrementalHierarchicLayoutModule.java">source code</a>
+			  of <a href="doc/api/y/module/IncrementalHierarchicLayoutModule.html">IncrementalHierarchicLayoutModule</a> has been added for tutorial 
+			  purposes.
+      </li>
+      <li>
+        Demo <a href="demo/layout/RecursiveGroupLayouterDemo.java">RecursiveGroupLayouterDemo</a> has been added.
+				It shows how to layout the contents of group nodes each with a different layout style.
+      </li>
+      
+    </ul>
+    
+    <h2>Improvements</h2>
+    <ul>
+      <li>Class <a href="doc/api/y/layout/grouping/RecursiveGroupLayouter.html">RecursiveGroupLayouter</a>: 
+				improved edge handling.
+    	</li>
+      <li>Class <a href="doc/api/y/geom/IntersectionAlgorithm.html">IntersectionAlgorithm</a>: performance 
+        has been considerably improved. This improvement also speeds 
+        up <a href="doc/api/y/layout/labeling/SALabeling.html">SALabeling</a>, <a href="doc/api/y/layout/labeling/GreedyMISLabeling.html">GreedyMISLabeling</a>,
+        <a href="doc/api/y/layout/organic/ShuffleLayouter.html">ShuffleLayouter</a>, and 
+        <a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html">OrthogonalEdgeRouter</a>.
+      </li>
+      <li>Class <a href="doc/api/y/view/Overview.html">Overview</a>: improved performance and 
+			fixed occasional drawing problems.
+			</li>
+      <li>
+        Class <a href="doc/api/y/layout/grouping/FixedGroupLayoutStage.html">FixedGroupLayoutStage</a>:  
+				previously, strong port constraints were ignored by this stage and port
+        coordinates modified.
+      </li>
+    	<li>
+        Class <a href="doc/api/y/view/YLabel.html">YLabel</a>: uses double precision coordinates for background and border
+        painting now.
+       </li>
+    </ul>
+    
+   
+
+    <h2>Bugfixes</h2>
+    <ul>
+    	<li>
+    		Class <a href="doc/api/y/algo/ShortestPaths.html">ShortestPaths</a>: certain input caused methods
+    		<a href="doc/api/y/algo/ShortestPaths.html#kShortestPaths(y.base.Graph, y.base.DataProvider, y.base.Node, y.base.Node, int)">kShortestPaths</a> and
+    		<a href="doc/api/y/algo/ShortestPaths.html#kShortestPathsCursor(y.base.Graph, y.base.DataProvider, y.base.Node, y.base.Node, int)">kShortestPathsCursor</a> 
+    		to throw an IllegalArgumentException.
+      </li>
+      <li>Class <a href="doc/api/y/view/Graph2DPrinter.html">Graph2DPrinter</a>: fixed bad return values for
+        <a href="doc/api/y/view/Graph2DPrinter.html#getFixedScalingPosterDimension(java.awt.print.PageFormat)">getFixedScalingPosterDimension</a> if landscape paper formats
+        were used.
+    	</li>
+    </ul>
+    
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--////-->
+<!--/////////////////////////////////////////////////////////////////////////-->
+    <h1>yFiles 2.3.0.3 - Changes Since 2.3.0.2</h1>
+
+    <h2>Bugfixes</h2>
+    <ul>
+       <li>
+        Class <a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html">OrthogonalEdgeRouter</a>:  
+				under certain circumstances edges with strong port constraints 
+				could cause a NullPointerException. 
+       </li>
+       <li>
+        Class <a href="doc/api/y/layout/hierarchic/ClassicLayerSequencer.html">ClassicLayerSequencer</a>:  
+	 			If the same layouter instance of HierarchicLayouter was reused with
+	 			different PortConstraint settings, an ArrayIndexOutOfBoundsException 
+        was thrown under certain circumstances.
+       </li>
+       <li>
+        Class <a href="doc/api/y/algo/Transitivity.html">Transitivity</a>:
+        Method <a href="doc/api/y/algo/Transitivity.html#transitiveReduction(y.base.Graph graph, y.base.EdgeList transitiveEdges)">transitiveReduction</a>
+        contained duplicate edges if they were multi-edges before the reduction.
+       </li>
+       <li>
+         Class <a href="doc/api/y/view/EditMode.html">EditMode</a>:
+         If node creation was disallowed, clicking on the canvas would cause
+         the graph to fire empty <code>PRE_EVENT</code>s and <code>POST_EVENT</code>s.
+       </li>
+       <li>
+         Class <a href="doc/api/y/view/hierarchy/HierarchyManager.html">HierarchyManager</a>:
+         fired too many HierarchyEvents when folding or unfolding nodes.
+       </li>
+       <li>
+         Class <a href="doc/api/y/layout/LayoutTool.html">LayoutTool</a>: method 
+         <a href="doc/api/y/layout/LayoutTool.html#getBoundingBox(y.layout.LayoutGraph, y.base.NodeCursor, y.base.EdgeCursor, boolean)">getBoundingBox</a>
+         unconditionally included bounding boxes of labels.
+       </li>
+       <li>
+        Class <a href="doc/api/y/view/Graph2D.html">Graph2D</a>: method <a href="doc/api/y/view/Graph2D.html#getLabelLayout(y.base.Node)">getLabelLayout</a> returned information
+        of first node label only.
+       </li>
+       <li>
+        Class <a href="doc/api/y/view/hierarchy/HierarchyManager.html">HierarchyManager</a>: root graph
+        can now be non-empty at construction time of HierarchyManager.
+       </li>
+       <li>
+        Class <a href="doc/api/y/view/hierarchy/HierarchyTreeModel.html">HierarchyTreeModel</a>: HierarchyManager
+        can now be non-empty at construction time of HierarchyTreeModel.
+       </li>       
+       <li>
+        Package <code>y.option</code>:
+        Fixed bad "ValueUndefined" behavior for items in table view.
+       </li>
+    </ul>
+    <h2>Improvements</h2>
+    <ul>
+      <li>
+        Class <a href="doc/api/y/util/ObjectStringConversion.html">ObjectStringConversion</a>: added convenience methods and
+        made <a href="doc/api/y/util/ObjectStringConversion.html#registerObjectStringConverter(java.lang.Class, y.util.ObjectStringConverter)">registerObjectStringConverter</a>
+        <code>public</code>.
+      </li>
+    </ul>
+    
+    <h2>Demos Added</h2>
+    <ul>
+      <li>
+        Demo <a href="demo/option/NodePropertyEditorDemo.java">NodePropertyEditorDemo</a> has been added.
+        It demonstrates how to create a property editor for nodes.
+      </li>
+    </ul>
+    
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--////-->
+<!--/////////////////////////////////////////////////////////////////////////-->
+    <h1>yFiles 2.3.0.2 - Changes Since 2.3.0.1</h1>
+
+    <h2>Bugfixes</h2>
+    <ul>
+       <li>
+        Classes <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html">OrthogonalLayouter</a> and 
+		<a href="doc/api/y/layout/orthogonal/OrthogonalGroupLayouter.html">OrthogonalGroupLayouter</a>: 
+        fixed embedder problem that could cause a
+        NullPointerException during layout calculation.
+       </li>
+       <li>
+        Class <a href="doc/api/y/layout/circular/CircularLayouter.html">CircularLayouter</a>: 
+        conflicting settings for maximum deviation angle and preferred child wedge
+        forced the algorithm into an infinite loop.
+       </li>
+       <li>
+        Class <a href="doc/api/y/algo/ShortestPaths.html">ShortestPaths</a>: fixed a problem where in certain situations 
+        method <a href="doc/api/y/algo/ShortestPaths.html#kShortestPaths(y.base.Graph, y.base.DataProvider, y.base.Node, y.base.Node, int)">kShortestPaths</a> 
+        did not enumerate all possible paths.
+       </li>
+       <li>
+       Class <a href="doc/api/y/layout/PortCalculator.html">PortCalculator</a>: fixed a problem where in some scenarios
+       bends of certain edges got all moved to the location of the first bend.
+       </li>
+       <li>
+       Class <a href="doc/api/y/view/NodeRealizerIntersectionCalculator.html">NodeRealizerIntersectionCalculator</a>: 
+	   when in buffered layout mode, intersection points at nodes 
+	   whose size have changed will not be calculated anymore.
+	   </li>
+       <li>
+        Class <a href="doc/api/y/view/hierarchy/HierarchyManager.html">HierarchyManager</a>: removed a possible race condition in <a href="doc/api/y/view/hierarchy/HierarchyManager.html#getInstance(y.base.Graph)">getInstance</a>
+        which could lead to a <code>ConcurrentModificationException</code>s in multi-threaded
+        environments.
+       </li>
+	   <li>
+         Class <a href="doc/api/y/layout/LayoutTool.html">LayoutTool</a>: method <a href="doc/api/y/layout/LayoutTool.html#clipEdgeOnBB(y.layout.LayoutGraph, y.base.Edge)">clipEdgeOnBB</a> 
+		 caused an exception if there was no visible path.
+	   </li>
+	   <li>
+         Class <a href="doc/api/y/view/PopupMode.html">PopupMode</a>: now uses its own 
+		 <a href="doc/api/y/view/PopupMode.html#getHitInfo(double, double)">getHitInfo</a> for hit-testing. This allows
+		 to customize local hit-testing behavior.
+	   </li>
+	   <li>
+        Class <a href="doc/api/y/option/DefaultEditorFactory.html">DefaultEditorFactory</a>: fixed bad background color handling 
+        in widget for undefined value for <a href="doc/api/y/option/ColorOptionItem.html">ColorOptionItem</a>s.
+       </li>
+       <li>
+        Class <a href="doc/api/y/layout/hierarchic/incremental/HierarchicLayouter.html">HierarchicLayouter</a>: 
+        fixed problem where the minimum slope and minimum length for polyline routing
+        was not respected.
+       </li>
+       <li>
+        Default implementations of <a href="doc/api/y/layout/EdgeLabelModel.html">EdgeLabelModel</a>: 
+        implemented a workaround where the default model parameter is used implicitly 
+        if none has been set instead of throwing a runtime exception.
+       </li>
+       <li>
+        yEd Demo Application: fixed printing problem on non-Windows machines.
+        Fixed problem in ImageNodeRealizer property panel. Improved default node
+        and edge property dialogs.
+       </li>
+    </ul>
+
+    <h2>Improvements</h2>
+    <ul>
+      <li>
+        Class <a href="doc/api/y/view/YLabel.html">YLabel</a>: added horizontal text position specifiers 
+        <a href="doc/api/y/view/YLabel.html#LEFT_ALIGNED_TEXT_POSITION">LEFT_ALIGNED_TEXT_POSITION</a> and <a href="doc/api/y/view/YLabel.html#RIGHT_ALIGNED_TEXT_POSITION">RIGHT_ALIGNED_TEXT_POSITION</a>.
+      </li>
+      <li>
+        Class <a href="doc/api/y/layout/hierarchic/incremental/AsIsSequencer.html">AsIsSequencer</a>: improved
+        from sketch parsing of long edge paths.
+      </li>
+    </ul>
+    
+    <h2>Documentation Added</h2>
+    <ul>
+      <li>
+      Improved Javadoc comments for many methods from package <a href="doc/api/y/base/package-summary.html">y.base</a> and for 
+      methods relating to the label models in package <a href="doc/api/y/layout/package-summary.html">y.layout</a>. 
+      <br/>
+      Also, the Javadoc package descriptions for all yFiles packages have been enhanced 
+      and furnished with links to appropriate chapters and sections in the yFiles 
+      Developer's Guide. 
+      </li>
+    </ul>
+    
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--////-->
+<!--/////////////////////////////////////////////////////////////////////////-->
+    <h1>yFiles 2.3.0.1 - Changes Since 2.3</h1>
+    
+    <h2>Bugfixes</h2>
+    <ul>
+      <li>
+        Insets for edge and node labels were wrongly interpreted. This 
+        problem caused labels to be painted at a wrong location. For example, 
+        labels with default insets were painted a bit too far to the right. 
+      </li>
+      <li>
+        On Microsoft Windows platforms, when using <a href="doc/api/y/view/PrintPreviewPanel.html">PrintPreviewPanel</a> 
+        the preset and previewed paper format settings were ignored when 
+        actually printing a diagram using the print dialog. Instead, a default
+        paper format was used.
+      </li>
+      <li>
+        <a href="doc/api/y/view/PolyLineEdgeRealizer.html">PolyLineEdgeRealizer</a>: rendering and hit test 
+        problems could occur when feature smoothedBends was enabled 
+        and all control points were covered by either the
+        the source or target node of the represented edge. <br/>
+        Also clipping behavior has been improved if control points lie inside nodes
+        regardless of the configuration of the smoothedBends feature.
+      </li>
+      <li>
+        <a href="doc/api/y/module/OrthogonalEdgeRouterModule.html">OrthogonalEdgeRouterModule</a>: by mistake, the default setting 
+        for feature <i>Use Custom Minimum Distance to Node</i> was set 
+        to <code>true</code>. 
+      </li>
+      <li>
+        <a href="doc/api/y/layout/ComponentLayouter.html">ComponentLayouter</a>: resolved problems related to  
+        inconsistent and inaccurate bounding box calculation of graph components.
+        Method getBoundingBox of y.layout.LayoutGraph is not used anymore. Also,
+        new methods <a href="doc/api/y/layout/ComponentLayouter.html#calcBoundingBox(y.layout.LayoutGraph)">calcBoundingBox</a>, <a href="doc/api/y/layout/ComponentLayouter.html#setLabelAwarenessEnabled(boolean)">setLabelAwarenessEnabled</a> 
+        and <a href="doc/api/y/layout/ComponentLayouter.html#isLabelAwarenessEnabled()">isLabelAwarenessEnabled</a> were added to
+        have more control on the bounding box calculation.
+      </li>
+      <li>
+      <a href="doc/api/y/anim/AnimationPlayer.html">AnimationPlayer</a>: fixed some problems with "synchronized mode" which
+      resulted in code execution outside the event dispatch thread.
+      </li>
+    </ul>
+
+    <h2>Improvements</h2>
+    <ul>
+      <li>
+        The print and page format dialogs within <a href="doc/api/y/view/PrintPreviewPanel.html">PrintPreviewPanel</a> 
+        are now opened in a separate thread. This ensures that the
+        print preview panel will be properly repainted while these dialogs 
+        are open.
+      </li>
+      <li>
+       <a href="doc/api/y/view/DefaultGraph2DRenderer.html">DefaultGraph2DRenderer</a>: added an option that uses a special node
+       and edge ordering for the drawing of nested graphs. 
+      </li>
+      <li>
+      <a href="doc/api/y/layout/hierarchic/IncrementalHierarchicLayouter.html">IncrementalHierarchicLayouter</a>: added convenience methods
+      for configuring the algorithm's awareness of node labels 
+      (<a href="doc/api/y/layout/hierarchic/IncrementalHierarchicLayouter.html#setConsiderNodeLabelsEnabled(boolean)">setConsiderNodeLabelsEnabled</a>).
+      </li>
+      <li>
+      Added possibility to specify the positioning of the help panel in the table view
+      of the <a href="doc/api/y/option/OptionHandler.html">OptionHandler</a> classes. Additionally it is now possible to
+      customize the colors of the table component easily.
+      </li>
+    </ul>
+        
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--////-->
+<!--/////////////////////////////////////////////////////////////////////////-->
+    <h1>yFiles 2.3 - Changes Since 2.2.1.3</h1>
+        
+    <h2>Major Features Added</h2>
+    <h3>New Hierarchical Layout Algorithm</h3>
+    <ul>
+    <li>
+    A new implementation of the hierarchical layout algorithm has been added
+    to the suit of layout algorithms. <a href="doc/api/y/layout/hierarchic/IncrementalHierarchicLayouter.html">IncrementalHierarchicLayouter</a>
+    complements the classic hierarchical layout algorithm and offers a wealth of
+    new features. <br/>
+    The most outstanding improvement of the new implementation is its ability to
+    both parse the current layout from the sketch and apply different styles to it, as
+    well as incrementally add new elements to an existing layout or mark certain
+    elements in the current diagram to be optimized without changing the rest of the layout
+    structurally. <br/>
+    The new algorithm can be configured and customized in great detail: it is, 
+    e.g., possible to define separate styles and parameters for each node and each
+    edge in the graph. <br/>
+    Additionally, the algorithm can be configured to produce more space-efficient 
+    layouts. The routing model of edges as well as the crossing minimization 
+    algorithms have been improved. <br/>
+    The new algorithm is one of the first to consider node labels that occupy space
+    outside the node's bounds. <br/>
+    The new algorithm also offers built-in support for swim lane layouts.<br/>
+    Like the classic algorithm the new one supports 
+    <a href="doc/api/y/layout/PortConstraint.html">port constraints</a> and 
+    <a href="doc/api/y/layout/PortConstraintKeys.html">bus-like edge routing</a>.
+    </li>
+    </ul>
+    <h3>Generic Tree Layout Algorithm</h3>
+    <ul>
+    <li>
+    A new layout algorithm for tree-like structures has been added to the suit
+    of tree layout algorithms. <a href="doc/api/y/layout/tree/GenericTreeLayouter.html">GenericTreeLayouter</a> complements
+    the existing tree layout algorithms and offers some advanced features.<br/>
+    The algorithm can be customized in great detail, each major part sub-task
+    can easily be replaced by custom implementations. A great number of default
+    implementations is already included in the current version.<br/>
+    The algorithm allows for very fine-grained configurations. Each subtree in the graph
+    can have its own style and style settings. The algorithm is the first tree 
+    layout algorithm to support yFiles' <a href="doc/api/y/layout/PortConstraint.html">port constraints</a>.
+    <br/>
+    The default implementation offers mechanisms to read the current layout from
+    sketch and incrementally add new elements to the current diagram.
+    </li>
+    </ul>
+    <h3>Refactored Settings Dialogs and Components</h3>
+    <ul>
+    <li>
+    The <a href="doc/api/y/option/OptionHandler.html">OptionHandler</a> class and utility classes have been refactored.
+    They now support the MVC paradigm by implementing event-listening methods and
+    allow for more than one open editor instance. <br/>
+    A factory is now used to create the actual GUI for the OptionHandler instances.
+    Two default factories are provided in the current version of yFiles. The first
+    one generates a dialog similar to the one in older yFiles versions, while the
+    second one creates a tree-table-like view. While the first one is especially
+    suited for dialogs, the second one can be used to directly integrate into the 
+    GUI of an application and display the settings of the currently focused elements
+    in a non-modal fashion.<br/>
+    Many of the <a href="doc/api/y/option/OptionItem.html">default items</a> have been improved. All of them
+    are supported by the default factories and many of them offer additional features.
+    </li>
+    
+    </ul>
+    
+     <h2>Documentation Added</h2>
+      <ul>
+        <li>The yFiles Developer's Guide (formerly known as yFiles Userguide) 
+        has been massively improved in many ways. 
+        Most notably, it now contains detailed information
+        about the yFiles viewer package and many new details about the 
+        algorithms and architecture of the yFiles layout package. 
+        Since the Developer's Guide has grown
+        so much in size we have decided not to distribute it with the yFiles library
+        itself anymore. Instead it is available as a separate download unit now.
+        </li>  
+      </ul>
+    
+    <h2>Minor Features Added</h2>
+    
+    <h3>Automatic Layout</h3>
+    <ul>
+    	<li>
+    		<a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html">OrthogonalLayouter</a>: added optimization
+    		that reduces the number of perceived bends. New methods are
+    		<a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html#setPerceivedBendsOptimizationEnabled(boolean)">setPerceivedBendsOptimizationEnabled</a> and
+    		<a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html#getPerceivedBendsOptimizationEnabled()">getPerceivedBendsOptimizationEnabled</a>.    		
+      </li>
+      <li>
+    		Class <a href="doc/api/y/layout/ComponentLayouter.html">ComponentLayouter</a>: added many new strategies to arrange
+    		the separate components of an input graph. Also, by using 
+    		the DataProvider key <a href="doc/api/y/layout/ComponentLayouter.html#LAYOUT_NODE_DPKEY">LAYOUT_NODE_DPKEY</a> it is now possible to specify which
+    		of the detected graph components should be arranged by ComponentLayouter's
+				core layouter. Also, the new layout module <a href="doc/api/y/module/ComponentLayoutModule.html">ComponentLayoutModule</a> 
+				can now be used to launch and configure <a href="doc/api/y/layout/ComponentLayouter.html">ComponentLayouter</a>.
+    	</li>		
+    	<li>
+    		Class <a href="doc/api/y/layout/ParallelEdgeLayouter.html">ParallelEdgeLayouter</a>: added new layout option
+    		<a href="doc/api/y/layout/ParallelEdgeLayouter.html#setJoinEndsEnabled(boolean)">setJoinEndsEnabled</a> that, when enabled, 
+    		will join the ends of all parallel edges at a single point.
+    	</li>
+      <li>
+        <a href="doc/api/y/layout/grouping/GroupNodeHider.html">GroupNodeHider</a>: added methods
+        <a href="doc/api/y/layout/grouping/GroupNodeHider.html#setGroupBoundsCalculator(y.layout.grouping.GroupBoundsCalculator)">setGroupBoundsCalculator</a>
+        and  <a href="doc/api/y/layout/grouping/GroupNodeHider.html#getGroupBoundsCalculator()">getGroupBoundsCalculator</a>. 
+      </li>    
+			<li>
+    	  Added interface <a href="doc/api/y/layout/IntersectionCalculator.html">IntersectionCalculator</a> and LayoutStage
+    	  <a href="doc/api/y/layout/PortCalculator.html">PortCalculator</a>. In a graph layout process these classes 
+				can be used to calculate the intersection point between an edge 
+				and the actual visual representation of its source or target node.
+			  In case the source and target nodes are represented by 
+			  NodeRealizer one can use class <a href="doc/api/y/view/NodeRealizerIntersectionCalculator.html">NodeRealizerIntersectionCalculator</a>
+			  to elongate a target or source segment of an edge path so that its
+    	  port points lie on the border of the realizer shapes.
+			</li>
+    	<li>
+    		<a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html">OrthogonalEdgeRouter</a>: refactored code to avoid possible 
+    		StackOverflowErrors when routing edges in huge graphs.
+    	</li>
+     	<li>
+      	<a href="doc/api/y/layout/LayoutTool.html">LayoutTool</a>: added method <a href="doc/api/y/layout/LayoutTool.html#applyGraphLayout(y.layout.LayoutGraph, y.layout.GraphLayout)">applyGraphLayout</a>.
+      </li>
+		</ul>
+   
+    <h3>Realizers and Rendering</h3>
+    <ul>
+      <li><a href="doc/api/y/view/ShapeNodeRealizer.html">ShapeNodeRealizer</a>: added new protected methods that 
+        are responsible for painting certain parts of the realizer.
+        These methods will be invoked by <a href="doc/api/y/view/ShapeNodeRealizer.html#paintNode(Graphics2D)">paintNode</a> and can 
+        be selectively overridden by sublasses to customize the
+        appearance of the realizer.
+      </li>         
+			<li>
+				Added flexible NodeRealizer implementation <a href="doc/api/y/view/GenericNodeRealizer.html">GenericNodeRealizer</a> that 
+				can be used to easily create customized node appearances without subclassing. <br/>
+                                Utility and convenience classes that can be used in conjunction with this realizer
+                                are <a href="doc/api/y/view/AbstractCustomNodePainter.html">AbstractCustomNodePainter</a>, <a href="doc/api/y/view/AbstractCustomHotSpotPainter.html">AbstractCustomHotSpotPainter</a>, and
+                                <a href="doc/api/y/view/SimpleUserDataHandler.html">SimpleUserDataHandler</a>.
+			</li>
+			<li>
+				Added EdgeRealizer <a href="doc/api/y/view/QuadCurveEdgeRealizer.html">QuadCurveEdgeRealizer</a> that
+				represents the path of an edge as a sequence of quadratic curves.
+			</li>
+			<li>
+				Added Drawable implementations <a href="doc/api/y/view/CompositeDrawable.html">CompositeDrawable</a> and <a href="doc/api/y/view/ShapeDrawable.html">ShapeDrawable</a>.
+			</li>
+			<li>
+				Added ViewMode <a href="doc/api/y/view/CreateChildEdgeMode.html">CreateChildEdgeMode</a> that can be used to quickly 
+				create graphs. 
+			</li>
+			<li>
+				Added ViewMode <a href="doc/api/y/view/PortAssignmentMoveSelectionMode.html">PortAssignmentMoveSelectionMode</a> that can
+				be used to interactively assign PortContraints to the edges of a graph.
+			</li>
+      <li><a href="doc/api/y/view/ShapeNodeRealizer.html">ShapeNodeRealizer</a>: added support for drop shadow 
+        rendering. Relevant new methods are
+        <a href="doc/api/y/view/ShapeNodeRealizer.html#setDropShadowColor(java.awt.Color)">setDropShadowColor</a>,
+        <a href="doc/api/y/view/ShapeNodeRealizer.html#getDropShadowColor()">getDropShadowColor</a>,
+        <a href="doc/api/y/view/ShapeNodeRealizer.html#setDropShadowOffsetX(byte)">setDropShadowOffsetX</a>,
+        <a href="doc/api/y/view/ShapeNodeRealizer.html#getDropShadowOffsetX()">getDropShadowOffsetX</a>,
+        <a href="doc/api/y/view/ShapeNodeRealizer.html#setDropShadowOffsetY(byte)">setDropShadowOffsetY</a> and
+        <a href="doc/api/y/view/ShapeNodeRealizer.html#getDropShadowOffsetY()">getDropShadowOffsetY</a>.
+      </li>
+      <li><a href="doc/api/y/view/YLabel.html">YLabel</a>: added methods that control
+        the placement of text relative to the displayed icon.
+        Relevant new methods are       
+        <a href="doc/api/y/view/YLabel.html#setVerticalTextPosition(byte)">setVerticalTextPosition</a>,
+        <a href="doc/api/y/view/YLabel.html#getVerticalTextPosition()">getVerticalTextPosition</a>,
+        <a href="doc/api/y/view/YLabel.html#setHorizontalTextPosition(byte)">setHorizontalTextPosition</a>,
+        <a href="doc/api/y/view/YLabel.html#getHorizontalTextPosition()">getHorizontalTextPosition</a>,
+        <a href="doc/api/y/view/YLabel.html#setIconTextGap(byte)">setIconTextGap</a> and
+        <a href="doc/api/y/view/YLabel.html#getIconTextGap()">getIconTextGap</a>. Also, the query method
+        <a href="doc/api/y/view/YLabel.html#getIconPosition()">getIconPosition</a> has been added.
+      </li>
+      <li><a href="doc/api/y/view/YLabel.html">YLabel</a>: added the possibility to 
+        display underlined text in a label.
+        The relevant new methods are       
+        <a href="doc/api/y/view/YLabel.html#setUnderlinedTextEnabled(boolean)">setUnderlinedTextEnabled</a> and
+        <a href="doc/api/y/view/YLabel.html#isUnderlinedTextEnabled()">isUnderlinedTextEnabled</a>.
+      </li>
+      <li><a href="doc/api/y/view/EdgeRealizer.html">EdgeRealizer</a>: added methods 
+        <a href="doc/api/y/view/EdgeRealizer.html#setReversedPathRenderingEnabled(boolean)">setReversedPathRenderingEnabled</a>
+        and <a href="doc/api/y/view/EdgeRealizer.html#isReversedPathRenderingEnabled()">isReversedPathRenderingEnabled</a>.
+      </li>    
+			<li>
+				Added Drawable implementations <a href="doc/api/y/view/CompositeDrawable.html">CompositeDrawable</a> and <a href="doc/api/y/view/ShapeDrawable.html">ShapeDrawable</a>.
+			</li>
+    	<li><a href="doc/api/y/view/Graph2D.html">Graph2D</a>: changed method signatures of
+    			<a href="doc/api/y/view/Graph2D.html#fireGraph2DEvent(Object, String, Object, Object)">fireGraph2DEvent</a> and
+    			<a href="doc/api/y/view/Graph2D.html#fireGraph2DSelectionEvent(Object)">fireGraph2DSelectionEvent</a> from protected to public.
+    	</li>
+      <li><a href="doc/api/y/view/Graph2DView.html">Graph2DView</a>: added query methods 
+      	<a href="doc/api/y/view/Graph2DView.html#getDrawables()">getDrawables</a> and <a href="doc/api/y/view/Graph2DView.html#getBackgroundDrawables()">getBackgroundDrawables</a>.
+      </li>
+    </ul>
+               
+    <h3>Viewer/Editor Interaction</h3>
+    <ul>
+    <li>Added MouseWheelListener <a href="doc/api/y/view/Graph2DViewMouseWheelZoomListener.html">Graph2DViewMouseWheelZoomListener</a> 
+      	that allows to use the mouse wheel to change the zoom level of Graph2DView.
+    </li>
+    <li>Added new ViewMode <a href="doc/api/y/view/AutoDragViewMode.html">AutoDragViewMode</a> that will automatically
+        adjust the visible clip of the view when dragging the mouse outside 
+        of the view.
+    </li>
+		<li>Added ViewMode <a href="doc/api/y/view/CreateChildEdgeMode.html">CreateChildEdgeMode</a> that can be used to quickly 
+  			create graphs. It automatically creates a new node at the end of a newly created edge.
+		</li>
+		<li><a href="doc/api/y/view/CreateChildEdgeMode.html">CreateChildEdgeMode</a>: a new <a href="doc/api/y/view/ViewMode.html">ViewMode</a> that automatically creates a new
+    node at the end of a newly created edge.
+    </li>
+		<li>
+			Added ViewMode <a href="doc/api/y/view/PortAssignmentMoveSelectionMode.html">PortAssignmentMoveSelectionMode</a> that can
+			be used to interactively assign PortContraints to the edges of a graph.
+		</li>
+    <li>Added alternative group bounds auto-resizing behavior
+	  	  to view modes <a href="doc/api/y/view/hierarchy/HierarchyMoveSelectionMode.html">HierarchyMoveSelectionMode</a> and
+	  	  <a href="doc/api/y/view/hierarchy/HierarchyHotSpotMode.html">HierarchyHotSpotMode</a>. Setter and 
+	  	  getter for the group bounds policy are
+	  	  <a href="doc/api/y/view/hierarchy/HierarchyHotSpotMode.html#setGroupBoundsPolicy(byte)">setGroupBoundsPolicy</a> and <a href="doc/api/y/view/hierarchy/HierarchyHotSpotMode.html#getGroupBoundsPolicy()">getGroupBoundsPolicy</a>.
+	  </li>
+    <li>Edges can now optionally be created and connected when starting or ending 
+       	an edge at the location of the main label of a group node. 
+       	Effected classes are <a href="doc/api/y/view/hierarchy/HierarchyEditMode.html">HierarchyEditMode</a> and <a href="doc/api/y/view/hierarchy/HierarchyCreateEdgeMode.html">HierarchyCreateEdgeMode</a>.
+       	Added methods are <a href="doc/api/y/view/hierarchy/HierarchyCreateEdgeMode.html#setConnectOnGroupNodeLabelEnabled(boolean)">setConnectOnGroupNodeLabelEnabled</a>,
+       	<a href="doc/api/y/view/hierarchy/HierarchyCreateEdgeMode.html#isConnectOnGroupNodeLabelEnabled()">isConnectOnGroupNodeLabelEnabled</a>,
+				<a href="doc/api/#y/view/hierarchy/HierarchyEditMode.html#setConnectOnGroupNodeLabelEnabled(boolean)">setConnectOnGroupNodeLabelEnabled</a> and
+       	<a href="doc/api/#y/view/hierarchy/HierarchyEditMode.html#isCreateEdgeOnGroupNodeLabelEnabled()">isCreateEdgeOnGroupNodeLabelEnabled</a>.
+    </li>
+    </ul>
+
+    <h3>Application Logic</h3>
+    <ul>
+    <li>Added clipboard functionality that makes it easy to cut, copy and paste
+      parts of a diagram. The classes <a href="doc/api/y/view/Graph2DClipboard.html">Graph2DClipboard</a> and 
+      <a href="doc/api/y/view/hierarchy/Graph2DHierarchyClipboard.html">Graph2DHierarchyClipboard</a> have been added
+      to this purpose. 
+    </li>
+    <li><a href="doc/api/y/view/Graph2DUndoManager.html">Graph2DUndoManager</a>: added methods that allow
+      to register UndoListeners that get informed when new commands
+      are added to the undoable command queue. See
+      <a href="doc/api/y/view/Graph2DUndoManager.html#addUndoListener(y.view.Graph2DUndoManager.UndoListener)">addUndoListener</a> and
+      <a href="doc/api/y/view/Graph2DUndoManager.html#removeUndoListener(y.view.Graph2DUndoManager.UndoListener)">removeUndoListener</a>.
+    </li>
+    </ul>
+ 
+    <h3>Printing</h3>
+    <ul>
+    <li>Added the customizable print preview panel	<a href="doc/api/y/view/PrintPreviewPanel.html">PrintPreviewPanel</a>.
+    </li>
+    <li><a href="doc/api/y/view/Graph2DPrinter.html">Graph2DPrinter</a>: a title bar can now be added to 
+      	diagrams when being printed.
+    </li>
+    </ul>
+    
+    <h3>Input and Output</h3>
+    <ul>
+      <li>
+    		Support for the XML-based variant XGML of the graph format
+ 	   		GML has been added. <a href="doc/api/y/io/XGMLIOHandler.html">XGMLIOHandler</a>  produces 
+ 	   		structurally the same output as <a href="doc/api/y/io/GMLIOHandler.html">GMLIOHandler</a> 
+ 	   		but is based on XML syntax.
+ 	   		Other new classes related to this graph
+  			format are <a href="doc/api/y/io/gml/XGMLTokenizer.html">XGMLTokenizer</a>, <a href="doc/api/y/io/gml/XGMLEncoder.html">XGMLEncoder</a>,
+  			<a href="doc/api/y/module/io/XGMLInput.html">XGMLInput</a> and <a href="doc/api/y/module/io/XGMLOutput.html">XGMLOutput</a>.
+  			Note, that using the XGML functionality depends 
+  			on XML-related classes only available in J2SE 1.4 or higher.
+			</li> 
+      <li><a href="doc/api/y/io/ImageMapOutputHandler.html">ImageMapOutputHandler</a>: added support for hyper-linked
+        edge paths in generated image maps.
+      </li>
+    </ul>
+       
+    <h3>Graph Analysis</h3>
+    <ul>
+      <li><a href="doc/api/y/algo/ShortestPaths.html">ShortestPaths</a>: added powerful shortest-path variant
+      	  <a href="doc/api/y/algo/ShortestPaths.html#kShortestPaths(y.base.Graph, y.base.DataProvider, y.base.Node, y.base.Node, int)">kShortestPaths</a>.
+      </li>
+    	<li>
+    	    Class <a href="doc/api/y/algo/Dfs.html">Dfs</a> has been refactored. Recursion was 
+    		  removed from the implementation to avoid StackOverflowErrors
+    			on huge graphs. Performance has been considerably improved.
+    	</li>
+    </ul>
+
+    <h3>Miscellaneous</h3>
+    <ul>
+    	<li>Superinterface <a href="doc/api/y/base/DataMap.html">DataMap</a> was introduced 
+    			that extends both <a href="doc/api/y/base/DataProvider.html">DataProvider</a> and <a href="doc/api/y/base/DataAcceptor.html">DataAcceptor</a>. 
+    			The main interfaces <a href="doc/api/y/base/NodeMap.html">NodeMap</a> and <a href="doc/api/y/base/EdgeMap.html">EdgeMap</a> now implement 
+    			DataMap.
+    	</li>
+    	<li><a href="doc/api/y/module/YModule.html">YModule</a>: added ability to disable
+    	   the automatic backup of a graph's realizers before acting
+    	   upon it. Added methods are	<a href="doc/api/y/module/YModule.html#isBackupRealziersEnabled()">isBackupRealziersEnabled</a> and
+    	   <a href="doc/api/y/module/YModule.html#setBackupRealizerEnabled(boolean)">setBackupRealizerEnabled</a>.
+    	   The graph export modules in package <a href="doc/api/y/module/io/package-summary.html">y.module.io</a> have
+    	   been changed to not automatically backup realizers anymore.
+    	</li>
+    </ul>        
+    
+    
+    <h2>Demos Added</h2>
+        <ul>
+        <li>
+            The demo package <a href="demo/view/incremental/README.html">demo.view.incremental</a>
+            has been added. It provides tutorial source code demos 
+            that show how to use the new 
+            incremental layout capabilities of yFiles:
+            <ul>
+                <li>
+                    <a href="demo/view/incremental/SimpleIncrementalHierarchicLayouterDemo.java">demo.view.incremental.SimpleIncrementalHierarchicLayouterDemo</a>
+                    gives a short introduction to the incremental feature of the new hierarchical layout algorithm.
+                </li>
+                <li>
+                    <a href="demo/view/incremental/SimpleSwimLaneLayouterDemo.java">demo.view.incremental.SimpleSwimLaneLayouterDemo</a> demonstrates
+                    the swim lane layout capabilities of the new hierarchical layout algorithm.
+                </li>
+                <li>
+                    <a href="demo/view/incremental/IncrementalHierarchicLayouterDemo.java">demo.view.incremental.IncrementalHierarchicLayouterDemo</a>
+                    is a more complex application that uses the incremental features of the new hierarchical layout algorithm.
+                </li>
+                <li>
+                    <a href="demo/view/incremental/IncrementalTreeLayouterDemo.java">demo.view.incremental.IncrementalTreeLayouterDemo</a> is
+                    a complex application that uses the features found in the new tree generic tree layout algorithms.
+                </li>
+            </ul>
+        </li>  
+        <li>
+            Added source code demo <a href="demo/layout/IncrementalLayoutWithoutAView.java">demo.layout.IncrementalLayoutWithoutAView</a>
+            that demonstrates the usage of the incremental layout facility without the yFiles viewer classes.
+        </li>
+        <li>
+            Added source code demo <a href="demo/layout/SwimLaneLayoutWithoutAView.java">demo.layout.SwimLaneLayoutWithoutAView</a>
+            that demonstrates the usage of the swim lane layout facility without the yFiles viewer classes.
+        </li>
+        <li>
+            Added source code demo <a href="demo/io/TiledImageDemo.java">demo.io.TiledImageDemo</a>.
+        </li> 
+        <li>
+            Added source code demo <a href="demo/view/GenericNodeRealizerDemo.java">demo.view.GenericNodeRealizerDemo</a>
+            that demonstrates how to use the new GenericNodeRealizer class.
+        </li>
+        <li>
+            Added source code demo <a href="demo/view/PrintPreviewDemo.java">demo.view.PrintPreviewDemo</a>
+            that illustrates the new print preview GUI.
+        </li>
+        <li>
+            Added source code demo <a href="demo/option/OptionHandlerDemo.java">demo.option.OptionHandlerDemo</a>
+            that illustrates the features of the OptionHandler classes.
+        </li>  
+        <li>
+            Updated the <a href="demo/layout/README.html">demos</a> that show how to use the yFiles layout algorithms without
+            the yFiles viewer package to nevertheless display a rudimentary graphical
+            sketch version of the diagram.
+        </li>
+ 		  
+    </ul>
+ 		
+ 		<h2>Features Added to yEd</h2>
+      <ul>
+          <li>Added print preview</li>
+          <li>Added module for laying out the separate components of a graph.</li>
+          <li>Added rudimentary Japanese GUI localization.</li>
+    </ul>
+ 		
+     	
+    <h2>Bugfixes</h2>
+    <ul>
+      <li><a href="doc/api/y/layout/LayoutTool.html">LayoutTool</a>: method <a href="doc/api/y/layout/LayoutTool.html#pathIntersectsRect(y.layout.LayoutGraph, y.base.Edge, y.awt.geom.Rectangle2D)">pathIntersectsRect</a>
+      		returned incorrect results. The intersection test was only performed 
+      		on the first segment of an edge path.
+      </li> 
+      <li><a href="doc/api/y/base/Graph.html">Graph</a>: method <a href="doc/api/y/base/Graph.html#removeGraphListener(y.base.GraphListener)">removeGraphListener</a>
+          could cause a NullPointerException upon removal of non-registered listeners.
+       </li>
+      <li><a href="doc/api/y/view/PopupMode.html">PopupMode</a>: resolved compatibility problems with J2SE 5.0. 
+          Method reactivateParent was invoked before the final mouse release event
+          had been received.
+       </li>
+      <li><a href="doc/api/y/view/hierarchy/GroupNodeRealizer.html">GroupNodeRealizer</a>: property displayInnerGraph was not 
+          properly copied.
+      </li>    
+       <li><a href="doc/api/y/io/ImageOutputHandler.html">ImageOutputHandler</a>: corrected html output for
+          the poly areas of edges. A dispensable comma was removed.
+       </li>
+       <li><a href="doc/api/y/view/hierarchy/GroupNodeRealizer.html">GroupNodeRealizer</a>: alpha component for fill
+        color was ignored. 
+      </li>
+      <li><a href="doc/api/y/view/Overview.html">Overview</a>: fixed some repaint problems.
+      </li>
+      <li><a href="doc/api/y/view/YLabel.html">YLabel</a>: fixed a problem where the size of a label was not
+        properly taking insets into account.
+      </li>
+      <li><a href="doc/api/y/view/ArcEdgeRealizer.html">ArcEdgeRealizer</a>: fixed <code>NaN</code> bounding box problem
+      and height/ratio conversion.
+      </li>
+      <li><a href="doc/api/y/view/BezierEdgeRealizer.html">BezierEdgeRealizer</a>: fixed a bug in <a href="doc/api/y/view/BezierEdgeRealizer.html#contains(double, double)">contains</a>
+      which prevented the user from selecting the first segment
+      and a bug in <a href="doc/api/y/view/BezierEdgeRealizer.html#calcUnionRect(java.awt.geom.Rectangle2D)">calcUnionRect</a> 
+      which resulted in repaint problems.
+      </li>
+      <li><a href="doc/api/y/io/ImageMapOutputHandler.html">ImageMapOutputHandler</a>: fixed order of &lt;area> tags.
+      </li>  
+      <li><a href="doc/api/y/util/BoundedQueue.html">BoundedQueue</a>: fixed constructors
+          <a href="doc/api/y/util/BoundedQueue.html#BoundedQueue(y.util.Collection, int)">BoundedQueue</a>,
+          <a href="doc/api/y/util/BoundedQueue.html#BoundedQueue(y.util.Iterator, int)">BoundedQueue</a>,
+          <a href="doc/api/y/util/BoundedQueue.html#BoundedQueue(y.util.YList, int)">BoundedQueue</a>, and
+          <a href="doc/api/y/util/BoundedQueue.html#BoundedQueue(y.util.YCursor, int)">BoundedQueue</a>.
+      </li>
+      <li><a href="doc/api/y/layout/organic/OrganicLayouter.html">OrganicLayouter</a>: pluggable 
+          instance of GroupBoundsCalculator was ignored. 
+      </li>
+      <li><a href="doc/api/y/layout/hierarchic/HierarchicGroupLayouter.html">HierarchicGroupLayouter</a>: fixed a problem
+        that occured when both global sequencing, memento mode, 
+        and component layouting was enabled.
+      </li>
+      <li><a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html">OrthogonalEdgeRouter</a>: fixed a problem that occurred 
+        with self-loops having strong port constraints set. 
+        Also fixed a problem with edges having strong port constraints set at 
+        its end node, where the end node lies completely within the bounds of 
+        another node. 
+        Reactivated port constraints in local crossing minimization. 
+      </li>
+      <li><a href="doc/api/y/option/OptionHandler.html">OptionHandler</a>: fixed a problem that occurred when 
+         adding new items after method <a href="doc/api/y/option/OptionHandler.html#clear()">clear</a> had been called.
+      </li>
+    </ul>
+    
+    <h2>Improvements</h2>
+    <ul>
+      <li>
+        Improved accuracy of clipping for curved edges paths.
+      </li>
+      <li>
+        Improved performance of <a href="doc/api/y/view/BezierEdgeRealizer.html#contains(double, double)">contains</a>.
+      </li>
+    </ul>
+    
+    <h2>Incompatible Changes</h2>
+    <ul>
+    	<li>
+    			Starting with this release it is the responsibility
+    			of the <a href="doc/api/y/view/EdgeRealizer.html">EdgeRealizer</a> to render its selected bends. 
+    			The new protected method <a href="doc/api/y/view/EdgeRealizer.html#paintBends()">paintBends</a> was introduced for
+    			that purpose. Overriding this method will allow customization of the 
+    			bend rendering process. In prior releases, selected bends were
+    			rendered by <a href="doc/api/y/view/DefaultGraph2DRenderer.html">DefaultGraph2DRenderer</a>. 
+     	</li>
+    </ul>
+    
+    <!--
+    ///////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
+    -->
+    
+    <h1>yFiles 2.2.1 - Changes Since 2.2.0.4</h1>
+    <h2>Features Added</h2>
+    <ul>
+      <li>
+        The graph formats GML and GraphML now support colors that have 
+        an alpha component. Use #RRGGBBAA to specify (semi-)transparent colors.
+      </li>  
+      <li>
+        <a href="doc/api/y/algo/ShortestPaths.html">ShortestPaths</a>: added method 
+        <a href="doc/api/y/algo/ShortestPaths.html#findUniformShortestPaths(y.base.Graph, y.base.Node, y.base.DataProvider, boolean, int, y.base.EdgeList, y.base.NodeList)">findUniformShortestPaths</a>
+        to efficiently find multiple shortest paths between many nodes.
+      </li>  
+      <li>
+        <a href="doc/api/y/layout/LayoutGraphWriter.html">LayoutGraphWriter</a>: added class that serializes instances
+        of Graph or LayoutGraph to GML format. Useful for debugging and testing. 
+      </li>
+      <li>
+        <a href="doc/api/y/view/YLabel.html">YLabel</a>: added support for rotated labels. See new methods
+        <a href="doc/api/y/view/YLabel.html#setRotationAngle(int)">setRotationAngle</a> and <a href="doc/api/y/view/YLabel.html#getRotationAngle()">getRotationAngle</a>.
+      </li>
+      <li>
+        <a href="doc/api/y/option/FileOptionItem.html">FileOptionItem</a>: property editor improved.
+      </li>
+      <li>
+        <a href="doc/api/y/view/Graph2DView.html">Graph2DView</a>: custom JTooltip classes can now be used by
+        overriding its method createToolTip.
+      </li>
+      <li>
+        <a href="doc/api/y/layout/LayoutTool.html">LayoutTool</a>: added method <a href="doc/api/y/layout/LayoutTool.html#pathIntersectsRect(y.layout.LayoutGraph graph, y.base.Edge e, java.awt.geom.Rectangle2D rect)">pathIntersectsRect</a>.
+      </li>
+      <li>
+        <a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html">OrthogonalEdgeRouter</a>: added ability to route self-loop edges.
+      </li>
+      <li>
+        <a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html">OrthogonalEdgeRouter</a>: added crossing reduction functionality. New methods
+        <a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html#setCrossingCost(double)">setCrossingCost</a> and <a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html#setReroutingEnabled(boolean)">setReroutingEnabled</a>
+        have been added that allow to configure orthogonal edge router
+        to avoid edge crossings.
+      </li>
+      <li>
+        Added performance optimization stage <a href="doc/api/y/layout/router/ReducedSphereOfActionStage.html">ReducedSphereOfActionStage</a> for <a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html">OrthogonalEdgeRouter</a>.        
+      </li>  
+    </ul>    
+
+    <h2>Documentation Added</h2>
+    <ul>
+      <li>Added massively improved and extended version of 
+        <a href="doc/developers-guide/index.html">yFiles Developer's Guide</a>. 
+      </li>  
+    </ul>
+    
+    <h2>Demos Added</h2>
+    <ul>
+      <li>Added <a href="demo/io/ImageMapDemo.java">demo.io.ImageMapDemo</a>
+        that shows to create hyper-linked HTML maps for a diagram.
+      </li>  
+    </ul>
+
+    
+    <h2>Bugfixes</h2>
+    <ul>
+      <li>Improved GML support for GroupNodeRealizer. Border insets will now be
+        serialized correctly. 
+      </li>
+      <li><a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html">OrthogonalEdgeRouter</a>: fixed problems 
+        that occurred when edge segments were forced to lie on top
+        of each other. These situations occurred when some edges had strong
+        port constraints and other edges where not part of the edge
+        selection.
+      </li>
+      <li><a href="doc/api/y/layout/organic/OrganicLayouter.html">OrganicLayouter</a>: activating tree beautifier option caused 
+        problems when layouter was used in unbuffered mode.
+      </li>
+      <li><a href="doc/api/y/layout/organic/OrganicLayouter.html">OrganicLayouter</a>: deterministic behaviour was broken
+        when using the same instance of OrganicLayouter for multiple layout runs.
+      </li>
+    </ul>
+    
+    <h1>yFiles 2.2.0.4 - Changes Since 2.2.0.3</h1>
+    <h2>Bugfixes</h2>
+    <ul>
+      <li><a href="doc/api/y/view/hierarchy/HierarchyTreeSelectionModel.html">HierarchyTreeSelectionModel</a>: 
+        The selection state of nodes that were reinserted in the graph
+        was not considered by the selection model. This caused the
+        selection of the tree view and the graph to be out of sync.
+      </li>
+      <li><a href="doc/api/y/view/hierarchy/HierarchyTreeModel.html">HierarchyTreeModel</a>: 
+        Nodes that were moved from one hierarchy level automatically were deselected.
+      </li>
+      <li><a href="doc/api/y/layout/PortConstraintConfigurator.html">PortConstraintConfigurator</a>: fixed a bug in portConstraintsFromSketch methods
+        that was introduced in 2.2.0.3.
+      </li>
+    </ul>
+
+    <h1>yFiles 2.2.0.3 - Changes Since 2.2.0.2</h1>
+    <h2>Features Added</h2>
+    <ul>
+      <li><a href="doc/api/y/view/Graph2DView.html">Graph2DView</a>: besides "Ctrl-Enter" the key combination 
+        "Shift-Enter" now also triggers line breaks in the inlined label 
+        editor. </li>
+      <li><a href="doc/api/y/view/HotSpotMode.html">HotSpotMode</a>: added the alternative resize policies 
+        <a href="doc/api/y/view/HotSpotMode.html#BLOCK_UPON_MINIMUM_SIZE">BLOCK_UPON_MINIMUM_SIZE</a> and <a href="doc/api/y/view/HotSpotMode.html#FLIP_SIDES_UPON_MINIMUM_SIZE">FLIP_SIDES_UPON_MINIMUM_SIZE</a>. </li>
+      <li> yEd Graph Editor: shows page format dialog before printing on 
+        Windows platforms. </li>
+      <li>
+        <a href="doc/api/y/view/CreateEdgeMode.html">CreateEdgeMode</a>:
+        Added method <a href="doc/api/y/view/CreateEdgeMode.html#getSourcePortOffset(boolean, y.base.Node, double, double)">getSourcePortOffset</a>.
+        This method can be used as a hook to adjust the source port when edge 
+        creation is initiated.
+      </li>
+    </ul>
+    <h2>Bugfixes</h2>
+    <ul>
+      <li><a href="doc/api/y/view/Graph2DView.html">Graph2DView</a>: On some look and feel implementations there
+      were repaint problems when both scrollbars were visible and the view
+      was layed out using a CardLayout. This has been fixed.
+      </li>
+    </ul>
+    <h2>Demos Added</h2>
+    <ul>
+      <li>Added yFiles <a href="demo/obfuscation/README.html">obfuscation 
+        demo</a>, that shows how to obfuscate yFiles using <a 
+        href="demo/obfuscation/yguard/README.html"> yGuard</a>. </li>
+    </ul>
+    <h1>yFiles 2.2.0.2 - Changes Since 2.2.0.1</h1>
+    <h2>Features Added</h2>
+    <ul>
+      <li>Added class <a href="doc/api/y/layout/router/PatchRouterStage.html">PatchRouterStage</a>. Using this stage 
+        improves the performance and peak memory consumption of 
+        <a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html">OrthogonalEdgeRouter</a>. This will allow to route the 
+        edges of big graphs, efficiently. </li>
+      <li>Class <a href="doc/api/y/layout/ComponentLayouter.html">ComponentLayouter</a>. Added methods 
+        <a href="doc/api/y/layout/ComponentLayouter.html#arrangeComponents(y.layout.LayoutGraph, y.base.NodeList[], y.base.EdgeList[], y.geom.YRectangle[], java.awt.geom.Rectangle2D[])">arrangeComponents</a>, 
+        <a href="doc/api/y/layout/ComponentLayouter.html#setComponentArrangementEnabled(boolean)">setComponentArrangementEnabled</a> and 
+        <a href="doc/api/y/layout/ComponentLayouter.html#isComponentArrangementEnabled()">isComponentArrangementEnabled</a>. These methods allow to configure 
+        the component layout behaviour of this class. </li>
+      <li>Class <a href="doc/api/y/view/Arrow.html">Arrow</a>. Added static method 
+        <a href="doc/api/y/view/Arrow.html#addCustomArrow(java.lang.String, java.awt.Shape, java.awt.Color, java.awt.Stroke, java.awt.Color)">addCustomArrow</a>. This makes it possible to create 
+        custom arrows with specific line color and stroke. </li>
+      <li>GML format: added support for custom arrows. </li>
+    </ul>
+    <h2>Bugfixes</h2>
+    <ul>
+      <li><a href="doc/api/y/view/NodeRealizer.html">NodeRealizer</a> and <a href="doc/api/y/view/EdgeRealizer.html">EdgeRealizer</a>: visibility feature 
+        of realizer was not serialized and not copied. Fixed both problems. 
+        </li>
+      <li><a href="doc/api/y/view/Graph2DView.html">Graph2DView</a>: Method <a href="doc/api/y/view/Graph2DView.html#openLabelEditor(y.view.YLabel, double, double)">openLabelEditor</a> did not properly disable all registered ViewModes during the 
+        display of the editor. </li>
+      <li><a href="doc/api/y/view/EditMode.html">EditMode</a>: the creation of a bend is now a single undoable 
+        unit. </li>
+      <li>yEd Graph Editor: displaying the property settings dialog for edges 
+        or nodes caused exceptions when certain conditions where matched. </li>
+    </ul>
+    <h1>yFiles 2.2.0.1 - Changes Since 2.2</h1>
+    <h2>Bugfixes</h2>
+    <ul>
+      <li><a href="doc/api/y/io/GMLIOHandler.html">GML Format</a>: GML attribute type of isGroup has 
+        been corrected to be boolean. In the former release it was of type 
+        String. </li>
+      <li><a href="doc/api/y/io/GMLIOHandler.html">GML Format</a>: in the absence of a graphics block 
+        the GML attribute "label" got ignored for group nodes. </li>
+      <li>Class <a href="doc/api/y/layout/EdgeOppositeNodeLabelModel.html">EdgeOppositeNodeLabelModel</a>: NPE occurred when no 
+        node was bound to this model. </li>
+    </ul>
+    <h2>Improvements</h2>
+    <ul>
+      <li>Faster startup time of yEd Graph editor due to improved resource 
+        handling. </li>
+    </ul>
+    <h1>yFiles 2.2 - Changes Since 2.1</h1>
+    <h2>Major Features Added</h2>
+    <h3>Hierarchically Grouped Graphs</h3>
+    <ul>
+      <li>Viewer and editor support for hierarchically grouped graphs has been 
+        added. This new feature naturally extends the nested graph capabilities 
+        of yFiles. Unlike before, it is now possible to connect edges to the 
+        nodes that reside inside a group. Group nodes can be considered as 
+        opened folder nodes that make it possible to freely manipulate the 
+        contents of a group node. See our extensive <a 
+        href="demo/view/hierarchy/README.html"> Graph Hierarchy source code 
+        demo</a>, on how to make use of this new feature in your own 
+        application. Also, see package <a href="doc/api/y/view/hierarchy/package-summary.html">y.view.hierarchy</a> for the classes that 
+        implement this new feature. </li>
+      <li>Automatic layout support for hierarchically grouped graphs has been 
+        added. The following layout algorithms are now able to layout graphs 
+        according to their grouping information: for hierarchic layout style 
+        <a href="doc/api/y/layout/hierarchic/HierarchicGroupLayouter.html">HierarchicGroupLayouter</a>, for orthogonal layout 
+        style <a href="doc/api/y/layout/orthogonal/OrthogonalGroupLayouter.html">OrthogonalGroupLayouter</a> and for organic 
+        layout style both main algorithms <a href="doc/api/y/layout/organic/OrganicLayouter.html">OrganicLayouter</a> 
+        and <a href="doc/api/y/layout/organic/SmartOrganicLayouter.html">SmartOrganicLayouter</a>. The organic layout family 
+        even supports the additional feature of calculating an overall layout 
+        while keeping the relative positions of nodes within a group fixed. 
+        Also, a new layout package <a href="doc/api/y/layout/grouping/package-summary.html">y.layout.grouping</a> has been added that 
+        provides interfaces and utility classes for laying out hierarchically 
+        grouped graphs. </li>
+    </ul>
+    <h3>Orthogonal Edge Router</h3>
+    <ul>
+      <li> A sophisticated <a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html">edge router</a> 
+        has been added that routes the edges of a graph using vertical and 
+        horizontal segments only, while keeping the positions of the nodes of 
+        the graph fixed. Using an intelligent path finding strategy, it avoids 
+        crossing through any nodes, while keeping the number of bends low. </li>
+    </ul>
+    <h3>Improved Hierarchical Layouter</h3>
+    <ul>
+      <li> <a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html">HierarchicLayouter</a> now supports the notion of 
+        edge groups. This feature allows to layout certain edges in a bus-like 
+        fashion. The source code demo <a 
+        href="demo/view/HierarchicLayouterDemo.java">demo.view.HierarchicLayouterDemo</a> 
+        shows how to use this feature. </li>
+      <li> Port constraints for same layer edges will now be obeyed. </li>
+      <li> More compact orthogonal edge routing. </li>
+      <li> Added methods to easily specify different layering policies. See 
+        <a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html#setLayeringStrategy(byte)">setLayeringStrategy</a> </li>
+      <li> Improved crossing minimization in the presence of strong or weak 
+        port constraints </li>
+      <li> Improved automatic port assignment in the presence of strong and 
+        weak port constraints </li>
+    </ul>
+    <h3>More Pluggable Modules</h3>
+    <ul>
+      <li> Package <a href="doc/api/y/module/io/package-summary.html">y.module.io</a> has been added. It provides pluggable modules 
+        for diverse yFiles input and output formats. Some of these modules 
+        provide option dialogs that offer the possibility to modify the 
+        settings interactively. </li>
+      <li> The layout constraint configuration modules 
+        <a href="doc/api/y/module/PortConstraintModule.html">PortConstraintModule</a> and 
+        <a href="doc/api/y/module/EdgeGroupConstraintModule.html">EdgeGroupConstraintModule</a>. Also, an <a href="doc/api/y/module/OrthogonalLayoutModule.html">interactive module</a> for the new layouter 
+        <a href="doc/api/y/layout/router/OrthogonalEdgeRouter.html">OrthogonalEdgeRouter</a> has been added. </li>
+      <li> The source code of the most important layout modules has been added 
+        to the demo section <a href="demo/module/README.html">demo.module</a>. 
+        This will make it very easy to write your own customized layout 
+        modules. </li>
+    </ul>
+    <h2>Minor Features Added</h2>
+    <h3>Layout Related</h3>
+    <ul>
+      <li> Added internal edge labeling capabilities to 
+        <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html">OrthogonalLayouter</a>. </li>
+      <li> The generic <a href="doc/api/y/layout/labeling/package-summary.html">labeling algorithms</a> are now aware 
+        of edge groups. </li>
+    </ul>
+    <h3>Input/Output Related</h3>
+    <ul>
+      <li> Added class <a href="doc/api/y/io/TiledImageOutputHandler.html">TiledImageOutputHandler</a> to handle tiled output of 
+        images. </li>
+      <li> Added class <a href="doc/api/y/io/ViewPortConfigurator.html">ViewPortConfigurator</a> to ease the viewport 
+        configuration for image output handlers like <a href="doc/api/y/io/GIFIOHandler.html">GIFIOHandler</a> or 
+        <a href="doc/api/y/io/JPGIOHandler.html">JPGIOHandler</a>. </li>
+      <li> The human readable <a href="doc/api/y/io/GMLIOHandler.html">GML Format</a> now supports 
+        additional features. Here are some of them: <ul> <li>Definition of 
+        hierarchically grouped graphs</li> <li>Specification of Unicode label 
+        text</li> <li>Specification of more than one label per node or 
+        edge</li> <li>Advanced label graphics and layout features</li> </ul> 
+        </li>
+      <li>The human readable <a href="doc/api/y/io/TGFIOHandler.html">Trivial Graph Format TGF</a> has 
+        been refactored and is now even more trivial. </li>
+    </ul>
+    <h3>Viewer Related</h3>
+    <ul>
+      <li> Added new NodeRealizer <a href="doc/api/y/view/hierarchy/GroupNodeRealizer.html">GroupNodeRealizer</a> that can 
+        be used to represent group and folder nodes. </li>
+      <li> New class <a href="doc/api/y/view/Graph2DViewActions.html">Graph2DViewActions</a> provides pluggable actions 
+        like keyboard navigation or label editing to the graph view. </li>
+      <li> Class <a href="doc/api/y/view/CreateEdgeMode.html">CreateEdgeMode</a>: added possibility to suppress the 
+        creation of self loops. Also, it is now possible to cancel the creation 
+        of an edge by pressing the escape key. </li>
+      <li> Class <a href="doc/api/y/view/DefaultGraph2DRenderer.html">DefaultGraph2DRenderer</a>: uses a modified rendering 
+        order of nodes when a hierarchically grouped graph is present. </li>
+      <li> Class <a href="doc/api/y/view/HitInfo.html">HitInfo</a>: uses a modified hit-test order of nodes when 
+        a hierarchically grouped graph is present. </li>
+      <li> Class <a href="doc/api/y/view/Graph2DView.html">Graph2DView</a>: <ul> 
+      <li><a href="doc/api/y/view/Graph2DView.html#setGridColor(java.awt.Color)">grid color feature</a> has been added.</li> 
+      <li>grid 
+        marks are not scaled anymore when zooming the view</li> </ul> </li>
+      <li>Class <a href="doc/api/y/view/ViewMode.html">ViewMode</a>: view modes are now able to pass on the 
+        keyboard focus to the underlying <a href="doc/api/y/view/Graph2DView.html">Graph2DView</a>. This feature can 
+        be toggled by using method 
+        <a href="doc/api/y/view/ViewMode.html#setGrabFocusEnabled(boolean)">setGrabFocusEnabled</a>. </li>
+      <li> Class <a href="doc/api/y/view/SelectionBoxMode.html">SelectionBoxMode</a>: now provides more accurate edge 
+        selection capabilities. </li>
+      <li> Class <a href="doc/api/y/view/Graph2DUndoManager.html">Graph2DUndoManager</a>: added method <a href="doc/api/y/view/Graph2DUndoManager.html#resetQueue()">resetQueue</a> that 
+        allows flushing the undo stack. </li>
+      <li> Class <a href="doc/api/y/view/YLabel.html">YLabel</a>: added features 
+        <a href="doc/api/y/view/YLabel.html#setInsets(java.awt.Insets)">insets</a>, 
+        <a href="doc/api/y/view/YLabel.html#setLineColor(java.awt.Color)">lineColor</a> and method 
+        <a href="doc/api/y/view/YLabel.html#getTextLocation()">getTextLocation</a>. </li>
+      <li> Class <a href="doc/api/y/view/NodeLabel.html">NodeLabel</a>: added feature 
+        <a href="doc/api/y/view/NodeLabel.html#setAutoSizePolicy(byte)">autoSizePolicy</a>. Also, the new internal 
+        position specifiers <a href="doc/api/y/view/NodeLabel.html#TOP_LEFT">TOP_LEFT</a>, <a href="doc/api/y/view/NodeLabel.html#TOP_RIGHT">TOP_RIGHT</a>, <a href="doc/api/y/view/NodeLabel.html#BOTTOM_LEFT">BOTTOM_LEFT</a> and 
+        <a href="doc/api/y/view/NodeLabel.html#BOTTOM_RIGHT">BOTTOM_RIGHT</a> have been added. </li>
+      <li> Class <a href="doc/api/y/view/LineType.html">LineType</a>: added predefined line types for dotted 
+        lines. Also, it is now possible to create custom LineType objects. </li>
+      <li> Class <a href="doc/api/y/view/Bend.html">Bend</a>: changed the appearance of the bend selection 
+        mark. </li>
+      <li> Class <a href="doc/api/y/view/HotSpotMode.html">HotSpotMode</a>: when resizing a node, the port locations 
+        of adjacent edges will now be adjusted in a way that they will stay 
+        inside of the node. </li>
+      <li>Class <a href="doc/api/y/option/ColorOptionItem.html">ColorOptionItem</a>: improved option editor that allows 
+        choosing amongst the most recently used colors. Also, it offers the 
+        absence of color as an option. Class <a href="doc/api/y/option/OptionHandler.html">OptionHandler</a> comes 
+        with the new methods <a href="doc/api/y/option/OptionHandler.html#addColor(java.lang.String, java.lang.Object, boolean)">addColor</a>
+        and <a href="doc/api/y/option/OptionHandler.html#addColor(java.lang.String, java.lang.Object, boolean, boolean, boolean, boolean)">addColor</a>. 
+      </li>
+      <li>Instances of <a href="doc/api/y/view/NodeRealizer.html">NodeRealizer</a>, <a href="doc/api/y/view/EdgeRealizer.html">EdgeRealizer</a> and 
+        <a href="doc/api/y/view/YLabel.html">YLabel</a> can now handle <code>null</code> values for their line- 
+        and fill colors. This makes it possible to draw labels or nodes with no 
+        border or no fill color at all. </li>
+      <li>Class <a href="doc/api/y/view/EdgeRealizer.html">EdgeRealizer</a>: added sophisticated edge-path 
+        intersection test in method <a href="doc/api/y/view/EdgeRealizer.html#pathIntersects(java.awt.geom.Rectangle2D, boolean)">pathIntersects</a>. 
+      </li>
+      <li> Added new child-node comparators useful for sorting the nodes 
+        residing in <a href="doc/api/y/view/hierarchy/HierarchyTreeModel.html">HierarchyTreeModel</a>. </li>
+    </ul>
+    <h3>Algorithm Related</h3>
+    <ul>
+      <li>Class <a href="doc/api/y/algo/Bfs.html">Bfs</a>: added method <a href="doc/api/y/algo/Bfs.html#getLayers(y.base.Graph, y.base.NodeList, boolean, NodeMap)">getLayers</a> 
+        that additionally allows 
+        calculating the bfs layers of undirected graphs. </li>
+      <li>Class <a href="doc/api/y/algo/Paths.html">Paths</a>: added method 
+        <a href="doc/api/y/algo/Paths.html#findAllPaths(y.base.Graph, y.base.Node, y.base.Node, y.base.EdgeMap)">findAllPaths</a>. 
+      </li>
+      <li>Class <a href="doc/api/y/algo/ShortestPaths.html">ShortestPaths</a>: added method 
+        <a href="doc/api/y/algo/ShortestPaths.html#findShortestUniformPaths(y.base.Graph, y.base.Node, y.base.Node, boolean, y.base.EdgeMap)">findShortestUniformPaths</a>. 
+      </li>
+    </ul>
+    <h2>Performance Improvements</h2>
+    <ul>
+      <li> <a href="doc/api/y/base/Graph.html">Graph</a>'s memory consumption (specifically <a href="doc/api/y/base/Node.html">Node</a> and 
+        <a href="doc/api/y/base/Edge.html">Edge</a>) has been significantly improved, while at the same time 
+        iterations over the graph's elements has become noticeably faster. </li>
+      <li> Amount of performed repaints in the <a href="doc/api/y/view/Overview.html">Overview</a> has have been 
+        dramatically reduced </li>
+      <li> Performance of bounds calculation of realizers and labels has been 
+        significantly improved. </li>
+      <li> Class <a href="doc/api/y/view/hierarchy/HierarchyTreeModel.html">HierarchyTreeModel</a>: considerable 
+        performance improvement in the case that a child comparator is set. 
+        </li>
+      <li> Considerable performance improvements when loading and creating 
+        graphs in yEd. </li>
+      <li> Reduced memory consumption for yEd clipboard operations. </li>
+      <li> <a href="doc/api/y/io/YGFIOHandler.html">YGFIOHandler</a> now uses compressed streams internally during 
+        the serialization of the graph, thus reducing the size of .ygf files 
+        greatly. Older .ygf files can still be read back in successfully. </li>
+    </ul>
+    <h2>Documentation</h2>
+    <ul>
+      <li> Updated the yFiles User Guide 
+        to reflect the new layout features incorporated into yFiles 2.2. </li>
+      <li> Added a new section about NodeMaps, EdgeMaps, 
+        and DataProviders to the yFiles User Guide </li>
+      <li> Added a new section about edge routers to the yFiles 
+        User Guide </li>
+    </ul>
+    <h2>Demos</h2>
+    <ul>
+      <li> Added a lot of new functionality to <a 
+        href="demo/view/hierarchy/README.html"> 
+        demo.view.hierarchy.HierarchyDemo</a> that explains how to use the new 
+        grouping features and shows off the grouping awareness of the 
+        <a href="doc/api/y/layout/hierarchic/HierarchicGroupLayouter.html">HierarchicGroupLayouter</a>. </li>
+      <li> Added possibility to specify edge groups constraints in <a 
+        href="demo/view/HierarchicLayouterDemo.java">demo.view.HierarchicLayoutDemo</a> 
+        </li>
+      <li> The new <a 
+        href="demo/view/EdgeRouterDemo.java">demo.view.EdgeRouterDemo</a> shows 
+        how to use the orthogonal edge router. </li>
+      <li> The new <a 
+        href="demo/view/MazeRouterDemo.java">demo.view.MazeRouterDemo</a> shows 
+        how orthogonal edge router can be used to find a way through of a maze. 
+        </li>
+      <li> Added the source code of the most important yFiles layout modules to 
+        the <a href="demo/module/README.html">demo.module</a> package. </li>
+    </ul>
+    <h2>yEd Enhancements</h2>
+    <ul>
+      <li> Integrated support for hierarchically grouped graphs </li>
+      <li> Added orthogonal edge router </li>
+      <li> Added group layout support for the layout styles orthogonal, 
+        hierarchical and organic </li>
+      <li> Integrated settings dialogs for import and export of diagrams </li>
+      <li> Added tools that make it possible to specify 
+        <a href="doc/api/y/layout/PortConstraint.html">PortConstraint</a>s and <a href="doc/api/y/layout/PortConstraintKeys.html">edge group IDs</a>. 
+        (not available in public yEd version) 
+        </li>
+    </ul>
+    <h2>Bugfixes</h2>
+    <ul>
+      <li> Class <a href="doc/api/y/algo/ShortestPaths.html">ShortestPaths</a>: fixed a bug in the Single Sink Single 
+        Source methods that occurred on graph instances <code>g</code>, where 
+        <code>g.N() > g.E()</code>. </li>
+      <li> Fixed <a href="doc/api/y/algo/NetworkFlows.html#calcMaxFlow(y.base.Graph, y.base.Node, y.base.Node, y.base.DataProvider, y.base.EdgeMap)">calcMaxFlow</a>. 
+        Calling this method 
+        caused a stack overflow. </li>
+      <li> Class <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html">OrthogonalLayouter</a>: the infamous 
+        "Unknown Predecesor Type" Bug has been finally tracked down and fixed. 
+        </li>
+      <li> Class <a href="doc/api/y/layout/DiscreteEdgeLabelModel.html">DiscreteEdgeLabelModel</a> and 
+        <a href="doc/api/y/layout/SliderEdgeLabelModel.html">SliderEdgeLabelModel</a>: fixes NaN problem that occurred in 
+        some very special cases.</li>
+      <li> Class <a href="doc/api/y/view/Graph2DView.html">Graph2DView</a>: occasional incorrect repaints in the 
+        presence of clipping have been corrected. </li>
+      <li> Class <a href="doc/api/y/view/Graph2DUndoManager.html">Graph2DUndoManager</a>: sometimes enabled-state of undo 
+        actions was not updated correctly. </li>
+      <li> Class <a href="doc/api/y/view/hierarchy/HierarchyTreeModel.html">HierarchyTreeModel</a>: when a child comparator 
+        was set, the selection state of nodes was reset whenever the nodes 
+        changed. </li>
+      <li> Faulty view cursor updates for standard view modes have been fixed. 
+        </li>
+      <li> Class <a href="doc/api/y/view/EdgeRealizer.html">EdgeRealizer</a>: Non-displaying edge label icons when 
+        empty label text was set now get displayed correctly. </li>
+    </ul>
+    <h2>Incompatible API Changes</h2>
+    <ul>
+      <li> <a href="doc/api/y/view/hierarchy/DefaultHierarchyGraphFactory.html">DefaultHierarchyGraphFactory</a> now binds instances 
+        of <a href="doc/api/y/view/hierarchy/GroupNodeRealizer.html">GroupNodeRealizer</a> to created group and folder 
+        nodes. In the former release instances of <a href="doc/api/y/view/Graph2DNodeRealizer.html">Graph2DNodeRealizer</a> 
+        have been bound to newly created folder nodes. </li>
+      <li> <a href="doc/api/y/view/ViewMode.html">ViewMode</a>: By default view modes pass on the focus to the 
+        underlying <a href="doc/api/y/view/Graph2DView.html">Graph2DView</a> when pressing the mouse on the view. 
+        For compatibility with former yFiles versions disable focus passing by 
+        calling method <a href="doc/api/y/view/ViewMode.html#setGraphFocusEnabled(boolean)">setGraphFocusEnabled</a>. </li>
+      <li> <a href="doc/api/y/view/ViewMode.html">ViewMode</a>: the default implementations of the methods 
+        <a href="doc/api/y/view/ViewMode.html#mouseShiftPressedLeft(double, double)">mouseShiftPressedLeft</a>, 
+        <a href="doc/api/y/view/ViewMode.html#mouseShiftPressedMiddle(double, double)">mouseShiftPressedMiddle</a>, 
+        <a href="doc/api/y/view/ViewMode.html#mouseShiftPressedRight(double, double)">mouseShiftPressedRight</a>, 
+        <a href="doc/api/y/view/ViewMode.html#mouseShiftReleasedLeft(double, double)">mouseShiftReleasedLeft</a>, 
+        <a href="doc/api/y/view/ViewMode.html#mouseShiftReleasedMiddle(double, double)">mouseShiftReleasedMiddle</a>, and 
+        <a href="doc/api/y/view/ViewMode.html#mouseShiftReleasedRight(double, double)">mouseShiftReleasedRight</a> now invoke the un-shifted 
+        versions of these methods. In earlier versions, the default 
+        implementations of these methods performed no actions. </li>
+      <li> When using <a href="doc/api/y/view/YLabel.html#getLocation()">getLocation</a> as coordinate for 
+        Graph2DView's label editor methods 
+        <a href="doc/api/y/view/Graph2DView.html#openLabelEditor(y.view.YLabel, double, double)">openLabelEditor</a> the 
+        editor may not be positioned at the actual location of the label text 
+        anymore, since label insets have been introduced. It is recommended to 
+        open up the label editor at the location returned by method 
+        <a href="doc/api/y/view/YLabel.html#getTextLocation()">getTextLocation</a>. </li>
+      <li> Class <a href="doc/api/y/view/DefaultGraph2Drenderer.html">DefaultGraph2Drenderer</a>: for graphs that are managed 
+        by a <a href="doc/api/y/view/hierarchy/HierarchyManager.html">HierarchyManager</a> the rendering order of nodes 
+        has been changed. Formerly the internal ordering of nodes in the graph 
+        has been used. This version uses the rendering order defined by the 
+        method 
+        <a href="doc/api/y/view/hierarchy/HierarchyManager.html#preTraverse(y.view.hierarchy.HierarchyManager.NodeVisitor)">preTraverse</a> 
+        </li>
+      <li> Class <a href="doc/api/y/view/HitInfo.html">HitInfo</a>: for graphs that are managed by a 
+        <a href="doc/api/y/view/hierarchy/HierarchyManager.html">HierarchyManager</a> the hit-test order of nodes has 
+        been changed. Formerly the internal ordering of nodes in the graph has 
+        been used. This version uses the hit-test order defined by the method 
+        <a href="doc/api/y/view/hierarchy/HierarchyManager.html#postTraverse(y.view.hierarchy.HierarchyManager.NodeVisitor)">postTraverse</a> 
+        </li>
+    </ul>
+    <h1>yFiles 2.1 - Changes Since 2.0.1</h1>
+    <h2>Features Added</h2>
+    <ul>
+      <li> Added organic style layout module 
+        <a href="doc/api/y/layout/organic/SmartOrganicLayouter.html">SmartOrganicLayouter</a> to package <a href="doc/api/y/layout/organic/package-summary.html">y.layout.organic</a>. 
+        This module is very versatile and can be used for both huge graph 
+        structures and high quality layouts. </li>
+      <li> Added organic style layout algorithm <a href="doc/api/y/layout/organic/GRIP.html">GRIP</a> to 
+        package <a href="doc/api/y/layout/organic/package-summary.html">y.layout.organic</a>. This algorithm is extremely fast and is 
+        especially suited for large mesh-like graph structures. </li>
+      <li> Added an experimental edge routing module that routes edges 
+        organically given an initial node placement. 
+        <a href="doc/api/y/layout/router/OrganicEdgeRouter.html">OrganicEdgeRouter</a> will try to route edges given a 
+        minimal distance between nodes and edges. This layout stage will 
+        produce very nice results for suitable graph topologies. </li>
+      <li> Added tree layouter <a href="doc/api/y/layout/tree/ARTreeLayouter.html">ARTreeLayouter</a> to package 
+        <a href="doc/api/y/layout/tree/package-summary.html">y.layout.tree</a>. This layout algorithm obeys a given aspect ratio of 
+        width and height and produces much more compact layouts than standard 
+        tree layout algorithms. </li>
+      <li> All tree layout algorithms in the <a href="doc/api/y/layout/tree/package-summary.html">y.layout.tree</a> package can now 
+        produce much nicer layouts for near-tree-like structures (undirected, 
+        reversed). </li>
+      <li> <a href="doc/api/y/layout/tree/TreeLayouter.html">TreeLayouter</a> now supports the portstyle attribute. 
+        Using <a href="doc/api/y/layout/tree/TreeLayouter.html#setPortStyle(byte)">setPortStyle</a> one can now specify the drawing style of 
+        the ports. </li>
+      <li> Added a layout algorithm that takes any given layout and removes 
+        possibly existing node overlaps by rescaling and shuffling overlapping 
+        nodes. The algorithm is especially well-suited for organic layouts and 
+        is implemented as a layout stage in the 
+        <a href="doc/api/y/layout/organic/RemoveOverlapsLayoutStage.html">RemoveOverlapsLayoutStage</a> class. </li>
+      <li> Class <a href="doc/api/y/layout/tree/TreeLayouter.html">TreeLayouter</a>: added port-style option to 
+        layouter. See <a href="doc/api/y/layout/tree/TreeLayouter.html#setPortStyle(int)">setPortStyle</a>. </li>
+      <li> Class <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html">OrthogonalLayouter</a>: added new layout 
+        styles <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html#MIXED_STYLE">MIXED_STYLE</a>, <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html#BOX_STYLE">BOX_STYLE</a> and the tree optimizing style 
+        <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html#NORMAL_TREE_STYLE">NORMAL_TREE_STYLE</a>. </li>
+      <li> Package <a href="doc/api/y/layout/orthogonal/package-summary.html">y.layout.orthogonal</a>: added an optimization for subtrees 
+        for the orthogonal layout. </li>
+      <li><a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html">HierarchicLayouter</a>: Many improvements and new 
+        features concerning this layout algorithm have been included in the 
+        <a href="doc/api/y/layout/hierarchic/package-summary.html">y.layout.hierarchic</a> package: <ul> <li>Added grouping feature that 
+        allows to group nodes within a layer. See demo <a 
+        href="demo/view/HierarchicLayouterDemo.java">demo.view.HierarchicLayouterDemo</a> 
+        on how to use this feature. </li> <li>Added methods 
+        <a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html#setPortBorderGap(double)">setPortBorderGap</a> and <a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html#getPortBorderGap()">getPortBorderGap</a>. This feature 
+        adds additional flexibility to the port distribution style. </li> 
+        <li>Added support for strong port constraints, i.e. the layouter now 
+        can obey and keep previously set port coordinates when layouting a 
+        graph. See demos <a 
+        href="demo/view/HierarchicLayouterDemo.java">demo.view.HierarchicLayouterDemo</a> 
+        and <a 
+        href="demo/layout/LayoutWithoutAView.java">demo.layout.LayoutWithoutAView</a> 
+        on how to use this feature. </li> <li> Improved the edge labeling 
+        algorithm for this style of layout. Specifying edge label constraints 
+        leads to much more pleasing results now. </li> <li> Improved execution 
+        time of Rank Assignment and added new Rank Assignment variant 
+        <a href="doc/api/y/layout/hierarchic/WeightedLayerer.html">WeightedLayerer</a>, which produces optimal rankings 
+        quickly. </li> <li> Improved execution time and quality for the layer 
+        sequencer implementation <a href="doc/api/y/layout/hierarchic/ClassicLayerSequencer.html">ClassicLayerSequencer</a>. 
+        Port ponstraints will now be taken into account to a certain degree and 
+        multiple edges will be routed in a better way. </li> <li> Improved 
+        drawings based on the <a href="doc/api/y/layout/hierarchic/MedianLinearSegmentDrawer.html">MedianLinearSegmentDrawer</a> 
+        implementation. </li> <li> Added a new drawing implementation 
+        <a href="doc/api/y/layout/hierarchic/SimplexDrawer.html">SimplexDrawer</a> which produces nice results in 
+        short time. </li> </ul> </li>
+      <li> <a href="doc/api/y/layout/LabelLayoutDataRefinement.html">LabelLayoutDataRefinement</a> contains a new algorithm which 
+        can be used to improve the placement of edge labels in order to better 
+        obey the preferred placement of these labels. </li>
+      <li> Package <a href="doc/api/y/module/package-summary.html">y.module</a> contains a couple of new modules which can be 
+        used to interact with the new algorithms: <ul> 
+        <li><a href="doc/api/y/module/GRIPModule.html">GRIPModule</a> can be used as a graphical frontend to the 
+        <a href="doc/api/y/layout/organic/GRIP.html">GRIP</a> layout algorithm. </li> 
+        <li><a href="doc/api/y/module/SmartOrganicLayoutModule.html">SmartOrganicLayoutModule</a> can be used as a graphical 
+        frontend to the <a href="doc/api/y/layout/organic/SmartOrganicLayouter.html">SmartOrganicLayouter</a> algorithm. 
+        </li> <li><a href="doc/api/y/module/ShuffleLayoutModule.html">ShuffleLayoutModule</a> can be used as a graphical 
+        frontend to the <a href="doc/api/y/layout/organic/ShuffleLayouter.html">ShuffleLayouter</a> algorithm. </li> 
+        <li><a href="doc/api/y/module/OrganicEdgeRouterModule.html">OrganicEdgeRouterModule</a> can be used as a graphical 
+        frontend to the <a href="doc/api/y/layout/router/OrganicEdgeRouter.html">OrganicEdgeRouter</a> algorithm. </li> 
+        </ul> </li>
+      <li> Package <a href="doc/api/y/util/package-summary.html">y.util</a>. added new classes for serialization and object 
+        persistency management. See <a href="doc/api/y/util/ObjectStore.html">ObjectStore</a>, 
+        <a href="doc/api/y/util/ObjectStringConverter.html">ObjectStringConverter</a>, <a href="doc/api/y/util/BeanSerializer.html">BeanSerializer</a>, 
+        <a href="doc/api/y/util/ObjectStringConversion.html">ObjectStringConversion</a>, <a href="doc/api/y/util/ReflectionStringConverter.html">ReflectionStringConverter</a>. 
+        Also, property persistency management has been added to class 
+        <a href="doc/api/y/util/GlobalProperties.html">GlobalProperties</a>. </li>
+      <li>Package <a href="doc/api/y/module/package-summary.html">y.module</a>: internationalized option dialogs for all YModule 
+        implementations. </li>
+      <li> <a href="doc/api/y/io/GMLIOHandler.html">GMLIOHandler</a>: added new attributes in graph scope that allow 
+        node sizes to automatically fit the specified label text. See <a 
+        href="doc/api/y/io/doc-files/gml-comments.html">GML Comments</a> for 
+        more details. </li>
+      <li><a href="doc/api/y/view/Graph2DView.html">Graph2DView</a>: method 
+        <a href="doc/api/y/view/Graph2DView.html#openLabelEditor(y.view.YLabel, double, double, java.beans.PropertyChangeListener, boolean)">openLabelEditor</a> 
+        has been improved. 
+        Escape key cancels editor now, Ctrl-Enter or Enter key closes editor 
+        now. </li>
+      <li>Package <a href="doc/api/y/algo/package-summary.html">y.algo</a> contains a couple of new classes. <a href="doc/api/y/algo/Sorting.html">Sorting</a> 
+        can be used to efficiently sort nodes by different criteria. 
+        <a href="doc/api/y/algo/Transitivity.html">Transitivity</a> can be used to determine the transitive closure 
+        or the transitive reduction of a graph structure. </li>
+      <li>Package <a href="doc/api/y/view/package-summary.html">y.view</a> now contains the <a href="doc/api/y/view/Graph2DUndoManager.html">Graph2DUndoManager</a> class 
+        which can be used to easily include undoability in any application. <a 
+        href="demo/view/UndoRedoDemo.java">UndoRedoDemo</a> contains an example 
+        of how to use this class. </li>
+    </ul>
+    <h2>Improvements</h2>
+    <ul>
+      <li>Drastically improved the performance and the versatility of the 
+        <a href="doc/api/y/layout/organic/OrganicLayouter.html">OrganicLayouter</a> layout algorithm. The algorithm can 
+        now deal with much larger graph structures, produces better results for 
+        the given settings and has two more settings which control the outcome 
+        of the layout. <a href="doc/api/y/layout/organic/OrganicLayouter.html#setRepulsion(int)">setRepulsion</a> and <a href="doc/api/y/layout/organic/OrganicLayouter.html#setAttraction(int)">setAttraction</a> were 
+        introduced and can now be used to control the exponents of the formulas 
+        used to compute the layout.<br/> Results are much better now, using the 
+        <a href="doc/api/y/layout/organic/OrganicLayouter.html#setSphereOfAction(byte)">setSphereOfAction</a> option for this algorithm. </li>
+      <li><a href="doc/api/y/layout/SliderEdgeLabelModel.html">SliderEdgeLabelModel</a> now generates better label 
+        candidates. </li>
+      <li>Automatic labeling for <a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html">HierarchicLayouter</a> now 
+        can place edges left or right of the corresponding edges. Added new 
+        preferred placement constants to <a href="doc/api/y/layout/LabelLayoutConstants.html">LabelLayoutConstants</a> that 
+        express the new placement variants. </li>
+      <li><a href="doc/api/y/layout/router/ChannelRouter.html">ChannelRouter</a>: more compact channel assignment</li>
+      <li><a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html">HierarchicLayouter</a>: decreased execution 
+        time</li>
+      <li><a href="doc/api/y/layout/router/ChannelRouter.html">ChannelRouter</a>: improved drawings based on this 
+        router, e.g. HierarchicLayouter drawings using orthogonal edge routing 
+        style. </li>
+      <li><a href="doc/api/y/base/Graph.html">Graph</a>: metho <a href="doc/api/y/base/Graph.html#changeEdge(y.base.Edge, y.base.Edge, y.base.Edge, int, int)">changeEdge</a>
+         now deals with <code>null</code> references 
+        correctly. </li>
+      <li> <a href="doc/api/y/base/WrongGraphStructure.html">WrongGraphStructure</a>: now extends 
+        <code>java.lang.IllegalArgumentException</code> which describes the 
+        nature of the exception in a more appropriate way. </li>
+      <li><a href="doc/api/y/base/YList.html">YList</a>: added missing methods 
+        <a href="doc/api/y/base/YList.html#addFirstCell(y.base.ListCell)">addFirstCell(y.base.ListCell)</a>, 
+        <a href="doc/api/y/base/YList.html#insertCellBefore(y.base.ListCell, y.base.ListCell)">insertCellBefore(y.base.ListCell, y.base.ListCell)</a> and 
+        <a href="doc/api/y/base/YList.html#insertCellAfter(y.base.ListCell, y.base.ListCell)">insertCellAfter(y.base.ListCell, y.base.ListCell)</a>. 
+        <br/> Improved performance of 
+        <a href="doc/api/y/base/YList.html#retainAll(java.util.Collection)">retainAll(java.util.Collection)</a> and 
+        <a href="doc/api/y/base/YList.html#removeAll(java.util.Collection)">removeAll(java.util.Collection)</a>. <a href="doc/api/y/base/YList.html">YList</a> now supports 
+        <code>null</code> elements. </li>
+      <li> Package <a href="doc/api/y/geom/package-summary.html">y.geom</a>: <ul> <li><a href="doc/api/y/geom/YPoint.html">YPoint</a> now implements 
+        <code>java.util.Comparable</code> and implements <a href="doc/api/y/geom/YPoint.html#hashCode()">hashCode</a> and 
+        <a href="doc/api/y/geom/YPoint.html#equals(java.lang.Object)">equals(java.lang.Object)</a> according to the specification. <a href="doc/api/y/geom/YPoint.html#x">x</a> and 
+        <a href="doc/api/y/geom/YPoint.html#y">y</a> are now declared as <code>public final</code> fields for greater 
+        performance and convenience. </li> <li><a href="doc/api/y/geom/YCircle.html">YCircle</a> now implements 
+        <code>java.util.Comparable</code> and implements <a href="doc/api/y/geom/YCircle.html#hashCode()">hashCode</a> and 
+        <a href="doc/api/y/geom/YCircle.html#equals(java.lang.Object)">equals(java.lang.Object)</a> according to the specification. <a href="doc/api/y/geom/YCircle.html#center">center</a> 
+        and <a href="doc/api/y/geom/YCircle.html#radius">radius</a> are now declared as <code>public final</code> fields for 
+        greater performance and convenience.</li> <li><a href="doc/api/y/geom/YRectangle.html">YRectangle</a> now 
+        implements <code>java.util.Comparable</code> and implements 
+        <a href="doc/api/y/geom/YRectangle.html#hashCode()">hashCode</a> and <a href="doc/api/y/geom/YRectangle.html#equals(java.lang.Object)">equals(java.lang.Object)</a> according to the 
+        specification. <a href="doc/api/y/geom/YRectangle.html#x">x</a> and <a href="doc/api/y/geom/YRectangle.html#y">y</a> are now declared as <code>public 
+        final</code> fields for greater performance and convenience.</li> 
+        <li><a href="doc/api/y/geom/YDimension.html">YDimension</a> now implements 
+        <code>java.util.Comparable</code> and implements <a href="doc/api/y/geom/YDimension.html#hashCode()">hashCode</a> and 
+        <a href="doc/api/y/geom/YDimension.html#equals(java.lang.Object)">equals(java.lang.Object)</a> according to the specification. <a href="doc/api/y/geom/YDimension.html#width">width</a> 
+        and <a href="doc/api/y/geom/YDimension.html#height">height</a> are now declared as <code>public final</code> fields for 
+        greater performance and convenience.</li> </ul> </li>
+      <li> <a href="doc/api/y/module/LayoutModule.html">LayoutModule</a> now supports the 
+        <code>morphingEnabled</code> attribute which can be triggered through 
+        the <a href="doc/api/y/module/LayoutModule.html#setMorphingEnabled(boolean)">setMorphingEnabled(boolean)</a> method even if buffering is 
+        enabled. </li>
+      <li> Package <a href="doc/api/y/option/package-summary.html">y.option</a> and all of its <a href="doc/api/y/option/OptionItem.html">OptionItem</a> 
+        implementations are now ready for internationalzation respectively 
+        localization and serialization. See the <a 
+        href="demo/module/DiagonalLayoutModule.java">DiagonalLayoutModule</a> 
+        demo on how to use these new features. All major modules in the 
+        <a href="doc/api/y/module/package-summary.html">y.module</a> package have been modified to make use of these new 
+        features. They have been localized for the German and the English 
+        language. </li>
+      <li> <a href="doc/api/y/view/Graph2DView.html">Graph2DView</a>: The view now supports the antialiasedPainting 
+        attribute. Using the <a href="doc/api/y/view/Graph2DView.html#setAntialiasedPainting(boolean)">setAntialiasedPainting(boolean)</a> method, 
+        antialiased painting can be enabled which produces high quality 
+        drawings.<br/> The inline labeleditor has been improved and now 
+        supports a number of different editing modes, which can be specified 
+        using the <a href="doc/api/y/view/Graph2DView.html#openLabelEditor(y.view.YLabel, double, double, ">openLabelEditor</a>        java.beans.PropertyChangeListener, boolean)!<a href="doc/api/ method/ </li> .html">li> </a>      <li> <a href="doc/api/y/view/CreateEdgeMode.html">CreateEdgeMode</a> now is far more flexible and can be 
+        customized easily using the new factory methods. </li>
+      <li> <a href="doc/api/y/view/DefaultGraph2DRenderer.html">DefaultGraph2DRenderer</a> has been refactored and now contains 
+        a number of different callback methods which makes it far easier to 
+        customize. </li>
+      <li> <a href="doc/api/y/view/EdgeLabel.html">EdgeLabel</a> now uses a sophisticated caching-mechanism, which 
+        speeds up repaints. </li>
+      <li> Package <a href="doc/api/y/io/package-summary.html">y.io</a> in conjunction with the classes in package <a href="doc/api/y/view/package-summary.html">y.view</a> 
+        now uses the new <a href="doc/api/y/io/BadVersionException.html">BadVersionException</a> when reading .ygf files 
+        with a mismatching version number back in. </li>
+      <li> <a href="doc/api/y/view/Graph2DPrinter.html">Graph2DPrinter</a> now supports automatic scaling which allows 
+        for large poster prints. </li>
+      <li> <a href="doc/api/y/view/hierarchy/HierarchyTreeModel.html">HierarchyTreeModel</a> now supports sorting of the 
+        children using a specifiable Comparator, which can be specified using 
+        the new <a href="doc/api/y/view/hierarchy/HierarchyTreeModel.html#setChildComparator(java.util.Comparator)">setChildComparator</a> method. </li>
+      <li> <a href="doc/api/y/view/Graph2D.html">Graph2D</a> can now be equipped with a special 
+        <a href="doc/api/y/view/Graph2D.BackupRealizersHandler.html">Graph2D.BackupRealizersHandler</a> implementation to ease undo 
+        implementation. Implementations can be registered using the 
+        <a href="doc/api/y/view/Graph2D.BackupRealizersHandler.html#setBackupRealizersHandler(y.view.Graph2D.BackupRealizersHandler)">setBackupRealizersHandler</a> 
+        method. </li>
+    </ul>
+    <h2>Features Added to yEd</h2>
+    <ul>
+      <li> Session management added to yEd. Editor settings will now be saved 
+        upon termination and reapplied in the next session. </li>
+      <li> yEd is now internationalized! Alle GUI elements and help pages are 
+        available in multiple languages. Currently the languages 'German' and 
+        'English' are supported. </li>
+      <li> It is now possible to specify the default appearance of yEd using 
+        the preferences dialog in the File menu. One can choose between the 
+        classic version and the version which supports nested graph 
+        hierarchies. </li>
+      <li> All module dialogs now offer a help button that readily displays 
+        information about the available options. </li>
+      <li> The <i>Select Graph Elements</i> tool has greatly been improved and 
+        can now be used to select and find many more types of nodes, edges and 
+        bends. </li>
+    </ul>
+    <h2>Demos Added</h2>
+    <ul>
+      <li>Added lots of features to <a 
+        href="demo/view/HierarchicLayouterDemo.java">HierarchicLayouterDemo</a>. 
+        This includes the new grouping feature and a demonstration of the use 
+        of weak and strong port constraints. </li>
+      <li>Added many different organic layout styles to <a 
+        href="demo/view/OrganicLayouterDemo.java">OrganicLayouterDemo</a> 
+        including GRIP, Smart and Organic Edge Routing. </li>
+      <li> Added support for internationalization and serialization to demo <a 
+        href="demo/module/DiagonalLayoutModule.java">DiagonalLayoutModule</a>. 
+        This shows how to serialize and internationalize options displayed in 
+        an option dialog. </li>
+      <li> Added <a href="demo/view/UndoRedoDemo.java">UndoRedoDemo</a> which 
+        demonstrates the integrated undoability features of yFiles. </li>
+      <li>Added <a href="demo/view/ports/README.html">PortsDemo</a>. It shows 
+        how to write applications that use nodes that have a fixed set of 
+        connection points. </li>
+      <li> Added <a 
+        href="demo/view/InactiveLayerDemo.java">InactiveLayerDemo</a>. This 
+        demonstrates how to put a part of a graph in an inactive background 
+        layer of the view. </li>
+      <li> Added <a href="demo/view/DragAndDropDemo.java">DragAndDropDemo</a>. 
+        This demo shows how to drag different node types from a list and how to 
+        drop them on a Graph2DView using the standard drag and drop mechanism. 
+        </li>
+    </ul>
+    <h2>Documentation Added</h2>
+    <div class="standardtext"> Apart from the new features and classes, the 
+      following documentation has been added, too: </div>
+    <ul>
+      <li>Added advanced feature section to description of hierarchic layouter in 
+        userguide</li>
+      <li>Added section to description of orthogonal layouter in 
+        userguide</li>
+      <li>Added new description of smart organic layouter in 
+        userguide</li>
+    </ul>
+    <h2>Bugfixes</h2>
+    <ul>
+      <li> Fixed a rendering bug in <a href="doc/api/y/view/Graph2DView.html">Graph2DView</a> that occasionally 
+        caused clipped regions within the view to be painted with a slightly 
+        wrong offset. </li>
+      <li>Class <a href="doc/api/y/algo/Trees.html">Trees</a> sometimes returned bad results from methods 
+        <a href="doc/api/y/algo/Trees.html#getLeafNodes(y.base.Graph, boolean)">getLeafNodes</a> and <a href="doc/api/y/algo/Trees.html#getRoot(y.base.Graph)">getRoot</a>. 
+        </li>
+      <li> Class <a href="doc/api/y/option/OptionHandler.html">OptionHandler</a> reintroduced functionality of 
+        <a href="doc/api/y/option/OptionHandler.html#setPreferredEditorWidth(int)">setPreferredEditorWidth</a>. </li>
+      <li>Fixed bad label placement that occured when edge paths were rather 
+        short. </li>
+      <li>Class <a href="doc/api/y/view/EditMode.html">EditMode</a>: callback method <a href="doc/api/y/view/EditMode.html#nodeClicked(y.base.Node)">nodeClicked</a> 
+        was not invoked correctly. </li>
+      <li>Fixed a bug in <a href="doc/api/y/layout/ComponentLayouter.html">ComponentLayouter</a> that caused layouters to 
+        crash on empty graphs </li>
+      <li> Fixed a bug in <a href="doc/api/y/layout/hierarchic/GivenLayersLayerer.html">GivenLayersLayerer</a> which made 
+        this class completely useless. </li>
+      <li> Several minor bugs, which hardly ever occured. </li>
+    </ul>
+    <h2>Incompatible changes</h2>
+    <ul>
+      <li> <a href="doc/api/y/layout/DefaultNodeLayout.html">DefaultNodeLayout</a> does not extend <a href="doc/api/y/geom/YRectangle.html">YRectangle</a> 
+        anymore since the latter is now truly immutable. Therefor it cannot be 
+        cast to a YRectangle any longer (which would not have made much sense 
+        in almost all cases anyway). </li>
+      <li> <a href="doc/api/y/geom/IntersectionAlgorithm.html">IntersectionAlgorithm</a> has been refactored with static 
+        methods. If you were using these methods directly, this is a 
+        compile-time compatible change. </li>
+      <li> <a href="doc/api/y/view/YLabel.html">YLabel</a> contains two badly named methods 
+        <a href="doc/api/y/view/YLabel.html#setBackground(boolean)">setBackground(boolean)</a> and <a href="doc/api/y/view/YLabel.html#isBackgroundOn()">isBackgroundOn</a> which have been 
+        declared <code>deprecated</code>. The new methods 
+        <a href="doc/api/y/view/YLabel.html#setBackgroundPainted(boolean)">setBackgroundPainted(boolean)</a> and <a href="doc/api/y/view/YLabel.html#isBackgroundPainted()">isBackgroundPainted</a> have 
+        been added as a future replacement. </li>
+      <li><a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html">OrthogonalLayouter</a>: marked feature nodeModel as 
+        deprecated. Use feature layoutStyle instead. </li>
+    </ul>
+    <h1>yFiles 2.0.1 - Changes Since 2.0</h1>
+    <h2>Features Added</h2>
+    <ul>
+      <li>The SVG and SVGZ export formats can now easily be activated in yEd, 
+        by putting the <a href="http://www.yworks.de/products/ysvg">ySVG 
+        extension package</a> jar files in the same directory where yed.jar 
+        resides. The <a href="demo/io/README.html">graph format converter 
+        demo</a> is also prepared to export diverse graph formats to SVG and 
+        SVGZ. </li>
+      <li>Class <a href="doc/api/y/view/MovePortMode.html">MovePortMode</a> added methods 
+        <a href="doc/api/y/view/MovePortMode.html#drawPortCandidate(java.awt.Graphics2D, y.geom.YPoint, y.base.Node, y.base.Edge)">drawPortCandidate</a> 
+        and <a href="doc/api/y/view/MovePortMode.html#getPortCandidates(y.base.Node, y.base.Edge, double)">getPortCandidates</a>. 
+      </li>
+      <li>class <a href="doc/api/y/layout/ComponentLayouter.html">ComponentLayouter</a>: added features gridSpacing and 
+        componentSpacing </li>
+      <li>Improved paint method of <a href="doc/api/y/view/Graph2DNodeRealizer.html">Graph2DNodeRealizer</a>. Switches 
+        between normal and sloppy paint mode more cleverly. </li>
+      <li>Class <a href="doc/api/y/view/EditMode.html">EditMode</a>: added methods 
+        <a href="doc/api/y/view/EditMode.html#setMoveLabelMode(y.view.ViewMode)">setMoveLabelMode</a>, <a href="doc/api/y/view/EditMode.html#getMoveLabelMode()">getMoveLabelMode</a>, 
+        <a href="doc/api/y/view/EditMode.html#setMovePortMode(y.view.ViewMode)">setMovePortMode</a>, <a href="doc/api/y/view/EditMode.html#getMovePortMode()">getMovePortMode</a>, 
+        <a href="doc/api/y/view/EditMode.html#setHotSpotMode(y.view.ViewMode)">setHotSpotMode</a> and <a href="doc/api/y/view/EditMode.html#getHotSpotMode()">getHotSpotMode</a>. </li>
+      <li>Class <a href="doc/api/y/view/hierarchy/HierarchyEvent.html">HierarchyEvent</a>: added new event types 
+        <a href="doc/api/y/view/hierarchy/HierarchyEvent.html#BEGIN_BLOCK">BEGIN_BLOCK</a> and <a href="doc/api/y/view/hierarchy/HierarchyEvent.html#END_BLOCK">END_BLOCK</a>. </li>
+    </ul>
+    <h2>Bugfixes</h2>
+    <ul>
+      <li>Class <a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html">HierarchicLayouter</a>: layout style TREE 
+        fixed.</li>
+      <li>Class <a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html">HierarchicLayouter</a>: problem related to 
+        crashes when run in unbuffered mode have been fixed.</li>
+      <li>Fixed problems that involved IndexOutOfBoundsExceptions with NodeMaps 
+        and EdgeMaps that were created by the factory methods 
+        <a href="doc/api/y/base/Graph.html#createNodeMap()">createNodeMap</a> and <a href="doc/api/y/base/Graph.html#createEdgeMap()">createEdgeMap</a> of a 
+        graph. </li>
+      <li>Class <a href="doc/api/y/io/ImageOutputHandler.html">ImageOutputHandler</a> and all subsclasses: Fixed problems 
+        with exporting graphs that have no current view. </li>
+      <li>Demo demo.io.GraphFormatConverter: Suppress less detail mode when 
+        converting graphs to GIF or JPG format. </li>
+      <li>Fixed performance problems related to selection changes when 
+        <a href="doc/api/y/view/hierarchy/HierarchyTreeSelectionModel.html">HierarchyTreeSelectionModel</a> is being used. Bugfix 
+        effects performance of yEd. </li>
+      <li>Fixed memory leak problems related to undisposed nodemaps. Affected 
+        layouters were <a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html">HierarchicLayouter</a> and 
+        <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html">OrthogonalLayouter</a>. </li>
+      <li>Fixed performance problems related to graph change events when 
+        <a href="doc/api/y/view/hierarchy/HierarchyTreeModel.html">HierarchyTreeModel</a> is being used. Bugfix effects 
+        performance of yEd. </li>
+      <li>Fixed problems with mnemonic and accelerator keys in yEd menues that 
+        did not appear when using JDK-1.3.x. </li>
+      <li>Class <a href="doc/api/y/layout/ParallelEdgeLayouter.html">ParallelEdgeLayouter</a>: fixed problem that produced 
+        NaN bend coords for parallel edges. </li>
+      <li>Class <a href="doc/api/y/layout/transformer/GraphTransformer.html">GraphTransformer</a>: fixed broken port 
+        assignment for operations <a href="doc/api/y/layout/transformer/GraphTransformer.html#MIRROR_XAXIS">MIRROR_XAXIS</a> and <a href="doc/api/y/layout/transformer/GraphTransformer.html#MIRROR_YAXIS">MIRROR_YAXIS</a>. </li>
+      <li>Class <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html">OrthogonalLayouter</a>: fixed incorrect view 
+        ratio handling in Component Layouter. </li>
+      <li>Class <a href="doc/api/y/view/LayoutMorpher.html">LayoutMorpher</a>: feature coordinates where rounded 
+        incorrectly by layout morpher. </li>
+      <li>Fixed compile problems that occured when using yFiles library with 
+        JBuilder7 on Windows platforms. </li>
+    </ul>
+    <h2>Demo additions</h2>
+    <ul>
+      <li>Added new tutorial demo code that shows how to write custom node 
+        realizers. <ul> <li><a 
+        href="demo/view/UMLClassNodeRealizer.java">UMLClassNodeRealizer</a></li> 
+        <li><a href="demo/view/NoteNodeRealizer.java">NoteNodeRealizer</a></li> 
+        <li><a 
+        href="demo/view/RoundRectNodeRealizer.java">RoundRectNodeRealizer</a></li> 
+        <li><a 
+        href="demo/view/CircleNodeRealizer.java">CircleNodeRealizer</a></li> 
+        </ul> </li>
+    </ul>
+    <h1>yFiles 2.0 - Changes Since yFiles 1.4.0.3</h1>
+    <h2>Major Features Added</h2>
+    <ul>
+      <li><a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html">HierarchicLayouter</a> now handles port 
+        constraints</li>
+      <li><a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html">HierarchicLayouter</a> obeys edge labels in the 
+        layout process</li>
+      <li>Incremental layout capabilities have been added to 
+        <a href="doc/api/y/layout/orthogonal/OrthogonalLayouter.html">OrthogonalLayouter</a>. This layouter can now 
+        "orthogonalize" a given layout sketch. </li>
+      <li>Package <a href="doc/api/y/io/gml/package-summary.html">y.io.gml</a> has been added. It provides parser and encoder 
+        classes used <a href="doc/api/y/io/GMLIOHandler.html">GMLIOHandler</a>. Use of this package allows to 
+        customize and extend the GML Graph format </li>
+      <li>Package <a href="doc/api/y/view/hierarchy/package-summary.html">y.view.hierarchy</a> has been added. It provides classes for 
+        managing and viewing a nested hierarchy of graphs. Most prominent class 
+        of this package is <a href="doc/api/y/view/hierarchy/HierarchyManager.html">HierarchyManager</a>. </li>
+      <li>Extended graph file formats YGF and GML. They are now able to read 
+        and write nested hierarchies of graphs. </li>
+      <li>Powerful and efficient graph algorithms and network analysis tools 
+        have been added to package <a href="doc/api/y/algo/package-summary.html">y.algo</a>. </li>
+      <li>Many <a href="demo/README.html">tutorial demo programs</a> have been 
+        added that show how to use essential yFiles features. </li>
+      <li>Added many new features to the <a href="demo/yed/README.html">yEd 
+        Graph Editor</a> application. It's really swinging now! </li>
+      <li>Introduction of <a href="doc/api/y/view/Graph2DEvent.html">Graph2DEvent</a> that signals property changes 
+        of Graph2D. </li>
+      <li><a href="doc/api/y/base/YList.html">YList</a> now implements the java.util.Collection interface</li>
+      <li>The layout of the <a href="doc/api/y/option/OptionHandler.html">OptionHandler</a> editor component has been 
+        improved significantly. </li>
+    </ul>
+    <h2>Incompatible Changes</h2>
+    <ul>
+      <li>The graph algorithm package <a href="doc/api/y/algo/package-summary.html">y.algo</a> has been completely refactored. 
+        All algorithms from previous yFiles versions are still available but 
+        the API to invoke them has most likely changed. </li>
+      <li>The behaviour of the read methods of the <a href="doc/api/y/io/IOHandler.html">IOHandler</a> classes has 
+        changed. The given Graph2D object will not get cleared before the new 
+        content gets added to it. </li>
+      <li>The read and write methods of the <a href="doc/api/y/io/IOHandler.html">IOHandler</a> classes now throw 
+        IOExceptions. It is neccessary to catch them externally. </li>
+      <li>A Graph2D now fires Graph2DSelectionEvents after the selection state 
+        of the subject has changed. In previous versions the state changed 
+        after the event got fired. </li>
+      <li><a href="doc/api/y/base/GraphEvent.html">GraphEvent</a> has changed. New event type specifiers have been 
+        introduced, obsolete type specifiers have been removed. </li>
+      <li>The signature of method <a href="doc/api/y/base/YList.html#add(java.lang.Object)">add</a> in 
+        <a href="doc/api/y/base/YList.html">YList</a> has been changed to be conform with the 
+        java.util.Collection interface </li>
+      <li>The new default layout style for 
+        <a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html">HierarchicLayouter</a> is <i>Linear Segments</i>. 
+        Previous versions used <i>Pendulum</i> as default style. </li>
+      <li>The API of <a href="doc/api/y/base/GraphInterface.html">GraphInterface</a> has been changed. The methods 
+        <a href="doc/api/y/base/GraphInterface.html#nodeObjects()">nodeObjects</a> and 
+        <a href="doc/api/y/base/GraphInterface.html#edgeObjects()">edgeObjects</a> now return java.util.Iterator 
+        instead of a y.base.YCursor. </li>
+    </ul>
+    <h2>Minor Features, Bugfixes and Minor Changes</h2>
+    <p>Hundreds of them.</p>
+    <h1>yFiles 1.4.0.3 - Changes since 1.4.0.2</h1>
+    <h2>Features Added</h2>
+    <ul>
+      <li>Package <a href="doc/api/y/view/package-summary.html">y.view</a>: <ul> <li> Class <a href="doc/api/y/view/Graph2DView.html">Graph2DView</a> <br/> added 
+        support for Drawables that are drawn underneath the displayed graph. 
+        <br/> added method <a href="doc/api/y/view/Graph2DView.html#addBackgroundDrawable(y.view.Drawable)">addBackgroundDrawable</a> <br/> 
+        added method <a href="doc/api/y/view/Graph2DView.html#removeBackgroundDrawable(y.view.Drawable)">removeBackgroundDrawable</a><br/> </li> 
+        </ul> </li>
+      <li>Demo package <a href="demo/view/README.html">demo.view</a>: <ul> <li> 
+        added demo <a href="demo/view/DrawablesDemo.java">DrawablesDemo</a>. 
+        </li> </ul> </li>
+    </ul>
+    <h1>yFiles 1.4.0.2 - Changes since 1.4.0.1</h1>
+    <h2>Bugfixes</h2>
+    <ul>
+      <li> <a href="doc/api/y/layout/hierarchic/HierarchicLayouter.html">HierarchicLayouter</a> sometimes crashes when a 
+        <a href="doc/api/y/layout/hierarchic/Layerer.html">Layerer</a> yields a layering where edges within the 
+        same layer were present. This happens when 
+        <a href="doc/api/y/layout/hierarchic/AsIsLayerer.html">AsIsLayerer</a> is being used. </li>
+    </ul>
+    <h2>API Changes</h2>
+    <ul>
+      <li> Spell corrected method names of classes belonging to the labeling 
+        machinery. Methods names that contained the substring overlapp where 
+        renamed. Overlap is written with only one p. Sorry for the 
+        inconveniance. </li>
+    </ul>
+    <h1>yFiles 1.4.0.1 - Changes since 1.4</h1>
+    <h2>Bugfixes</h2>
+    <ul>
+      <li> In some cases the DefaultEdgeRealizer settings were ignored, when 
+        creating an edge interactively. </li>
+      <li> View mode <a href="doc/api/y/view/CreateEdgeMode.html">CreateEdgeMode</a> that did not behave properly when 
+        being used as a major mode (opposed to being used as a child mode 
+        called from edit mode) </li>
+    </ul>
+    <h2>Features Added</h2>
+    <ul>
+      <li>Package <a href="doc/api/y/view/package-summary.html">y.view</a>: <ul> <li> Class <a href="doc/api/y/view/Graph2DView.html">Graph2DView</a> <br/> added 
+        method <a href="doc/api/y/view/Graph2DView.html#closeLabelEditor(boolean)">closeLabelEditor</a> </li> <li> Class 
+        <a href="doc/api/y/view/CreateEdgeMode.html">CreateEdgeMode</a> <br/> added method 
+        <a href="doc/api/y/view/CreateEdgeMode.html#sourceNodeDeclined(y.base.Node, double, double)">sourceNodeDeclined</a> <br/> added method 
+        <a href="doc/api/y/view/CreateEdgeMode.html#targetNodeDeclined(y.base.Node, double, double)">targetNodeDeclined</a> <br/> added method 
+        <a href="doc/api/y/view/CreateEdgeMode.html#acceptSourceNode(y.base.Node, double, double)">acceptSourceNode</a> <br/> added method 
+        <a href="doc/api/y/view/CreateEdgeMode.html#acceptTargetNode(y.base.Node, double, double)">acceptTargetNode</a> <br/> added method 
+        <a href="doc/api/y/view/CreateEdgeMode.html#cancelEdgeCreation()">cancelEdgeCreation</a> <br/> </li> </ul> </li>
+      <li>Package <a href="doc/api/y/layout/package-summary.html">y.layout</a>: <ul> <li> Class 
+        <a href="doc/api/y/layout/CanonicMultiStageLayouter.html">CanonicMultiStageLayouter</a>: <br/> added method 
+        <a href="doc/api/y/layout/CanonicMultiStageLayouter.html#setSubGraphLayouter(y.layout.LayoutStage)">setSubGraphLayouter</a> <br/> added method 
+        <a href="doc/api/y/layout/CanonicMultiStageLayouter.html#setOrientationLayouter(y.layout.LayoutStage)">setOrientationLayouter</a> </li> <li> Class 
+        <a href="doc/api/y/layout/OrientationLayouter.html">OrientationLayouter</a>: <br/> added orientation specifier 
+        <a href="doc/api/y/layout/OrientationLayouter.html#RIGHT_TO_LEFT">RIGHT_TO_LEFT</a> <br/> </li> </ul> </li>
+      <li>Package <a href="doc/api/y/layout/organic/package-summary.html">y.layout.organic</a>: <ul> <li> Class 
+        <a href="doc/api/y/layout/organic/OrganicLayouter.html">OrganicLayouter</a>: <br/> added field 
+        <a href="doc/api/y/layout/organic/OrganicLayouter.html#PREFERRED_EDGE_LENGTH_DATA">PREFERRED_EDGE_LENGTH_DATA</a>. This feature allows to specify a 
+        different preferred edge length for each edge in the layout graph. 
+        <br/> </li> </ul> </li>
+    </ul>
+  </body>
+</html>

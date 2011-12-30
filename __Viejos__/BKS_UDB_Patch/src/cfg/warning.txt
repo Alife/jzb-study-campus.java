@@ -1,0 +1,11 @@
+<font size="+1" color="#FF0000"><u><b>Aviso</b></u></font>
+<p>En breve, el departamento de Producción moverá las Bases de Datos utilizadas por las herramientas BKS a una nueva plataforma hardware. Esta aplicación prepara las herramientas BKS para conectar con la nueva ubicación.</p>
+<p>En caso de error durante la ejecución o tras el cambio de las Bases de Datos, por favor, póngase en contacto con <b>Soporte a Desarrollo</b>.</p>
+<p><b><font color="#0000FF">Nota: </font>Para el correcto funcionamiento de esta aplicación es necesario que WSAD no esté en ejecución</b></p>
+
+<br><hr><br>
+
+<font size="+1" color="#FF0000"><u><b>Warning</b></u></font>
+<p>Shortly, Production department will move BKS tools' Data Bases to a new hardware platform. This application prepares BKS tools to connect to the new location.</p>
+<p>In case of error during the application execution or after the Data Bases migration is done, please, contact <b>Development Support Team</b>.</p>
+<p><b><font color="#0000FF">Note: </font>In order to execute this application WSAD shouldn't be running.</b></p>

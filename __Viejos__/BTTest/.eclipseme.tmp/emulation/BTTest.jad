@@ -1,0 +1,8 @@
+MIDlet-1: BTMidlet,,com.jzb.bt.BTMidlet
+MIDlet-Jar-Size: 25564
+MIDlet-Jar-URL: BTTest.jar
+MIDlet-Name: BTTest Midlet Suite
+MIDlet-Vendor: Midlet Suite Vendor
+MIDlet-Version: 1.0.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0

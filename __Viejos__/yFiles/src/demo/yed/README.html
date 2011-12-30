@@ -1,0 +1,234 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:y="http://www.yworks.com/demo">
+<head>
+<title>yEd Graph Editor</title>
+<style type="text/css">
+<!--
+              body {
+  font-family:Verdana, sans-serif; 
+  margin-left:12px;
+  margin-right:12px;
+  margin-top:12px;
+  margin-bottom:12px;
+}
+
+h1 { 
+  padding-left:8px;
+  padding-top:8px;
+  padding-bottom:8px;
+  background-color:#d0d0d0;
+  color:#4079ea;
+/*  color:#4d88ff; */
+  font-size:18px;
+  margin-bottom:5px;
+}
+
+p {   
+  padding-bottom:0px;
+  padding-top:0px;
+  margin-top:3px;
+  margin-bottom:0px;
+/*  margin-left:10px; */
+  margin-left:8px;
+  font-size:12px;
+  color:#000000;
+}
+
+h2 { 
+  font-size:14px; 
+  color:#4079ea; 
+  margin-top:10px; 
+  margin-bottom:0px; 
+}
+
+h3 { 
+  font-size:13px; 
+/*  margin-left:10px; */
+  margin-left:8px;
+  margin-top:8px; 
+  margin-bottom:2px; 
+}
+
+table {
+/*  margin-left:10px; */
+  margin-left: 8px;
+  margin-top: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid white;
+  vertical-align: baseline;
+  border-collapse: collapse;
+}
+
+td { 
+  font-size:12px;
+  background-color: #E3EEFE;
+  vertical-align:top;
+  border: 1px solid white;
+  vertical-align: baseline;
+}
+
+th {
+  font-size:12px; 
+  background-color:#a4b9ea;
+  text-align: left;
+}
+
+a {
+  color: #AA5522; font-weight:bold;
+}
+a:link {
+  text-decoration:none;
+}
+a:visited {
+  text-decoration:none; color:#772200;
+}
+a:active, 
+a:focus, 
+a:hover {
+  text-decoration: underline;
+}
+
+div.li1 {
+  font-size:12px;
+  margin-top:8px; 
+  margin-bottom:0px; 
+  margin-left:10px; 
+}
+div.li2 { 
+  margin-left:20px;
+  margin-top:2px; 
+  margin-bottom:2px; 
+  font-weight:bold;
+  font-size:12px; 
+}
+
+dl { 
+  font-size:12px;
+  margin-top:2px;
+  margin-bottom:2px;
+  margin-left:15px;
+}
+dt { 
+  font-weight:bold;
+  margin-top:4px;
+/*  color:#000000; */
+  color:#333366;
+}
+dd { 
+  margin-left:15px;
+}
+
+li { 
+  /* does not work in pre-1.5 Java JEditorPane :-( */
+/*  list-style-type:none; */
+  font-size:12px;
+}
+
+caption {
+  font-size:12px;
+}
+
+.copyright { 
+  font-size: 10px;
+  font-style:italic;
+  text-align:right;
+  margin-top:20px;
+}
+
+code, tt { 
+  font-family:monospace;
+  font-size:12px;
+  color:#0000C0;
+}
+
+            -->
+</style>
+</head>
+<body>
+    <h1>yEd Graph Editor</h1>
+
+    <p>
+      yEd is a general purpose graph editor that can be used to
+      create, view, and layout diagrams. It exhibits many of the 
+      features found in yFiles.
+    </p>
+    <p>
+      The complete source code of this extensive demo is part of the yFiles Viewer and yFiles Complete 
+      Source Code editions.
+    </p>
+
+    <h2>Starting the Graph Editor from within an IDE</h2>
+
+    <p>
+      Add
+      <code>yed.jar</code>
+      to your classpath. Then simply run the yED main class
+      <code>yed.Launcher</code>
+      which is contained in this jar file.
+    </p>
+
+    <h2>Starting the Graph Editor from the command line</h2>
+
+    <p>
+      Open a console and change to <a href=".">this</a> directory, then type
+      <br/>
+      <br/>
+      <code>java -jar yed.jar</code>
+      <br/>
+      <br/>
+      Optionally, start the editor for a given graph in YGF or GML format:
+      <br/>
+      <br/>
+      <code>java -jar yed.jar &lt;graphfile&gt;</code>
+    </p>
+    <p>
+      There are some <b>graphs provided</b> in the subfolder <a href="graphs/README.html">graphs</a>.
+    </p>
+    <p> 
+      Under Windows you can simply double-click "yed.jar" in the Explorer
+      window. This may not work if executable .jar files do not have the proper 
+      file type associated.
+    </p>
+    <p>
+      Note that yEd does not need y.jar in its classpath. The library is already contained in
+      the executable .jar file. 
+    </p>
+
+    <h2>Command Line Arguments</h2>
+
+    <p>
+    <table>
+      <th>Argument</th>
+      <th>Description</th>
+      <tr>
+        <td>-classic</td>
+        <td>Starts yEd in classic mode, i.e., without the graph hierarchy feature
+            enabled. There will be no tree view of the nodes and no hierarchy menu entry.</td>
+      </tr>
+      <tr>
+        <td>&lt;graphfile&gt;</td>
+        <td>Loads and display the specified YGF or GML file on program startup.</td>
+      </tr>
+    </table>
+    </p>
+
+    <h2>Starting the Graph Editor Applet</h2>
+
+    <p>
+      The yEd graph editor can also be run as an applet in your browser
+      window. To start the graph editor applet load the file
+      <a href="applet.html">applet.html</a> with your browser.
+    </p>
+
+    <h2>Troubleshooting</h2> 
+
+    <p>
+      If you get an OutOfMemoryException try starting the application
+      with an additional argument:
+      <br/>
+      <code>java -Xmx256m -jar yed.jar</code>
+    </p>
+
+    <p class="copyright">Copyright yWorks GmbH, 2001-2005. All rights reserved.</p>
+  </body>
+</html>

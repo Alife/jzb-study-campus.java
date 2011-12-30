@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow name="ShowMenu">
+
+	<state id="loadMenu" class="com.jzb.blt.mnu.LoadMenuState">
+		<tr ev="ok" st="showMenu" />
+	</state>
+
+
+	<state id="showMenu" class="com.jzb.blt.mnu.ShowMenuState">
+		<tr ev="exit" st="finalExit" />
+
+		<tr ev="showText" st="finalShowText" />
+		<tr ev="sendUpdate" st="finalSndUpdate" />
+        <tr ev="receiveUpdate" st="finalRcvUpdate" />
+		<tr ev="clearStorage" st="finalClearStorage" />
+
+        <tr ev="edit" st="editItem" />
+        <tr ev="createNew" st="createItem" />
+        <tr ev="delete" st="deleteItemAlert" />
+	</state>
+
+	<state id="editItem" class="com.jzb.blt.mnu.EditState">
+		<tr ev="ok" st="showMenu" />
+		<tr ev="cancel" st="showMenu" />
+	</state>
+
+	<state id="createItem" class="com.jzb.blt.mnu.CreateState">
+		<tr ev="ok" st="showMenu" />
+		<tr ev="cancel" st="showMenu" />
+	</state>
+
+	<state id="deleteItemAlert" type="AlertState">
+		<param name="title" value="Delete Item" />
+		<param name="text" value="Do you really want to delete that element?" />
+		<param name="hasCancel" value="true" />
+		<tr ev="ok" st="deleteItem" />
+		<tr ev="cancel" st="showMenu" />
+	</state>
+
+	<state id="deleteItem" class="com.jzb.blt.mnu.DeleteState">
+		<tr ev="ok" st="showMenu" />
+	</state>
+    
+	<state id="finalExit" type="FinalState" event="exit" />
+	<state id="finalShowText" type="FinalState" event="showText" />
+	<state id="finalSndUpdate" type="FinalState" event="sendUpdate" />
+    <state id="finalRcvUpdate" type="FinalState" event="receiveUpdate" />
+	<state id="finalClearStorage" type="FinalState" event="clearStorage" />
+	<state id="finalException" type="FinalState" event="exception" />
+
+	<globalTr ev="exception" st="finalException" />
+
+</flow>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow name="ShowText">
+
+	<state id="loadText" class="com.jzb.blt.txt.LoadTextState">
+		<tr ev="ok" st="showText" />
+	</state>
+
+
+    <state id="showText" class="com.jzb.blt.txt.ShowTextState">
+        <tr ev="back" st="finalBack" />
+        <tr ev="exit" st="finalExit" />
+    </state>
+
+    
+	<state id="finalExit" type="FinalState" event="exit" />
+	<state id="finalBack" type="FinalState" event="back" />
+	<state id="finalException" type="FinalState" event="exception" />
+
+    <globalTr ev="exception" st="finalException" />
+
+</flow>

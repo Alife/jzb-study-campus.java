@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Serial</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>res/Rcve_Data</name>
+			<type>2</type>
+			<location>D:/JZarzuela/utilidades/Booklet_Sync/Rcve_Data</location>
+		</link>
+		<link>
+			<name>res/Snd_Data</name>
+			<type>2</type>
+			<location>D:/JZarzuela/utilidades/Booklet_Sync/Snd_Data</location>
+		</link>
+	</linkedResources>
+</projectDescription>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow name="Main">
+
+	<initializer initial="loadMenu" class="" />
+
+	<state id="logon" class="com.jzb.blt.main.ReqPwdState">
+		<tr ev="ok" st="resetMenu" />
+		<tr ev="cancel" st="finalOK" />
+		<tr ev="exception" st="logonErrorAlert" />
+	</state>
+
+	<state id="logonErrorAlert" type="AlertState">
+		<param name="title" value="Error Caught" />
+		<param name="dynamic" value="true" />
+		<tr ev="ok" st="finalOK" />
+	</state>
+
+	<state id="resetMenu" class="com.jzb.blt.main.ResetMenuState">
+		<tr ev="ok" st="menuFlow" />
+	</state>
+
+	<state id="menuFlow" type="XMLFlow" file="MenuFlow">
+		<tr ev="exit" st="finalOK" />
+		<tr ev="showText" st="textFlow" />
+		<tr ev="sendUpdate" st="sndUpdateFlow"/>
+        <tr ev="receiveUpdate" st="rcvUpdateFlow"/>
+		<tr ev="clearStorage" st="clearStorageAlert"/>
+	</state>
+
+    <state id="textFlow" type="XMLFlow" file="TextFlow">
+        <tr ev="back" st="menuFlow"/>
+        <tr ev="exit" st="finalOK"/>
+    </state>
+    
+    <state id="sndUpdateFlow" type="XMLFlow" file="SndUpdateFlow">
+        <tr ev="ok" st="resetMenu"/>
+        <tr ev="cancel" st="menuFlow"/>
+    </state>
+    
+    <state id="rcvUpdateFlow" type="XMLFlow" file="RcvUpdateFlow">
+        <tr ev="ok" st="resetMenu"/>
+        <tr ev="cancel" st="menuFlow"/>
+    </state>
+    
+	<state id="clearStorageAlert" type="AlertState">
+		<param name="title" value="Clear storage" />
+		<param name="text" value="Do you really want to erase ALL the current data?" />
+		<param name="hasCancel" value="true" />
+		<tr ev="ok" st="clearStorage" />
+		<tr ev="cancel" st="menuFlow" />
+	</state>
+
+	<state id="clearStorage" class="com.jzb.blt.main.ClearStorage">
+		<tr ev="ok" st="logon" />
+	</state>
+
+	<state id="errorAlert" type="AlertState">
+		<param name="title" value="Error Caught" />
+		<param name="dynamic" value="true" />
+		<tr ev="ok" st="finalException" />
+	</state>
+
+	<state id="finalOK" type="FinalState" event="ok" />
+	<state id="finalException" type="FinalState" event="exception" />
+
+
+	<globalTr ev="exception" st="errorAlert" />
+
+</flow>

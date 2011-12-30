@@ -1,0 +1,8 @@
+MIDlet-1: Booklet,,com.jzb.blt.Booklet
+MIDlet-Jar-Size: 144893
+MIDlet-Jar-URL: Booklet.jar
+MIDlet-Name: Booklet JZB
+MIDlet-Vendor: JZarzuela
+MIDlet-Version: 1.0.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0

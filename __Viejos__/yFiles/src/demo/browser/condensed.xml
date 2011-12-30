@@ -1,0 +1,1765 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<y:content xmlns="http://www.w3.org/1999/xhtml" xmlns:y="http://www.yworks.com/demo">
+  <y:package javaname="demo">
+  <y:displayname>demo</y:displayname>
+  <y:description>
+    <h1>yFiles Demo Programs</h1>
+
+    <p>
+      The yFiles distributions contain a variety of tutorial Java programs
+      accompanied by their source code. These programs demonstrate how to 
+      use essential features of the yFiles library.
+    </p>
+
+    <p>
+      Not all of the listed demos may be part of your yFiles distribution type.
+      <b>yFiles Complete</b> contains all demo programs, <b>yFiles Viewer</b>
+      contains all demos except the layout demos, <b>yFiles Layout</b>
+      contains the graph, the graph algorithm, and the viewer independent
+      layout demos in demo/layout. <b>yFiles Basic</b> contains only 
+      the basic graph and graph algorithm demos.
+    </p>
+
+    <h2>Running the Demos</h2>
+
+    <h3>From Within an IDE</h3>
+
+    <p>
+      Set <tt>&lt;yFilesDir&gt;/src</tt> as your source directory. 
+      Then add <tt>&lt;yFilesDir&gt;/lib/y.jar</tt> <b>and</b> the source folder 
+      <tt>&lt;yFilesDir&gt;/src</tt> to your classpath. 
+      Now you should be ready to compile and run all executable demo classes. 
+    </p>
+
+    <h3>With Ant</h3>
+
+    <p>
+      First make sure you have the <a href="http://ant.apache.org">build tool Ant</a> 
+      installed on your system. 
+      Now you can use the demo build script <a href="build.xml">build.xml</a> located 
+      in this directory to launch each demo by specifying its simple class name 
+      as a target. 
+    </p>
+
+    <p>
+      <b>Note:</b> 
+      As an alternative, you can also use the build script's <tt>run</tt> target 
+      to launch the DemoBrowser application, an interactive "shell" that allows 
+      convenient access to all demos. 
+      It features execution of each demo, and also displays both its source code 
+      and documentation. 
+    </p>
+
+    <h2>Tutorial Demos</h2>
+
+    <h3>Basic Graph Demos</h3>
+
+    <p>
+      Tutorial programs that show how to use the graph data type and related classes
+      from the yFiles base package <a href="../../doc/api/y/base/package-summary.html">y.base</a>
+      are located in the folder <a href="base/README.html">demo/base</a>. 
+    </p>
+
+    <h3>Graph Algorithm Demos</h3>
+
+    <p>
+      The graph algorithm demos are located in the folder 
+      <a href="algo/README.html">demo/algo</a>. These tutorial
+      demos show how to use some of the included graph and network algorithms
+      that are located in the yFiles package <a href="../../doc/api/y/algo/package-summary.html">y.algo</a>.
+    </p>
+
+    <h3>Graph Viewer Demos</h3>
+
+    <p>
+      Programs that demonstrate how to use the yFiles graph viewer components in 
+      an application are located in the folder <a href="view/README.html">demo/view</a>.
+      <br/>
+      Further aspects related to the viewer components and the visual represenation of 
+      graphs and their elements are demonstrated in several subpackages: 
+    </p>
+    <ul>
+      <li>
+        rendering in <a href="view/rendering/README.html">demo/view/rendering</a>
+      </li>
+      <li>
+        node realizer and edge realizer customization in 
+        <a href="view/realizer/README.html">demo/view/realizer</a> (and also in 
+        <a href="view/ports/README.html">demo/view/ports</a> -- see below) 
+      </li>
+      <li>
+        user interaction in 
+        <a href="view/viewmode/README.html">demo/view/viewmode</a>
+      </li>
+    </ul>
+    <p>
+      The following subpackages present additional topics: 
+    </p>
+    <ul>
+      <li>
+        application-related functionality (undo/redo, print preview, etc.) in 
+        <a href="view/advanced/README.html">demo/view/advanced</a>
+      </li>
+      <li>
+        special node realizer features and how to support them with file I/O in 
+        <a href="view/ports/README.html">demo/view/ports</a>
+      </li>
+    </ul>
+
+    <h3>Graph Animation Demos</h3>
+
+    <p>
+      Programs that demonstrate how to add animated effects to graphs and views
+      can be found in <a href="view/anim/README.html">demo/view/anim</a>.
+    </p>
+
+    <h3>Graph Hierarchy Demos</h3>
+
+    <p>
+      A sample application that shows how to use the nested graph hierarchy 
+      features of yFiles is located in <a href="view/hierarchy/README.html">
+      demo/view/hierarchy</a>. 
+    </p>
+
+    <h3>Graph Layout Demos</h3>
+
+    <p>
+      Programs that demonstrate how to use the API of the diverse yFiles graph layout 
+      algorithms can be found in the folders <a href="module/README.html">demo/module</a>
+      and <a href="view/layout/README.html">demo/view/layout</a>. 
+      Programs that demonstrate how to write your own graph layouter using the yFiles
+      framework classes are located in <a href="layout/README.html">demo/layout</a>.
+      The same folder contains demos that show how to use the layout and labeling
+      functionality for various algorithms when the yFiles Viewer distribution is not present. 
+    </p>
+
+    <h3>Graph I/O Demos</h3>
+
+    <p>
+      Programs that show how to read and write graphs from and to different formats
+      are located in <a href="io/README.html">demo/io</a>. This folder also 
+      includes an example on how to customize and extend existing graph formats 
+      to personal needs.
+      <br/>
+      Further classes that demonstrate file I/O are in folder 
+      <a href="view/ports/README.html">demo/view/ports</a>. 
+    </p>
+
+    <h3>GUI Utility Demo</h3>
+
+    <p>
+      An example program that depicts the functionality of the yFiles 
+      <a href="../../doc/api/y/option/package-summary.html">y.option</a>
+      package of the yFiles Viewer distribution
+      can be found in <a href="option/README.html">demo/option</a>.
+    </p>
+
+    <h2>yEd Graph Editor Application</h2>
+
+    <p>
+      The yFiles Viewer and Complete distributions include a powerful multi-purpose
+      graph editor called yEd. It exhibits most of the features available in
+      the library. This demo is available as an executable .jar file. It is located in
+      <a href="yed/README.html">demo/yed</a>.
+    </p>
+
+
+    <h2>yFiles Obfuscation Demo</h2>
+
+    <p>
+      <a href="obfuscation/README.html">This demo</a> shows how to obfuscate the yFiles 
+      classes before they can be deployed as a part of an applet or application.
+      In this demo the obfuscation process will be  performed by the Ant-based obfuscator 
+      yGuard (<a href="http://www.yworks.com/products/yguard">yGuard home page</a>). 
+    </p>
+  </y:description>
+
+<y:package javaname="demo.view">
+  <y:displayname>view</y:displayname>
+  <y:description>
+    <h1>yFiles Tutorial View Demos</h1>
+
+    <p>
+      The following tutorial view demos are in this package:
+    </p>
+    <table>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+      </tr>
+
+      <tr>
+        <td>
+              <a href="realizer/README.html">demo.view.realizer</a>
+            </td>
+        <td>
+          The contained tutorial demos describe how to use, customize, and extend
+          diverse NodeRealizer and EdgeRealizer classes.
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+              <a href="rendering/README.html">demo.view.rendering</a>
+            </td>
+        <td>
+          Centers around advanced rendering aspects of the graph view.
+          It is shown how to use auxiliary rendering classes <code>Drawable</code>,
+          <code>BackgroundRenderer</code>, and <code>BridgeCalculator</code>.
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+              <a href="viewmode/README.html">demo.view.viewmode</a>
+            </td>
+        <td>
+          Shows how to use, customize, and extend diverse ViewMode classes.
+          View modes provide the base functionality to handle
+          mouse-based interaction that happens in a view.
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+              <a href="layout/README.html">demo.view.layout</a>
+            </td>
+        <td>
+          Provides many tutorial demos that center around automatic layout and labeling 
+          features for diagrams.
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+              <a href="anim/README.html">demo.view.anim</a>
+            </td>
+        <td>
+          Contains demos that center around the diverse animation effects that
+          can be applied to graph elements and to graph views.
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+              <a href="advanced/README.html">demo.view.advanced</a>
+            </td>
+        <td>
+          Shows how to use advanced application features like drag and drop, 
+          print previewing, clipboard functionality, and undoability.
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+              <a href="ports/README.html">demo.view.ports</a>
+            </td>
+        <td>
+          Contains a demo graph editor that employs special nodes that come with
+          a fixed set of allowed connection points (known as ports).
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+              <a href="hierarchy/README.html">demo.view.hierarchy</a>
+            </td>
+        <td>Demonstrates how to write an application that manages a hierarchy of nested
+        and grouped graphs.
+        A tree view, a regular graph view, and a graph overview are used to visualize
+        the hierarchy and groupings of graphs and nodes. 
+        Many sample actions are provided that perform navigational and structural tasks
+        on the graph hierarchy.
+        See the <a href="hierarchy/README.html">Hierarchy Demo README</a>
+        on how to use this small application.
+        </td>
+      </tr>
+    </table>
+  </y:description>
+
+  <y:demo javaname="demo.view.SimpleDemo" source="SimpleDemo.java">
+    <y:displayname>SimpleDemo</y:displayname>
+    <y:description>
+      
+      
+    The yFiles view says "Hello World." Shows how to display a graph 
+          viewer/editor component inside a frame.</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.view.BuildGraphDemo" source="BuildGraphDemo.java">
+    <y:displayname>BuildGraphDemo</y:displayname>
+    <y:description>Shows how to build a Graph2D with different node types 
+and styles applied to its elements.</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.view.ViewActionDemo" source="ViewActionDemo.java">
+    <y:displayname>ViewActionDemo</y:displayname>
+    <y:description>Demonstrates some actions that can be performed on the view or 
+	  the contents of the view:
+<ul>
+<li>remove selected parts of the view</li>
+<li>zoom out of the view</li>
+<li>zoom in on the view</li>
+<li>fit view content to the size of the view</li>
+<li>print contents of the view</li>
+<li>load a graph in YGF format</li>
+<li>save a graph in YGF format</li>
+</ul>
+</y:description>
+  </y:demo>
+<y:package javaname="demo.view.layout">
+  <y:displayname>layout</y:displayname>
+  <y:description>
+    <h1>yFiles Tutorial View Demos for Automatic Layout</h1>
+
+    <p>
+      This package and all of its subpackages provide tutorial demos that center around 
+      automatic layout, routing and labeling features for diagrams.
+    </p>
+    <table>
+      <tr>
+        <th>Package</th>
+        <th>Description</th>
+      </tr>
+
+      <tr>
+        <td>
+                <a href="hierarchic/README.html">demo.view.layout.hierarchic</a>
+              </td>
+        <td>Showcases diverse aspects and variants of hierarchical layout.</td>
+      </tr>
+
+      <tr>
+        <td>
+                <a href="organic/README.html">demo.view.layout.organic</a>
+              </td>
+        <td>Showcases diverse aspects and variants of organic layout.</td>
+      </tr>
+
+      <tr>
+        <td>
+                <a href="orthogonal/README.html">demo.view.layout.orthogonal</a>
+              </td>
+        <td>Showcases diverse aspects and variants of orthogonal layout.</td>
+      </tr>
+
+      <tr>
+        <td>
+                <a href="tree/README.html">demo.view.layout.tree</a>
+              </td>
+        <td>Showcases diverse aspects and variants of tree layout.</td>
+      </tr>
+
+      <tr>
+        <td>
+                <a href="labeling/README.html">demo.view.layout.labeling</a>
+              </td>
+        <td>Showcases diverse aspects and variants of automatic labeling.</td>
+      </tr>
+
+      <tr>
+        <td>
+                <a href="router/README.html">demo.view.layout.router</a>
+              </td>
+        <td>Showcases diverse aspects of automatic edge routing.</td>
+      </tr>
+    </table>
+  </y:description>
+
+  <y:demo javaname="demo.view.layout.LayoutDemo" source="LayoutDemo.java">
+    <y:displayname>LayoutDemo</y:displayname>
+    <y:description>Demonstrates how automatic layout and labeling algorithms can
+be applied to a graph that is displayed within a viewer component.
+Also shows how to apply an animated morphing effect between an existing layout
+and a newly created one.
+</y:description>
+  </y:demo>
+
+<y:package javaname="demo.view.layout.tree">
+  <y:displayname>tree</y:displayname>
+  <y:description>
+    <h1>yFiles Tutorial Demos for Tree Layout</h1>
+    <p>
+      This package contains tutorial source code demos that showcase
+      various aspects of the yFiles tree layout facilities.
+    </p>
+  </y:description>
+
+  <y:demo javaname="demo.view.layout.tree.AssistantPlacerDemo" source="AssistantPlacerDemo.java">
+    <y:displayname>AssistantPlacerDemo</y:displayname>
+    <y:description>
+      This demo shows how to use
+      <code>y.layout.tree.GenericTreeLayouter</code>
+      in conjunction with
+      <code>y.layout.tree.AssistantPlacer</code>
+      .
+    </y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.view.layout.tree.CollapsibleTreeDemo" source="CollapsibleTreeDemo.java">
+    <y:displayname>CollapsibleTreeDemo</y:displayname>
+    <y:description>
+      This demo shows how subtrees can be collapsed and expanded by simply clicking 
+      on their respective root nodes. 
+      Three different layout algorithms can be chosen: <code>y.layout.tree.TreeLayouter</code>, 
+      <code>y.layout.tree.BalloonLayouter</code> and <code>y.layout.organic.OrganicLayouter</code>
+      .
+    </y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.view.layout.tree.DendrogramLayouterDemo" source="DendrogramLayouterDemo.java">
+    <y:displayname>DendrogramLayouterDemo</y:displayname>
+    <y:description>
+      This demo shows how to achieve a dendrogram-like tree layout using <code>y.layout.tree.GenericTreeLayouter</code>
+      and <code>y.layout.tree.DendrogramPlacer</code>.
+    </y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.view.layout.tree.IncrementalTreeLayouterDemo" source="IncrementalTreeLayouterDemo.java">
+    <y:displayname>IncrementalTreeLayouterDemo</y:displayname>
+    <y:description>Complex demo that shows how the
+      <code>y.layout.tree.GenericTreeLayouter</code>
+      can be used to incrementally build complex tree structures with simple user gestures.
+    </y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.view.layout.tree.RotatableNodePlacersDemo" source="RotatableNodePlacersDemo.java">
+    <y:displayname>RotatableNodePlacersDemo</y:displayname>
+    <y:description>
+      This demo presents
+      <code>y.layout.tree.GenericTreeLayouter</code>
+      in conjunction
+      with node placers that support subtree rotation.
+    </y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.view.layout.tree.TreeLayoutConfigurationDemo" source="TreeLayoutConfigurationDemo.java">
+    <y:displayname>TreeLayoutConfigurationDemo</y:displayname>
+    <y:description>
+      This demo serves as a launcher for the tree layout styles offered by TreeLayoutConfiguration.
+    </y:description>
+  </y:demo>
+
+</y:package>
+        <y:package javaname="demo.view.layout.organic">
+  <y:displayname>organic</y:displayname>
+  <y:description>
+            <h1>yFiles Tutorial Demos for Organic Layout</h1>
+            <p>
+This package contains tutorial source code demos that showcase
+various aspects of the yFiles organic layout facilities.
+</p>
+          </y:description>
+  <y:demo javaname="demo.view.layout.organic.NavigationDemo" source="NavigationDemo.java">
+    <y:displayname>NavigationDemo</y:displayname>
+    <y:description>
+      Demonstrats how to interactively navigate through a large
+      graph by showing only the surroundings of a focused node.
+      In this demo the layout of the displayed subgraph is
+      controlled by <code>InteractiveOrganicLayouter</code>
+    </y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.layout.organic.OrganicLayouterDemo" source="OrganicLayouterDemo.java">
+    <y:displayname>OrganicLayouterDemo</y:displayname>
+    <y:description> Demonstrates advanced features of class OrganicLayouter. Shows how to
+    specify individual preferred edge lengths.
+    </y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.layout.organic.AnimatedNavigationDemo" source="AnimatedNavigationDemo.java">
+    <y:displayname>AnimatedNavigationDemo</y:displayname>
+    <y:description>
+      This is an extension of NavigationDemo.
+      In this demos changing the visible subgraph is accompanied by animated
+      fade in and fade out effects for appearing and disappearing nodes and edges.
+    </y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.layout.organic.InteractiveOrganicDemo" source="InteractiveOrganicDemo.java">
+    <y:displayname>InteractiveOrganicDemo</y:displayname>
+    <y:description>
+      This demo shows the very basic usage of the InteractiveOrganicLayouter.
+      The layouter is started within a thread and a swing timer is used to
+      update the positions of the nodes.
+    </y:description>
+  </y:demo>
+</y:package>
+        <y:package javaname="demo.view.layout.hierarchic">
+  <y:displayname>hierarchic</y:displayname>
+  <y:description>
+            <h1>yFiles Tutorial Demos for Hierarchical Layout</h1>
+            <p>
+This package contains tutorial source code demos that showcase
+various aspects of the yFiles hierarchical layout facilities.
+</p>
+          </y:description>
+  <y:demo javaname="demo.view.layout.hierarchic.IncrementalHierarchicGroupDemo" source="IncrementalHierarchicGroupDemo.java">
+  <y:displayname>IncrementalHierarchicGroupDemo</y:displayname>
+  <y:description>
+This demo shows how IncrementalHierarchicLayouter can be used to fully or incrementally
+layout hierarchically nested graphs. The demo supports automatic relayout after expanding folder nodes,
+collapsing group nodes. Furthermore it provides toolbar buttons that
+trigger full layout and incremental relayout. A settings dialog for group layout options is provided as well.
+In incremental layout mode all selected elementa are added incrementally to the existing layout.
+  </y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.layout.hierarchic.FlowChartDemo" source="FlowChartDemo.java">
+    <y:displayname>FlowChartDemo</y:displayname>
+    <y:description/>
+  </y:demo>
+  <y:demo javaname="demo.view.layout.hierarchic.SimpleSwimLaneLayouterDemo" source="SimpleSwimLaneLayouterDemo.java">
+    <y:displayname>SimpleSwimLaneLayouterDemo</y:displayname>
+    <y:description>
+This demo shows how to use IncrementalHierarchicLayouter's swim lane feature.
+Nodes can be put into swim lanes and the layout will automatically ensure that
+each node is placed into its lane and the lanes do not overlap.
+ </y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.layout.hierarchic.HierarchicLayouterDemo" source="HierarchicLayouterDemo.java">
+    <y:displayname>HierarchicLayouterDemo</y:displayname>
+    <y:description> Demonstrates many of the advanced features of class HierarchicLayouter.
+This demo shows how to specify port constraints, and how to activate edge labeling support in
+HierarchicLayouter.
+</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.layout.hierarchic.SimpleIncrementalHierarchicLayouterDemo" source="SimpleIncrementalHierarchicLayouterDemo.java">
+    <y:displayname>SimpleIncrementalHierarchicLayouterDemo</y:displayname>
+    <y:description>Simple demo that shows how to make use of the incremental features of 
+<code>y.layout.hierarchic.IncrementalHierarchicLayouter</code>.</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.layout.hierarchic.IncrementalHierarchicLayouterDemo" source="IncrementalHierarchicLayouterDemo.java">
+    <y:displayname>IncrementalHierarchicLayouterDemo</y:displayname>
+    <y:description>
+This demo shows how to use IncrementalHierarchicLayouter together
+with sophisticated customized view modes. The application will automatically perform a new layout whenever the user 
+makes changes to the graph.
+ </y:description>
+  </y:demo>
+    <y:demo javaname="demo.view.layout.hierarchic.ConstraintLayererDemo" source="ConstraintLayererDemo.java">
+    <y:displayname>ConstraintLayererDemo</y:displayname>
+    <y:description>
+This demo shows how to use ConstraintLayerer class together with hierarchic layout to create
+layering constraints.
+ </y:description>
+  </y:demo>
+
+</y:package>
+        <y:package javaname="demo.view.layout.router">
+  <y:displayname>router</y:displayname>
+  <y:description>
+            <h1>yFiles Tutorial Demos for Edge Routing</h1>
+            <p>
+This package contains tutorial source code demos that showcase
+various aspects of the yFiles edge routing facilities.
+</p>
+          </y:description>
+  <y:demo javaname="demo.view.layout.router.EdgeRouterDemo" source="EdgeRouterDemo.java">
+    <y:displayname>EdgeRouterDemo</y:displayname>
+    <y:description>
+Demonstrates yFiles' orthogonal edge routing capabilities.
+</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.layout.router.MazeRouterDemo" source="MazeRouterDemo.java">
+    <y:displayname>MazeRouterDemo</y:displayname>
+    <y:description>
+Advanced edge routing demo. Demonstrates yFiles' orthogonal edge 
+routing capabilities through a maze.
+</y:description>
+  </y:demo>
+</y:package>
+        <y:package javaname="demo.view.layout.labeling">
+  <y:displayname>labeling</y:displayname>
+  <y:description>
+            <h1>yFiles Tutorial Demos for Automatic Labeling</h1>
+            <p>
+This package contains tutorial source code demos that showcase automatic node 
+and edge labeling.
+</p>
+          </y:description>
+  <y:demo javaname="demo.view.layout.labeling.LabelingDemo" source="LabelingDemo.java">
+    <y:displayname>LabelingDemo</y:displayname>
+    <y:description>Demonstrates how to use label models and how to
+  apply labeling algorithms to a diagram. 
+  </y:description>
+  </y:demo>
+</y:package>
+        <y:package javaname="demo.view.layout.orthogonal">
+  <y:displayname>orthogonal</y:displayname>
+  <y:description>
+            <h1>yFiles Tutorial Demos for Orthogonal Layout</h1>
+            <p>
+This package contains tutorial source code demos that showcase
+various aspects of the yFiles orthogonal layout facilities.
+</p>
+          </y:description>
+  <y:demo javaname="demo.view.layout.orthogonal.UMLClassDiagramLayouterDemo" source="UMLClassDiagramLayouterDemo.java">
+    <y:displayname>UMLClassDiagramLayouterDemo</y:displayname>
+    <y:description>
+Demonstrates how to arrange UML class diagrams nicely
+</y:description>
+  </y:demo>
+</y:package>
+      </y:package>
+      <y:package javaname="demo.view.realizer">
+  <y:displayname>realizer</y:displayname>
+  <y:description>
+          <h1>yFiles Tutorial Realizer Demos</h1>
+          <p>
+The following tutorial demos describe how to use, customize, and extend
+diverse NodeRealizer and EdgeRealizer classes.
+Among other user interface aspects, a realizer defines the way a graph element
+is rendered.
+</p>
+          <p>
+  <b>Note:</b> Except for the implementation of <code>demo.view.realizer.StateNodeRealizer</code>,
+  all classes listed here are also executable.
+</p>
+        </y:description>
+  <y:demo javaname="demo.view.realizer.GenericNodeRealizerDemo" source="GenericNodeRealizerDemo.java">
+    <y:displayname>GenericNodeRealizerDemo</y:displayname>
+    <y:description>
+This class demonstrates usage of GenericNodeRealizer which makes it easy
+to provide customized node rendering.
+</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.realizer.CircleNodeRealizer" source="CircleNodeRealizer.java">
+    <y:displayname>CircleNodeRealizer</y:displayname>
+    <y:description>
+This class represents a customized ShapeNodeRealizer similar to
+the ellipse type, but restricts the aspect ratio to be 1, i.e., the
+ellipse to be a circle at all times. You can use this class in
+any of your programs.
+</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.realizer.GenericEdgeRealizerDemo" source="GenericEdgeRealizerDemo.java">
+    <y:displayname>GenericEdgeRealizerDemo</y:displayname>
+    <y:description>
+  This class demonstrates usage of GenericEdgeRealizer which makes it easy
+  to provide customized edge rendering.
+  </y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.realizer.YLabelConfigurationDemo" source="YLabelConfigurationDemo.java">
+    <y:displayname>YLabelConfigurationDemo</y:displayname>
+    <y:description>
+  This class demonstrates the usage of YLabel's configuration feature which simplifies
+  customized label rendering.
+  </y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.realizer.NoteNodeRealizer" source="NoteNodeRealizer.java">
+    <y:displayname>NoteNodeRealizer</y:displayname>
+    <y:description>
+This class represents a custom NodeRealizer that can be used to
+represent a comment or note in an UML diagram.
+ </y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.realizer.ScrollingNodeRealizer" source="ScrollingNodeRealizer.java">
+    <y:displayname>ScrollingNodeRealizer</y:displayname>
+    <y:description>
+  Demonstrates how scrollbars inside a NodeRealizer can be implemented.
+  </y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.realizer.UMLClassNodeRealizer" source="UMLClassNodeRealizer.java">
+    <y:displayname>UMLClassNodeRealizer</y:displayname>
+    <y:description>
+This class represents a custom NodeRealizer that can be used to
+represent a class in an UML diagram. It supports classname, sterotype,
+constraint, attribute list, and method list.
+</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.realizer.BridgeEdgeRealizerDemo" source="BridgeEdgeRealizerDemo.java">
+    <y:displayname>BridgeEdgeRealizerDemo</y:displayname>
+    <y:description>
+  This class demonstrates how to implement a custom EdgeRealizer that shows bridges/gaps when
+    crossing other edges.
+  </y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.realizer.StateNodeRealizer" source="StateNodeRealizer.java" executable="false">
+    <y:displayname>StateNodeRealizer</y:displayname>
+    <y:description>
+This class represents a custom NodeRealizer with its own paint,
+copy, and serialization routines.
+</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.realizer.StateNodeRealizerDemo" source="StateNodeRealizerDemo.java">
+    <y:displayname>StateNodeRealizerDemo</y:displayname>
+    <y:description>
+This demo shows how the custom node realizer <a href="StateNodeRealizer.java">
+StateNodeRealizer</a> can be used within an application.
+</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.realizer.SwingRendererDemo" source="SwingRendererDemo.java">
+    <y:displayname>SwingRendererDemo</y:displayname>
+    <y:description>
+  This class shows how to customize GenericNodeRealizer to display JComponents as nodes.
+  </y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.realizer.RoundRectNodeRealizer" source="RoundRectNodeRealizer.java">
+    <y:displayname>RoundRectNodeRealizer</y:displayname>
+    <y:description>
+This class represents a custom ShapeNodeRealizer that represents a
+rounded rectangle with custom rounding radii. You can use this class in
+any of your programs.
+</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.realizer.VisualFeatureDemo" source="VisualFeatureDemo.java">
+    <y:displayname>VisualFeatureDemo</y:displayname>
+    <y:description>
+Presents the visual features that are available with node realizers and edge realizers.
+In particular, these include labels for both nodes and edges, decorations for edge
+end points, but also colors and shapes for both types of graph elements.
+</y:description>
+  </y:demo>
+</y:package>
+      <y:package javaname="demo.view.ports">
+  <y:displayname>ports</y:displayname>
+  <y:description>
+    <h1>yFiles Tutorial Ports Demo</h1>
+
+    <p>
+      The following files make up the tutorial ports demo. The demo shows how
+    </p>
+    <ul>
+      <li>nodes that have a fixed set of ports can be implemented</li>
+      <li>view modes can be written that allow edge connections to fixed ports
+          only</li>
+      <li>how nodes with fixed ports can be serialized in GML and YGF
+          format.</li>
+    </ul>
+    <p>
+      Directory <a href="resource">resource</a> contains sample graph files and images.
+    </p>
+  </y:description>
+
+  <y:demo javaname="demo.view.ports.PortsDemo" source="PortsDemo.java">
+    <y:displayname>PortsDemo</y:displayname>
+    <y:description>The main demo program in this tutorial.
+</y:description>
+  </y:demo>
+
+
+  <y:demo javaname="demo.view.ports.FixedPortsNodeRealizer" source="FixedPortsNodeRealizer.java" executable="false">
+    <y:displayname>FixedPortsNodeRealizer</y:displayname>
+    <y:description>A NodeRealizer implementation for nodes that have a fixed set of ports.
+      Used in the PortsDemo.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.view.ports.EncoderFactory" source="EncoderFactory.java" executable="false">
+    <y:displayname>EncoderFactory</y:displayname>
+    <y:description>Provides an extended GML encoder that can handle fixed port lists for nodes. Used in the PortsDemo.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.view.ports.ParserFactory" source="ParserFactory.java" executable="false">
+    <y:displayname>ParserFactory</y:displayname>
+    <y:description>Provides an extended GML parser that can handle fixed port lists for nodes. Used in the PortsDemo.
+</y:description>
+  </y:demo>
+</y:package>
+      <y:package javaname="demo.view.rendering">
+  <y:displayname>rendering</y:displayname>
+  <y:description>
+          <h1>yFiles Tutorial View Rendering Demos</h1>
+          <p>
+The following tutorial demos center around advanced rendering aspects of the graph view.
+It is shown how to use auxiliary rendering classes <code>Drawable</code>,
+<code>BackgroundRenderer</code>, and <code>BridgeCalculator</code>.
+</p>
+        </y:description>
+  <y:demo javaname="demo.view.rendering.BridgeDemo" source="BridgeDemo.java">
+    <y:displayname>BridgeDemo</y:displayname>
+    <y:description>
+   Demonstrates how to utilize <code>BridgeCalculator</code> to draw bridges or gaps
+   for crossing edges.
+</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.rendering.BackgroundDemo" source="BackgroundDemo.java">
+    <y:displayname>BackgroundDemo</y:displayname>
+    <y:description>Demonstrates how to use background images in the view.</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.rendering.DrawablesDemo" source="DrawablesDemo.java">
+    <y:displayname>DrawablesDemo</y:displayname>
+    <y:description>This demo shows how to add objects of type Drawable to 
+a Graph2DView and how to implement such a Drawable object.
+</y:description>
+  </y:demo>
+</y:package>
+      <y:package javaname="demo.view.advanced">
+  <y:displayname>advanced</y:displayname>
+  <y:description>
+          <h1>Advanced yFiles Tutorial View Demos</h1>
+          <p>
+The following tutorial view demos shows how to use advanced application
+features like drag and drop, print previewing, clipboard functionality, and 
+undoability.
+</p>
+        </y:description>
+  <y:demo javaname="demo.view.advanced.EdgeConnectorDemo" source="EdgeConnectorDemo.java">
+    <y:displayname>EdgeConnectorDemo</y:displayname>
+    <y:description>Shows how to mimic node-to-edge and edge-to-edge connections.
+    </y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.advanced.UndoRedoDemo" source="UndoRedoDemo.java">
+    <y:displayname>UndoRedoDemo</y:displayname>
+    <y:description> Shows how to use undo/redo functionality provided by yFiles.</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.advanced.ClipboardDemo" source="ClipboardDemo.java">
+    <y:displayname>ClipboardDemo</y:displayname>
+    <y:description> Demonstrates how to use the yFiles clipboard functionality to 
+cut, copy, and paste parts of a graph.</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.advanced.DragAndDropDemo" source="DragAndDropDemo.java">
+    <y:displayname>DragAndDropDemo</y:displayname>
+    <y:description> Shows how to drag different node types from a list and how to drop 
+them on a graph view.</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.advanced.InactiveLayerDemo" source="InactiveLayerDemo.java">
+    <y:displayname>InactiveLayerDemo</y:displayname>
+    <y:description>
+Demonstrates how to put a part of a graph in an inactive background layer of the view.
+</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.advanced.PrintPreviewDemo" source="PrintPreviewDemo.java">
+    <y:displayname>PrintPreviewDemo</y:displayname>
+    <y:description>
+    Demonstrates how to use the yFiles print preview panel and how to
+    add a title and a footer to a printed page or poster.
+  </y:description>
+  </y:demo>
+</y:package>
+      <y:package javaname="demo.view.viewmode">
+  <y:displayname>viewmode</y:displayname>
+  <y:description>
+          <h1>yFiles Tutorial ViewMode Demos</h1>
+          <p>
+The following tutorial demos describe how to use, customize, and extend
+diverse ViewMode classes. View modes provide the base functionality to handle
+mouse-based interaction that happens in a view.
+</p>
+        </y:description>
+
+  <y:demo javaname="demo.view.viewmode.MagnifierViewModeDemo" source="MagnifierViewModeDemo.java">
+  <y:displayname>MagnifierViewModeDemo</y:displayname>
+  <y:description>
+    Demonstrates how to use a magnifying glass effect to zoom view regions locally.
+  </y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.view.viewmode.MouseInputDemo" source="MouseInputDemo.java">
+    <y:displayname>MouseInputDemo</y:displayname>
+    <y:description>
+  Demonstrates how to add a custom drawable to the view that interacts
+  with the MouseInputMode that is registered with class EditMode by default.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.view.viewmode.PopupModeDemo" source="PopupModeDemo.java">
+    <y:displayname>PopupModeDemo</y:displayname>
+    <y:description>Demonstrates how to display context
+sensitive popup menus in the view and how to utilize
+the inlined label editor of the view.</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.viewmode.CreateEdgeModeDemo" source="CreateEdgeModeDemo.java">
+    <y:displayname>CreateEdgeModeDemo</y:displayname>
+    <y:description>
+Demonstrates how CreateEdgeMode can be customized to prevent 
+the creation of certain edges.
+<br/>
+This demo does only allow the creation of edges that start with nodes
+that have an even numbered label and 
+end with nodes that have uneven numbered labels.  
+</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.viewmode.OrthogonalEdgeViewModeDemo" source="OrthogonalEdgeViewModeDemo.java">
+    <y:displayname>OrthogonalEdgeViewModeDemo</y:displayname>
+    <y:description>Demonstrates how to customize EditMode in order to simulate orthogonal edges.
+      <br/>
+      This demo only allows to switch between the creation of orthogonal and polyline edges.
+      Toggling the button in the toolbar switches the type of newly created edges.
+      This affects the behavior of CreateEdgeMode and EditMode, as well as implicitly the minor modes
+      of EditMode.
+ </y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.viewmode.PortCreateEdgeModeDemo" source="PortCreateEdgeModeDemo.java">
+    <y:displayname>PortCreateEdgeModeDemo</y:displayname>
+    <y:description>
+  Demonstrates how CreateEdgeMode can be customized in order to
+  control automatic assignments of ports for edges.
+</y:description>
+  </y:demo>
+</y:package>
+      <y:package javaname="demo.view.hierarchy">
+  <y:displayname>hierarchy</y:displayname>
+  <y:description>
+    <h1>Hierarchy Demo Help</h1>
+    
+    <p>
+      Tutorial source code demo <a href="HierarchyDemo.java">HierarchyDemo</a> exhibits
+      the <b>Nested Graph Hierarchy</b> and the <b>Node Grouping</b> technologies
+      that are a modular part of the yFiles library.
+    </p>
+
+    <h2>Nested Graph Hierarchy</h2>
+    
+    <p>
+      <b>Nested Graph Hierarchy</b> basically provides the possibility to
+      put a graph inside a node which itself is contained in another
+      graph. 
+      A node that contains another graph is called an 
+      <b>anchor node</b> or a <b>folder node</b>
+      A tree-like hierarchy of graphs will be induced by a nesting
+      of graphs inside of other nodes. The toplevel graph of this hierarchy
+      of graphs is called the <b>root graph</b>. A graph that
+      contains a nested graph is called the <b>parent graph</b> of
+      that nested graph.
+    </p>
+
+    <h2>Node Grouping/Nesting</h2>
+    <p>
+    <b>Node Grouping</b> complements the <i>Nested Graph Hierarchy</i>
+    technology. It is a feature mainly provided by the viewer component. Nodes
+    of all kind can be put together in a group, that will be visualized by a
+    group node, which will be painted in the background of it's child nodes. 
+    In contrast to the <i>Nested Graph Hierarchy</i> technology, all nodes,
+    <i>group nodes</i> and their <i>child nodes</i> reside in the top level 
+    graph at the same time. However the view suggests that at all times, child
+    nodes lie within their respective parent group nodes. This makes it possible
+    to connect nodes of different logical hierarchy levels with each other
+    visually.
+    </p>
+
+    <p>
+    This application demonstrates the use of these two technologies. Since both 
+    of them can be used to describe a hierarchy of nodes, it is possible to
+    simply switch between the two different technologies. The actions that are
+    made accessible through this application can be used to edit the graph/node
+    hierarchy and the visual presentation of the hierarchy.
+    </p>
+
+    <center>
+      <table>
+	<caption align="bottom">A hierarchical graph with
+	  folder nodes, that contain graphs themselves.
+	</caption>
+	<tr>
+            <td>
+              <img src="resource/hierarchy1.jpg" alt="Sample Image"/>
+            </td>
+          </tr>
+      </table>
+    </center>
+
+    <p>
+      A noteworthy feature of the yFiles <b>Nested Graph Hierarchy</b> is
+      that one can move parts of a graph to another level within the
+      hierarchy of graphs. The edges connecting the part that has
+      been moved with the rest of the graph won't get lost though.
+      Original edges will be represented by edges connecting to the
+      node the subgraph is nested in. When unpacking the contents of a
+      node again, the original edges will be restored. Hence the
+      topology of a graph won't be destroyed by a sequence of
+      nesting operations.
+    </p>
+
+    <h2>Using HierarchyDemo</h2>
+
+    <p>
+      HierarchyDemo displays three views of a nested graph hierarchy.
+      On the left there is a classic tree view that shows the complete
+      graph hierarchy and all of the nodes contained within it.
+      The main view of HierarchyDemo displays the graph hierarchy
+      from a specific hierarchy level on downward.
+      The graphs that are nested within folder-nodes are displayed
+      as well. Group nodes look similar to folder-nodes but behave differently.
+      While it is possible to resize and move folder-nodes freely, the position
+      and size of a group-node is induced by the positions and sizes of the child
+      nodes that belong to the respective group. While a folder-node only
+      displays the child nodes it contains, the children of a group node still belong
+      to the graph structure and can be treated like normal nodes.
+      The third view of HierarchyDemo is located above the tree view.
+      It acts as an overview display of the graph that is visualized in
+      the main view.
+      </p>
+
+    <h2>The Main view</h2>
+
+    <p>
+      This section describes which hierarchy-related and grouping-related
+      operations are available within the main view.
+    </p>
+
+    <h3>The Popup Menu</h3>
+
+    <p>
+    By right clicking on the main view a popup menu will become
+    visible. The following menu items manipulate the graph hierarchy
+    or the view on the graph hierarchy:
+    </p>
+
+    <table>
+      <tr>
+        <th>Menu Item</th>
+        <th>Description</th>
+      </tr>
+
+      <tr>
+        <td>Group Selection</td>
+	    <td>
+	  Selected nodes will be grouped. This is done by creating a new group
+          node and making the selected nodes logically children of the newly
+          created group node. If no nodes are selected, an empty group node will
+          be created.
+	    </td>
+      </tr>
+      <tr>
+        <td>Ungroup Selection</td>
+	    <td>
+	  Selected nodes will be ungrouped, i.e. they will become child nodes of the
+          parent of their current parent node. Empty group nodes will not be
+          removed, but stay in the graph structure.
+	    </td>
+      </tr>
+
+      <tr>
+        <td>Close Group</td>
+	    <td>
+          This action can be invoked on selected group nodes. This will actually
+          switch the node from <i>Node Grouping</i> techology to <i>Nested
+          Graph</i> technology. This can be undone by invoking <i>Open
+          Folder</i> on the closed group node.
+	    </td>
+      </tr>
+
+      <tr>
+        <td>Create Folder</td>
+	    <td>
+	  Creates a new folder node containing an empty graph.
+	    </td>
+      </tr>
+      <tr>
+	    <td>Fold Selection</td>
+	    <td>
+	  This method folds the subgraph induced by the selected
+	  nodes inside a newly created folder node.
+	    </td>
+      </tr>
+      <tr>
+	    <td>Unfold Selection</td>
+	    <td>
+	  This method moves the subgraph induced by the selected
+	  nodes to the parent graph. This operation is only available
+	  if the graph displayed in the main view is not the root
+	  graph. Otherwise there would be no parent graph to unfold
+	  the selection to.
+	    </td>
+      </tr>
+      <tr>
+	    <td>Extract Folder</td>
+	    <td>
+	  Extract the contents of the folder-node on which the
+	  popup menu has been opended upon and remove the then
+	  empty folder.
+	    </td>
+      </tr>
+      <tr>
+	    <td>Open Folder</td>
+	    <td>
+          Opens the currently selected folder-node, thus transforming it
+          into a group-node. This is the reverse operation of <i>Close
+          Group</i>.
+	    </td>
+      </tr>
+    </table>
+
+    <h3>The Menu Bar</h3>
+
+    <table>
+      <tr>
+        <th>Menu Item</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+	    <td>
+              <a name="view_parent"/>Toolbar - View Parent</td>
+	    <td>
+	  View the parent graph of the currently display graph in
+	  the main view. This operation is only available
+	  if the graph displayed in the main view is not the root
+	  graph. Otherwise there would be no parent graph to unfold
+	  the selection to.
+	    </td>
+      </tr>
+      <tr>
+	    <td>Tools - Unfold All</td>
+	    <td>
+	      This method recursively unfolds the contents of all
+          folder nodes within the displayed graph.
+	    </td>
+      </tr>
+      <tr>
+	    <td>Tools - Fold Selection</td>
+	    <td>
+	  Creates for each connected component of the displayed graph
+	  a new folder-node. Each connected component will be moved
+	  from the displayed graph to the corresponding folder-node.
+	    </td>
+      </tr>
+      <tr>
+	    <td>Tools - Fold Subtrees</td>
+	    <td>
+	  This method finds tree-structures that are part of the
+	  displayed graph. For each of these trees a new
+	  folder-node will be created. Each tree will be
+	  moved from the displayed graph to the corrsponding folder node.
+	  Each nested tree will be automatically layed out using
+	  ballon layouter. The size-ratio of the folder-nodes will be
+	  automatically adjusted to the size of the nested trees.
+          <br/>
+          Please note that the code to automatically layout the subgraphs
+          is commented out by default in order to make this demo complie even if
+          only the yFiles viewer package is available.
+          Uncomment the code lines if the layout package is available to
+          activate the layouter.
+	    </td>
+      </tr>
+    </table>
+
+    <h3>Hierarchic View Mode</h3>
+    
+    <p>
+    There are some additional hierarchy-related operations
+    available on the main view that are triggered by mouse gestures.  
+    </p>
+    
+    <ul>
+      <li>
+	Dropping a selection of nodes onto a group-node while pressing the
+        "shift" modifier key
+	will make the selected nodes part of the group that is visualized by
+	the group-node.
+	The location of the mouse cursor must be on a group-node
+	when the mouse button gets released.
+      </li>
+      <li>
+	Pressing the "shift" modifier key before starting to drag a selection of
+        nodes will ungroup the selected nodes.
+      </li>
+      <li>
+	Double-clicking on a folder-node navigates into the folder.
+      </li>
+    </ul>
+    
+    <h2>The Tree View</h2>
+    
+    <p>
+    Double-clicking on a node that is displayed 
+    in the tree view transfers the focus of the main view
+    to that node.
+    Focusing a node in the main view involves two things: 
+    The nested graph that contains the focused node gets 
+    displayed in the main view. And the focused node will
+    be displayed in the center of the view.
+    </p>
+  </y:description>
+
+  <y:demo javaname="demo.view.hierarchy.HierarchyDemo" source="HierarchyDemo.java">
+    <y:displayname>HierarchyDemo</y:displayname>
+    <y:description/>
+  </y:demo>
+</y:package>
+      <y:package javaname="demo.view.anim">
+  <y:displayname>anim</y:displayname>
+  <y:description>
+      <h1>yFiles Tutorial Animation Demos</h1>
+      <p>
+        This package contains demos that center around the diverse animation effects that
+        can be applied to graph elements and to graph views.
+      </p>
+  </y:description>
+  <y:demo javaname="demo.view.anim.AnimationEffectsDemo" source="AnimationEffectsDemo.java">
+    <y:displayname>AnimationEffectsDemo</y:displayname>
+    <y:description>
+      Shows various animation effects for graph elements and graph views:
+      <ul>
+        <li>fade in and fade out for nodes and/or edges</li>
+        <li>resizing of nodes</li>
+        <li>edge traversals</li>
+        <li>animated loading and clearing of graph structures</li>
+        <li>animated zooming</li>
+        <li>animated camera movement</li>
+      </ul>
+    </y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.anim.FadeInFadeOutDemo" source="FadeInFadeOutDemo.java">
+    <y:displayname>FadeInFadeOutDemo</y:displayname>
+    <y:description>
+          
+          
+    Demonstrates how to animate node creation and deletion with a
+              specialized <code>GraphListener</code>.</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.anim.LabelAnimationDemo" source="LabelAnimationDemo.java">
+    <y:displayname>LabelAnimationDemo</y:displayname>
+    <y:description>
+          
+          
+    Demonstrates how to animate label movement along an edge.</y:description>
+  </y:demo>
+  <y:demo javaname="demo.view.anim.EaseInEaseOutDemo" source="EaseInEaseOutDemo.java">
+    <y:displayname>EaseInEaseOutDemo</y:displayname>
+    <y:description>
+          
+          
+    Demonstrates how to apply ease in and ease out effects to animations on the
+             basis of animated node movements.</y:description>
+  </y:demo>
+</y:package>
+    </y:package>
+    <y:package javaname="demo.module">
+  <y:displayname>module</y:displayname>
+  <y:description>
+    <h1>yFiles Tutorial Module Demos</h1>
+
+    <p>
+      The following source code samples demonstrate how to use and
+      write yFiles modules. 
+    </p>
+  </y:description>
+
+  <y:demo javaname="demo.module.LayoutModuleDemo" source="LayoutModuleDemo.java">
+    <y:displayname>LayoutModuleDemo</y:displayname>
+    <y:description>
+      
+
+    
+Demonstrates how layout modules can be added to the GUI of an application.
+A layout module is a layout algorithm combined
+with an option dialog, that allows to change the
+options of a layout algorithm interactively
+(only available if layout is part of distribution).
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.module.DiagonalLayoutModule" source="DiagonalLayoutModule.java" executable="false">
+    <y:displayname>DiagonalLayoutModule</y:displayname>
+    <y:description>
+      
+
+    
+This module represents an interactive configurator and launcher for the demo
+Layouter <a href="../layout/DiagonalLayouter.java">DiagonalLayouter</a>.
+Additionally, this class can be executed separately. In this case it shows off
+the internationalization and serialization features of the OptionHandler class.
+By launching the module class using a two letter language constant as an
+argument, the dialog will be internationalized in that language if the
+corresponding localized properties file is available. Try either 'en' for
+English or 'de' for German.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.module.CircularLayoutModule" source="CircularLayoutModule.java" executable="false">
+    <y:displayname>CircularLayoutModule</y:displayname>
+    <y:description>
+      
+
+    
+This module represents an interactive configurator and launcher for CircularLayouter. 
+It is similar to CircularLayoutModule found in the yFiles package y.module.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.module.HierarchicLayoutModule" source="HierarchicLayoutModule.java" executable="false">
+    <y:displayname>HierarchicLayoutModule</y:displayname>
+    <y:description>
+      
+
+    
+This module represents an interactive configurator and launcher for HierarchicLayouter
+and HierarchicGroupLayouter. 
+It is similar to HierarchicLayoutModule found in the yFiles package y.module.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.module.IncrementalHierarchicLayoutModule" source="IncrementalHierarchicLayoutModule.java" executable="false">
+    <y:displayname>IncrementalHierarchicLayoutModule</y:displayname>
+    <y:description>
+      
+
+    
+This module represents an interactive configurator and launcher for IncrementalHierarchicLayouter.
+It is similar to IncrementalHierarchicLayoutModule found in the yFiles package y.module.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.module.OrganicLayoutModule" source="OrganicLayoutModule.java" executable="false">
+    <y:displayname>OrganicLayoutModule</y:displayname>
+    <y:description>
+      
+
+    
+This module represents an interactive configurator and launcher for OrganicLayouter. 
+It is similar to OrganicLayoutModule found in the yFiles package y.module.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.module.OrthogonalLayoutModule" source="OrthogonalLayoutModule.java" executable="false">
+    <y:displayname>OrthogonalLayoutModule</y:displayname>
+    <y:description>
+      
+
+    
+This module represents an interactive configurator and launcher for OrthogonalLayouter 
+and OrthogonalGroupLayouter respectively. 
+It is similar to OrthogonalLayoutModule found in the yFiles package y.module.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.module.OrthogonalEdgeRouterModule" source="OrthogonalEdgeRouterModule.java" executable="false">
+
+    <y:displayname>OrthogonalEdgeRouterModule</y:displayname>
+    <y:description>
+      
+
+    
+This module represents an interactive configurator and launcher for 
+OrthogonalEdgeRouter. It is similar to 
+OrthogonalEdgeRouterModule found in the yFiles package y.module.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.module.TreeLayoutModule" source="TreeLayoutModule.java" executable="false">
+    <y:displayname>TreeLayoutModule</y:displayname>
+    <y:description>
+      
+
+    
+This module represents an interactive configurator and launcher for the
+different tree layouts in yFiles.
+It is similar to TreeLayoutModule found in the yFiles package y.module.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.module.LabelingModule" source="LabelingModule.java" executable="false">
+    <y:displayname>LabelingModule</y:displayname>
+    <y:description>
+      
+
+    
+This module represents an interactive configurator and launcher for the yFiles
+labeling algorithms. 
+It is similar to LabelingModule found in the yFiles package y.module.
+</y:description>
+  </y:demo>
+
+</y:package>
+    <y:package javaname="demo.base">
+  <y:displayname>base</y:displayname>
+  <y:description>
+    <h1>yFiles Tutorial Base Demos</h1>
+
+    <p>The following tutorial base demos are in this package:</p>
+  </y:description>
+
+  <y:demo javaname="demo.base.ListDemo" source="ListDemo.java">
+    <y:displayname>ListDemo</y:displayname>
+    <y:description>
+      Demonstrates how to use the yFiles linked list data type y.base.YList.
+    </y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.base.GraphDemo" source="GraphDemo.java">
+    <y:displayname>GraphDemo</y:displayname>
+    <y:description>
+      Demonstrates how to use the yFiles directed graph data type y.base.Graph.
+    </y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.base.NodeMapTest" source="NodeMapTest.java">
+    <y:displayname>NodeMapTest</y:displayname>
+    <y:description>
+      Demonstrates how to use node maps. The demo compares the performance of different 
+      mechanisms to bind extra data to the nodes of a graph.
+    </y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.base.ExtendedGraph" source="ExtendedGraph.java">
+    <y:displayname>ExtendedGraph</y:displayname>
+    <y:description>
+      This class represents an extended Graph object whose nodes
+      and edges carry additional data.
+    </y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.base.RandomGraphGenerator" source="RandomGraphGenerator.java">
+    <y:displayname>RandomGraphGenerator</y:displayname>
+    <y:description>
+      Implementation of a random graph generator. The size of the graph and other options
+      may be specified. These options influence the properties of the created graph.
+    </y:description>
+  </y:demo>
+
+</y:package>
+    <y:package javaname="demo.algo">
+  <y:displayname>algo</y:displayname>
+  <y:description>
+    <h1>yFiles Tutorial Graph Algorithm Demos</h1>
+
+    <p>
+      The following graph algorithmic demos are in this package:
+    </p>
+  </y:description>
+
+  <y:demo javaname="demo.algo.CyclesTest" source="CyclesTest.java">
+    <y:displayname>CyclesTest</y:displayname>
+    <y:description>
+      
+      
+    Tests consistency and performance of two different cycle detection mechanisms
+          provided by yFiles.</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.algo.GraphConnectivityTest" source="GraphConnectivityTest.java">
+    <y:displayname>GraphConnectivityTest</y:displayname>
+    <y:description>
+      
+      
+    Compares the performance and results of some graph connectivity algorithms available
+          in yFiles.</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.algo.SpanningTreeTest" source="SpanningTreeTest.java">
+    <y:displayname>SpanningTreeTest</y:displayname>
+    <y:description>
+      
+      
+    Compares the performance of minimum spanning tree algorithms available in yFiles.</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.algo.ShortestPathTest" source="ShortestPathTest.java">
+    <y:displayname>ShortestPathTest</y:displayname>
+    <y:description>
+      
+      
+    Compares the performance and results of some shortest path
+          algorithms available in yFiles.</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.algo.ShortestPathDemo" source="ShortestPathDemo.java">
+    <y:displayname>ShortestPathDemo</y:displayname>
+    <y:description>
+      
+      
+    Demonstrates how to use a Shortest Path Algorithm.</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.algo.TopologicalTest" source="TopologicalTest.java">
+    <y:displayname>TopologicalTest</y:displayname>
+    <y:description>
+      
+      
+    Compares different methods that calculate a topological
+          node ordering on the nodes of an acyclic graph.</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.algo.TopologicalSortDemo" source="TopologicalSortDemo.java">
+    <y:displayname>TopologicalSortDemo</y:displayname>
+    <y:description>
+      
+      
+    Demonstrates how to implement a topological sort algorithm
+          by using the generic depth-first search class y.algo.Dfs.</y:description>
+  </y:demo>
+
+</y:package>
+    <y:package javaname="demo.yed">
+  <y:displayname>yed</y:displayname>
+  <y:description>
+    <h1>yEd Graph Editor</h1>
+
+    <p>
+      yEd is a general purpose graph editor that can be used to
+      create, view, and layout diagrams. It exhibits many of the 
+      features found in yFiles.
+    </p>
+    <p>
+      The complete source code of this extensive demo is part of the yFiles Viewer and yFiles Complete 
+      Source Code editions.
+    </p>
+
+    <h2>Starting the Graph Editor from within an IDE</h2>
+
+    <p>
+      Add
+      <code>yed.jar</code>
+      to your classpath. Then simply run the yED main class
+      <code>yed.Launcher</code>
+      which is contained in this jar file.
+    </p>
+
+    <h2>Starting the Graph Editor from the command line</h2>
+
+    <p>
+      Open a console and change to <a href=".">this</a> directory, then type
+      <br/>
+      <br/>
+      <code>java -jar yed.jar</code>
+      <br/>
+      <br/>
+      Optionally, start the editor for a given graph in YGF or GML format:
+      <br/>
+      <br/>
+      <code>java -jar yed.jar &lt;graphfile&gt;</code>
+    </p>
+    <p>
+      There are some <b>graphs provided</b> in the subfolder <a href="graphs/README.html">graphs</a>.
+    </p>
+    <p> 
+      Under Windows you can simply double-click "yed.jar" in the Explorer
+      window. This may not work if executable .jar files do not have the proper 
+      file type associated.
+    </p>
+    <p>
+      Note that yEd does not need y.jar in its classpath. The library is already contained in
+      the executable .jar file. 
+    </p>
+
+    <h2>Command Line Arguments</h2>
+
+    <p>
+    <table>
+      <th>Argument</th>
+      <th>Description</th>
+      <tr>
+        <td>-classic</td>
+        <td>Starts yEd in classic mode, i.e., without the graph hierarchy feature
+            enabled. There will be no tree view of the nodes and no hierarchy menu entry.</td>
+      </tr>
+      <tr>
+        <td>&lt;graphfile&gt;</td>
+        <td>Loads and display the specified YGF or GML file on program startup.</td>
+      </tr>
+    </table>
+    </p>
+
+    <h2>Starting the Graph Editor Applet</h2>
+
+    <p>
+      The yEd graph editor can also be run as an applet in your browser
+      window. To start the graph editor applet load the file
+      <a href="applet.html">applet.html</a> with your browser.
+    </p>
+
+    <h2>Troubleshooting</h2> 
+
+    <p>
+      If you get an OutOfMemoryException try starting the application
+      with an additional argument:
+      <br/>
+      <code>java -Xmx256m -jar yed.jar</code>
+    </p>
+
+    <p class="copyright">Copyright yWorks GmbH, 2001-2005. All rights reserved.</p>
+  </y:description>
+</y:package>
+    <y:package javaname="demo.layout">
+  <y:displayname>layout</y:displayname>
+  <y:description>
+        <h1>yFiles Tutorial Layout Demos</h1>
+        <p>
+The following source code samples demonstrate how to write 
+custom layouters using the yFiles framework.
+See the <a href="../view/README.html">view</a> and <a href="../module/README.html">
+module</a> demos on how to use the yFiles layouter in applications.
+</p>
+      </y:description>
+
+  <y:demo javaname="demo.layout.DiagonalLayouter" source="DiagonalLayouter.java" executable="false">
+    <y:displayname>DiagonalLayouter</y:displayname>
+    <y:description>Implementation of a custom layouter that arranges the nodes
+on a diagonal line. Edges will be routed with exactly one bend.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.layout.LayoutWithoutAView" source="LayoutWithoutAView.java">
+    <y:displayname>LayoutWithoutAView</y:displayname>
+    <y:description>Shows how to use layout and labeling algorithms without using classes 
+that are only present in the yFiles Viewer distribution. 
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.layout.GroupingLayoutWithoutAView" source="GroupingLayoutWithoutAView.java">
+    <y:displayname>GroupingLayoutWithoutAView</y:displayname>
+    <y:description>Similar to <i>LayoutWithoutAView</i>, but demonstrates the use of node
+ and edge grouping in combination with the layout algorithms that are capable of
+interpreting these sophisticated features. This too can be achieved without the
+classes that are only present in the yFiles Viewer distribution. 
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.layout.IncrementalLayoutWithoutAView" source="IncrementalLayoutWithoutAView.java">
+    <y:displayname>IncrementalLayoutWithoutAView</y:displayname>
+    <y:description>Similar to <i>LayoutWithoutAView</i>, but demonstrates the use of the incremental
+layout capabilities provided by IncrementalHierarchicLayouter. This too can be achieved without the
+classes that are only present in the yFiles Viewer distribution. 
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.layout.SwimLaneLayoutWithoutAView" source="SwimLaneLayoutWithoutAView.java">
+    <y:displayname>SwimLaneLayoutWithoutAView</y:displayname>
+    <y:description>Similar to <i>LayoutWithoutAView</i>, but demonstrates the use of the swim lane
+layout capabilities of IncrementalHierarchicLayouter. This too can be achieved without the
+classes that are only present in the yFiles Viewer distribution. 
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.layout.RecursiveGroupLayouterDemo" source="RecursiveGroupLayouterDemo.java">
+    <y:displayname>RecursiveGroupLayouterDemo</y:displayname>
+    <y:description>Shows how to layout the contents of group nodes each with a different layout style.
+</y:description>
+  </y:demo>
+
+</y:package>
+    <y:package javaname="demo.obfuscation">
+  <y:displayname>obfuscation</y:displayname>
+  <y:description>
+    <h1>yFiles Obfuscation Demo</h1>
+
+    <p>
+      This demo shows how to obfuscate the yFiles classes before they can be
+      deployed as a part of an applet or application. Obfuscation changes 
+      class, field, and method names in a consistent but nonsensical way that does
+      not change the functionality of the software but makes decompiled Java code
+      harder to read and publicly available API description of the original code 
+      inapplicable to the obfuscated code.
+    </p>
+
+    <p>
+      In this demo the obfuscation process will be performed by the Ant-based obfuscator yGuard. 
+      In order to run yGuard it is required to have the freely available
+      deployment tool <a href="http://ant.apache.org">Ant</a> installed on your system.
+    </p>
+
+    <p>
+      The sample application used in this obfuscation demo is <a href="../view/hierarchy/README.html">
+      demo.view.hierarchy.HierarchyDemo</a>.
+    </p>
+
+    <p>
+      This demo contains the following files:
+      <table>
+        <tr>
+          <td>
+                <a href="build.xml">build.xml</a>
+              </td>
+          <td>The Ant build script used to obfuscate the application.</td>
+        </tr>
+        <tr>
+          <td>
+                <a href="yguard/README.html">yGuard</a>
+              </td>
+          <td>The yGuard obfuscaton task. The newest yGuard version can be freely obtained from 
+            the <a href="http://www.yworks.com/products/yguard">yGuard home page</a>.</td>
+        </tr>
+      </table>
+    </p>
+
+    <h2>Running the Demo</h2>
+    <p>
+      Open a console window and change to this directory.
+      Then enter "<tt>ant run</tt>". This will launch the obfuscated application.
+      Before the application will be run it first will be compiled, jarred, 
+      and obfuscated.
+    </p>
+    <p>
+      Enter "<tt>ant show</tt>" to open up a small browser that shows the name mapping
+      performed by the obfuscator.
+    </p>
+  </y:description>
+</y:package>
+    <y:package javaname="demo.io">
+  <y:displayname>io</y:displayname>
+  <y:description>
+        <h1>yFiles Tutorial I/O Demos</h1>
+        <p>
+The following demos show how to use, customize, and extend
+the graph input and output facilities provided by yFiles.
+</p>
+      </y:description>
+
+  <y:demo javaname="demo.io.SimpleGMLDemo" source="SimpleGMLDemo.java">
+    <y:displayname>SimpleGMLDemo</y:displayname>
+    <y:description>
+Shows how to read in a graph specified in GML file format.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.io.CustomGMLDemo" source="CustomGMLDemo.java">
+    <y:displayname>CustomGMLDemo</y:displayname>
+    <y:description>
+Demonstrates how to write encoders and parsers for a customized 
+GML graph format. 
+It is shown how to associate arbitrary attributes with nodes
+dynamically, encode them in GML and parse them back in. Additionally, the use
+of customized PopupModes and OptionHandlers is demonstrated briefly.
+<br/>
+Note that this demo makes use of the following classes: 
+<a href="CustomGMLFactory.java">demo.io.CustomGMLFactory</a>, 
+<a href="CustomNodeObjectEncoder.java">demo.io.CustomNodeObjectEncoder</a>, and 
+<a href="CustomNodeParser.java">demo.io.CustomNodeParser</a>. 
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.io.GraphFormatConverter" source="GraphFormatConverter.java" executable="false">
+    <y:displayname>GraphFormatConverter</y:displayname>
+    <y:description>This class implements a command line driven graph format converter. 
+Possible input formats are GML or YGF. Output formats are GML, YGF, GIF, and JPG. 
+Additionally, it is possible to write to the formats WMF, GraphML, ZIPGraphML, SVG, and SVGZ and 
+to read from the formats GraphML and ZIPGraphML in case the corresponding yFiles extension 
+packages are installed. The size of some output formats can be specified.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.io.ImageMapDemo" source="ImageMapDemo.java">
+    <y:displayname>ImageMapDemo</y:displayname>
+    <y:description>This class shows how to generate an image and a hyperlinked 
+HTML image map of a graph.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.io.TiledImageDemo" source="TiledImageDemo.java">
+    <y:displayname>TiledImageDemo</y:displayname>
+    <y:description>
+This class shows how to export a diagram to multiple image tiles. 
+Also, this demo shows how to add a title to the exported diagram.
+</y:description>
+  </y:demo>
+</y:package>
+    <y:package javaname="demo.option">
+  <y:displayname>option</y:displayname>
+  <y:description>
+        <h1>yFiles Tutorial OptionHandler Demos</h1>
+        <p>
+The following source code samples show how to use the features
+of the yFiles y.option package. Package y.option provides means to 
+quickly create property editors for items of diverse types.
+</p>
+      </y:description>
+
+  <y:demo javaname="demo.option.NodePropertyEditorDemo" source="NodePropertyEditorDemo.java">
+    <y:displayname>NodePropertyEditorDemo</y:displayname>
+    <y:description>
+Demonstrates how to create a node property editor for nodes. This demo makes use
+of the "value undefined" state of option items.
+</y:description>
+  </y:demo>
+
+  <y:demo javaname="demo.option.OptionHandlerDemo" source="OptionHandlerDemo.java">
+    <y:displayname>OptionHandlerDemo</y:displayname>
+    <y:description>
+Demonstrates how to create an OptionHandler whose values are 
+editable by multiple editor components, how to customize these editors, 
+and how to register listeners for <code>PropertyChange</code> events.
+</y:description>
+  </y:demo>
+
+</y:package>
+  </y:package>
+</y:content>

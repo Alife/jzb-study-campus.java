@@ -1,0 +1,35 @@
+<html>
+<head><title>yEd Graph Editor Applet</title></head>
+<body bgcolor="#f0f0f0">
+
+<center>
+
+<h1>yEd Graph Editor Applet</h1>
+
+<object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
+        WIDTH = 500 
+        HEIGHT = 300  
+        <param NAME = CODE     VALUE = yed.Applet >
+        <!-- yed codebase is yFiles top-level directory, so we can include y.jar --> 
+        <param NAME = CODEBASE VALUE = "../../.." >
+        <param NAME = ARCHIVE  VALUE = "src/demo/yed/yed.jar,lib/y.jar" >
+        <param NAME="type" VALUE="application/x-java-applet">
+        <param NAME="scriptable" VALUE="false">
+        <COMMENT>
+        <embed type="application/x-java-applet"
+               CODE = yed.Applet 
+               CODEBASE = "../../.."
+               ARCHIVE = "src/demo/yed/yed.jar,lib/y.jar"
+               WIDTH = 500
+               HEIGHT = 300
+               scriptable=false 
+               <noembed></COMMENT></noembed></embed>
+</object>
+
+</center>
+
+<br><br><br><br><HR>
+<center>Copyright yWorks GmbH, 2001-2005. All rights reserved<center>
+
+</body>
+</html>

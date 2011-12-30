@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow name="RcvUpdateFlow">
+
+    <state id="ConnectCable" type="AlertState">
+        <param name="title" value="Connect Cable" />
+        <param name="text" value="If the cable is already connected, disconnect it and wait until next screen" />
+        <param name="hasCancel" value="true" />
+        <tr ev="ok" st="waitConnection" />
+        <tr ev="cancel" st="finalCancel" />
+    </state>
+
+	<state id="waitConnection" class="com.jzb.blt.serial.WaitConnectionState">
+		<tr ev="ok" st="receiveData" />
+	</state>
+
+
+    <state id="receiveData" class="com.jzb.blt.serial.ReceiveDataState">
+        <param name="title" value="Receiving update"/>
+        <tr ev="ok" st="finalOK" />
+        <tr ev="cancel" st="finalCancel"/>
+    </state>
+
+    <state id="finalOK" class="com.jzb.blt.serial.CloseConnectionState" event="ok" />
+	<state id="finalCancel" type="FinalState" event="cancel" />
+	<state id="finalException" type="FinalState" event="exception" />
+
+    <globalTr ev="exception" st="finalException" />
+
+</flow>
