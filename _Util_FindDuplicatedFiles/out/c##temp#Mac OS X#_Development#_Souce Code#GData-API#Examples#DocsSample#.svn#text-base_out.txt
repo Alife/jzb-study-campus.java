@@ -1,0 +1,10 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\DocsSample\.svn\text-base\buildCopyScript.svn-base, 0404be75752aa81ce8630dcd31fa3474
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\DocsSample\.svn\text-base\buildStripHeaders.svn-base, ab1fbc26dd10da48f87c01a10cce488e
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\DocsSample\.svn\text-base\DocsSampleAppController.h.svn-base, ce3db203d20db40bd98181156a7feb8e
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\DocsSample\.svn\text-base\DocsSampleAppController.m.svn-base, 6c2816ce802a7264cd227e570a7eae10
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\DocsSample\.svn\text-base\DocsSampleWindowController.h.svn-base, 1c7d86dd93c3b4226bf5d7ef1a6e8bef
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\DocsSample\.svn\text-base\DocsSampleWindowController.m.svn-base, 9e60815962c980a7665d0d5c173080da
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\DocsSample\.svn\text-base\DocsSample_Prefix.pch.svn-base, 329d3c70582d64a509b3ed0136397ccc
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\DocsSample\.svn\text-base\Info.plist.svn-base, 472197737dc90f5d97de624bb2de02c4
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\DocsSample\.svn\text-base\main.m.svn-base, 6bcefaa80e39f0eadd4318a91fb043df
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\DocsSample\.svn\text-base\README.txt.svn-base, c4007d77ee9d02729a8c06c9e96687bd

@@ -1,0 +1,4 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\Mac\.svn\text-base\GTMOAuth2Framework-Info.plist.svn-base, 68122587340580fe3baff2a00be9787a
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\Mac\.svn\text-base\GTMOAuth2Window.xib.svn-base, c75358844cc339c41e246fb9a9905511
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\Mac\.svn\text-base\GTMOAuth2WindowController.h.svn-base, 4284397b920bf57f7a5064c064099f6c
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\Mac\.svn\text-base\GTMOAuth2WindowController.m.svn-base, 2f70c309b93eefa71f5c105a069d3a21

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Cajero</title>
+<link href="../css/CJ_estilos.css" rel="stylesheet" type="text/css" />
+<link href="../fonts/stylesheet.css" rel="stylesheet" type="text/css" />
+<link type="text/css" href="../webfontkit/stylesheet.css" rel="stylesheet" />
+
+
+<script type="text/javascript" src="../../JS_Bridge.js"></script>
+
+
+	
+<script type="text/javascript" src="../css/iepngfix_tilebg.js"></script>
+<script type="text/javascript" src="../js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="../js/jquery.mobile-1.0.min.js"></script>
+<script type="text/javascript" src="../js/Cajeros_js.js"></script>
+</head>
+
+<body onload="theAccController.activate(null,null)" onkeydown="javascript:theAccController.onkeydown(event);">
+
+    <div id="mainContainer">
+        <div id="cabecera">
+            <div class="logo">
+            </div>
+        </div>
+        <div id="bgtrans">
+        
+            <!-- ============================================================================ -->
+            <!-- ============ COMP. ETIQUETA ================================================ -->
+            <script>
+                var accesibleInfoText = "Enter your personal identification number using the keypad." + 
+                                        "When you have finished press the enter key. Cover the keypad while entering your pin." +
+                                        "The keypad is located approximately 3 feet off the ground and has 16 keys with three left columns arranged like a standard telephone keypad." +  
+                                        "The enter key is located to the right of the number 3 key and is embossed with the circle." + 
+                                        "If you make a mistake, press the clear key and enter your pin again." +
+                                        "The clear key is located to the right of the number 6 key and is embossed with a vertical line." +
+                                        "To exit/return card, press cancel. The cancel key is located to the right of the number 9 key and is embossed with an 'X'";
+                new AccesibleLabel(0, accesibleInfoText);
+            </script>
+            <!-- ············································································ -->
+
+            <div id="content">
+                <div id="col3">
+                    <div class="bloquetitu shadow">
+                        <h3>
+                            Welcome
+                        </h3>
+                        <h2>
+                            Enter Your PIN
+                        </h2>
+                    </div>
+                </div>
+                <div class=" uptitu shadow">
+                    <p class="titu20">
+                        <br>
+                        Cover the keypad while you enter your PIN
+                    </p>
+                </div>
+                <div class="mod-izq">
+                    <div class="bloque_form">
+                    
+                        <!-- ============================================================================ -->
+                        <!-- ============ COMP. INPUT PIN =============================================== -->
+                        <script>
+                            new AccesibleInputPIN(1);
+                        </script>
+                        <!-- ············································································ -->
+                        <input name="" type="password" maxlength="12" />
+                        
+                    </div>
+                </div>
+                <div class="mod-izq">
+                    <ul class="lista03">
+                        <!-- ============================================================================ -->
+                        <!-- ============ COMP. BOTON =================================================== -->
+                        <script>
+                            new AccesibleButton(null, 2, "mnu_opt_enter", "enter", null);
+                        </script>
+                        <!-- ············································································ -->
+                        <li>
+                            <a id="mnu_opt_enter" href="#" onClick="javascript:window.location='mainmenu.htm'" target="_self">
+                                <p class="relieve">
+                                    OK
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- footer -->
+            <div id="pie">
+                <div class="botonfin">
+                    <a href="00_language.htm" target="_self">
+                        <img src="../img/bot_changelanguage.png" width="216" height="52" />
+                    </a>
+                </div>
+                
+                
+                <!-- ============================================================================ -->
+                <!-- ============ COMP. BOTON =================================================== -->
+                <script>
+                    new AccesibleButton(null, 3, "mnu_opt_cancel", "cancel", "Exit and return card", null, "");
+                </script>
+                <!-- ············································································ -->
+                <div class="bloque_botonred">
+                    <a id="mnu_opt_cancel" class="botonred" href="exit.htm" target="_self">
+                        <p class="wrelieve">
+                            Exit
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

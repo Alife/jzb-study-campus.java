@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\XMLReader\XMLReader.h, f59b6cbf2ed8dffc3505aff4b7a67ad5
+c:\temp\Mac OS X\_Development\_Souce Code\XMLReader\XMLReader.m, 33586920faf79ba99fb7c2dd49c68e21

@@ -1,0 +1,12 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\BaseClasses\.svn\text-base\GDataEntryBase.h.svn-base, 0c5d1c691b40d7297677a3d85c149508
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\BaseClasses\.svn\text-base\GDataEntryBase.m.svn-base, 73603a7401b2dcbe9832022ce5222995
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\BaseClasses\.svn\text-base\GDataFeedBase.h.svn-base, 0b79faef7f26a1b91a15a9f2b1a017f9
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\BaseClasses\.svn\text-base\GDataFeedBase.m.svn-base, e992378d591259b679e9308dd4d0bd66
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\BaseClasses\.svn\text-base\GDataObject.h.svn-base, c51465fc9b1fd165b6ef8161d307faaa
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\BaseClasses\.svn\text-base\GDataObject.m.svn-base, 6da94719c7be2545618deffa425f2ccb
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\BaseClasses\.svn\text-base\GDataQuery.h.svn-base, e64e96e183e94350f933f2d14c24677b
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\BaseClasses\.svn\text-base\GDataQuery.m.svn-base, 4d263e2e5747e6aef4b38d1960045e17
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\BaseClasses\.svn\text-base\GDataServiceBase.h.svn-base, 03fd9fe576205ee75ace9fc6aa60e4eb
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\BaseClasses\.svn\text-base\GDataServiceBase.m.svn-base, 41d66c76ee8bf8c69462035e1c5dc347
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\BaseClasses\.svn\text-base\GDataServiceGoogle.h.svn-base, 3859fcc5eff36b80130dce3a43840bfa
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\BaseClasses\.svn\text-base\GDataServiceGoogle.m.svn-base, f76f75057b90e3db5cb6b039e303963b

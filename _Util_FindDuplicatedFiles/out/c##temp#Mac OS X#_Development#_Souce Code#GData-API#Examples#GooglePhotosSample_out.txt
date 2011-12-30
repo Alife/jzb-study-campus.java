@@ -1,0 +1,10 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\buildCopyScript, 0404be75752aa81ce8630dcd31fa3474
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\buildStripHeaders, ab1fbc26dd10da48f87c01a10cce488e
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\GooglePhotosSampleAppController.h, 1316a821ff7be591ce1a62392686ff2f
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\GooglePhotosSampleAppController.m, f8ec754a2953bb052b7b1559f186e635
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\GooglePhotosSampleWindowController.h, e51a14c4e10b54c0da0767def458179e
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\GooglePhotosSampleWindowController.m, 5752f43dbf744ffbf576b9ba11b04261
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\GooglePhotosSample_Prefix.pch, 329d3c70582d64a509b3ed0136397ccc
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\Info.plist, 9203c794571c8bfa9abd322c764067b4
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\main.m, 6bcefaa80e39f0eadd4318a91fb043df
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\README.txt, c4007d77ee9d02729a8c06c9e96687bd

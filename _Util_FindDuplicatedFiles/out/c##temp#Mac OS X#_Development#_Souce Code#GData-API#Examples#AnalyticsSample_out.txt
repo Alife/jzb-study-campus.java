@@ -1,0 +1,10 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\AnalyticsSample\AnalyticsSampleAppController.h, 30623c4f1be5e901c4c7e086f571038e
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\AnalyticsSample\AnalyticsSampleAppController.m, 838f12217b00f10652825ff164d440d4
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\AnalyticsSample\AnalyticsSampleWindowController.h, 74a60b6fcfccf2860da7f8a9c269b9cb
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\AnalyticsSample\AnalyticsSampleWindowController.m, 00c2d909d4df7799f64a5c29ace44132
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\AnalyticsSample\AnalyticsSample_Prefix.pch, e52775c3ed84f7f2a6202e2cd6991da6
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\AnalyticsSample\buildCopyScript, 0404be75752aa81ce8630dcd31fa3474
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\AnalyticsSample\buildStripHeaders, ab1fbc26dd10da48f87c01a10cce488e
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\AnalyticsSample\Info.plist, 4afc2725680908f8d6b497c110af2687
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\AnalyticsSample\main.m, b80a5576c2cd8708cc37886b656928be
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\AnalyticsSample\README.txt, edae82ef26bbb3e2ab12bc14f13cd3d0

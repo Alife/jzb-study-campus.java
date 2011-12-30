@@ -1,0 +1,251 @@
+/*
+ * Copyright (c) 2002-2008 Gargoyle Software Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ * 3. The end-user documentation included with the redistribution, if any, must
+ *    include the following acknowledgment:
+ *
+ *       "This product includes software developed by Gargoyle Software Inc.
+ *        (http://www.GargoyleSoftware.com/)."
+ *
+ *    Alternately, this acknowledgment may appear in the software itself, if
+ *    and wherever such third-party acknowledgments normally appear.
+ * 4. The name "Gargoyle Software" must not be used to endorse or promote
+ *    products derived from this software without prior written permission.
+ *    For written permission, please contact info@GargoyleSoftware.com.
+ * 5. Products derived from this software may not be called "HtmlUnit", nor may
+ *    "HtmlUnit" appear in their name, without prior written permission of
+ *    Gargoyle Software Inc.
+ *
+ * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES,
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+ * FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL GARGOYLE
+ * SOFTWARE INC. OR ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+ * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+package com.gargoylesoftware.htmlunit.javascript.host;
+
+import com.gargoylesoftware.htmlunit.javascript.SimpleScriptable;
+
+/**
+ * A JavaScript object for a Screen. Combines properties from both Mozilla's DOM
+ * and IE's DOM.
+ *
+ * @version $Revision: 2644 $
+ * @author <a href="mailto:mbowler@GargoyleSoftware.com">Mike Bowler</a>
+ * @author Daniel Gredler
+ * @author Chris Erskine
+ *
+ * @see <a href="http://msdn.microsoft.com/workshop/author/dhtml/reference/objects/obj_screen.asp">
+ * MSDN documentation</a>
+ * @see <a href="http://www.mozilla.org/docs/dom/domref/dom_window_ref.html">Mozilla documentation</a>
+ */
+public class Screen extends SimpleScriptable {
+
+    private static final long serialVersionUID = 7775024295042666245L;
+
+    private int left_;
+    private int top_;
+    private int width_;
+    private int height_;
+    private int colorDepth_;
+    private int bufferDepth_;
+    private int dpi_;
+    private boolean fontSmoothingEnabled_;
+    private int updateInterval_;
+
+    /**
+     * Create an instance. JavaScript objects must have a default constructor.
+     */
+    public Screen() {
+        left_ = 0;
+        top_ = 0;
+        width_ = 1024;
+        height_ = 768;
+        colorDepth_ = 24;
+        bufferDepth_ = 24;
+        dpi_ = 96;
+        fontSmoothingEnabled_ = true;
+        updateInterval_ = 0;
+    }
+
+    /**
+     * Returns the <tt>availHeight</tt> property.
+     * @return the <tt>availHeight</tt> property
+     */
+    public int jsxGet_availHeight() {
+        return height_;
+    }
+
+    /**
+     * Returns the <tt>availLeft</tt> property.
+     * @return the <tt>availLeft</tt> property
+     */
+    public int jsxGet_availLeft() {
+        return left_;
+    }
+
+    /**
+     * Returns the <tt>availTop</tt> property.
+     * @return the <tt>availTop</tt> property
+     */
+    public int jsxGet_availTop() {
+        return top_;
+    }
+
+    /**
+     * Returns the <tt>availWidth</tt> property.
+     * @return the <tt>availWidth</tt> property
+     */
+    public int jsxGet_availWidth() {
+        return width_;
+    }
+
+    /**
+     * Returns the <tt>bufferDepth</tt> property.
+     * @return the <tt>bufferDepth</tt> property
+     */
+    public int jsxGet_bufferDepth() {
+        return bufferDepth_;
+    }
+
+    /**
+     * Sets the <tt>bufferDepth</tt> property.
+     * @param bufferDepth the <tt>bufferDepth</tt> property
+     */
+    public void jsxSet_bufferDepth(final int bufferDepth) {
+        bufferDepth_ = bufferDepth;
+    }
+
+    /**
+     * Returns the <tt>colorDepth</tt> property.
+     * @return the <tt>colorDepth</tt> property
+     */
+    public int jsxGet_colorDepth() {
+        return colorDepth_;
+    }
+
+    /**
+     * Returns the <tt>deviceXDPI</tt> property.
+     * @return the <tt>deviceXDPI</tt> property
+     */
+    public int jsxGet_deviceXDPI() {
+        return dpi_;
+    }
+
+    /**
+     * Returns the <tt>deviceYDPI</tt> property.
+     * @return the <tt>deviceYDPI</tt> property
+     */
+    public int jsxGet_deviceYDPI() {
+        return dpi_;
+    }
+
+    /**
+     * Returns the <tt>fontSmoothingEnabled</tt> property.
+     * @return the <tt>fontSmoothingEnabled</tt> property
+     */
+    public boolean jsxGet_fontSmoothingEnabled() {
+        return fontSmoothingEnabled_;
+    }
+
+    /**
+     * Returns the <tt>height</tt> property.
+     * @return the <tt>height</tt> property
+     */
+    public int jsxGet_height() {
+        return height_;
+    }
+
+    /**
+     * Returns the <tt>left</tt> property.
+     * @return the <tt>left</tt> property
+     */
+    public int jsxGet_left() {
+        return left_;
+    }
+
+    /**
+     * Sets the <tt>left</tt> property.
+     * @param left the <tt>left</tt> property
+     */
+    public void jsxSet_left(final int left) {
+        left_ = left;
+    }
+
+    /**
+     * Returns the <tt>logicalXDPI</tt> property.
+     * @return the <tt>logicalXDPI</tt> property
+     */
+    public int jsxGet_logicalXDPI() {
+        return dpi_;
+    }
+
+    /**
+     * Returns the <tt>logicalYDPI</tt> property.
+     * @return the <tt>logicalYDPI</tt> property
+     */
+    public int jsxGet_logicalYDPI() {
+        return dpi_;
+    }
+
+    /**
+     * Returns the <tt>pixelDepth</tt> property.
+     * @return the <tt>pixelDepth</tt> property
+     */
+    public int jsxGet_pixelDepth() {
+        return colorDepth_;
+    }
+
+    /**
+     * Returns the <tt>top</tt> property.
+     * @return the <tt>top</tt> property
+     */
+    public int jsxGet_top() {
+        return top_;
+    }
+
+    /**
+     * Sets the <tt>top</tt> property.
+     * @param top the <tt>top</tt> property
+     */
+    public void jsxSet_top(final int top) {
+        top_ = top;
+    }
+
+    /**
+     * Returns the <tt>updateInterval</tt> property.
+     * @return the <tt>updateInterval</tt> property
+     */
+    public int jsxGet_updateInterval() {
+        return updateInterval_;
+    }
+
+    /**
+     * Sets the <tt>updateInterval</tt> property.
+     * @param updateInterval the <tt>updateInterval</tt> property
+     */
+    public void jsxSet_updateInterval(final int updateInterval) {
+        updateInterval_ = updateInterval;
+    }
+
+    /**
+     * Returns the <tt>width</tt> property.
+     * @return the <tt>width</tt> property
+     */
+    public int jsxGet_width() {
+        return width_;
+    }
+}

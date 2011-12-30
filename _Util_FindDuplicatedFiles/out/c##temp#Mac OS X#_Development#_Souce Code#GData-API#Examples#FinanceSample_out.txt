@@ -1,0 +1,10 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\FinanceSample\buildCopyScript, 0404be75752aa81ce8630dcd31fa3474
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\FinanceSample\buildStripHeaders, ab1fbc26dd10da48f87c01a10cce488e
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\FinanceSample\FinanceSampleAppController.h, d1b6b7bc7bb905a313b58787323de34b
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\FinanceSample\FinanceSampleAppController.m, 10ab7e6b2fa8b40e38d93a82d3e2451e
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\FinanceSample\FinanceSampleWindowController.h, 526ecd274cee8e2b743543ed0849e53f
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\FinanceSample\FinanceSampleWindowController.m, aeee9c97b2a2c836dd636e0a5f1588a3
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\FinanceSample\FinanceSample_Prefix.pch, e52775c3ed84f7f2a6202e2cd6991da6
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\FinanceSample\Info.plist, b0f86834539d7ca20354880f4d2698ce
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\FinanceSample\main.m, b7e25eb548f338808226215513f43d0f
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\FinanceSample\README.txt, edae82ef26bbb3e2ab12bc14f13cd3d0

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tasks>
+
+    <execAct actClass="com.jzb.flickr.act.GetFolderPhotosAct"
+             folderName="C:\TEMP\BullZip\PDF Printer" 
+             regExp=".*"
+             recursive="true"
+             >
+             <!-- excludedFoldersRegExp=".*Filtradas_NO.*" -->
+
+        <execAct actClass="com.jzb.flickr.act.UploadPhotoAct"
+                 photoFile="$item" 
+                 tags="uno, dos" folderAsTag="true" />
+
+    </execAct>
+    
+</tasks>

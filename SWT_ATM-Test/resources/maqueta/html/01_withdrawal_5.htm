@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Cajero</title>
+<link href="../css/CJ_estilos.css" rel="stylesheet" type="text/css" />
+<link href="../fonts/stylesheet.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" src="../../JS_Bridge.js"></script>
+
+
+<script type="text/javascript" src="../css/iepngfix_tilebg.js"></script>
+<script type="text/javascript" src="../js/jquery-1.7.1.js"></script>
+<script type="text/javascript">
+
+		// When the DOM is ready, initialize the scripts.
+		jQuery(function( $ ){
+
+			// Get a reference to the container.
+			var container = $( "#capilla" );
+			var mueve = $( "#cabecera" );
+
+			// Bind the link to toggle the slide.
+			$( "#sube" ).click(
+				function( event ){
+					// Prevent the default event.
+					event.preventDefault();
+
+					// Toggle the slide based on its current
+					// visibility.
+					if (container.is( ":visible" )){
+
+						// Hide - slide up.
+						container.slideUp( 800 );
+						mueve.slideDown( 800 );
+
+					} else {
+
+						// Show - slide down.
+						container.slideDown( 500 );
+						mueve.slideUp( 500 );
+					}
+				}
+			);
+		});
+	</script>
+
+</head>
+
+<body onload="theAccController.activate(null,null)" onkeydown="javascript:theAccController.onkeydown(event);">
+
+    <div id="mainContainer">
+        <div id="dentro">
+            <div id="cabecera">
+                <div class="logo">
+                </div>
+            </div>
+            <div id="bgtrans">
+                <!-- ============================================================================ -->
+                <!-- ============ COMP. CABECERA ================================================ -->
+                <script>
+                    var accesibleInfoText = "Select the type of receipt notification."; 
+                    new AccesibleLabel(0, accesibleInfoText);
+                </script>
+                <!-- ············································································ -->
+                
+                <div id="content">
+                    <div id="col3">
+                        <div class="bloquetituh shadow">
+                            <h3>
+                                Withdrawal
+                            </h3>
+                            <h2>
+                                Select a Type of Receipt Notification
+                            </h2>
+                        </div>
+                    </div>
+                    
+                    <!-- ============================================================================ -->
+                    <!-- ============ COMP. BOTONERA COMPUESTA ====================================== -->
+                    <script>
+                        var btnPanel = new AccesibleButtonPanel(1, "You have {0} choices:");
+                    </script>
+                    <!-- ············································································ -->
+                    <div class="bloque_botones_separated">
+                        <ul class="lista01">
+                            <!-- ============================================================================ -->
+                            <!-- ============ COMP. BOTON =================================================== -->
+                            <script>
+                                new AccesibleButton(btnPanel, 0, "mnu_opt_01", "01", "Print transaction's receipt");
+                            </script>
+                            <!-- ············································································ -->
+                            <li>
+                                <a id="mnu_opt_01" href="01_withdrawal_6.htm" target="_self">
+                                    <p class="relieve">
+                                        Print Receipt
+                                    </p>
+                                </a>
+                            </li>
+                            <!-- ============================================================================ -->
+
+                            <!-- ============================================================================ -->
+                            <!-- ============ COMP. BOTON =================================================== -->
+                            <script>
+                                new AccesibleButton(btnPanel, 1, "mnu_opt_02", "02", "No receipt");
+                            </script>
+                            <!-- ············································································ -->
+                            <li>
+                                <a id="mnu_opt_02" href="01_withdrawal_7.htm" target="_self">
+                                    <p class="relieve">
+                                        No Receipt
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="col3">
+                </div>
+                <div id="pie">
+                    <div class="botonfin">
+                        <a id="sube" href="#" target="_self">
+                            <img src="../img/bot_qbalance.png" width="217" height="53" />
+                        </a>
+                    </div>
+                    
+                    <!-- ============================================================================ -->
+                    <!-- ============ COMP. BOTON =================================================== -->
+                    <script>
+                        new AccesibleButton(null, 2, "mnu_opt_cancel", "cancel", "Exit and return card", "The cancel key is located to the right of the number 9 key and is embossed with an 'X'");
+                    </script>
+                    <!-- ············································································ -->
+                    <div class="bloque_botonred">
+                        <a id="mnu_opt_cancel" class="botonred" href="exit.htm" target="_self">
+                            <p class="wrelieve">
+                                Exit
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <!-- menu quick balance -->
+                <div id="capilla">
+                    <img src="../img/menuinfo.png" />
+                </div>
+                <!-- fin menu quick balance -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

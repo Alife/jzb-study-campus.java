@@ -1,0 +1,39 @@
+#include "nsISupports.idl"
+
+
+// AVISO: Los interfaces de tipo "API" NO PUEDEN tener atributos, sólo
+//        métodos. Ya que serán "envueltos" por la parte JS del puente
+//        en la página antes de ser retornados
+
+
+
+// ********************************************************************
+// Exception que se enviará en el callback caso de problemas al leer
+
+[scriptable, uuid(6fde3824-7665-11dc-8314-0800200c9a6C)]
+interface ICardReaderError : nsISupports {
+    readonly attribute string name;
+    readonly attribute string msg;
+};
+
+
+// ********************************************************************
+// Definición del callback utilizado para retornar la información
+//    Nota: El nombre del método DEBE ser "call" y 
+//          requiere el primer párametro aunque siempre se pasaría "null"
+
+[scriptable, uuid(6fde3824-7665-11dc-8314-0800200c9a6D)]
+interface ICardReaderCallBack : nsISupports {
+    void call(in string js_this, in string cardData, in ICardReaderError error);
+};
+
+// ********************************************************************
+// Funcionalidad del "CardReader" expuesta a las páginas
+[scriptable, uuid(6fde3824-7665-11dc-8314-0800200c9a69)]
+
+interface ICardReader : nsISupports {
+
+    boolean isReady();
+    void readCard(in ICardReaderCallBack callback, in string cardCode);
+};
+

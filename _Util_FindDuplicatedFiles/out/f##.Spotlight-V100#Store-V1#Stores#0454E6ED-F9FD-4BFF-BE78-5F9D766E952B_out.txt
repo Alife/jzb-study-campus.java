@@ -1,0 +1,62 @@
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\psid.db, 3475b7ff0baca61b54164843e734ce60
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\tmp.SnowLeopard, **UNKNOWN HASH**
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\indexState, 5c23b0c585d8590fbf3fa8ec994b6547
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\0.indexDirectory, b789a27baada763afcaaa26614d42329
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\0.indexCompactDirectory, 561e8e2c9204ee62e871845948b35a3b
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\0.indexArrays, 53ef1ec70a121954f0b27f57e6550275
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\0.indexHead, e8bf03dcb828f8dfdba74a5d6dfe1b80
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\0.shadowIndexHead, 80c8e5fba464647f118bc0225475d03e
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\0.indexIds, 992be89b1b47ca66fdc375e80825a2ad
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\0.indexGroups, 5ddfe60e2895d8738899155969cf133e
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\0.shadowIndexGroups, 5ddfe60e2895d8738899155969cf133e
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.1.indexDirectory, 4fb4671f3fef4b625ba5c3d0202b29d9
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.1.indexCompactDirectory, dc2e93632f6c9f5407602255103debe2
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\0.indexUpdates, 7e6857fcfbf3dac2f3a431ff00b6f594
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\0.indexPostings, a78048ef422e393dee14cfbc204263fd
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\0.indexPositions, 054a0b48b5aaff1f63f9f9cddcc688b8
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.1.indexArrays, c1857f44d23a9e1b3b3c1b3c5323261c
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.1.indexPositions, 48bb7051aaabc4ed4e39bd40390991a1
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.1.indexHead, 25a411103110f28c5f14fcfe6cb3ca19
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.1.shadowIndexHead, 25a411103110f28c5f14fcfe6cb3ca19
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.1.indexIds, 78cfa921f404afa87c4afcada5a8123d
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.1.indexGroups, e2519f795c9bca51add7436b601792a1
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.1.shadowIndexGroups, 2bc820ab2f1abd16f6b52065bb18cb09
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.1.indexPostings, 3ea4497f18ebb87ffb31fc6d9fc96c92
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\journalAttr.13, 59aa8fb447baa05f0349ca043c4bc3ae
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\store.db, a983e869594974de774cd5b903e8ba64
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\.store.db, f4cb169719c697779729e138394b0129
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\permStore, 17bb17e697b93e69365738b0b02a625b
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\journalLive, **UNKNOWN HASH**
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\journalExclusion, **UNKNOWN HASH**
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\journalSync, **UNKNOWN HASH**
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.indexDirectory, be17a43fa94fda3290455e69e910ae42
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.indexCompactDirectory, 40fa9935956c692b7a8f5bc0044e8ecf
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.indexArrays, 57dcca176bd59d10643f5b96d593bbd5
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.indexGroups, 88228c44acb32a9d67d200adfc9106d4
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.shadowIndexGroups, 53e0f9e230926c8fa946e76e40b78c84
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.indexPostings, a54d853ad625ef972077207a54fe0716
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.indexTermIds, 799c2255ac6ada3a3cca6b253affb888
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.shadowIndexArrays, 57dcca176bd59d10643f5b96d593bbd5
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.shadowIndexDirectory, 7182feb6c6c02fcaf0a231d7002fbaff
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.0.shadowIndexHead, 1f5a9a675ae53245370774046e77df96
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.shadowIndexTermIds, **UNKNOWN HASH**
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.indexPositionTable, 799c2255ac6ada3a3cca6b253affb888
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.indexHead, 02b422e69025c3a8cebde4e03b1bb939
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.indexIds, 75a5f5e571991100c7318c6a421cf816
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\store.updates, b9a82dd7e218e02c2b8daceb29c03850
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\shutdown_time, 5272fcdf61e0051ab2aa3bcab6044560
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.0.indexDirectory, 433aa1bd2759dd127fbfc520a80d7b8b
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.0.indexCompactDirectory, d61930add354874b632fede671062aec
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.shadowIndexCompactDirectory, dc2e93632f6c9f5407602255103debe2
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.shadowIndexHead, 5a16f4d6512c010dbbaeecfeb52788f8
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.indexUpdates, af4e529115865fc1133beeb0f44cf57b
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.indexPositions, a54d853ad625ef972077207a54fe0716
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.2.shadowIndexPositionTable, **UNKNOWN HASH**
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.0.indexArrays, 9f3e73a4db9c9e18a15ec0062540a6dd
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.0.indexHead, 94f25dc2793a86bc3bab465da15bf28c
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.0.indexIds, 60dcd34eabae3bf32261704233ca6f73
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.0.indexGroups, 88f0d588daf510364edf646827958aea
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.0.shadowIndexGroups, 3addef35c8b95b9d3dcb52c560189652
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.0.indexUpdates, 7e6857fcfbf3dac2f3a431ff00b6f594
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.0.indexPostings, 7ce478608d340d69b0e446c904269bfa
+f:\.Spotlight-V100\Store-V1\Stores\0454E6ED-F9FD-4BFF-BE78-5F9D766E952B\live.0.indexPositions, 97c8fcd61cbc9539666489bfed333844

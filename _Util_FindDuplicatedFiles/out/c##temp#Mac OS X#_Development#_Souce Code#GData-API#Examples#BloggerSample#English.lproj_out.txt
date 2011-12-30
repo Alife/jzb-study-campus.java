@@ -1,0 +1,3 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BloggerSample\English.lproj\BloggerSampleWindow.xib, f06fb8c3284f138a2e6164eb4accdc8a
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BloggerSample\English.lproj\InfoPlist.strings, c353ca72beb85566bc025a0254758505
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BloggerSample\English.lproj\MainMenu.xib, ec3bc263244def3cd412ceb358c247c4

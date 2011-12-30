@@ -1,0 +1,2 @@
+f:\.fseventsd\fseventsd-uuid, 4e6b22583db19f53489a39250afb4326
+f:\.fseventsd\000000001f5c27e2, a37d03fdbff47449b699b546767329e4

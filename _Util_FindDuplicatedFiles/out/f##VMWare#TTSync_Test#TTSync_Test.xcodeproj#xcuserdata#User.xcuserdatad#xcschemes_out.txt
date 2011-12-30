@@ -1,0 +1,2 @@
+f:\VMWare\TTSync_Test\TTSync_Test.xcodeproj\xcuserdata\User.xcuserdatad\xcschemes\TTSync_Test.xcscheme, 2846eb486be1c37fca7f212d063f9741
+f:\VMWare\TTSync_Test\TTSync_Test.xcodeproj\xcuserdata\User.xcuserdatad\xcschemes\xcschememanagement.plist, 371c4361bd35e993436f18d09289aacf

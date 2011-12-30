@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Cajero</title>
+<link href="../css/CJ_estilos.css" rel="stylesheet" type="text/css" />
+<link href="../fonts/stylesheet.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" src="../../JS_Bridge.js"></script>
+
+
+<script type="text/javascript" src="../css/iepngfix_tilebg.js"></script>
+</head>
+
+<body onload="theAccController.activate(null,null)" onkeydown="javascript:theAccController.onkeydown(event);">
+
+    <div id="mainContainer">
+        <div id="cabecera">
+            <div class="logo">
+            </div>
+        </div>
+            <div id="bgtrans">
+
+            <!-- ============================================================================ -->
+            <!-- ============ COMP. CABECERA ================================================ -->
+            <script>
+                var accesibleInfoText = "Would you like another transaction?"; 
+                new AccesibleLabel(0, accesibleInfoText);
+            </script>
+            <!-- ············································································ -->
+            <div id="content">
+                <div id="col3">
+                    <div class="bloquetituh shadow">
+                        <h3>
+                            &nbsp;
+                        </h3>
+                        <h2>
+                            Would you like another transaction?
+                        </h2>
+                    </div>
+                </div>
+                
+                
+                <!-- ============================================================================ -->
+                <!-- ============ COMP. BOTONERA COMPUESTA ====================================== -->
+                <script>
+                    var btnPanel = new AccesibleButtonPanel(1, "You have {0} choices:");
+                </script>
+                <!-- ············································································ -->
+                <div class="bloque_botones_separated">
+                    <ul class="lista01">
+                        <!-- ============================================================================ -->
+                        <!-- ============ COMP. BOTON =================================================== -->
+                        <script>
+                            new AccesibleButton(btnPanel, 0, "mnu_opt_01", "01", "YES");
+                        </script>
+                        <!-- ············································································ -->
+                        <li>
+                            <a id="mnu_opt_01" href="mainmenu.htm" target="_self">
+                                <p class="relieve">
+                                    Yes
+                                </p>
+                            </a>
+                        </li>
+                        <!-- ============================================================================ -->
+
+                        <!-- ============================================================================ -->
+                        <!-- ============ COMP. BOTON =================================================== -->
+                        <script>
+                            new AccesibleButton(btnPanel, 1, "mnu_opt_02", "02", "NO");
+                        </script>
+                        <!-- ············································································ -->
+                        <li>
+                            <a id="mnu_opt_02" href="exit.htm" target="_self">
+                                <p class="relieve">
+                                    No
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

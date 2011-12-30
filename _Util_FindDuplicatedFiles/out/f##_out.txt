@@ -1,0 +1,9 @@
+f:\._.Trashes, e38302682fcf188a139dffca5fffb707
+f:\._TO_BACKUP, 0497f26848cfd82666bef6dae6207e3e
+f:\._.TemporaryItems, a1b0df3332ac8a09712267aa89d00f76
+f:\._AppleACPIBatteryManager.kext, 4952185d88e05b0edabf9fb6a9e11b9a
+f:\eclipse-SDK-3.6.2-macosx-cocoa.tar.gz, 15104bfcc93bf4988be6c82caaa6c3ea
+f:\eclipse-SDK-3.6.2-macosx-cocoa-x86_64.tar.gz, 72f7189e0fd9dc5ac44e28ccc1cd4432
+f:\JavaForMacOSX10.6Update5.dmg, d2f0f9af85b9078eda0f5dec99e3c39c
+f:\x3100_x86_64.zip, 43bd155400cfae899e97dc12874d732f
+f:\GMAX3100Drivers.zip, dd4181e98740c8ef094bc5339d8e5118

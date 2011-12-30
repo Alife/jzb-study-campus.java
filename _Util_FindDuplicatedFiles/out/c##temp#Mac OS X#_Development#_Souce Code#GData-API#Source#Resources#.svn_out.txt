@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Resources\.svn\all-wcprops, 4299da64aa95c32a1d2b6c9435614d0a
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Resources\.svn\entries, 529644ddb765bc355f6ce26a693f7d9d

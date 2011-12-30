@@ -1,0 +1,6 @@
+#Java2Script Configuration
+#Wed Aug 24 11:23:20 CEST 2011
+j2s.resources.list=../../../JZarzuela/Java/eclipse-helios-SDK/dropins/J2S/eclipse/plugins/net.sf.j2s.lib_2.0.0/j2slib/java.runtime.j2x,bin/swing2swt/layout/BorderLayout.js,bin/swing2swt/layout/AWTLayout.js,bin/com/swtdesigner/SWTResourceManager.js,bin/com/jzb/swt/j2s/TestWnd.js
+j2s.abandoned.resources.list=
+j2s.output.path=bin
+j2s.compiler.status=enable

@@ -1,0 +1,4 @@
+c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSync_iPhone\src-views\views\settings\SearchTTInst_View.mxml, 0af847a2f33c96e2447a8829690622e3
+c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSync_iPhone\src-views\views\settings\Settings_View.mxml, 1b73b0e678acfcb98649fe2a7ed00712
+c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSync_iPhone\src-views\views\settings\UpdateGMaps_View.mxml, f850a953c3686125dae70e77211e95f8
+c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSync_iPhone\src-views\views\settings\UserCredentials_View.mxml, ed16c1216cfc0cd7c8d94d84426fcb71

@@ -1,0 +1,10 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Networking\.svn\text-base\GDataAuthenticationFetcher.h.svn-base, e60cce387703be0429f186a53054ea77
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Networking\.svn\text-base\GDataAuthenticationFetcher.m.svn-base, 18a56169d3c6a7ac03074c345a37d659
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Networking\.svn\text-base\GDataGatherInputStream.h.svn-base, 4209f7717c88c1444282f6982cdf3180
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Networking\.svn\text-base\GDataGatherInputStream.m.svn-base, 79f8f7cf2f7adbf01851e062e19b7ed3
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Networking\.svn\text-base\GDataMIMEDocument.h.svn-base, 0e2eb435c4fce21d62c2503c88897d49
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Networking\.svn\text-base\GDataMIMEDocument.m.svn-base, 7ccd81df8c72247bc86cbc688b830c3f
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Networking\.svn\text-base\GDataProgressMonitorInputStream.h.svn-base, 30a68caa6f547ffce911432406c341dd
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Networking\.svn\text-base\GDataProgressMonitorInputStream.m.svn-base, f6b471e9f7f511d7500ac82ae57fa0bf
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Networking\.svn\text-base\GDataServerError.h.svn-base, b84130bfb61d98cf9ec027859cd37ef4
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Networking\.svn\text-base\GDataServerError.m.svn-base, 0c5af21bbc4e4ae8f7b9bc7803d1fe76

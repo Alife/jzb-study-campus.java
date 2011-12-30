@@ -1,0 +1,104 @@
+		com.google.Translate	 <vacio>	 1.1.0.1360	  <vacio> 	yes	  <vacio> 			
+		AVPlayer.eplayworks.com	 AVPlayer (???? ???? ???? ????)	1.401	 2.670,00   	no	 2.670,00   	0		
+		com.tomtom.North America	 TomTom N America P	 1.6	 1.600,00   	yes	 1.600,00   	0		
+		com.chairentertainment.birthright	 Infinity Blade	 7630.0	 510,53   	yes	 510,53   	0		
+		com.miniclip.Fragger	 Fragger	149	 308,31   	yes	 308,31   	0		
+		com.gamehive.AntrimEscFullEng	 Antrim Escape I	 3.0	 135,95   	yes	 135,95   	0		
+		com.touchfoo.Soosiz	 Soosiz	 1.3	 101,62   	yes	 101,62   	0		
+		com.tigerstylegames.spider	 Spider: The Secret of Bryce Manor	 1.3	 97,60   	yes	 97,60   	0		
+		com.reality-twist.daWindci	 daWindci	 1.1	 74,89   	yes	 74,89   	0		
+		com.slovoed.SlovoEd-Classic-Italian-Spanish	 SlovoEd Classic Italian <-> Spanish Dictionary	 2.30	 68,05   	yes	 68,05   	0		
+		com.lonelyplanet.cityguide.newyork	 New York City Guide - Lonely Planet	 2.3.1	 61,42   	yes	 61,42   	0		
+		com.bigfishgames.bcasf	 Big City Adventure - San Francisco	 1.0	 53,49   	yes	 53,49   	0		
+		com.lonelyplanet.cityguide.sanfrancisco1	 San Francisco Travel Guide - Lonely Planet	 2.2.9.1	 53,23   	yes	 53,23   	0		
+		com.ensenasoft.backgammondeluxe	 Backgammon Deluxe	 1.0.4	 39,96   	yes	 39,96   	0		
+		com.lonelyplanet.cityguide.boston	 Boston Travel Guide – Lonely Planet	 2.2.9	 38,04   	yes	 38,04   	0		
+		com.lonelyplanet.cityguide.lasvegas	 Las Vegas Travel Guide – Lonely Planet	 2.2.9	 29,65   	yes	 29,65   	0		
+		com.booking.BookingApp	 Booking.com Reservas de hotel en más de 135.000 hoteles	 3.3	 28,90   	yes	 28,90   	0		
+		com.baffledbytravel.guide.newyork	 New York: The Best of New York by Baffled By Travel, 2010/2011 Edition	 1.5.2	 27,65   	yes	 27,65   	0		
+		com.spokko.blocksPremium	 Blocks Mania Premium	 1.6.1	 26,73   	yes	 26,73   	0		
+		com.orange.uk.co.lambis	 Lambi Islands	 2.0	 26,17   	yes	 26,17   	0		
+		com.zenbrains.letris	 Letris: el juego de palabras	 2.1	 25,11   	yes	 25,11   	0		
+		com.chillingo.cuttherope	 Cut the Rope	 1.3	 23,55   	yes	 23,55   	0		
+		com.ensenasoft.mahjongdeluxe	 Mahjong Deluxe	 1.0.7	 23,06   	yes	 23,06   	0		
+		com.FDGMobileGamesGbR.RagdollCannon	 PHYSICS GAMEBOX	 1.2	 22,52   	yes	 22,52   	0		
+		com.FedericoKalayjian.Smoody	 Smoody	 1.1	 21,91   	yes	 21,91   	0		
+		se.codify.labyrinth	 Labyrinth	 1.9.0	 21,69   	yes	 21,69   	0		
+		com.ngmoco.Topple	 Topple	 1.9.2	 20,75   	yes	 20,75   	0		
+		com.spokko.TikiPremium	 Tiki Totems Premium	 1.5.3	 20,75   	yes	 20,75   	0		
+		com.chillingo.tokitori	 Toki Tori	 1.6.1	 15,16   	yes	 15,16   	0		
+		H2P7T67KN7.HaslupToobzFree	 Toobz-Free	 1.6.3	 15,10   	yes	 15,10   	0		
+		com.google.b612	 Google Earth	 3.2.0	 14,60   	yes	 14,60   	0		
+		com.ultralingua.iphone.collins-de-en	 Übersetzungswörterbuch Deutsch-Englisch Collins Pro	 1.4.1	 13,11   	yes	 13,11   	0		
+		com.google.GoogleMobile	 Búsqueda de Google	 0.8.2.6553	 11,94   	yes	 11,94   	0		
+		com.ihandysoft.carpenter.level	 Nivelador iHandy	 1.55	 11,81   	yes	 11,81   	0		
+		com.getdropbox.Dropbox	 Dropbox	 1.4.2	 11,37   	yes	 11,37   	0		
+		com.utopiangames.RedBalls	 Red Ball Of Goo	 1.1	 11,01   	yes	 11,01   	0		
+		com.springpadit.springpad	 Springpad	 2.2.1	 10,70   	yes	 10,70   	0		
+		uk.co.mxdata.NewYorkSubwayMap	 New York Subway Map	 2.1.37	 10,45   	yes	 10,45   	0		
+		com.spotify.client	 Spotify	41300037	 9,90   	yes	 9,90   	0		
+		com.donutgames.cowsinspace	 Cows In Space	 1.11	 8,12   	yes	 8,12   	0		
+		es.andressedano.definitio	 Definitio - Diccionario español	 1.04	 7,75   	yes	 7,75   	0		
+		com.donutgames.catphysics	 Cat Physics	 1.11	 7,59   	yes	 7,59   	0		
+		com.icsmobile.freeappaday.gold	 The FreeAppADay.com Official App - GOLD Edition	 1.0.4	 6,11   	yes	 6,11   	0		
+		com.soundsbroken.gogodocs	 gogoDocs Google Docs™ Reader	 1.1.3	 6,11   	yes	 6,11   	0		
+		com.the-cocktail.telepizza	 Telepizza	 1.2.1	 6,00   	yes	 6,00   	0		
+		es.leafsoft.cineol	 CINeol	 1.0.3	 5,68   	yes	 5,68   	0		
+		br.com.masterblaster.ForcaSpanish	 El Mejor Ahorcado	 3.0	 5,55   	yes	 5,55   	0		
+		com.lightroom.godocspro	 GoDocs for iPad/iPhone (Google Docs™ full support)	 2.7.1	 5,33   	yes	 5,33   	0		
+		net.mundue.JawBreaker	 reMovem (free)	53	 5,03   	yes	 5,03   	0		
+		3ZQPY867UX.MetroMadrid	 Metro Madrid	 3.3	 4,68   	yes	 4,68   	0		
+		com.inmethod.AirVideo	 Air Video - Watch your videos anywhere!	 2.4.8	 2,81   	yes	 2,81   	0		
+		com.willflow.ted	 TED Mobile	 1.8	 2,81   	yes	 2,81   	0		
+		ru.nootek.simplegtalk	 GTalk+ (Chat for Google Talk)	 1.4.1	 2,64   	yes	 2,64   	0		
+		com.xe.XECurrency	 XE Currency	 1.3.3	 2,43   	yes	 2,43   	0		
+		com.softwareandina.ReLiSimpleShoppingLists	 ReLiSimple Listas de Compras	 1.4.2	 1,83   	yes	 1,83   	0		
+		com.acorntic.infotrafico.01	 InfoTrafico	 1.3	 1,80   	yes	 1,80   	0		
+		3ZQPY867UX.iCamMadrid	 iCam Madrid	 3.2	 1,67   	yes	 1,67   	0		
+		dk.mochasoft.rdp	 Remote Desktop - RDP	 2.7	 1,22   	yes	 1,22   	0		
+		com.tst.Hit-FM	 Hit FM	 1.2	 0,91   	yes	 0,91   	0		
+		com.kinevia.MetrO	 MetrO	 0.9.7	 0,47   	yes	 0,47   	0		
+		com.tomtom.Europe	 TomTom Europe	 1.6	 1.960,00   	no	 -     	1960		
+		com.tomtom.France	 TomTom France	 1.6	 547,26   	no	 -     	547,26		
+		com.tomtom.Iberia	 TomTom Iberia	 1.6	 484,47   	no	 -     	484,47		
+		com.kiloo.frisbeeforever	 Frisbee® Forever	 1.1.1	 121,40   	no	 -     	121,4		
+		com.gamerizon.chopchopcaveman	 Chop Chop Caveman	 1.7	 72,90   	no	 -     	72,9		
+		com.softalkltd.MemoryStick	 File Sharing (Ver, compartir y almacenar documentos)	 4.0	 69,04   	no	 -     	69,04		
+		com.spacesofplay.spiritsiphone	 Spirits	 1.1	 46,17   	no	 -     	46,17		
+		com.ppclink.lexisgoo	 Lexisgoo English Dictionary & Thesaurus	 4.5	 39,88   	no	 -     	39,88		
+		com.clickgamer.AngryBirds	 Angry Birds	 1.5.3	 39,06   	no	 -     	39,06		
+		com.sharp.DropTheChicken	 Drop The Chicken	 1.01	 38,85   	no	 -     	38,85		
+		com.goodiware.GoodReaderLite	 GoodReader Lite for iPhone	 2.8.3	 36,84   	no	 -     	36,84		
+		com.mobisystems.CambridgeAcademicContentA	 Audio Cambridge Academic Content Dictionary	 3.01	 34,71   	no	 -     	34,71		
+		uk.co.bigpixelstudios.landapanda	 Land-a Panda	 1.1	 23,11   	no	 -     	23,11		
+		com.ibucle.ipochagc	 iPocha GC	 1.1	 22,54   	no	 -     	22,54		
+		com.kabukivision.notemaster	 NoteMaster - Notes with images, synced with Google Docs™	 4.1.1	 21,26   	no	 -     	21,26		
+		ch.reeder	 Reeder	 2.3.1	 17,09   	no	 -     	17,09		
+		com.andreasilliger.tinywings	 Tiny Wings	 1.1.0	 16,68   	no	 -     	16,68		
+		com.playfulart.Geared2	 Geared 2!	 1.0	 16,55   	no	 -     	16,55		
+		com.jonkean.EmojiFree	 Emoji Free! - emoticones gratis	 2.0	 16,19   	no	 -     	16,19		
+		com.appgeneration.crazyformula	 Crazy Formula	 2.0	 15,67   	no	 -     	15,67		
+		us.digitalsmoke.solitairecityclassic	 Solitaire City™ Classic	 2.02	 14,88   	no	 -     	14,88		
+		com.shazam.Shazam	 Shazam	404	 14,57   	no	 -     	14,57		
+		com.ea.scrabblebv	 Scrabble®	 1.6.23	 13,45   	no	 -     	13,45		
+		com.popcap.bejeweled2	 Bejeweled 2 + Blitz	115	 13,11   	no	 -     	13,11		
+		com.yourcompany.TestWithCustomTabs	 AccuWeather	 4.2	 9,73   	no	 -     	9,73		
+		com.mobilityware.BlackJackFree	 Blackjack Free	 3.1.5	 9,57   	no	 -     	9,57		
+		com.mikkokankainen.Marple	 Marple	 2.1.9	 9,21   	no	 -     	9,21		
+		com.yahoo.flickr	 Flickr	 1.3.0	 8,92   	no	 -     	8,92		
+		nl.alwintroost.touchrummy	 Touch Rummy	 2.2.1	 6,09   	no	 -     	6,09		
+		ca.jubilo.ipadflickr	 FlickStackr	 1.8.5	 5,41   	no	 -     	5,41		
+		com.tdc.ireversi	 Reversi HD Pro	 1.1	 5,06   	no	 -     	5,06		
+		com.donutgames.spikeysbouncearound	 Spikey's Bounce Around	 1.13	 4,56   	no	 -     	4,56		
+		com.tweakersoft.AroundMe	 AroundMe	 4.2.1	 3,92   	no	 -     	3,92		
+		com.aol.shoutcast.mobile	 SHOUTcast Radio	 1.3.2.1	 3,73   	no	 -     	3,73		
+		com.experienceon.bliquo	 bliquo	 2.4.1	 3,44   	no	 -     	3,44		
+		es.eltiempo.eltiempo	 Eltiempo.es	 1.3	 3,20   	no	 -     	3,2		
+		ar.com.esquilaxgames.escoba15	 Escoba de 15	 1.2	 3,03   	no	 -     	3,03		
+		com.purplegoolabs.antibleh	 anti:bleh	 1.6.4	 2,79   	no	 -     	2,79		
+		com.mobilaria.TuninFMv2	 Tunin.FM iCar Radio Lite	 1.5	 1,72   	no	 -     	1,72		
+		com.mindthefrog.sudoku	 +SUDOKU	 2.2	 1,52   	no	 -     	1,52		
+		com.walkersoftware.iInfo	 iInformation	 1.4	 0,74   	no	 -     	0,74		
+		com.blueonionsoft.flashlightledfree	 True Flashlight 4 Free	 1.1	 0,68   	no	 -     	0,68		
+		com.RecessionApps.System	 System Activity Monitor	 1.3.2	 0,64   	no	 -     	0,64		
+		com.tomtom.CarKit	 TomTom car kit tool	 1.0	 0,32   	no	 -     	0,32		

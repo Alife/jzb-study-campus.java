@@ -1,0 +1,8 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\GData.h, b99ccac851c23628f22c914dd601b290
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\GDataDefines.h, 2850a5833cad3d2a0d6514dc7830ad63
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\GDataFramework.h, bf5eec55fc8d08d836b3bccbffabb104
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\GDataFramework.m, c16c5079935393d4970c0875f7a482a7
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\GDataTargetNamespace.h, 605149d42db2a722b0c877be18e8a9de
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\GDataUtilities.h, f391973271a95e57734a94d8b40d8f0b
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\GDataUtilities.m, 086838e037330aae97e034e2df5bc01b
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\ReleaseNotes.txt, af1a3c293578c6eeb4abf288255673b3

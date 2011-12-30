@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Cajero</title>
+<link href="../css/CJ_estilos.css" rel="stylesheet" type="text/css" />
+<link href="../fonts/stylesheet.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="../../JS_Bridge.js"></script>
+
+<script type="text/javascript" src="../css/iepngfix_tilebg.js"></script>
+<script type="text/javascript" src="../js/jquery-1.7.1.js"></script>
+<script type="text/javascript">
+
+    // When the DOM is ready, initialize the scripts.
+    jQuery(function( $ ){
+
+        // Get a reference to the container.
+        var container = $( "#capilla" );
+		var mueve = $( "#cabecera" );
+
+        // Bind the link to toggle the slide.
+        $( "#sube" ).click(
+            function( event ){
+                // Prevent the default event.
+                event.preventDefault();
+
+                // Toggle the slide based on its current
+                // visibility.
+                if (container.is( ":visible" )){
+
+                    // Hide - slide up.
+                    container.slideUp( 800 );
+					mueve.slideDown( 800 );
+
+                } else {
+
+                    // Show - slide down.
+                    container.slideDown( 500 );
+					mueve.slideUp( 500 );
+                }
+            }
+        );
+    });
+</script>
+
+</head>
+
+<body onload="theAccController.activate('99', 'To hear these instructions again, press {0}')" onkeydown="javascript:theAccController.onkeydown(event);">
+  
+    
+    <div id="mainContainer">
+        <div id="dentro">
+            <div id="cabecera">
+                <div class="menuup_banner">
+                    <img src="../img/banner_h.png" />
+                </div>
+                <div class="logo">
+                </div>
+            </div>
+
+            <div id="bgtrans">
+            
+                <!-- ============================================================================ -->
+                <!-- ============ COMP. ETIQUETA ================================================ -->
+                <script>
+                    var accesibleInfoText = "At any time you may repeat the instructions from the beginning by pressing 99."; 
+                    new AccesibleLabel(0, accesibleInfoText);
+                </script>
+                <!-- ············································································ -->
+                
+                
+                <!-- ============================================================================ -->
+                <!-- ============ COMP. CABECERA ================================================ -->
+                <script>
+                    var accesibleInfoText = "Select your transaction."; 
+                    new AccesibleLabel(1, accesibleInfoText);
+                </script>
+                <!-- ············································································ -->
+                <div id="content">
+                    <div id="col3">
+                        <div class="bloquetitu shadow">
+                            <h3>
+                                Main Menu
+                            </h3>
+                            <h2>
+                                Select a Transaction
+                            </h2>
+                        </div>
+                    </div>
+                    
+                    <!-- ============================================================================ -->
+                    <!-- ============ COMP. BOTONERA COMPUESTA ====================================== -->
+                    <script>
+                        var btnPanel = new AccesibleButtonPanel(2, "You have {0} choices.");
+                    </script>
+                    <!-- ············································································ -->
+                    <div class="bloque_botones02">
+                        <div class="titcolumna shadow">
+                            <h4>
+                                Your Favorites
+                            </h4>
+                        </div>
+                        <ul class="lista02">
+                            <!-- ============================================================================ -->
+                            <!-- ============ COMP. BOTON =================================================== -->
+                            <script>
+                                new AccesibleButton(btnPanel,0, "mnu_opt_01", "01", "Favorite 1: $60 from Checking *2566");
+                            </script>
+                            <!-- ············································································ -->
+                            <li>
+                                <a id="mnu_opt_01" href="01_withdrawal_4.htm" target="_self">
+                                    <p class="wrelieve">
+                                        Get $60
+                                        <br>
+                                        <br>
+                                        <span class="wsubtitu">
+                                            From Checking ***2566
+                                        </span>
+                                    </p>
+
+                                </a>
+                            </li>
+                            <!-- ============================================================================ -->
+
+
+                            <!-- ============================================================================ -->
+                            <!-- ============ COMP. BOTON =================================================== -->
+                            <script>
+                                new AccesibleButton(btnPanel,1, "mnu_opt_02", "02", "Favorite 2: $40 from Checking *2566");
+                            </script>
+                            <!-- ············································································ -->
+                            <li>
+                                <a id="mnu_opt_02" href="01_withdrawal_4.htm" target="_self">
+                                    <p class="wrelieve">
+                                        Get $40
+                                        <br>
+                                        <br>
+                                        <span class="wsubtitu">
+                                            From Checking ***2566
+                                        </span>
+                                    </p>
+                                </a>
+                            </li>
+                            <!-- ============================================================================ -->
+                            
+                            
+                            <!-- ============================================================================ -->
+                            <!-- ============ COMP. BOTON =================================================== -->
+                            <script>
+                                new AccesibleButton(btnPanel,2, "mnu_opt_03", "03", "Favorite 3: Deposit Check into Savings *3354");
+                            </script>
+                            <!-- ············································································ -->
+                            <li>
+                                <a id="mnu_opt_03" href="deposito_1.htm" target="_self">
+                                    <p class="wrelieve">
+                                        Deposit Check
+                                        <br>
+                                        <br>
+                                        <span class="wsubtitu">
+                                            Into Savings ***3354
+                                        </span>
+                                    </p>
+                                </a>
+                            </li>
+                            <!-- ============================================================================ -->
+
+                        </ul>
+                    </div>
+                    
+                    
+                    <div class="bloque_botones">
+                        <div class="titcolumna shadow">
+                            <h4>
+                                Other Transactions
+                            </h4>
+                        </div>
+                        <ul class="lista01 col2">
+                        
+                            <!-- ============================================================================ -->
+                            <!-- ============ COMP. BOTON =================================================== -->
+                            <script>
+                                new AccesibleButton(btnPanel,3, "mnu_opt_04", "04", "Withdrawal");
+                            </script>
+                            <!-- ············································································ -->
+                            <li>
+                                <a id="mnu_opt_04" href="01_withdrawal.htm" target="_self">
+                                    <p class="relieve">
+                                        Withdrawal
+                                    </p>
+                                </a>
+                            </li>
+                            <!-- ============================================================================ -->
+                            
+                            <!-- ============================================================================ -->
+                            <!-- ============ COMP. BOTON =================================================== -->
+                            <script>
+                                new AccesibleButton(btnPanel,4, "mnu_opt_05", "05", "Cash deposit");
+                            </script>
+                            <!-- ············································································ -->
+                            <li>
+                                <a id="mnu_opt_05" href="#" target="_self">
+                                    <p class="relieve">
+                                        Deposit Cash
+                                    </p>
+                                </a>
+                            </li>
+                            <!-- ============================================================================ -->
+                            
+                            <!-- ============================================================================ -->
+                            <!-- ============ COMP. BOTON =================================================== -->
+                            <script>
+                                new AccesibleButton(btnPanel,5, "mnu_opt_06", "06", "Transfer between accounts");
+                            </script>
+                            <!-- ············································································ -->
+                            <li>
+                                <a id="mnu_opt_06" href="transfer_1.htm" target="_self">
+                                    <p class="relieve">
+                                        Transfer Between
+                                        <br>
+                                        Accounts
+                                    </p>
+                                </a>
+                            </li>
+                            <!-- ============================================================================ -->
+                            
+                            <!-- ============================================================================ -->
+                            <!-- ============ COMP. BOTON =================================================== -->
+                            <script>
+                                new AccesibleButton(btnPanel,6, "mnu_opt_07", "07", "Balances and Mini-Statemen");
+                            </script>
+                            <!-- ············································································ -->
+                            <li>
+                                <a id="mnu_opt_07" href="#" target="_self">
+                                    <p class="relieve">
+                                        Balances &
+                                        <br>
+                                        Mini-Statement
+                                    </p>
+                                </a>
+                            </li>
+                            <!-- ============================================================================ -->
+                            
+                            <!-- ============================================================================ -->
+                            <!-- ============ COMP. BOTON =================================================== -->
+                            <script>
+                                new AccesibleButton(btnPanel,7, "mnu_opt_08", "08", "More options");
+                            </script>
+                            <!-- ············································································ -->
+                            <li>
+                                <a id="mnu_opt_08" href="mainmenu_b.htm" target="_self">
+                                    <p class="relieve">
+                                        More Options
+                                    </p>
+                                </a>
+                            </li>
+                            <!-- ============================================================================ -->
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+                <div id="pie">
+                    <div class="botonfin">
+                        <a id="sube" href="#" target="_self">
+                            <img src="../img/bot_qbalance.png" width="217" height="53" />
+                        </a>
+                    </div>
+                    <div class="botonfin">
+                        <a href="setup_1.htm" target="_self">
+                            <img src="../img/bot_mysettings.png" width="194" height="53" />
+                        </a>
+                    </div>
+                    
+                    <!-- ============================================================================ -->
+                    <!-- ============ COMP. BOTON =================================================== -->
+                    <script>
+                        new AccesibleButton(null, 3, "mnu_opt_cancel", "cancel", "Exit and return card", "The cancel key is located to the right of the number 9 key and is embossed with an 'X'");
+                    </script>
+                    <!-- ············································································ -->
+                    <div class="bloque_botonred">
+                        <a id="mnu_opt_cancel" class="botonred" href="exit.htm" target="_self">
+                            <p class="wrelieve">
+                                Exit
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <!-- menu quick balance -->
+                <div id="capilla">
+                    <img src="../img/menuinfo.png" />
+                </div>
+                <!-- fin menu quick balance -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

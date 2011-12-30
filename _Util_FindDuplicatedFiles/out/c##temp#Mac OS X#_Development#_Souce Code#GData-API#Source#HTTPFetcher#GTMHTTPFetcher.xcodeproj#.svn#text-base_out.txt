@@ -1,0 +1,1 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\HTTPFetcher\GTMHTTPFetcher.xcodeproj\.svn\text-base\project.pbxproj.svn-base, bf5e4958720eace49821ed04d5c46060

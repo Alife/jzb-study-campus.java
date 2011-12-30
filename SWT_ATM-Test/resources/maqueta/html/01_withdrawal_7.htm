@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Cajero</title>
+<link href="../css/CJ_estilos.css" rel="stylesheet" type="text/css" />
+<link href="../fonts/stylesheet.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" src="../../JS_Bridge.js"></script>
+
+
+<script type="text/javascript" src="../css/iepngfix_tilebg.js"></script>
+<script type="text/javascript" src="../js/jquery-1.5.1.min.js"></script>
+<!--<script type="text/javascript">		
+	setTimeout(function(){window.location = 'another.htm';}, 5000);
+</script>-->
+</head>
+
+<body onload="theAccController.activate(null,null)" onkeydown="javascript:theAccController.onkeydown(event);">
+    <a href="another.htm">
+        <div id="mainContainer">
+            <div id="cabecera">
+                <div class="logo">
+                </div>
+            </div>
+            <div id="bgtrans">
+            
+                <!-- ============================================================================ -->
+                <!-- ============ COMP. CABECERA ================================================ -->
+                <script>
+                    var accesibleInfoText = "Screen Withdrawal Confirmation"; 
+                    new AccesibleLabel(accesibleInfoText);
+                </script>
+                <!-- ············································································ -->
+
+                <!-- ============================================================================ -->
+                <!-- ============ COMP. LABEL ???================================================ -->
+                <script>
+                    var accesibleInfoText = "Your transaction processed successfully." + 
+                                            "Please remove your cash from the cash dispenser." +
+                                            "The cash dispenser is located at three o’clock and approximately 7 inches from the keypad." + 
+                                            "Please be sure to remove all of your bills."; 
+                    new AccesibleLabel(accesibleInfoText);
+                </script>
+                <!-- ············································································ -->
+                <div id="content">
+                    <div id="col3">
+                        <div class="bloquetituh shadow">
+                            <h3>
+                                Withdrawal
+                            </h3>
+                            <h2>
+                                Transaction Processed Successfully
+                            </h2>
+                        </div>
+                    </div>
+                    <div class=" uptitu shadow">
+                        <p class="titu20">
+                            Please Remove:
+                        </p>
+                    </div>
+                    <div class="animacion">
+                        <h2 class="shadow">
+                            Your Cash
+                        </h2>
+                        <img src="../img/SNT2047_option1_takecash.gif" width="365" height="190"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </a>
+</body>
+
+</html>

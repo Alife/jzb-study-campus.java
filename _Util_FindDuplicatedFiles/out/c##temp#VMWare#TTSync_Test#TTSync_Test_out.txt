@@ -1,0 +1,5 @@
+c:\temp\VMWare\TTSync_Test\TTSync_Test\.DS_Store, f9c23cad902592ba8b8a1b8c435cd103
+c:\temp\VMWare\TTSync_Test\TTSync_Test\._.DS_Store, 2c224591b43a2f0fe8b1356f284d343b
+c:\temp\VMWare\TTSync_Test\TTSync_Test\main.m, ca3b0acf4a1febc6cd0cce90be85c87b
+c:\temp\VMWare\TTSync_Test\TTSync_Test\TTSync_Test-Prefix.pch, 6bb15984ad50c06cf45b2162fdeb5fd8
+c:\temp\VMWare\TTSync_Test\TTSync_Test\TTSync_Test.1, bf9d69a8b7a5ef8ec68a22f2f39e970c

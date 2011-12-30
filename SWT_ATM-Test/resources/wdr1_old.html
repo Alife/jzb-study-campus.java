@@ -1,0 +1,126 @@
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>Test</title>
+
+    <xscript type="text/javascript" src="JS_Bridge.js"></script>
+    
+    <xscript>
+    
+    // ========================================================================================
+    function html_say(textToSay, queue) {
+
+        var tts = theATMBridge.getAPI("ITextToSpeech");
+        tts.say(textToSay, queue);
+    }
+    
+    // ========================================================================================
+    function onEnterPage() {
+
+        var tts = theATMBridge.getAPI("ITextToSpeech");
+        
+        var txtToSay="Please, enter the amount you want to withdraw. Then press the OK button.";
+        txtToSay += ", You can cancel the operation, at any time, by pressing the CANCEL button.";
+        txtToSay += ", The amount must be a multiple of 20 dollars.";
+        
+        
+        html_say(txtToSay, false);
+        
+        var amountTxt = document.getElementById("TXT_QTTY");
+        amountTxt.focus();
+    }
+    
+    // ========================================================================================
+    function onCancel() {
+
+        html_say("Canceling operation", false);
+    }
+    
+    // ========================================================================================
+    function onOK() {
+
+        var amountTxt = document.getElementById("TXT_QTTY");
+        var amount = amountTxt.value / 100; 
+
+        if(validate(amount)) {
+            html_say("Proceeding with operation", false);
+        }
+        else {
+            var errorMsg = "Incorrect amount entered. It must be greater than one dollar and a multiple of 20 dollars., Please, enter a new amount."; 
+            html_say(errorMsg, false);
+            amountTxt.value="";
+            amountTxt.focus();
+        }
+    }
+    
+    // ========================================================================================
+    function validate(amount) {
+
+    
+        if(amount<1 || (amount % 20) != 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    // ========================================================================================
+    function amountChanged(txt) {
+
+
+        var amount = txt.value;
+        
+        var txtToSay="";
+        
+        if(amount==0) {
+            txtToSay += "zero cents";
+        }
+        else if(amount==1) {
+            txtToSay += amount;
+            txtToSay += " cent";
+        }
+        else if(amount<100) {
+            txtToSay += amount;
+            txtToSay += " cents";
+        }
+        else if(amount==100) {
+            txtToSay += (amount/100);
+            txtToSay += " dollar";
+        }
+        else {
+            txtToSay += (amount/100);
+            txtToSay += " dollars";
+        }
+        
+        html_say(txtToSay, false);
+        
+    }
+    
+    // ========================================================================================
+
+   
+    </script>
+   
+</head>
+
+
+<body onLoad="onEnterPage()">
+
+    <a href="page.html">Main test page</a>
+    <H1>withdrawal</H1>
+    <hr>
+    <br>
+    <br>
+    <table border="0">
+        <tr>
+            <td>Amount: </td>
+            <td colspan="2"><input type="text" id="TXT_QTTY" size="20" value="" onKeyUp="amountChanged(this)">
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><input type="button" id="BTN_CANCEL" style="width:70px" value="Cancel" onclick="onCancel()"></td>
+            <td><input type="button" id="BTN_OK"     style="width:70px" value="OK" onclick="onOK()"></td>
+        </tr>
+    </table>
+    
+</body>

@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Cajero</title>
+<link href="../css/CJ_estilos.css" rel="stylesheet" type="text/css" />
+<link href="webfontkit/stylesheet.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="../../JS_Bridge.js"></script>
+
+
+<script type="text/javascript" src="../css/iepngfix_tilebg.js"></script>
+
+<script type="text/javascript" src="../js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="../js/jquery.mobile-1.0.min.js"></script>
+<script type="text/javascript" src="../js/Cajeros_js.js"></script>
+<script type="text/javascript" src="../js/jquery-1.7.1.js"></script>
+<script type="text/javascript">
+
+		// When the DOM is ready, initialize the scripts.
+		jQuery(function( $ ){
+
+			// Get a reference to the container.
+			var container = $( "#capilla" );
+			var mueve = $( "#cabecera" );
+
+			// Bind the link to toggle the slide.
+			$( "#sube" ).click(
+				function( event ){
+					// Prevent the default event.
+					event.preventDefault();
+
+					// Toggle the slide based on its current
+					// visibility.
+					if (container.is( ":visible" )){
+
+						// Hide - slide up.
+						container.slideUp( 800 );
+						mueve.slideDown( 800 );
+
+					} else {
+
+						// Show - slide down.
+						container.slideDown( 500 );
+						mueve.slideUp( 500 );
+					}
+				}
+			);
+		});
+	</script>
+
+</head>
+
+<body onload="theAccController.activate(null,null)" onkeydown="javascript:theAccController.onkeydown(event);">
+
+<div id="mainContainer">
+<div id="dentro">
+<div id="cabecera">
+<div class="menuup">
+	<a href="#" target="_self" onClick="javascript:history.back()"><img src="../img/bot_back.png" width="130" height="48" /></a>	
+	<a href="#" target="_self" onClick="javascript:window.location='mainmenu.htm'"><img src="../img/bot_mainmenu.png" width="158" height="48" /></a>
+	</div>
+	<div class="logo"></div>
+</div>
+<div id="bgtrans">
+
+
+<div id="content">
+
+<!-- ============================================================================ -->
+<!-- ============ COMP. CABECERA ================================================ -->
+<script>
+    var accesibleInfoText = "Enter amount to withdraw from checking *2566 using the keypad."; 
+    new AccesibleLabel(0, accesibleInfoText);
+</script>
+<!-- ············································································ -->
+<div id="col3">	
+	<div class="bloquetitu shadow"><h3>Withdrawal</h3><h2>Enter Amount for Checking ***2566</h2></div>
+</div>
+
+
+<!-- ============================================================================ -->
+<!-- ============ COMP. ETIQUETA ================================================ -->
+<script>
+    var accesibleInfoText = "The amount must be a multiple of 20 or 50."; 
+    new AccesibleLabel(1, accesibleInfoText);
+</script>
+<!-- ············································································ -->
+
+<div class=" uptitu shadow"><p class="titu20">This machine has $20 and $50 bills available. </p></div>
+
+<!-- ============================================================================ -->
+<!-- ============ COMP. ETIQUETA ================================================ -->
+<script>
+    var accesibleInfoText = "As you enter each digit, it will be read aloud." + 
+                            "The amount is entered from right to left, starting at the one cent position." + 
+                            "Once you’ve finished, you will be asked to confirm the final amount." + 
+                            "After you have entered the amount, you will have three choices: " +
+                            "To confirm, press enter. The enter is located to the right of the number 3 key and is embossed with a circle." +
+                            "If you make a mistake, press the clear key. The clear key is located to the right of the number 6 key and is embossed with a vertical line or left arrow." +
+                            "To exit/return card, press cancel. The cancel key is located to the right of the number 9 key and is embossed with an 'X'.";
+    new AccesibleLabel(2, accesibleInfoText);
+</script>
+<!-- ············································································ -->
+
+				<div class="box_top">
+					<div class="virtualKeyboard">
+						<div class="keyboard">
+                            <!-- ============================================================================ -->
+                            <!-- ============ COMP. AMOUNT EDITOR =========================================== -->
+                            <script>
+                               // No se puede poner aquí la parte del onChange para que diga el valor
+                               // el mensaje de error para cuando se valide.
+                            </script>
+                            <!-- ············································································ -->
+							<textarea id="write"></textarea>
+							<input type="text" style="display:none" class="inputfalsed"/>
+
+
+                            <!-- ============ COMP. VIRTUAL KEYBOARD?? ====================================== -->
+                            <script>
+                                var btnPanel = new AccesibleButtonPanel(3, "");
+                            </script>
+                            <!-- ············································································ -->
+							<div class="numeric_keyboard">
+								<ul id="keyboard">
+                                    <!-- ============================================================================ -->
+                                    <!-- ============ COMP. BOTON =================================================== -->
+                                    <script>
+                                        // Por claridad los ponemos todos aqui
+                                        new AccesibleButton(btnPanel, 0, "key_opt_1", "1", null);
+                                        new AccesibleButton(btnPanel, 1, "key_opt_2", "2", null);
+                                        new AccesibleButton(btnPanel, 2, "key_opt_3", "3", null);
+                                        new AccesibleButton(btnPanel, 3, "key_opt_4", "4", null);
+                                        new AccesibleButton(btnPanel, 4, "key_opt_5", "5", null);
+                                        new AccesibleButton(btnPanel, 5, "key_opt_6", "6", null);
+                                        new AccesibleButton(btnPanel, 6, "key_opt_7", "7", null);
+                                        new AccesibleButton(btnPanel, 7, "key_opt_8", "8", null);
+                                        new AccesibleButton(btnPanel, 8, "key_opt_9", "9", null);
+                                        new AccesibleButton(btnPanel, 9, "key_opt_0", "0", null);
+                                    </script>
+                                    <!-- ············································································ -->
+									<li class="symbol"><span id="key_opt_1" class="off">1</span></li>
+									<li class="symbol"><span id="key_opt_2" class="off">2</span></li>
+									<li class="symbol"><span id="key_opt_3" class="off">3</span></li>
+									<li class="symbol"><span id="key_opt_4" class="off">4</span></li>
+									<li class="symbol"><span id="key_opt_5" class="off">5</span></li>
+									<li class="symbol"><span id="key_opt_6" class="off">6</span></li>
+									<li class="symbol"><span id="key_opt_7" class="off">7</span></li>
+									<li class="symbol"><span id="key_opt_8" class="off">8</span></li>
+									<li class="symbol"><span id="key_opt_9" class="off">9</span></li>
+									<li class="symbol zero"><span id="key_opt_0" class="off">0</span></li>
+                                    
+                                    
+                                    <!-- ============================================================================ -->
+                                    <!-- ============ COMP. BOTON =================================================== -->
+                                    <script>
+                                        new AccesibleButton(btnPanel, 10, "key_opt_clear", "clear", null);
+                                    </script>
+                                    <!-- ············································································ -->
+									<li class="delete borrarcontenido"><span id="key_opt_clear" class="off">Clear</span></li>
+								</ul>
+                                
+                                <!-- ============================================================================ -->
+                                <!-- ============ COMP. BOTON =================================================== -->
+                                <script>
+                                    new AccesibleButton(btnPanel, 11, "ok", "enter", null);
+                                </script>
+                                <!-- ············································································ -->
+								<input id="ok" type="button" value="OK" onclick="valida_withdrawal(20,50);" />
+							</div>
+						</div>
+					</div>
+                    
+                    <!-- ============================================================================ -->
+                    <!-- ============ COMP. AMOUNT VALIDATOR ======================================== -->
+                    <script>
+                       // No se puede poner aquí la parte del mensaje de error para cuando se valide.
+                       // ¿Sería un componente a parte o es todo un mismo componente?
+                    </script>
+                    <!-- ············································································ -->
+					<div class="mesageInfo2">
+						<span>Error. Please Enter Only Amount in multiples of $20 or $50.</span>
+					</div>
+				</div>
+
+</div>
+
+<!-- footer -->
+
+<div id="pie">
+<div class="botonfin"><a id="sube" href="#" target="_self"><img src="../img/bot_qbalance.png" width="217" height="53" /></a></div>
+
+
+
+<!-- ============================================================================ -->
+<!-- ============ COMP. BOTON =================================================== -->
+<script>
+    new AccesibleButton(null, 4, "mnu_opt_cancel", "cancel", "Exit and return card", null, "");
+</script>
+<!-- ············································································ -->
+<div class="bloque_botonred"><a id="mnu_opt_cancel" class="botonred" href="exit.htm" target="_self"><p class="wrelieve"> Exit </p></a></div>
+</div>
+	<!-- menu quick balance -->
+	<div id="capilla">
+        <img src="../img/menuinfo.png" />
+	</div>
+	<!-- fin menu quick balance -->
+
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

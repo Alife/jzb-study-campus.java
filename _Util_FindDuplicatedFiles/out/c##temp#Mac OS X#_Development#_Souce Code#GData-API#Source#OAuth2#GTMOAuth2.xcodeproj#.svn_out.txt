@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\GTMOAuth2.xcodeproj\.svn\all-wcprops, 63401761387de2be87e14bb2f1e5ceee
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\GTMOAuth2.xcodeproj\.svn\entries, b97548e190288175e34d2accbe6aba40

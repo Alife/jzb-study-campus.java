@@ -1,0 +1,1 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\GooglePhotosSample.xcodeproj\.svn\text-base\project.pbxproj.svn-base, d8e645e88c2e97f6f848163ea3c6bf6a

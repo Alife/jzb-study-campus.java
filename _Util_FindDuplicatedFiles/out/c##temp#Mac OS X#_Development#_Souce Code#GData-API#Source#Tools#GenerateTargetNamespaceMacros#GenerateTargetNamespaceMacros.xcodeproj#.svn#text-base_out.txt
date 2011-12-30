@@ -1,0 +1,1 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Tools\GenerateTargetNamespaceMacros\GenerateTargetNamespaceMacros.xcodeproj\.svn\text-base\project.pbxproj.svn-base, 18c55d20123e204470d1aee991e74989

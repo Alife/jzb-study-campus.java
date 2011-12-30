@@ -1,0 +1,3 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Tools\GenerateTargetNamespaceMacros\GenerateTargetNamespaceMacros.xcodeproj\.svn\all-wcprops, 88eb4aa0a2156d1a961088b07a34f692
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Tools\GenerateTargetNamespaceMacros\GenerateTargetNamespaceMacros.xcodeproj\.svn\dir-prop-base, 0698642754d78700e8a83fcc3fd800d4
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Tools\GenerateTargetNamespaceMacros\GenerateTargetNamespaceMacros.xcodeproj\.svn\entries, 0d94ff4f2cf4842d44e3ddc9752ef59a

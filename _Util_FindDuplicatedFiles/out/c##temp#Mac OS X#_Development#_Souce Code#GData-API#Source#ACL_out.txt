@@ -1,0 +1,13 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\ACL\GDataACL.h, 14518a0e67b58f630603a91f4d1486f8
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\ACL\GDataACLKeyedRole.h, e9be890df247f427c199129bba70e437
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\ACL\GDataACLKeyedRole.m, 4e7614b8d00da69348cc37e573cdc687
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\ACL\GDataACLRole.h, f2bee71ee7770d451970316375213925
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\ACL\GDataACLRole.m, 58fd90e8cc02c3f69b5913ff7806d493
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\ACL\GDataACLScope.h, c39b5fb4e6ff7c34f08830e2c4d10569
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\ACL\GDataACLScope.m, c4141863b4e3da32bbfd69e3891d752d
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\ACL\GDataEntryACL.h, f38975bfc87b47bcfc3388e71d9fafec
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\ACL\GDataEntryACL.m, 63ae517b03778d70c634fbf56c717786
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\ACL\GDataFeedACL.h, 3314577d3bdee442e4c9b8eba2a13b4f
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\ACL\GDataFeedACL.m, bde1ec297e9e94c254da52ad19dbd4b3
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\ACL\GDataServiceACL.h, 55e7bab0eb855a84e6e5b64dc1a1567f
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\ACL\GDataServiceACL.m, fe0d71cab078957250052d03721bccbb

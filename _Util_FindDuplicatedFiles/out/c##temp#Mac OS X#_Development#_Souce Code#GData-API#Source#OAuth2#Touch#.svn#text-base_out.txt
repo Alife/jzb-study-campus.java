@@ -1,0 +1,3 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\Touch\.svn\text-base\GTMOAuth2ViewControllerTouch.h.svn-base, b38bcb9200c5d345e4f956f1c79a989c
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\Touch\.svn\text-base\GTMOAuth2ViewControllerTouch.m.svn-base, 726f85bcaf3bbc82fb5414db119bf7aa
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\Touch\.svn\text-base\GTMOAuth2ViewTouch.xib.svn-base, 75aac89fb7d1ade4f134e0272b10643e

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>Test</title>
+
+    <script type="text/javascript" src="JS_Bridge.js"></script>
+    
+    <script>
+    
+    // ========================================================================================
+    function html_say() {
+
+        var tts = theATMBridge.getAPI("ITextToSpeech");
+        var textToSay = document.getElementById("TXT_TTS_TEXT").value;
+        tts.say(textToSay,false);
+    }
+    
+    // ========================================================================================
+    function html_readCard() {
+
+        var cardReader = theATMBridge.getAPI("ICardReader");
+        if(cardReader.isReady()) {
+            var cardCode = document.getElementById("TXT_CARD_CODE").value;
+            cardReader.readCard(html_onCardRead, cardCode);
+        }
+    }
+    // ------------------------------------------------------------------------------------
+    function html_onCardRead(cardData, ex) {
+    
+        if(ex!=null) {
+            alert("Error reading card: "+ex.name+", "+ex.msg);
+        }
+        else {
+            var text = document.getElementById("TXT_CARD_INFO");
+            text.value=cardData;
+        }
+    }
+    // ========================================================================================
+
+    
+//    /* ERROR A PROPOSITO!!! */
+// try {        
+//      var pp = null;
+//      pp.hola = "no";
+//  } catch(e) {
+//      alert(e);
+// }
+//    pepe"
+
+    </script>
+   
+   
+</head>
+
+<body>
+
+
+    <b>Card reader demo</b>
+    <hr>
+    <table border="0">
+        <tr>
+            <td>Card Code: </td>
+            <td><input type="text" id="TXT_CARD_CODE" size="6" value="1024">
+                <input type="button" id="BTN_CARD_READER" value="Read" onclick="html_readCard()"></td>
+        </tr>
+        <tr>
+            <td>Read Info --> </td>
+            <td><input type="text" id="TXT_CARD_INFO" value=""></td>
+        </tr>
+    </table>
+
+    
+    <br>
+    <b>TextToSpeech Demo</b>
+    <hr>
+    <table border="0">
+        <tr>
+            <td>Text: </td>
+            <td><textarea rows="3" cols="40" id="TXT_TTS_TEXT">Hello World</textarea>
+                <input type="button" id="BTN_TTS" value="Say" onclick="html_say()"></td>
+        </tr>
+    </table>
+    <a href="wdr1.html">Withdraw test</a>
+
+
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+unzip -o *.ipa -d dc
+mv
+killall ABRT SpringBoard
+chmod 0777 pepe.app -R

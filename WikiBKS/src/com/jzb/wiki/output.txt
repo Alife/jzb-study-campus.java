@@ -1,0 +1,1008 @@
+  type = 'DOCUMENT'
+  children = 
+    type = 'MACRO'
+    name = 'T_Acta_Reunion'
+    params = 
+        type = 'PARAM'
+        name = 'Titulo'
+        value = 'Acta Comite Seguimiento Proyectos 21-12-2010'
+
+        type = 'PARAM'
+        name = 'Fecha'
+        value = '2010/12/21'
+
+        type = 'PARAM'
+        name = 'Ubicacion'
+        value = 'Sala MP.P01.12.106'
+
+        type = 'PARAM'
+        name = 'Autor'
+        value = 'Alfredo García'
+
+        type = 'PARAM'
+        name = 'Descripcion'
+        value = 'Revisión del estado de los proyectos de BKS Core y Catálogo de Contenidos'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Proyectos_H'
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Proyectos_F'
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Convocados_H'
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Convocados_B'
+    params = 
+        type = 'PARAM'
+        name = 'Iniciales'
+        value = 'AG'
+
+        type = 'PARAM'
+        name = 'Nombre'
+        value = 'Alfredo García'
+
+        type = 'PARAM'
+        name = 'EmpresaDpto'
+        value = 'ISBAN'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Convocados_B'
+    params = 
+        type = 'PARAM'
+        name = 'Iniciales'
+        value = 'JG'
+
+        type = 'PARAM'
+        name = 'Nombre'
+        value = 'Julio Gonzalez'
+
+        type = 'PARAM'
+        name = 'EmpresaDpto'
+        value = 'ISBAN'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Convocados_B'
+    params = 
+        type = 'PARAM'
+        name = 'Iniciales'
+        value = 'DJ'
+
+        type = 'PARAM'
+        name = 'Nombre'
+        value = 'David Jimenez'
+
+        type = 'PARAM'
+        name = 'EmpresaDpto'
+        value = 'ISBAN'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Convocados_B'
+    params = 
+        type = 'PARAM'
+        name = 'Iniciales'
+        value = 'FC'
+
+        type = 'PARAM'
+        name = 'Nombre'
+        value = 'Felisa Castillo'
+
+        type = 'PARAM'
+        name = 'EmpresaDpto'
+        value = 'ISBAN'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Convocados_F'
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Ausentes_H'
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Ausentes_B'
+    params = 
+        type = 'PARAM'
+        name = 'Iniciales'
+        value = 'DZ'
+
+        type = 'PARAM'
+        name = 'Nombre'
+        value = 'Daniel Zarapico'
+
+        type = 'PARAM'
+        name = 'EmpresaDpto'
+        value = 'ISBAN'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Ausentes_B'
+    params = 
+        type = 'PARAM'
+        name = 'Iniciales'
+        value = 'JZ'
+
+        type = 'PARAM'
+        name = 'Nombre'
+        value = 'Jose Antonio Zarzuela'
+
+        type = 'PARAM'
+        name = 'EmpresaDpto'
+        value = 'ISBAN'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Ausentes_F'
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Puntos_H'
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Puntos_B'
+    params = 
+        type = 'PARAM'
+        name = 'Titulo'
+        value = 'Post-morten de la versión V34-SP1'
+
+        type = 'PARAM'
+        name = 'Texto'
+        value = 'Comenzamos post-mortem a finales de Enero (si ATT termina validación de SP1) y proponemos post-mortem para 14 Febrero.'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Puntos_B'
+    params = 
+        type = 'PARAM'
+        name = 'Titulo'
+        value = 'ATM V1 y V2 - Revisión fechas y avances'
+
+        type = 'PARAM'
+        name = 'Texto'
+        value = '* (AG) Pruebas ATMs . No están llegando incidencias "reales" (las pruebas empezaron el día 17.
+* (AG) Consola, podemos planificar una fecha de entrega de la consola de ATMs pero ya no se llega a fechas para comienzo de pruebas QA. 
+* (AG) Reunión mañana para revisar ATMv2.'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Puntos_B'
+    params = 
+        type = 'PARAM'
+        name = 'Titulo'
+        value = 'Mecanismos nuevos que nos ayuden a asegurar aun más la calidad del código'
+
+        type = 'PARAM'
+        name = 'Texto'
+        value = '* (DJ) Más tiempo en fase de desarrollo => Si las fechas están fijas y no se puede  recortar alcances, la calidad se puede ver afectada. 
+* (JG) Necesario evaluar si el problema es de la calidad del código BKS. ¿Se han hecho pruebas más exahustivas que antes? 
+* (AG) El problema real a atajar es la percepción del usuario de que el nivel de calidad no se haya mantenido.
+* (FC) Problemas con generación incorrecta de versiones => Se enviaron versiones incorrectas a QA y se ha producido retrasos de 5 días (tiempo para probar y descubrir dónde estaba el problema).
+* (FC) Catálogo hace pruebas internas muy fuertes, porque realmente no tiene el feeling de tener una cobertura adecuada de QA.
+* (AG) Peer review de pruebas -> Revisar (que no validar!) los planes de prueba de QA. (DJ) los de pruebas deberían estar más implicados en los proyectos y planificar las pruebas de una manera más eficaz.
+* (FC) QA puede tener una falta de perspectiva; no tratan con los usuarios (AT) y eso les lleva a no enfocar sus pruebas. Propone hacer un seguimiento conjunto de Pruebas/Desarrollo, revisar cada cierto tiempo como van las pruebas (avance? seguimiento de bugs? plan de pruebas de la semana?)'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Puntos_B'
+    params = 
+        type = 'PARAM'
+        name = 'Titulo'
+        value = 'Re-documentar y re-establecer la metodología y circuitos internos'
+
+        type = 'PARAM'
+        name = 'Texto'
+        value = '* (DJ, JG, AG) Interesados en trabajar en este área, pero no hay capacidad de abordar esa tarea si desatender proyectos. 
+
+*(FC) Catalogo tiene una metodología distinta de proyectos, hay que ver donde encaja en metodología. Caso concreto, validación de modelos de FTs, que tiene que revisarse con CO.'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Puntos_B'
+    params = 
+        type = 'PARAM'
+        name = 'Titulo'
+        value = 'PdP de Catalogo 2011'
+
+        type = 'PARAM'
+        name = 'Texto'
+        value = '* (FC) Ya enviada la presentación del año que viene 2011. Adaptada a nuevo formato.
+
+* (FC) Recursos de QBit, se han solapado entre dos recursos de factoría para la fase de aprendizaje. Entre ellos dos ya tendrían capacidad para implementar todo tipo de desarrollo para Catálogo. Pendiente aprender más BKS por parte del nuevo recurso (Héctor), ahora lleva un 15% avanzado. Le queda el mes de Enero para aprender. (El problema es que son pocas personas y QBit debería crecer en más recursos para disponer de más capacidad de implementación).
+
+* 4.1SP2 - Realizando pruebas unitarias.
+
+* 5.0 - Fase construcción (40%). Por piezas Compilador 100%. Personalización parcial 50%. Personalización Completa 20%. Conector LDAP 10%.
+* CCtools v1.0 Mergeamos las versiones 1.0 y 1.1 (solo se liberará la 1.1) A nivel de gestión hay que recolocar los proyectos; QA e Integración BKS ya están al tanto de este movimiento de versiones.
+ 
+* Liberamos Fix de 4.1 Sp0 (versión que sufrió problemas de generación versiones, pero al final se liberó con las fechas planificadas).'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Puntos_B'
+    params = 
+        type = 'PARAM'
+        name = 'Titulo'
+        value = 'Situación de SP1'
+
+        type = 'PARAM'
+        name = 'Texto'
+        value = '* Retraso de validación por parte de ATT. Centrado en VegaModeler (DZ no presente y no nos puede aportar más información).
+
+* Impacto en Definición Requisito Evolución Mapeos y Evolución Tipos de Datos. Dos semanas sin reuniones con ATT. (DJ) Se avanza internamente pero sin el feedback de ATT podemos estar seguros de que sea la dirección correcta.
+
+* (JG) Ningún impacto en proyectos RT.
+
+* (AG) ATS validó SP1 en fechas y no tenemos impacto por esta parte.'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Puntos_B'
+    params = 
+        type = 'PARAM'
+        name = 'Titulo'
+        value = 'Situación de SP2 - Mejoras Adaptador Accesibilidad'
+
+        type = 'PARAM'
+        name = 'Texto'
+        value = '$null$ .- Proyecto asignado a persona sin experiencia (riesgo), se ha asignado a otro arq. que si conoce la herramienta.Desviación 5-6 días. Debería llegarse a fecha 13 Enero (primer día de merge). pero podría tener que posponerse merge hasta el final del periodo de merge. 
+Si esto también nos falla, se ha hablado ya con QA y podrían replanificar internamente las pruebas de QA, debido a que Adaptador no afecta a Mira ni otras herramientas.'
+
+    children = 
+        type = 'LINK'
+        value = 'Mejoras_Adaptador_de_Accesibilidad._Fase_III'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Puntos_B'
+    params = 
+        type = 'PARAM'
+        name = 'Titulo'
+        value = 'Situación de SP3 - Evolución Mapper y Tipos Datos'
+
+        type = 'PARAM'
+        name = 'Texto'
+        value = 'Retraso en definición por falta de disponibilidad de ATT. No hay bloqueo aun, pero tenemos un riesgo a largo plazo.'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Puntos_B'
+    params = 
+        type = 'PARAM'
+        name = 'Titulo'
+        value = 'Situación de SP2 - Mira'
+
+        type = 'PARAM'
+        name = 'Texto'
+        value = 'Resto proyectos en curso/finalizados.'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Puntos_B'
+    params = 
+        type = 'PARAM'
+        name = 'Titulo'
+        value = 'Situación de SP1 - Runtime'
+
+        type = 'PARAM'
+        name = 'Texto'
+        value = '* (JG) - Consola Configuración SP1 se entrega hoy. Lina tiene dudas de la documentación de Consola (que por otro lado debiera estar autodocumentada). Trabajo de documentalistas no es responsabilidad de JP.
+
+* (JG) Cerfificación Linux (3 Bugs Runtime, 1 de Mira, 0 Seguridad). 
+Tenemos dudas en cuanto a fechas plazo de esta certificación, pero a priori no tenemos. Según QC, queda un 10% de pruebas de Plan de pruebas por ejecutar'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Puntos_B'
+    params = 
+        type = 'PARAM'
+        name = 'Titulo'
+        value = 'Situación de SP2 - Runtime'
+
+        type = 'PARAM'
+        name = 'Texto'
+        value = '* (JG) A causa de falta de soporte por parte de Génesis y de entorno de pruebas, los proyectos $null$ y $null$ no se van a liberar en SP2. El proyecto $null$ (retrasado desde SP1) podría retomarse si se desbloquea la situación pues ya está desarrollado. ¿Han avanzado las gestiones con Produban?. Los marcamos en RIESGO en PdP.
+
+* (JG) $null$. Baja del arq. encargado, no hay recurso para sustituirle. Necesario solicitar feedback de ATT sobre posponer este proyecto.'
+
+    children = 
+        type = 'LINK'
+        value = 'Fachada GPROUT'
+
+        type = 'LINK'
+        value = 'Fachada CABACK'
+
+        type = 'LINK'
+        value = 'Fachada WEBCTI'
+
+        type = 'LINK'
+        value = 'Mejoras Conector XML - FaseII'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Puntos_B'
+    params = 
+        type = 'PARAM'
+        name = 'Titulo'
+        value = 'Fuera de PdP - Runtime'
+
+        type = 'PARAM'
+        name = 'Texto'
+        value = '* (JG) Traducciones de fachadas; a raíz de remedys en Fachada Fax se detecta la necesidad de gestionar traducciones de literales de FTs. 
+
+* (FC) En CC tienen la misma situación y se detalla la necesidad y anexa el script de traducción en DIS/DTS. Esto soluciona la duda de circuito de traducciones de literales de FTs.'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Puntos_F'
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Acciones_H'
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Acciones_B'
+    params = 
+        type = 'PARAM'
+        name = 'Responsable'
+        value = 'JG'
+
+        type = 'PARAM'
+        name = 'Fecha'
+        value = '2010/12/27'
+
+        type = 'PARAM'
+        name = 'Descripcion'
+        value = 'Problema con Mejoras conector XML, validar con Phillipe; Proponer si SP3 es muy tarde, plantear un fix intermedio de SP2.'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Acciones_B'
+    params = 
+        type = 'PARAM'
+        name = 'Responsable'
+        value = 'Todos JPs'
+
+        type = 'PARAM'
+        name = 'Fecha'
+        value = '2010/02/14'
+
+        type = 'PARAM'
+        name = 'Descripcion'
+        value = 'Reunión de Post-mortem  de SP1'
+
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_Acciones_F'
+
+    type = 'MACRO'
+    name = 'T_Acta_Reunion/S_NotasAdicionales'
+
+    type = 'CATEGORY'
+    name = 'Categoría'
+    value = 'Seg Proyectos'
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO'
+        name = 'Estilos_CSS'
+
+        type = 'CATEGORY'
+        name = 'Category'
+        value = 'Acta Reunion'
+
+        type = 'PROPERTY'
+        name = 'Titulo'
+        value = ''
+        children = 
+                type = 'MACRO_PARAM'
+                name = 'Titulo'
+                params = 
+                                type = 'PARAM'
+                                value = ''
+
+
+
+        type = 'PROPERTY'
+        name = 'Fecha'
+        value = ''
+        children = 
+                type = 'MACRO_PARAM'
+                name = 'Fecha'
+                params = 
+                                type = 'PARAM'
+                                value = ''
+
+
+
+        type = 'MACRO_PARAM'
+        name = 'Ubicacion'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'Autor'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'PROPERTY'
+        name = 'Descripcion'
+        value = ''
+        children = 
+                type = 'MACRO_PARAM'
+                name = 'Descripcion'
+                params = 
+                                type = 'PARAM'
+                                value = ''
+
+
+
+        type = 'DOCUMENT'
+        children = 
+                type = 'FUNCTION'
+                value = 'css:
+
+  table.GREY_TABLE {
+  	border-width: 2px;
+  	border-spacing: 0px;
+  	border-style: outset;
+  	border-color: #808080;
+  	border-collapse: collapse;
+  	background-color:  #FFFFFF;
+  }
+
+  table.GREY_TABLE th {
+  	border-width: 1px;
+  	padding: 4px;
+   	border-style: inset; 	
+  	border-color: #808080;
+  	background-color: #EEEEEE;
+        text-align:center;
+  }
+  table.GREY_TABLE td {
+  	border-width: 1px;
+  	padding: 4px;
+  	border-style: inset;
+  	border-color: #A0A0A0;
+  }
+
+ table.BLUE_TABLE {
+        border: 1px solid #417394;
+  	border-spacing: 0px;
+  	border-collapse: collapse;
+        font-family: "Trebuchet MS", Arial, sans-serif;
+  	color: #417394;
+  }
+
+  table.BLUE_TABLE th {
+  	padding: 6px;
+  	border: 1px solid #417394;
+  	background: #E6EDF5;
+	color: #4F76A3;
+	font-size: 100% !important;
+  }
+  
+  table.BLUE_TABLE td {
+        border-width: 1px;
+  	padding: 6px;
+  	border: 1px solid #417394;
+  
+  }
+
+  table.BLUE_TABLE tr { background: #FCFDFE; }
+
+  table.BLUE_TABLE tr.odd { background: #F7F9FC; }
+
+  table.BLUE_TABLE a:link {
+	color: #718ABE;
+	text-decoration: none;
+  }
+
+  table.BLUE_TABLE a:visited {
+	color: #718ABE;
+	text-decoration: none;
+  }
+
+  table.BLUE_TABLE a:hover {
+	color: #718ABE;
+	text-decoration: underline !important;
+  }
+
+  table.ORANGE_TABLE_THIN {
+  	border-width: 1px;
+  	border-spacing: 0px;
+  	border-style: inset;
+  	border-color: #FFCC66;
+  	border-collapse: collapse;
+  	background-color:  #FFFFFF;
+  }
+
+  table.ORANGE_TABLE_THIN th {
+  	border-width: 1px;
+  	padding: 6px;
+  	border-style: inset;
+  	border-color: #FFCC66;
+  	background-color: #FFFFCC;
+        text-align:center;
+  }
+  table.ORANGE_TABLE_THIN td {
+  	border-width: 1px;
+  	padding: 6px;
+  	border-style: inset;
+  	border-color: #FFCC66;
+  }
+
+  div.BLUE_BOX1  {
+        background-color:#F2F6F8;
+        border:1px solid #417394;
+        padding: 0.4em;
+  }
+
+  div.BLUE_BOX2  {
+        background-color:#F2F6F8;
+        border:1px dashed #417394;
+        padding: 0.4em;
+  }
+
+  div.SOURCE_BOX {
+    padding: 1em;
+    border: 1px dashed #2f6fab;
+    color: black;
+    background-color: #f9f9f9;
+    font: x-small sans-serif;
+    font-family: monospace;
+    white-space: pre;
+    line-height: 1em;
+  }
+
+
+  div.ORANGE_BOX1  {
+        background-color:#FFFFCC;
+        border:1px solid #FFCC66;
+        padding: 0.4em;
+  }
+
+  div.ORANGE_BOX2  {
+        background-color:#FFFFCC;
+        border:1px dashed #FFCC66;
+        padding: 0.4em;
+  }
+
+  #verticaltext {
+     writing-mode: tb-rl;
+     filter_MAL: flipv fliph;
+  }
+
+  .verticaltext  { 
+            -webkit-transform: rotate(-90deg); 
+            -moz-transform: rotate(-90deg);         
+            }
+
+'
+
+                type = 'HTMLCOMMENT'
+                value = '
+
+{{#addscript: src=/shCore|pos=head|type=css}}{{#addscript: src=/shCore|pos=head|type=js}}{{#addscript: src=/shBrushXml|pos=head|type=js}}
+
+<addscript src=/dottoro-highlighter-v2 type=js pos=head/>
+
+Esta página contiene ciertas definiciones de estilos que pueden ser incluidas y utilizadas en otras páginas.
+
+Para hacer uso de ella añadir a la página:
+<pre>
+{{Estilos_CSS}}
+</pre>
+
+Los estilos definidos son:
+{| border=0 cellpadding=6 style="position:relative; left:2em"
+|-
+|
+* GREY_TABLE
+|
+  {| class="GREY_TABLE"
+   |-
+   ! C1
+   ! C2
+   |-
+   | D1
+   | D2
+   |}
+|-
+|
+* BLUE_TABLE
+|
+  {| class="BLUE_TABLE"
+   |-
+   ! C1
+   ! C2
+   |- 
+   | D1
+   | D2
+   |- class="odd"
+   | E1
+   | E2
+   |}
+|-
+|
+* ORANGE_TABLE_THIN
+|
+  {| class="ORANGE_TABLE_THIN"
+   |-
+   ! C1
+   ! C2
+   |-
+   | D1
+   | D2
+   |}
+|-
+|
+* BLUE_BOX1
+|
+  <div class="BLUE_BOX1">Sample Text
+  </div>
+|-
+|
+* BLUE_BOX2
+|
+  <div class="BLUE_BOX2">Sample Text
+  </div>
+|-
+|
+* SOURCE_BOX
+|
+<div class="SOURCE_BOX">
+<initial_hosts>
+	<host>
+		<address>127.0.0.1</address>
+		<port>7800</port>
+	</host>
+</initial_hosts>
+</div>
+|-
+|
+* ORANGE_BOX1
+|
+  <div class="ORANGE_BOX1">Sample Text
+  </div>
+|-
+|
+* ORANGE_BOX2
+|
+  <div class="ORANGE_BOX2">Sample Text
+  </div>
+|
+|-
+|
+* Orientación Vertical (sólo en IE)
+|
+  {| class="BLUE_TABLE"
+   |-
+   ! id="verticaltext" | C1
+   ! id="verticaltext" | C2
+   |- 
+   | D1
+   | D2
+   |- class="odd"
+   | E1
+   | E2
+   |}
+|}
+
+
+</noinclude>'
+
+
+
+    type = 'DOCUMENT'
+
+    type = 'DOCUMENT'
+
+    type = 'DOCUMENT'
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Iniciales'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'Nombre'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'EmpresaDpto'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Iniciales'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'Nombre'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'EmpresaDpto'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Iniciales'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'Nombre'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'EmpresaDpto'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Iniciales'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'Nombre'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'EmpresaDpto'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+
+    type = 'DOCUMENT'
+
+    type = 'DOCUMENT'
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Iniciales'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'Nombre'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'EmpresaDpto'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Iniciales'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'Nombre'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'EmpresaDpto'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+
+    type = 'DOCUMENT'
+
+    type = 'DOCUMENT'
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Titulo'
+
+        type = 'MACRO_PARAM'
+        name = 'Texto'
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Titulo'
+
+        type = 'MACRO_PARAM'
+        name = 'Texto'
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Titulo'
+
+        type = 'MACRO_PARAM'
+        name = 'Texto'
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Titulo'
+
+        type = 'MACRO_PARAM'
+        name = 'Texto'
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Titulo'
+
+        type = 'MACRO_PARAM'
+        name = 'Texto'
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Titulo'
+
+        type = 'MACRO_PARAM'
+        name = 'Texto'
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Titulo'
+
+        type = 'MACRO_PARAM'
+        name = 'Texto'
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Titulo'
+
+        type = 'MACRO_PARAM'
+        name = 'Texto'
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Titulo'
+
+        type = 'MACRO_PARAM'
+        name = 'Texto'
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Titulo'
+
+        type = 'MACRO_PARAM'
+        name = 'Texto'
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Titulo'
+
+        type = 'MACRO_PARAM'
+        name = 'Texto'
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Titulo'
+
+        type = 'MACRO_PARAM'
+        name = 'Texto'
+
+
+    type = 'DOCUMENT'
+
+    type = 'DOCUMENT'
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Responsable'
+
+        type = 'MACRO_PARAM'
+        name = 'Fecha'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'Descripcion'
+
+
+    type = 'DOCUMENT'
+    children = 
+        type = 'MACRO_PARAM'
+        name = 'Responsable'
+
+        type = 'MACRO_PARAM'
+        name = 'Fecha'
+        params = 
+                type = 'PARAM'
+                value = ''
+
+
+        type = 'MACRO_PARAM'
+        name = 'Descripcion'
+
+
+    type = 'DOCUMENT'
+
+    type = 'DOCUMENT'
+
+

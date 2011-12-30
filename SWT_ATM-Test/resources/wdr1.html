@@ -1,0 +1,363 @@
+<html>
+    <head>
+    <STYLE type="text/css"> 
+    <!-- 
+    
+    .TitleMsgBox {
+        border-radius: 15px;
+        color:rgb(0,0,0); 
+        border-color:rgb(110,110,110);
+        background-color:rgb(140,140,140);
+        border-style:solid; 
+        padding-left:5px; 
+        padding-right:5px; 
+        padding-top:5px; 
+        padding-bottom:5px
+    }
+    
+    .InfoMsgBox { 
+        border-radius: 15px;
+        font-style:italic; 
+        color:#0000AF; 
+        border-color:#0080F0;
+        background-color:#C0E0FF;
+        border-style:solid; 
+        padding-left:10px; 
+        padding-right:10px; 
+        padding-top:10px; 
+        padding-bottom:10px;
+        width:50%; 
+    } 
+    
+    .ErrorMsgBox { 
+        border-radius: 15px;
+        font-style:italic; 
+        color:red; 
+        border-color:#E00000;
+        background-color:#FFF070;
+        border-style:solid; 
+        padding-left:10px; 
+        padding-right:10px; 
+        padding-top:10px; 
+        padding-bottom:10px;
+        width:50%; 
+    } 
+    --> 
+    </STYLE>
+    
+    <script type="text/javascript" src="JS_Bridge.js"></script>
+    
+    
+    <script>
+    
+    // ========================================================================================
+    function html_say(textToSay, queue) {
+        try{
+            var tts = theATMBridge.getAPI("ITextToSpeech");
+            tts.say(textToSay, queue);
+        }
+        catch(e) {
+            //alert(e);
+        }
+    }      
+    
+    // ========================================================================================
+    function clickButton(button) {
+        if (button.dispatchEvent) {
+            var e = document.createEvent("MouseEvents");
+            e.initEvent("click", true, true);
+            button.dispatchEvent(e);
+        }
+        else{
+            button.click();
+        }
+    }
+    
+    // ========================================================================================
+    function cancelForm() {
+        var button=document.getElementById("BTN_CANCEL");
+        button.focus();
+        clickButton(button);
+    }
+    
+    // ========================================================================================
+    function acceptForm() {
+        var button=document.getElementById("BTN_OK");
+        button.focus();
+        clickButton(button);
+    }
+    
+    
+    // ****************************************************************************************
+    // MSGBOX CONTROLS
+    // ****************************************************************************************
+    var msgs=new Array();
+    function msgBoxSayText(msg,queue) {
+        msgs.push(msg);
+    }
+    
+    // ========================================================================================
+    function onEnterPage() {
+    
+        //var txtToSay;
+        //txtToSay=msgs.pop();
+        //html_say(txtToSay,true);
+        
+        var firstControl = document.getElementById("TXT_MOBILE");
+        firstControl.focus();
+    }
+    
+    // ****************************************************************************************
+    // MSGBOX CONTROLS
+    // ****************************************************************************************
+    function clearErrorMsg() {
+        setErrorMsg("");
+    }
+    
+    // ========================================================================================
+    function setErrorMsg(msg) {
+        
+        var errorBox = document.getElementById("errorMsgBox");
+        errorBox.innerHTML=msg;
+        
+        html_say(msg, true);
+    }
+    
+    // ****************************************************************************************
+    // BUTTON CONTROLS
+    // ****************************************************************************************
+    function onCancel() {
+        var exitAccesibleText = "Canceling operation";
+        html_say(exitAccesibleText, false);
+    }
+    
+    // ========================================================================================
+    function onOK() {
+        var exitAccesibleText = "Proceeding with operation";
+        html_say(exitAccesibleText, false);
+    }
+    
+    
+    // ****************************************************************************************
+    // MOBILE CONTROL
+    // ****************************************************************************************
+    function onFocusMobile(ctrl) {
+        var labelAccesibleText = "Enter the mobile number"; 
+        html_say(labelAccesibleText, true);
+    }
+    
+    // ========================================================================================
+    function onKeydownMobile(ev, ctrl) {
+    
+        if(ev.keyCode==13) {
+          changeFocusMobile(ctrl);  
+        }
+        if(ev.keyCode==27 ) {
+          cancelForm(ctrl);  
+        }
+        else if(ev.keyCode==9){
+            if (ev.preventDefault) ev.preventDefault();
+            ev.returnValue = false;
+           return false;
+        }
+        
+    }
+
+    // ========================================================================================
+    function onKeyupMobile(ev, ctrl) {
+
+        var letters="abcdefghijklmnopqrstuvwxyz";
+        var digits="0123456789";
+        var txtToSay="";
+        
+        if(ev.keyCode>=65 && ev.keyCode<=90) {
+            txtToSay+=letters.charAt(ev.keyCode-65);
+            html_say(txtToSay, false);
+        }
+        else if(ev.keyCode>=48 && ev.keyCode<=57) {
+            txtToSay+=digits.charAt(ev.keyCode-48);
+            html_say(txtToSay, false);
+        }
+        
+    }
+            
+    // ========================================================================================
+    function changeFocusMobile(ctrl) {
+    
+        var txt = ctrl.value;
+        var errorMsg = validateMobile(txt);
+        if(errorMsg!=null) {
+            setErrorMsg(errorMsg);
+            ctrl.value="";
+            ctrl.blur();
+            ctrl.focus();
+        }
+        else {
+            clearErrorMsg();
+            document.getElementById("TXT_QTTY").focus();
+        }
+    } 
+
+    // ========================================================================================
+    function validateMobile(txt) {
+        
+        var errorAccesibleText = "Incorrect mobile number. It must be a numeric value.";
+        
+        for(x=0;x<txt.length;x++) {
+            if(txt.charAt(x)<'0' || txt.charAt(x)>'9') {
+                return errorAccesibleText;
+            }
+        }
+        return null;
+    }
+    
+    
+    // ****************************************************************************************
+    // AMOUNT CONTROL
+    // ****************************************************************************************
+    function onFocusAmount(ctrl) {
+        var labelAccesibleText="Enter the amount";
+        html_say(labelAccesibleText, true);
+    }
+    
+    // ========================================================================================
+    function onKeydownAmount(ev, ctrl) {
+    
+        if(ev.keyCode==13) {
+          changeFocusAmount(ctrl);  
+        }
+        if(ev.keyCode==27 ) {
+          cancelForm(ctrl);  
+        }
+        else if(ev.keyCode==9){
+            if (ev.preventDefault) ev.preventDefault();
+            ev.returnValue = false;
+           return false;
+        }
+        
+    }
+    
+    // ========================================================================================
+    function onKeyupAmount(ev, ctrl) {
+    
+        var amount = ctrl.value;
+        
+        var txtToSay=null;
+        
+        if(amount==0) {
+            txtToSay += "zero cents";
+            txtToSay=null;
+        }
+        else if(amount==1) {
+            txtToSay = amount;
+            txtToSay += " cent";
+        }
+        else if(amount<100) {
+            txtToSay = amount;
+            txtToSay += " cents";
+        }
+        else if(amount==100) {
+            txtToSay = (amount/100);
+            txtToSay += " dollar";
+        }
+        else {
+            txtToSay = (amount/100);
+            txtToSay += " dollars";
+        }
+        
+        if(txtToSay!=null)
+            html_say(txtToSay, false);
+        
+    }
+    
+    // ========================================================================================
+    function changeFocusAmount(ctrl) {
+
+        var txt = ctrl.value;
+        var errorMsg = validateAmount(txt/100);
+        if(errorMsg!=null) {
+            setErrorMsg(errorMsg);
+            ctrl.value="";
+            ctrl.blur();
+            ctrl.focus();
+        }
+        else {
+            clearErrorMsg();
+            acceptForm();
+        }
+    }
+
+    // ========================================================================================
+    function validateAmount(amount) {
+    
+        var errorAccesibleText = "Incorrect amount. It must be greater than one dollar and a multiple of 20 dollars.";
+        
+        if(amount<1 || (amount % 20) != 0) {
+            return errorAccesibleText;
+        } else {
+            return null;
+        }
+    }
+    
+    // ========================================================================================
+   
+    </script>
+     
+    </head>
+
+    <body onLoad="onEnterPage()">
+    
+        <a href="page.html">back to Main test page</a>
+        <br>
+        <H1><DIV class="TitleMsgBox">Prepaid mobile recharge</DIV></H1>
+        <script>
+            var txtToSay  = "Please, enter the mobile number and amount you want to recharge."; 
+                txtToSay += ", Then press the OK button.";
+                txtToSay += ", You can cancel the operation, at any time, by pressing the CANCEL button.";
+            html_say(txtToSay, false);
+        </script>
+
+
+
+        <br>
+        
+        <DIV id="InfoMsgBox_1" class="InfoMsgBox">
+        Warning: There are only 20 dollars notes.
+        </DIV>
+        <script>
+            var accesibleInfoText = document.getElementById("InfoMsgBox_1").innerHTML;
+            html_say(accesibleInfoText, true);
+        </script>
+
+        <br>
+        
+        <div class="ErrorMsgBox" id="errorMsgBox"></div>
+
+        <br>
+        
+        <table border="0">
+            <tr>
+                <td>Mobile: </td>
+                <td colspan="2"><input type="text" id="TXT_MOBILE" size="20" value="" 
+                                       onKeyDown="onKeydownMobile(event, this)"
+                                       onKeyUp="onKeyupMobile(event, this)"
+                                       onFocus="onFocusMobile(this)";
+                                       >
+            </tr>
+            <tr>
+                <td>Amount: </td>
+                <td colspan="2"><input type="text" id="TXT_QTTY" size="20" value="" 
+                                       onKeyDown="onKeydownAmount(event, this)"
+                                       onKeyUp="onKeyupAmount(event, this)"
+                                       onFocus="onFocusAmount(this)";
+                                       >
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="button" id="BTN_CANCEL" style="width:70px" value="Cancel" onclick="onCancel()"></td>
+                <td><input type="button" id="BTN_OK"     style="width:70px" value="OK" onclick="onOK()"></td>
+            </tr>
+        </table>
+        
+    </body>
+</html>

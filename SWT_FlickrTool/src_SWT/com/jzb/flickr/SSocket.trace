@@ -1,0 +1,108 @@
+***** TEST STARTED *****
+*** Create server socket at port 9999 ***
+*** Wait for a request ***
+*** Reading the request ***
+
+
+POST /services/upload/ HTTP/1.1
+Content-Type: multipart/form-data; boundary=---------------------------7d273f7a0d3
+User-Agent: Java/1.6.0_10-beta
+Host: 127.0.0.1:9999
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+Content-Length: 1218
+
+-----------------------------7d273f7a0d3
+Content-Disposition: form-data; name="api_key"
+
+d184f81aad32a2ffa21b380cab557383
+-----------------------------7d273f7a0d3
+Content-Disposition: form-data; name="async"
+
+0
+-----------------------------7d273f7a0d3
+Content-Disposition: form-data; name="auth_token"
+
+72157608115575293-e0de90ebd804337b
+-----------------------------7d273f7a0d3
+Content-Disposition: form-data; name="is_family"
+
+1
+-----------------------------7d273f7a0d3
+Content-Disposition: form-data; name="is_friend"
+
+1
+-----------------------------7d273f7a0d3
+Content-Disposition: form-data; name="is_public"
+
+0
+-----------------------------7d273f7a0d3
+Content-Disposition: form-data; name="photo"; filename="image.jpg";
+Content-Type: image/jpeg
+
+ù
+
+===============================================================================
+
+POST /servlets-examples/servlet/RequestInfoExample HTTP/1.1
+Content-Length: 1910
+Content-Type: multipart/form-data; boundary=L1Jy0JQm52I_qUqR0TYnD3AXNNTQ7Q
+Host: 127.0.0.1:9999
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.0 (java 1.5)
+Expect: 100-Continue
+
+--L1Jy0JQm52I_qUqR0TYnD3AXNNTQ7Q
+Content-Disposition: form-data; name="tags"
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+
+"PDF Printer" "uno" "dos"
+--L1Jy0JQm52I_qUqR0TYnD3AXNNTQ7Q
+Content-Disposition: form-data; name="is_friend"
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+
+1
+--L1Jy0JQm52I_qUqR0TYnD3AXNNTQ7Q
+Content-Disposition: form-data; name="title"
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+
+Root
+--L1Jy0JQm52I_qUqR0TYnD3AXNNTQ7Q
+Content-Disposition: form-data; name="is_family"
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+
+1
+--L1Jy0JQm52I_qUqR0TYnD3AXNNTQ7Q
+Content-Disposition: form-data; name="is_public"
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+
+0
+--L1Jy0JQm52I_qUqR0TYnD3AXNNTQ7Q
+Content-Disposition: form-data; name="api_key"
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+
+d184f81aad32a2ffa21b380cab557383
+--L1Jy0JQm52I_qUqR0TYnD3AXNNTQ7Q
+Content-Disposition: form-data; name="api_sig"
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+
+d775de159df779926048b3d0a8d1929c
+--L1Jy0JQm52I_qUqR0TYnD3AXNNTQ7Q
+Content-Disposition: form-data; name="auth_token"
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+
+72157608115575293-e0de90ebd804337b
+--L1Jy0JQm52I_qUqR0TYnD3AXNNTQ7Q
+Content-Disposition: form-data; name="photo"; filename="Root.bin"
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: binary
+
+ù

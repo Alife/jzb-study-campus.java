@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\.svn\prop-base\buildCopyScript.svn-base, 3ef09b74711586670285886f4bbfc66e
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\.svn\prop-base\buildStripHeaders.svn-base, 3ef09b74711586670285886f4bbfc66e

@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\ContactsSample\ContactsSample.xcodeproj\.svn\all-wcprops, 214d7413d47213e7e696c476224d9f87
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\ContactsSample\ContactsSample.xcodeproj\.svn\entries, 06e3291800dab886de16e53bbd82f52d

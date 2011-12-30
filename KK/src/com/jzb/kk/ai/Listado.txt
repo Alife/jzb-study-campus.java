@@ -1,0 +1,1688 @@
+Academic
+Versión : 3.01
+Id : com.mobisystems.CambridgeAcademicContentA
+Carpeta : 6BDFF2C5-E827-433B-8FF3-C996E2D6785E
+Bundle : CambridgeAcademicContentA.app
+Tamaño : 34.71 Mo
+Nombre : Audio Cambridge Academic Content Dictionary
+Autor : Mobile Systems
+Clase : Reference
+Derecho de autor : © 2010 Mobile Systems, Inc.
+Precio : 13,99 €
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6006
+
+AccuWeather
+Versión : 4.2
+Id : com.yourcompany.TestWithCustomTabs
+Carpeta : 3B5ADCD0-0749-41A6-82A7-A31D3B4217BA
+Bundle : AccuWeather.app
+Tamaño : 9.73 Mo
+Nombre : AccuWeather
+Autor : AccuWeather, Inc.
+Clase : Tiempo
+Derecho de autor : © AccuWeather, Inc.
+Precio : Gratis
+Versión del Bundle : 4.2
+Fecha de compra : 2011-04-19T12:41:56Z
+Clase ID : 6001
+
+Ahorcado
+Versión : 3.0
+Id : br.com.masterblaster.ForcaSpanish
+Carpeta : 283A78EC-A063-43BB-B8A8-0D0FE3824CFF
+Bundle : ForcaSpanish.app
+Tamaño : 5.55 Mo
+Nombre : El Mejor Ahorcado
+Autor : Renato Pessanha
+Clase : Juegos
+Derecho de autor : © 2008 Renato Pessanha
+Precio : 0,79 €
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Air Video
+Versión : 2.4.8
+Id : com.inmethod.AirVideo
+Carpeta : 8E9A57EC-F3F6-43B0-BC86-439C3F40008E
+Bundle : AirVideo.app
+Tamaño : 2.81 Mo
+Nombre : Air Video - Watch your videos anywhere!
+Autor : InMethod s.r.o.
+Clase : Utilidades
+Derecho de autor : © 2010 InMethod s.r.o.
+Precio : 2,39 €
+Versión del Bundle : 2.4.8
+Fecha de compra : Desconocido
+Clase ID : 6002
+
+Angry Birds
+Versión : 1.5.3
+Id : com.clickgamer.AngryBirds
+Carpeta : BC8498EF-1072-4B95-A7D9-4CC97A15E704
+Bundle : AngryBirds.app
+Tamaño : 39.06 Mo
+Nombre : Angry Birds
+Autor : Clickgamer.com
+Clase : Games
+Derecho de autor : © Rovio Mobile
+Precio : £0.59
+Versión del Bundle : 1.5.3
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+anti:bleh
+Versión : 1.6.4
+Id : com.purplegoolabs.antibleh
+Carpeta : B5EAC5D9-635B-4323-9A89-5C7B3C596115
+Bundle : AntiBleh.app
+Tamaño : 2.79 Mo
+Nombre : anti:bleh
+Autor : Purple Goo Labs
+Clase : Estilo de vida
+Derecho de autor : © 2009 Purple Goo Labs, SL
+Precio : Gratis
+Versión del Bundle : 1.6.4
+Fecha de compra : 2011-05-21T14:19:40Z
+Clase ID : 6012
+
+Antrim Esc
+Versión : 3.0
+Id : com.gamehive.AntrimEscFullEng
+Carpeta : 1308E922-D47D-4078-A770-B739C44AB7DA
+Bundle : AntrimEscFullEng.app
+Tamaño : 135.95 Mo
+Nombre : Antrim Escape I
+Autor : Game Hive
+Clase : Juegos
+Derecho de autor : © 2010 Game Hive
+Precio : 1,59 €
+Versión del Bundle : 3.0
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+AroundMe
+Versión : 4.2.1
+Id : com.tweakersoft.AroundMe
+Carpeta : E42751C2-E1E6-40FE-926E-512F0FD49805
+Bundle : AroundMe.app
+Tamaño : 3.92 Mo
+Nombre : AroundMe
+Autor : Attorno A Me S.R.L.
+Clase : Estilo de vida
+Derecho de autor : © Tweakersoft
+Precio : Gratis
+Versión del Bundle : 4.2.1
+Fecha de compra : Desconocido
+Clase ID : 6012
+
+Asterope
+Versión : 1.1
+Id : com.niklaswahrman.asterope
+Carpeta : 9A8604E5-F759-4892-84A5-B760E3737610
+Bundle : Asterope.app
+Tamaño : 5.47 Mo
+AVPlayer
+Versión : 1.401
+Id : AVPlayer.eplayworks.com
+Carpeta : FB8C56B7-293B-4C3E-8C82-8A3E8493A90E
+Bundle : AVPlayer.app
+Tamaño : 2.67 Go
+Nombre : AVPlayer (무인코딩 속도조절 자막지원 플레이어)
+Autor : EPLAYWORKS.Co.Ltd
+Clase : 엔터테인먼트
+Derecho de autor : © 2010 eplayworks
+Precio : $2.99
+Versión del Bundle : 1.401
+Fecha de compra : Desconocido
+Clase ID : 6016
+
+BackgammonD
+Versión : 1.0.4
+Id : com.ensenasoft.backgammondeluxe
+Carpeta : 1F3F0135-E668-4ADA-8B3F-90272191E9D8
+Bundle : Backgammon.app
+Tamaño : 39.96 Mo
+Nombre : Backgammon Deluxe
+Autor : EnsenaSoft
+Clase : Juegos
+Derecho de autor : © 2010 by EnsenaSoft, S.A. de C.V.
+Precio : Gratis
+Versión del Bundle : 1.0.4
+Fecha de compra : 2011-05-04T21:52:51Z
+Clase ID : 6014
+
+Bejeweled 2
+Versión : 115
+Id : com.popcap.bejeweled2
+Carpeta : 03B22661-49AB-4FD3-9BBB-0BC00224BF03
+Bundle : Bejeweled2.app
+Tamaño : 13.11 Mo
+Nombre : Bejeweled 2 + Blitz
+Autor : PopCap Games, Inc.
+Clase : Games
+Derecho de autor : © 2004, 2010 PopCap Games, Inc.
+Precio : $0.99
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+BigCity SF
+Versión : 1.0
+Id : com.bigfishgames.bcasf
+Carpeta : 05826A9D-587E-4D02-BCF0-6B0A58AEF5EB
+Bundle : BFG_iPhone_Full.app
+Tamaño : 53.49 Mo
+Nombre : Big City Adventure - San Francisco
+Autor : Big Fish Games, Inc
+Clase : Games
+Derecho de autor : © Big Fish Games, Inc
+Precio : $4.99
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Blackjack
+Versión : 3.1.5
+Id : com.mobilityware.BlackJackFree
+Carpeta : 89AAE170-D28E-40CA-95D1-30C8F31F1D65
+Bundle : BlackJackFree.app
+Tamaño : 9.57 Mo
+Nombre : Blackjack Free
+Autor : MobilityWare
+Clase : Juegos
+Derecho de autor : © 2011 MobilityWare
+Precio : Gratis
+Versión del Bundle : 3.1.5
+Fecha de compra : 2011-04-09T08:17:07Z
+Clase ID : 6014
+
+bliquo
+Versión : 2.4.1
+Id : com.experienceon.bliquo
+Carpeta : 1615FD5F-4203-4A46-A76D-AD74CDE7EE79
+Bundle : Street.app
+Tamaño : 3.44 Mo
+Nombre : bliquo
+Autor : ExperienceOn
+Clase : Estilo de vida
+Derecho de autor : © 2009 bliquo
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6012
+
+BlocksMania+
+Versión : 1.6.1
+Id : com.spokko.blocksPremium
+Carpeta : 1F9CCCB4-B953-46CA-9453-F77CCADDC374
+Bundle : blocksPremium.app
+Tamaño : 26.73 Mo
+Nombre : Blocks Mania Premium
+Autor : spokko
+Clase : Games
+Derecho de autor : © spokko, Rafał Staszewski
+Precio : $0.99
+Versión del Bundle : 1.6.1
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Booking.com
+Versión : 3.3
+Id : com.booking.BookingApp
+Carpeta : 1921319A-3CCC-4FF4-988B-541F58B7E7E8
+Bundle : Booking.com.app
+Tamaño : 28.90 Mo
+Nombre : Booking.com Reservas de hotel en más de 135.000 hoteles
+Autor : Booking.com
+Clase : Viajes
+Derecho de autor : Copyright © 2010 Booking.com™. All rights reserved.
+Precio : Gratis
+Versión del Bundle : 3.3
+Fecha de compra : Desconocido
+Clase ID : 6003
+
+Boston
+Versión : 2.2.9
+Id : com.lonelyplanet.cityguide.boston
+Carpeta : 7911CAA1-9345-4597-B6E5-D338EA077E51
+Bundle : City Guide.app
+Tamaño : 38.04 Mo
+Nombre : Boston Travel Guide – Lonely Planet
+Autor : Lonely Planet Publications Pty Ltd
+Clase : Viajes
+Derecho de autor : © Lonely Planet Publications Pty Ltd 2009
+Precio : 4,99 €
+Versión del Bundle : 2.2.9
+Fecha de compra : Desconocido
+Clase ID : 6003
+
+Car kit tool
+Versión : 1.0
+Id : com.tomtom.CarKit
+Carpeta : 344FC286-259D-4F47-9090-A921CC78C084
+Bundle : Car kit tool.app
+Tamaño : 325 Ko
+Nombre : TomTom car kit tool
+Autor : TomTom International BV
+Clase : Navegación
+Derecho de autor : © 2009 TomTom International B.V. All rights reserved.
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : 2010-07-13T19:55:30Z
+Clase ID : 6010
+
+Cat Physics
+Versión : 1.11
+Id : com.donutgames.catphysics
+Carpeta : 6C867604-94D8-4F4D-AD90-A3967EB9EFF5
+Bundle : Cat Physics.app
+Tamaño : 7.59 Mo
+Nombre : Cat Physics
+Autor : Donut Games
+Clase : Jeux
+Derecho de autor : © 2010 Donut Games
+Precio : $0.99
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+CC Caveman
+Versión : 1.7
+Id : com.gamerizon.chopchopcaveman
+Carpeta : 677E81D4-42A0-4A3D-81EA-D30229239048
+Bundle : chopchopcaveman.app
+Tamaño : 72.90 Mo
+Nombre : Chop Chop Caveman
+Autor : Gamerizon
+Clase : Juegos
+Derecho de autor : © 2010 Gamerizon Studio, Inc.
+Precio : 0,79 €
+Versión del Bundle : 1.7
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+CINeol
+Versión : 1.0.3
+Id : es.leafsoft.cineol
+Carpeta : DF9F596D-9627-4A28-A838-A4716A6895F7
+Bundle : CINeol.app
+Tamaño : 5.68 Mo
+Nombre : CINeol
+Autor : Maria Reyes Vazquez Vega
+Clase : Entretenimiento
+Derecho de autor : © 2010 Leafsoft S.L.
+Precio : Gratis
+Versión del Bundle : 1.0.3
+Fecha de compra : 2011-05-21T14:09:35Z
+Clase ID : 6016
+
+Collins
+Versión : 1.4.1
+Id : com.ultralingua.iphone.collins-de-en
+Carpeta : 5EFF4DD1-22F6-4673-A663-55730F5F1890
+Bundle : dictionary.app
+Tamaño : 13.11 Mo
+Nombre : Übersetzungswörterbuch Deutsch-Englisch Collins Pro
+Autor : Ultralingua, Inc.
+Clase : Referenz
+Derecho de autor : © Ultralingua, Inc. 2011
+Precio : 19,99 €
+Versión del Bundle : 1.4.1
+Fecha de compra : Desconocido
+Clase ID : 6006
+
+Cows Space
+Versión : 1.11
+Id : com.donutgames.cowsinspace
+Carpeta : BAB44396-8AA8-4976-8310-CD671E26972A
+Bundle : Cows In Space.app
+Tamaño : 8.12 Mo
+Nombre : Cows In Space
+Autor : Donut Games
+Clase : Games
+Derecho de autor : © 2009-2010 Donut Games
+Precio : $0.99
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+CrazyFormula
+Versión : 2.0
+Id : com.appgeneration.crazyformula
+Carpeta : 71596F25-42DD-424F-9FC9-A783442E8C71
+Bundle : CrazyFormula.app
+Tamaño : 15.67 Mo
+Nombre : Crazy Formula
+Autor : Appgeneration Software
+Clase : Juegos
+Derecho de autor : © AppGeneration
+Precio : 0,79 €
+Versión del Bundle : 2.0
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Currency
+Versión : 1.3.3
+Id : com.xe.XECurrency
+Carpeta : 62F851A1-CA55-4FCC-B37E-53C1E512320B
+Bundle : XECurrency.app
+Tamaño : 2.43 Mo
+Nombre : XE Currency
+Autor : XE.com Inc.
+Clase : Viajes
+Derecho de autor : © 2011 XE.com Inc.
+Precio : Gratis
+Versión del Bundle : 1.3.3
+Fecha de compra : Desconocido
+Clase ID : 6003
+
+Cut the Rope
+Versión : 1.3
+Id : com.chillingo.cuttherope
+Carpeta : E0F78787-A85B-487E-BDBE-A64600283C04
+Bundle : CutTheRope.app
+Tamaño : 23.55 Mo
+Nombre : Cut the Rope
+Autor : Chillingo Ltd
+Clase : Games
+Derecho de autor : © ZeptoLab
+Precio : £0.59
+Versión del Bundle : 1.3
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+daWindci
+Versión : 1.1
+Id : com.reality-twist.daWindci
+Carpeta : 2EA3BA6F-499B-4F37-AABF-62A198224E0B
+Bundle : daWindci.app
+Tamaño : 74.89 Mo
+Nombre : daWindci
+Autor : Reality Twist GmbH
+Clase : Juegos
+Derecho de autor : © 2011 Reality Twist GmbH, Mimimi Productions GbR
+Precio : 0,79 €
+Versión del Bundle : 1.1
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Definitio
+Versión : 1.04
+Id : es.andressedano.definitio
+Carpeta : 4560AF08-D821-4077-B581-B04EC293A50C
+Bundle : Definitio.app
+Tamaño : 7.75 Mo
+Nombre : Definitio - Diccionario español
+Autor : Andrés Sedano
+Clase : Referencia
+Derecho de autor : © 2011 Andrés Sedano y Arturo Martín
+Precio : Gratis
+Versión del Bundle : 1.04
+Fecha de compra : Desconocido
+Clase ID : 6006
+
+Dizzy Bee
+Versión : 1.5
+Id : com.dizzybeegame.dizzybee
+Carpeta : 065857A6-7C3B-4065-89FD-C4BF4BF1FB72
+Bundle : Dizzy Bee.app
+Tamaño : 10.39 Mo
+Domino
+Versión : 1.0
+Id : com.yourcompany.Domino
+Carpeta : 7C1DC82D-8624-4E7A-B2D1-E9F364393170
+Bundle : Domino.app
+Tamaño : 6.49 Mo
+Drop Chicken
+Versión : 1.01
+Id : com.sharp.DropTheChicken
+Carpeta : 9186149D-1978-4901-8C37-6B1EA066C937
+Bundle : DropTheChicken.app
+Tamaño : 38.85 Mo
+Nombre : Drop The Chicken
+Autor : Sharp Creative Agency
+Clase : Games
+Derecho de autor : © Sharp Creative Agency 2011
+Precio : 0,79 €
+Versión del Bundle : 1.01
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Dropbox
+Versión : 1.4.2
+Id : com.getdropbox.Dropbox
+Carpeta : 3E8FA8D8-DB41-40BD-83EC-1684A167B2C5
+Bundle : Dropbox.app
+Tamaño : 11.37 Mo
+Nombre : Dropbox
+Autor : Dropbox
+Clase : Productividad
+Derecho de autor : © 2011 Dropbox
+Precio : Gratis
+Versión del Bundle : 1.4.2
+Fecha de compra : Desconocido
+Clase ID : 6007
+
+Electric Box
+Versión : 1.3
+Id : com.candystand.electricbox
+Carpeta : BB7EC3FE-B094-4DB7-B477-13C7F3A8142D
+Bundle : Electric Box.app
+Tamaño : 7.60 Mo
+Eltiempo.es
+Versión : 1.3
+Id : es.eltiempo.eltiempo
+Carpeta : 67AC9541-52A1-4B63-8100-D7B54BFA6EE4
+Bundle : Eltiempo.es.app
+Tamaño : 3.20 Mo
+Nombre : Eltiempo.es
+Autor : El Tiempo Previsto S.L.
+Clase : Tiempo
+Derecho de autor : © El Tiempo Previsto S.L.
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6001
+
+Emoji Free!
+Versión : 2.0
+Id : com.jonkean.EmojiFree
+Carpeta : 2D76C641-E86D-47E5-9FEB-16AAEE23FB61
+Bundle : EmojiFree.app
+Tamaño : 16.19 Mo
+Nombre : Emoji Free! - emoticones gratis
+Autor : Awesomest Software
+Clase : Utilidades
+Derecho de autor : © 2009 Awesomest Software
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : 2011-03-09T16:08:18Z
+Clase ID : 6002
+
+Enigmo 2
+Versión : 2.2
+Id : com.pangea.enigmo2
+Carpeta : 5992AD61-6BD1-4209-9BCE-2BC83D1F5578
+Bundle : Enigmo 2.app
+Tamaño : 22.08 Mo
+Escoba de 15
+Versión : 1.2
+Id : ar.com.esquilaxgames.escoba15
+Carpeta : 2DDD7DF2-46EF-4368-9EC7-992804CCEA60
+Bundle : Escoba15.app
+Tamaño : 3.03 Mo
+Nombre : Escoba de 15
+Autor : Esquilax Games
+Clase : Juegos
+Derecho de autor : © 2010 Esquilax Games
+Precio : 0,79 €
+Versión del Bundle : 1.2
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Europe
+Versión : 1.6
+Id : com.tomtom.Europe
+Carpeta : FEFA04F4-060A-4ED2-B36E-0F101145550D
+Bundle : Europe.app
+Tamaño : 1.96 Go
+Nombre : TomTom Europe
+Autor : TomTom International BV
+Clase : Navigation
+Derecho de autor : © 2010 TomTom International B.V. All rights reserved.
+Precio : 79,99 €
+Versión del Bundle : 1.6
+Fecha de compra : Desconocido
+Clase ID : 6010
+
+File Sharing
+Versión : 4.0
+Id : com.softalkltd.MemoryStick
+Carpeta : 18BC8A05-D3D7-48E7-B17F-4ECF4A052131
+Bundle : MemoryStick.app
+Tamaño : 69.04 Mo
+Nombre : File Sharing (Ver, compartir y almacenar documentos)
+Autor : App Authors Limited
+Clase : Productividad
+Derecho de autor : © App Authors Ltd
+Precio : 1,59 €
+Versión del Bundle : 4.0
+Fecha de compra : Desconocido
+Clase ID : 6007
+
+FlashlightLED
+Versión : 1.1
+Id : com.blueonionsoft.flashlightledfree
+Carpeta : 58D13777-8329-43F6-B78E-E467F5B250C3
+Bundle : FlashlightLEDFree.app
+Tamaño : 679 Ko
+Nombre : True Flashlight 4 Free
+Autor : Friendiki
+Clase : Utilidades
+Derecho de autor : © 2009 Blue Onion Soft, Inc.
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : 2011-03-04T07:41:16Z
+Clase ID : 6002
+
+Flickr
+Versión : 1.3.0
+Id : com.yahoo.flickr
+Carpeta : 9163D635-7B59-4121-BC68-29ED6644E49D
+Bundle : 28_10_10_Flickr.app
+Tamaño : 8.92 Mo
+Nombre : Flickr
+Autor : Yahoo!
+Clase : Fotografía
+Derecho de autor : © 2011 Yahoo! Inc.
+Precio : Gratis
+Versión del Bundle : 1.3.0
+Fecha de compra : Desconocido
+Clase ID : 6008
+
+FlickStackr
+Versión : 1.8.5
+Id : ca.jubilo.ipadflickr
+Carpeta : F5E51856-02F9-4F9A-ADCC-90E7A537F6FC
+Bundle : FlickStackr.app
+Tamaño : 5.41 Mo
+Nombre : FlickStackr
+Autor : iPont
+Clase : Photographie
+Derecho de autor : © 2010 Carlos Mejia
+Precio : 1,59 €
+Versión del Bundle : 1.8.5
+Fecha de compra : Desconocido
+Clase ID : 6008
+
+Fragger
+Versión : 149
+Id : com.miniclip.Fragger
+Carpeta : AE59B7CF-A796-4736-ABB2-F79E68FFE536
+Bundle : Fragger.app
+Tamaño : 308.31 Mo
+Nombre : Fragger
+Autor : Miniclip.com
+Clase : Juegos
+Derecho de autor : © Miniclip SA
+Precio : 0,79 €
+Versión del Bundle : 149
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+France
+Versión : 1.6
+Id : com.tomtom.France
+Carpeta : 327C4C15-9C23-4128-AF61-0E47A178FFA1
+Bundle : France.app
+Tamaño : 547.26 Mo
+Nombre : TomTom France
+Autor : TomTom International BV
+Clase : Navigation
+Derecho de autor : © 2010 TomTom International B.V. All rights reserved.
+Precio : 49,99 €
+Versión del Bundle : 1.6
+Fecha de compra : Desconocido
+Clase ID : 6010
+
+FreeAppADay
+Versión : 1.0.4
+Id : com.icsmobile.freeappaday.gold
+Carpeta : 90F7AE91-8D3B-4158-AE00-34C8B189D3B3
+Bundle : FreeAppADay.app
+Tamaño : 6.11 Mo
+Nombre : The FreeAppADay.com Official App - GOLD Edition
+Autor : ICS Mobile, Inc
+Clase : Juegos
+Derecho de autor : © ICS Mobile Inc 2011
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Frisbee®
+Versión : 1.1.1
+Id : com.kiloo.frisbeeforever
+Carpeta : 584956B7-8749-4B0C-AF01-F8BEA4149F9B
+Bundle : frisbeeforever.app
+Tamaño : 121.40 Mo
+Nombre : Frisbee® Forever
+Autor : Kiloo
+Clase : Juegos
+Derecho de autor : ©2011 Kiloo Games. Under license from Wham-O®
+Precio : Gratis
+Versión del Bundle : 1.1.1
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Gas Tycoon 2
+Versión : 1.1
+Id : biz.kalinin.gastycoon2
+Carpeta : 191536D3-2583-41BC-B560-2D7992DB0CFE
+Bundle : Gas Tycoon 2.app
+Tamaño : 19.77 Mo
+Geared 2
+Versión : 1.0
+Id : com.playfulart.Geared2
+Carpeta : AE5214CA-ECE2-4B3E-9E86-99AD1300990C
+Bundle : Geared2.app
+Tamaño : 16.55 Mo
+Nombre : Geared 2!
+Autor : Bryan Mitchell
+Clase : Juegos
+Derecho de autor : © 2010 Bryan Mitchell
+Precio : Gratis
+Versión del Bundle : 1.0
+Fecha de compra : 2011-04-24T15:00:55Z
+Clase ID : 6014
+
+GoDocs
+Versión : 2.7.1
+Id : com.lightroom.godocspro
+Carpeta : B1C6BC91-902F-4AF3-AD6B-4F213DAF0112
+Bundle : GoDocs.app
+Tamaño : 5.33 Mo
+Nombre : GoDocs for iPad/iPhone (Google Docs™ full support)
+Autor : Light Room
+Clase : Productivity
+Derecho de autor : ©2009-2011 lightroomapps.
+Precio : $4.99
+Versión del Bundle : 2.7.1
+Fecha de compra : Desconocido
+Clase ID : 6007
+
+gogoDocs
+Versión : 1.1.3
+Id : com.soundsbroken.gogodocs
+Carpeta : 7AFE9CE7-3227-4E33-BB66-83DCF73B3F90
+Bundle : gogoDocs.app
+Tamaño : 6.11 Mo
+Nombre : gogoDocs Google Docs™ Reader
+Autor : sounds broken inc.
+Clase : Productivity
+Derecho de autor : © 2010 Sounds Broken inc
+Precio : $2.99
+Versión del Bundle : 1.1.3
+Fecha de compra : Desconocido
+Clase ID : 6007
+
+GoodReader
+Versión : 2.8.3
+Id : com.goodiware.GoodReaderLite
+Carpeta : 43202CAC-ADE0-4287-988D-5B047EB040DE
+Bundle : GoodReaderLite.app
+Tamaño : 36.84 Mo
+Nombre : GoodReader Lite for iPhone
+Autor : Good.iWare Ltd.
+Clase : Productividad
+Derecho de autor : © 2009 Good.iWare
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : 2010-08-12T17:04:44Z
+Clase ID : 6007
+
+Google
+Versión : 0.8.2.6553
+Id : com.google.GoogleMobile
+Carpeta : 11DC838F-36D3-4272-AE5C-89C616199FB9
+Bundle : Google.app
+Tamaño : 11.94 Mo
+Nombre : Búsqueda de Google
+Autor : Google
+Clase : Referencia
+Derecho de autor : © 2010 Google Inc.
+Precio : Gratis
+Versión del Bundle : 0.8.2.6553
+Fecha de compra : Desconocido
+Clase ID : 6006
+
+Google Earth
+Versión : 3.2.0
+Id : com.google.b612
+Carpeta : 4F6092FC-AFD5-4E24-B173-120A6EEC32E0
+Bundle : Google Earth.app
+Tamaño : 14.60 Mo
+Nombre : Google Earth
+Autor : Google
+Clase : Viajes
+Derecho de autor : © 2009-2010 Google Inc.
+Precio : Gratis
+Versión del Bundle : 3.2.0
+Fecha de compra : Desconocido
+Clase ID : 6003
+
+GTalkPlus
+Versión : 1.4.1
+Id : ru.nootek.simplegtalk
+Carpeta : 52226249-95DE-4F14-A187-7BCAF10A3F80
+Bundle : SimpleGTalk.app
+Tamaño : 2.64 Mo
+Nombre : GTalk+ (Chat for Google Talk)
+Autor : Alexander Buharsky
+Clase : Social Networking
+Derecho de autor : © 2010 NOOTEK Co., Ltd.
+Precio : $0.99
+Versión del Bundle : 1.4.1
+Fecha de compra : Desconocido
+Clase ID : 6005
+
+Hi,Cheese!!!
+Versión : 1.0 iPhoneCake.com
+Id : com.dddartwax.HiCheese
+Carpeta : EA8D43FB-5896-4555-9181-1054F01FDA4D
+Bundle : hi_cheese.app
+Tamaño : 51.97 Mo
+Hit FM
+Versión : 1.2
+Id : com.tst.Hit-FM
+Carpeta : C629076C-64BC-4E72-9083-7FED844B9E06
+Bundle : Hit FM.app
+Tamaño : 910 Ko
+Nombre : Hit FM
+Autor : Telnet Servicios Telematicos SL
+Clase : Música
+Derecho de autor : © Telnet Servicios Telematicos
+Precio : Gratis
+Versión del Bundle : 1.2
+Fecha de compra : Desconocido
+Clase ID : 6011
+
+Iberia
+Versión : 1.6
+Id : com.tomtom.Iberia
+Carpeta : 3EDEEFC6-5F64-4CC9-AAC8-B284E5CE2E60
+Bundle : Iberia.app
+Tamaño : 484.47 Mo
+Nombre : TomTom Iberia
+Autor : TomTom International BV
+Clase : Navegación
+Derecho de autor : © 2010 TomTom International B.V. All rights reserved.
+Precio : 39,99 €
+Versión del Bundle : 1.6
+Fecha de compra : Desconocido
+Clase ID : 6010
+
+iBlast Moki
+Versión : 1.105
+Id : com.godzilab-games.iBlastMoki
+Carpeta : 2D997AEC-4604-41B3-BF9B-7AFF1BD53BC0
+Bundle : iBlastMoki.app
+Tamaño : 12.40 Mo
+iCam Madrid
+Versión : 3.2
+Id : 3ZQPY867UX.iCamMadrid
+Carpeta : 211A35EA-7A9C-4A9B-A8B2-2B015343C43C
+Bundle : iCam Madrid.app
+Tamaño : 1.67 Mo
+Nombre : iCam Madrid
+Autor : PhoneSoftware
+Clase : Viajes
+Derecho de autor : © iPhoneSoftware
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : 2010-08-18T07:56:15Z
+Clase ID : 6003
+
+iCarRadio lite
+Versión : 1.5
+Id : com.mobilaria.TuninFMv2
+Carpeta : 3991DDDD-86E9-4995-AA86-F6652B0F6FED
+Bundle : TuninFMv2.app
+Tamaño : 1.72 Mo
+Nombre : Tunin.FM iCar Radio Lite
+Autor : Mobilaria
+Clase : Music
+Derecho de autor : © 2008-2009 Mobilaria B.V.
+Precio : Free
+Versión del Bundle : Desconocido
+Fecha de compra : 2010-01-14T07:25:26Z
+Clase ID : 6011
+
+iGoogDocs
+Versión : 1.0
+Id : com.jade.iGoogDocs
+Carpeta : 0A0FD89B-FC57-42CB-BAEB-287DC4151FCD
+Bundle : iGoogDocs.app
+Tamaño : 1.02 Mo
+iHandy Level
+Versión : 1.55
+Id : com.ihandysoft.carpenter.level
+Carpeta : 0FB189D9-1CB0-4682-8BD9-4C7B794107AB
+Bundle : Level.app
+Tamaño : 11.81 Mo
+Nombre : Nivelador iHandy
+Autor : iHandySoft Inc.
+Clase : Utilidades
+Derecho de autor : © 2011 iHandySoft Inc.
+Precio : Gratis
+Versión del Bundle : 1.55
+Fecha de compra : Desconocido
+Clase ID : 6002
+
+iInfo
+Versión : 1.4
+Id : com.walkersoftware.iInfo
+Carpeta : 03DF9649-B0BF-4833-8E6C-6DDCF5B751D4
+Bundle : iInfo.app
+Tamaño : 736 Ko
+Nombre : iInformation
+Autor : Walker Software
+Clase : Utilities
+Derecho de autor : © Walker Software
+Precio : Free
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6002
+
+Infinity Blade
+Versión : 7630.0
+Id : com.chairentertainment.birthright
+Carpeta : 511018B9-6009-4B87-A515-79632267841A
+Bundle : SwordGame.app
+Tamaño : 510.53 Mo
+Nombre : Infinity Blade
+Autor : Chair Entertainment Group, LLC
+Clase : Games
+Derecho de autor : © 2010 Chair Entertainment Group, LLC
+Precio : $8.29
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+InfoTráfico
+Versión : 1.3
+Id : com.acorntic.infotrafico.01
+Carpeta : 8C118752-149D-4709-8815-9208567D59E8
+Bundle : brakeit.app
+Tamaño : 1.80 Mo
+Nombre : InfoTrafico
+Autor : Acorn TIC
+Clase : Viajes
+Derecho de autor : © 2010 Acorn TIC
+Precio : Gratis
+Versión del Bundle : 1.3
+Fecha de compra : Desconocido
+Clase ID : 6003
+
+iPocha
+Versión : 1.1
+Id : com.ibucle.ipochagc
+Carpeta : 652D6DB1-9963-43E7-A199-6AB229CD2898
+Bundle : iPocha.app
+Tamaño : 22.54 Mo
+Nombre : iPocha GC
+Autor : iBucle
+Clase : Juegos
+Derecho de autor : © 2010 iBucle
+Precio : 0,79 €
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Jungle Bloxx
+Versión : 1.0.6
+Id : com.digitalchocolate.idoradofull
+Carpeta : 91BA09BF-13E6-4200-9026-533B2129987D
+Bundle : iDoradoFull.app
+Tamaño : 11.64 Mo
+Labyrinth
+Versión : 1.9.0
+Id : se.codify.labyrinth
+Carpeta : D0B0C7C7-35BC-482F-B464-EF570B4AC2F7
+Bundle : Labyrinth.app
+Tamaño : 21.69 Mo
+Nombre : Labyrinth
+Autor : Codify AB
+Clase : Jeux
+Derecho de autor : © 2008-2010 Codify AB
+Precio : 2,39 €
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Lambis
+Versión : 2.0
+Id : com.orange.uk.co.lambis
+Carpeta : 1DC8CF8D-3642-4019-8B5E-B0A6BC354AB9
+Bundle : Lambis.app
+Tamaño : 26.17 Mo
+Nombre : Lambi Islands
+Autor : Orange UK
+Clase : Games
+Derecho de autor : © 2010 - FRANCE TELECOM SA
+Precio : $0.99
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Land-a Panda
+Versión : 1.1
+Id : uk.co.bigpixelstudios.landapanda
+Carpeta : F0166CD9-8D1B-431F-A6B5-3347CCD51F15
+Bundle : landa_panda_v1.1.app
+Tamaño : 23.11 Mo
+Nombre : Land-a Panda
+Autor : Big Pixel Studios
+Clase : Games
+Derecho de autor : © Big Pixel Studios Ltd.
+Precio : $0.99
+Versión del Bundle : 1.1
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Las Vegas
+Versión : 2.2.9
+Id : com.lonelyplanet.cityguide.lasvegas
+Carpeta : 816CD61A-5CFF-416B-A4C6-239146FE6D18
+Bundle : City Guide.app
+Tamaño : 29.65 Mo
+Nombre : Las Vegas Travel Guide – Lonely Planet
+Autor : Lonely Planet Publications Pty Ltd
+Clase : Viajes
+Derecho de autor : © 2010 Lonely Planet Publications Pty Ltd
+Precio : 4,99 €
+Versión del Bundle : 2.2.9
+Fecha de compra : Desconocido
+Clase ID : 6003
+
+Letris
+Versión : 2.1
+Id : com.zenbrains.letris
+Carpeta : E9E45117-5ED6-4DCC-A357-A49823EF16B1
+Bundle : Letris.app
+Tamaño : 25.11 Mo
+Nombre : Letris: el juego de palabras
+Autor : Aram Julhakyan
+Clase : Juegos
+Derecho de autor : © 2010 Zenbrains
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : 2010-07-13T19:58:51Z
+Clase ID : 6014
+
+Lexisgoo
+Versión : 4.5
+Id : com.ppclink.lexisgoo
+Carpeta : A75463D8-DCB5-4FB8-AC73-27A9A3185DDE
+Bundle : Lexisgoo.app
+Tamaño : 39.88 Mo
+Nombre : Lexisgoo English Dictionary & Thesaurus
+Autor : Chillingo Ltd
+Clase : Referencia
+Derecho de autor : © Chillingo Ltd & PPCLINK Mobile Software
+Precio : 0,79 €
+Versión del Bundle : 4.5
+Fecha de compra : Desconocido
+Clase ID : 6006
+
+London City
+Versión : 1.1
+Id : uk.co.visualit.TubeLondonCity
+Carpeta : 64117390-0AB9-4545-A21E-C37EF89C4381
+Bundle : TubeLondonCity.app
+Tamaño : 788 Ko
+London Tube
+Versión : 3.1.1
+Id : com.presselite.londonsubway
+Carpeta : 3BF41635-A9B3-45F9-BDB7-EA8A592AEC66
+Bundle : London Tube.app
+Tamaño : 3.17 Mo
+Mahjong Dlx
+Versión : 1.0.7
+Id : com.ensenasoft.mahjongdeluxe
+Carpeta : 0130AA86-D063-47AC-BAE3-FDD037D3D333
+Bundle : mahjong.app
+Tamaño : 23.06 Mo
+Nombre : Mahjong Deluxe
+Autor : EnsenaSoft
+Clase : Juegos
+Derecho de autor : © 2010 by EnsenaSoft, S.A. de C.V.
+Precio : 0,79 €
+Versión del Bundle : 1.0.7
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Marblenauts
+Versión : 1.3
+Id : com.crescentflare.marblenauts
+Carpeta : AF4F7C89-E3F8-488D-9D15-FF55AB4AAFFD
+Bundle : Marblenauts.app
+Tamaño : 20.43 Mo
+Marple
+Versión : 2.1.9
+Id : com.mikkokankainen.Marple
+Carpeta : 0DF5D089-89ED-4B4E-9499-858D3BC5D177
+Bundle : Marple.app
+Tamaño : 9.21 Mo
+Nombre : Marple
+Autor : Mikko Kankainen
+Clase : Juegos
+Derecho de autor : © 2008-2010 Mikko Kankainen
+Precio : 1,59 €
+Versión del Bundle : Desconocido
+Fecha de compra : 2010-09-19T15:12:06Z
+Clase ID : 6014
+
+MetrO
+Versión : 0.9.7
+Id : com.kinevia.MetrO
+Carpeta : 1DBFAF94-D193-4E5D-B72C-CB3F197897CE
+Bundle : MetrO.app
+Tamaño : 469 Ko
+Nombre : MetrO
+Autor : Kinevia
+Clase : Viajes
+Derecho de autor : © Kinevia
+Precio : Gratis
+Versión del Bundle : 0.9.7
+Fecha de compra : Desconocido
+Clase ID : 6003
+
+MetroMadrid
+Versión : 3.3
+Id : 3ZQPY867UX.MetroMadrid
+Carpeta : 207AE75E-2377-4FAA-AD65-FBEA1EDB509D
+Bundle : MetroMadrid.app
+Tamaño : 4.68 Mo
+Nombre : Metro Madrid
+Autor : PhoneSoftware
+Clase : Viajes
+Derecho de autor : © PhoneSoftware
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6003
+
+Mr. DRILLER
+Versión : 1.0.1
+Id : com.namconetworks.idriller
+Carpeta : 17461D3E-5C0D-4B8D-A8C4-E1CAA06F7CDB
+Bundle : MrDRILLER.app
+Tamaño : 16.79 Mo
+New York
+Versión : 1.5.2
+Id : com.baffledbytravel.guide.newyork
+Carpeta : 4AB9FA4E-54CD-4566-AD15-E1E62FD8F7CE
+Bundle : New York.app
+Tamaño : 27.65 Mo
+Nombre : New York: The Best of New York by Baffled By Travel, 2010/2011 Edition
+Autor : Baffled By Travel
+Clase : Viajes
+Derecho de autor : © 2010 Baffled By Travel, Inc.
+Precio : Gratis
+Versión del Bundle : 1.5.2
+Fecha de compra : Desconocido
+Clase ID : 6003
+
+New York City
+Versión : 2.3.1
+Id : com.lonelyplanet.cityguide.newyork
+Carpeta : 39448E18-7C69-4344-9FDB-D75DCC79BB3E
+Bundle : City Guide.app
+Tamaño : 61.42 Mo
+Nombre : New York City Guide - Lonely Planet
+Autor : Lonely Planet Publications Pty Ltd
+Clase : Viajes
+Derecho de autor : © 2010 Lonely Planet Publications Pty Ltd
+Precio : 4,99 €
+Versión del Bundle : 2.3.1
+Fecha de compra : Desconocido
+Clase ID : 6003
+
+North America
+Versión : 1.6
+Id : com.tomtom.North America
+Carpeta : 681006E2-2C53-45BE-A29B-6B011551C0B9
+Bundle : N America P 865.3254.app
+Tamaño : 1.60 Go
+Nombre : TomTom N America P
+Autor : TomTom International BV
+Clase : Navigation
+Derecho de autor : © 2010 TomTom International B.V. All rights reserved.
+Precio : 79,99 €
+Versión del Bundle : 1.6
+Fecha de compra : Desconocido
+Clase ID : 6010
+
+NoteMaster
+Versión : 4.1.1
+Id : com.kabukivision.notemaster
+Carpeta : F3D9F9DA-8D1E-4DE3-9AFF-E06AF54D43F6
+Bundle : NoteMaster.app
+Tamaño : 21.26 Mo
+Nombre : NoteMaster - Notes with images, synced with Google Docs™
+Autor : Kabuki Vision
+Clase : Productividad
+Derecho de autor : © 2009 Kabuki Vision
+Precio : 2,99 €
+Versión del Bundle : 4.1.1
+Fecha de compra : Desconocido
+Clase ID : 6007
+
+NYC Subway
+Versión : 2.1.37
+Id : uk.co.mxdata.NewYorkSubwayMap
+Carpeta : 13C56706-50C4-47FD-AB60-65C85C09FE73
+Bundle : NewYorkSubway.app
+Tamaño : 10.45 Mo
+Nombre : New York Subway Map
+Autor : mxData Ltd
+Clase : Viajes
+Derecho de autor : © mxData Ltd
+Precio : Gratis
+Versión del Bundle : 2.1.37
+Fecha de compra : Desconocido
+Clase ID : 6003
+
+Physics Box
+Versión : 1.2
+Id : com.FDGMobileGamesGbR.RagdollCannon
+Carpeta : 8CA13CDD-1E9E-4C8A-941C-6F9F559D0114
+Bundle : Physics Box.app
+Tamaño : 22.52 Mo
+Nombre : PHYSICS GAMEBOX
+Autor : FDG Entertainment
+Clase : Games
+Derecho de autor : © FDG Entertainment GmbH & Co. KG
+Precio : $0.99
+Versión del Bundle : 1.2
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+PvZ
+Versión : 1605
+Id : com.popcap.PvZ
+Carpeta : A06DE292-5849-4F3E-8F8F-6B54FAED251C
+Bundle : PvZ.app
+Tamaño : 46.84 Mo
+Quickoffice
+Versión : 4.0.1
+Id : com.quickoffice.quickoffice
+Carpeta : FC93190A-A2BA-4408-B32F-E2222DA58090
+Bundle : Quickoffice.app
+Tamaño : 41.71 Mo
+RDP
+Versión : 2.7
+Id : dk.mochasoft.rdp
+Carpeta : DEF0C6A4-41CD-4710-97D4-6CF6514DE60A
+Bundle : RDP.app
+Tamaño : 1.22 Mo
+Nombre : Remote Desktop - RDP
+Autor : MochaSoft
+Clase : Economía y empresa
+Derecho de autor : © 2011, MochaSoft Aps.
+Precio : 4,99 €
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6000
+
+Red Ball Of Goo
+Versión : 1.1
+Id : com.utopiangames.RedBalls
+Carpeta : 967B65AE-F0BD-4012-8A27-0F4245CE84D1
+Bundle : RedBallOfGoo.app
+Tamaño : 11.01 Mo
+Nombre : Red Ball Of Goo
+Autor : Utopian Games
+Clase : Games
+Derecho de autor : © Utopian Games
+Precio : $0.99
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Reeder
+Versión : 2.3.1
+Id : ch.reeder
+Carpeta : CF5D3B8C-EC9D-487B-8B8F-F63E9C18E229
+Bundle : Reeder.app
+Tamaño : 17.09 Mo
+Nombre : Reeder
+Autor : Silvio Rizzi
+Clase : News
+Derecho de autor : © 2011 Silvio Rizzi
+Precio : $2.99
+Versión del Bundle : 2.3.1
+Fecha de compra : Desconocido
+Clase ID : 6009
+
+ReLiSimpleShoppingLists
+Versión : 1.4.2
+Id : com.softwareandina.ReLiSimpleShoppingLists
+Carpeta : A2E51102-69D8-45ED-AE12-0D63349D00CC
+Bundle : ReLiSimpleShoppingLists.app
+Tamaño : 1.83 Mo
+Nombre : ReLiSimple Listas de Compras
+Autor : Software Andina
+Clase : Estilo de vida
+Derecho de autor : Copyright © 2010 by Software Andina
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6012
+
+reMovem free
+Versión : 53
+Id : net.mundue.JawBreaker
+Carpeta : F2094DD0-ED76-4036-B702-3280B20843A9
+Bundle : reMovemFree.app
+Tamaño : 5.03 Mo
+Nombre : reMovem (free)
+Autor : Mundue LLC
+Clase : Juegos
+Derecho de autor : © 2008-2011 Mundue LLC
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Reversi HD Pro
+Versión : 1.1
+Id : com.tdc.ireversi
+Carpeta : D5583CD5-640D-456C-A531-F2FFDBD458FD
+Bundle : iReversi.app
+Tamaño : 5.06 Mo
+Nombre : Reversi HD Pro
+Autor : TDC LLC
+Clase : Giochi
+Derecho de autor : © 2010 TDC LLC
+Precio : 1,59 €
+Versión del Bundle : 1.1
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Rope'n'Fly 2
+Versión : 4.7
+Id : com.rsz.RopeFly2
+Carpeta : BFD1B015-1489-4202-8213-2CD654DFC178
+Bundle : RopeFly2.app
+Tamaño : 11.21 Mo
+San Francisco
+Versión : 2.2.9.1
+Id : com.lonelyplanet.cityguide.sanfrancisco1
+Carpeta : C3049591-2D90-4BAA-B555-FDB404A473E2
+Bundle : City Guide.app
+Tamaño : 53.23 Mo
+Nombre : San Francisco Travel Guide - Lonely Planet
+Autor : Lonely Planet Publications Pty Ltd
+Clase : Viajes
+Derecho de autor : © 2010 Lonely Planet Publications Pty Ltd
+Precio : 4,99 €
+Versión del Bundle : 2.2.9.1
+Fecha de compra : Desconocido
+Clase ID : 6003
+
+Scrabble
+Versión : 1.6.23
+Id : com.ea.scrabblebv
+Carpeta : 35BB82CC-EDB5-4A13-8B18-BD01DF1C5AC0
+Bundle : scrabblebv.app
+Tamaño : 13.45 Mo
+Nombre : Scrabble®
+Autor : Electronic Arts Nederland B.V.
+Clase : Games
+Derecho de autor : © 2011 Mattel, Inc. All Rights Reserved. Game code © 2011 Electronic Arts Inc.
+Precio : £1.19
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+ShapeShape
+Versión : 3.2
+Id : com.inXileEntertainment.ShapeShape
+Carpeta : 2A01405C-3C7F-4C8F-B8A9-8D2894EEBFE6
+Bundle : ShapeShape.app
+Tamaño : 9.21 Mo
+Shazam
+Versión : 404
+Id : com.shazam.Shazam
+Carpeta : E4797E59-8EA6-4076-BCD1-3B51752FA856
+Bundle : Shazam.app
+Tamaño : 14.57 Mo
+Nombre : Shazam
+Autor : Shazam Entertainment Ltd.
+Clase : Música
+Derecho de autor : © 2011 Shazam Entertainment Ltd.
+Precio : Gratis
+Versión del Bundle : 404
+Fecha de compra : Desconocido
+Clase ID : 6011
+
+SHOUTcast
+Versión : 1.3.2.1
+Id : com.aol.shoutcast.mobile
+Carpeta : 1B85482C-E646-4886-BD43-E88118008CB0
+Bundle : SHOUTcast.app
+Tamaño : 3.73 Mo
+Nombre : SHOUTcast Radio
+Autor : AOL, Inc.
+Clase : Música
+Derecho de autor : © 2011 AOL Inc.
+Precio : Gratis
+Versión del Bundle : 1.3.2.1
+Fecha de compra : Desconocido
+Clase ID : 6011
+
+SlovoEd
+Versión : 2.30
+Id : com.slovoed.SlovoEd-Classic-Italian-Spanish
+Carpeta : 5932EA07-9FD3-4005-8552-81ACF91B7186
+Bundle : SlovoEd.app
+Tamaño : 68.05 Mo
+Nombre : SlovoEd Classic Italian <-> Spanish Dictionary
+Autor : Paragon Technologie GmbH
+Clase : Istruzione
+Derecho de autor : © 2010 Paragon Software Group
+Precio : 11,99 €
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6017
+
+SlovoEd
+Versión : 2.30
+Id : com.slovoed.SlovoEd-Compact-English-Serbian
+Carpeta : 887E7094-40D6-4C36-965D-AF3635B10E99
+Bundle : SlovoEd.app
+Tamaño : 5.45 Mo
+Smoody
+Versión : 1.1
+Id : com.FedericoKalayjian.Smoody
+Carpeta : C23A9F7E-D4F9-4DA0-8DF9-B43A7F17D1A5
+Bundle : Smoody.app
+Tamaño : 21.91 Mo
+Nombre : Smoody
+Autor : Federico Kalayjian
+Clase : Juegos
+Derecho de autor : © 2011 Federico Kalayjian
+Precio : Gratis
+Versión del Bundle : 1.1
+Fecha de compra : 2011-05-05T18:07:24Z
+Clase ID : 6014
+
+Solitaire City
+Versión : 2.02
+Id : us.digitalsmoke.solitairecityclassic
+Carpeta : BB1B01F3-44A4-4A7D-836B-DC2C25CE5E28
+Bundle : Solitaire City Classic.app
+Tamaño : 14.88 Mo
+Nombre : Solitaire City™ Classic
+Autor : Digital Smoke LLC
+Clase : Jeux
+Derecho de autor : © 2009-2010 Digital Smoke LLC
+Precio : Gratuit
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Soosiz
+Versión : 1.3
+Id : com.touchfoo.Soosiz
+Carpeta : AC8D88A1-FEB7-4986-858F-BA2EF62C909C
+Bundle : Soosiz.app
+Tamaño : 101.62 Mo
+Nombre : Soosiz
+Autor : Touch Foo
+Clase : Games
+Derecho de autor : © 2010 Ville Mäkynen and Tuomas Mäkynen
+Precio : 1,59 €
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Spider
+Versión : 1.3
+Id : com.tigerstylegames.spider
+Carpeta : BD5C261C-5977-4059-B846-7FA9FF3DF75B
+Bundle : Spider.app
+Tamaño : 97.60 Mo
+Nombre : Spider: The Secret of Bryce Manor
+Autor : Tiger Style
+Clase : Juegos
+Derecho de autor : © 2009 Tiger Style LLC
+Precio : $10.00
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Spikey
+Versión : 1.13
+Id : com.donutgames.spikeysbouncearound
+Carpeta : F5F331E5-7516-42DD-A1E8-08D219E7D3F7
+Bundle : Spikey.app
+Tamaño : 4.56 Mo
+Nombre : Spikey's Bounce Around
+Autor : Donut Games
+Clase : Games
+Derecho de autor : © 2006-2010 Donut Games
+Precio : $1.99
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Spirits
+Versión : 1.1
+Id : com.spacesofplay.spiritsiphone
+Carpeta : F97203BC-3145-4E87-AC54-8F1F00026C7D
+Bundle : SpiritsiPhone.app
+Tamaño : 46.17 Mo
+Nombre : Spirits
+Autor : Spaces of Play
+Clase : Juegos
+Derecho de autor : © Spaces of Play, Mattias Ljungstrom
+Precio : Gratis
+Versión del Bundle : 1.1
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Spore
+Versión : 1.0.64
+Id : com.ea.spore.row.efigsj
+Carpeta : 55F26DEF-39ED-4388-83C6-FB44D3C67E01
+Bundle : Spore.app
+Tamaño : 101.16 Mo
+Spotify
+Versión : 41300037
+Id : com.spotify.client
+Carpeta : AA753642-0E03-4C22-87A3-787D817A9655
+Bundle : Spotify.app
+Tamaño : 9.90 Mo
+Nombre : Spotify
+Autor : Spotify Ltd.
+Clase : Música
+Derecho de autor : © 2008-2010 Spotify Ltd.
+Precio : Gratis
+Versión del Bundle : 41300037
+Fecha de compra : Desconocido
+Clase ID : 6011
+
+Springpad
+Versión : 2.2.1
+Id : com.springpadit.springpad
+Carpeta : 879C3C44-79E5-473D-9777-E0793FE0035B
+Bundle : springpad_iphone.app
+Tamaño : 10.70 Mo
+Nombre : Springpad
+Autor : Spring Partners
+Clase : Productividad
+Derecho de autor : © 2011 Spring Partners, Inc.
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6007
+
+Sudoku
+Versión : 2.2
+Id : com.mindthefrog.sudoku
+Carpeta : D4FD17DD-EF19-4F18-80FD-D9A8E717D952
+Bundle : SUDOKU.app
+Tamaño : 1.52 Mo
+Nombre : +SUDOKU
+Autor : Mind The Frog, Inc.
+Clase : Spiele
+Derecho de autor : © 2009-2010 Mind The Frog, Inc.
+Precio : 1.10Fr
+Versión del Bundle : 2.2
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Sway
+Versión : 1.2.2
+Id : se.illusionlabs.sway
+Carpeta : 8326DDA5-FAC0-465E-91CC-9A8CDE1F02AC
+Bundle : sway.app
+Tamaño : 13.77 Mo
+System
+Versión : 1.3.2
+Id : com.RecessionApps.System
+Carpeta : 9CA42797-5F6B-4B1B-A87D-B495CCB3ECE1
+Bundle : System.app
+Tamaño : 640 Ko
+Nombre : System Activity Monitor
+Autor : Recession Apps
+Clase : Utilidades
+Derecho de autor : © Copyright (c) 2008-2010. All Rights Reserved.
+Precio : 2,39 €
+Versión del Bundle : 1.3.2
+Fecha de compra : Desconocido
+Clase ID : 6002
+
+TED Mobile
+Versión : 1.8
+Id : com.willflow.ted
+Carpeta : 91F92FF3-B763-4E28-926E-820D09498F4B
+Bundle : Rosetta.TED.app
+Tamaño : 2.81 Mo
+Nombre : TED Mobile
+Autor : .willflow limited
+Clase : Educación
+Derecho de autor : © .willflow Limited
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : 2010-08-05T17:57:59Z
+Clase ID : 6017
+
+Telepizza
+Versión : 1.2.1
+Id : com.the-cocktail.telepizza
+Carpeta : 5581F8D4-EC62-45E3-A3BC-024FC06FAB05
+Bundle : Telepizza.app
+Tamaño : 6.00 Mo
+Nombre : Telepizza
+Autor : The Cocktail
+Clase : Estilo de vida
+Derecho de autor : © 2010 Telepizza S.L.
+Precio : Gratis
+Versión del Bundle : 1.2.1
+Fecha de compra : Desconocido
+Clase ID : 6012
+
+Tiki Premium
+Versión : 1.5.3
+Id : com.spokko.TikiPremium
+Carpeta : 171BBA89-1D5D-4E01-BA90-D15A3F12C0D3
+Bundle : TikiPremium.app
+Tamaño : 20.75 Mo
+Nombre : Tiki Totems Premium
+Autor : spokko
+Clase : Juegos
+Derecho de autor : © spokko
+Precio : Gratis
+Versión del Bundle : 1.5.3
+Fecha de compra : 2011-05-11T21:43:42Z
+Clase ID : 6014
+
+Tiny Wings
+Versión : 1.1.0
+Id : com.andreasilliger.tinywings
+Carpeta : 3D9BB59F-437E-44E5-B80E-AD535CDAFE58
+Bundle : TinyWings.app
+Tamaño : 16.68 Mo
+Nombre : Tiny Wings
+Autor : Andreas Illiger
+Clase : Games
+Derecho de autor : © 2011 Andreas Illiger
+Precio : $0.99
+Versión del Bundle : 1.1.0
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Tipulator
+Versión : 2.6.1
+Id : com.taptaptap.Tipulator
+Carpeta : B5A4960E-E9BA-46FC-948F-7FA1CD91B2C0
+Bundle : Tipulator.app
+Tamaño : 1.43 Mo
+Toki Tori
+Versión : 1.6.1
+Id : com.chillingo.tokitori
+Carpeta : 0B210A34-E48E-4346-9025-DC9048C5022E
+Bundle : TokiTori.app
+Tamaño : 15.16 Mo
+Nombre : Toki Tori
+Autor : Chillingo Ltd
+Clase : Games
+Derecho de autor : © Two Tribes
+Precio : $4.99
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Toobz-Free
+Versión : 1.6.3
+Id : H2P7T67KN7.HaslupToobzFree
+Carpeta : 52E537D0-14C3-462D-8CDE-5A058ACDABAE
+Bundle : Toobz-Free.app
+Tamaño : 15.10 Mo
+Nombre : Toobz-Free
+Autor : Off Center Software
+Clase : Juegos
+Derecho de autor : © 2009 Off Center Software
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : 2010-08-18T07:54:08Z
+Clase ID : 6014
+
+Topple
+Versión : 1.9.2
+Id : com.ngmoco.Topple
+Carpeta : 0CA83401-86F4-437D-98E7-02EAE5522E47
+Bundle : Topple.app
+Tamaño : 20.75 Mo
+Nombre : Topple
+Autor : ngmoco, Inc.
+Clase : Juegos
+Derecho de autor : © 2008 ngmoco, Inc.
+Precio : Gratis
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Totemo
+Versión : 1.27
+Id : net.hexage.totemo
+Carpeta : EA78DFD4-A4A9-4257-966B-8635E6D6C8BF
+Bundle : Totemo.app
+Tamaño : 7.77 Mo
+TouchRummy
+Versión : 2.2.1
+Id : nl.alwintroost.touchrummy
+Carpeta : 5DEBA677-B51B-4FE1-913B-F866C5ACBA9B
+Bundle : TouchRummy.app
+Tamaño : 6.09 Mo
+Nombre : Touch Rummy
+Autor : Alwin Troost .nl
+Clase : Games
+Derecho de autor : © 2009-2010, Alwin Troost .nl
+Precio : 2,39 €
+Versión del Bundle : Desconocido
+Fecha de compra : Desconocido
+Clase ID : 6014
+
+Translate
+Versión : 1.1.0.1360
+Id : com.google.Translate
+Carpeta : 05602873-B559-4E96-A96F-59494735FC14
+

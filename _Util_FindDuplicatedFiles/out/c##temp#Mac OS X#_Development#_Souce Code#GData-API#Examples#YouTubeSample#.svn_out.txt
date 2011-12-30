@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\.svn\all-wcprops, aa2fe747d421996eb47160ae1d6d9f12
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\.svn\entries, 18ba97188bb5d50f0fdfb1e2a55f998e

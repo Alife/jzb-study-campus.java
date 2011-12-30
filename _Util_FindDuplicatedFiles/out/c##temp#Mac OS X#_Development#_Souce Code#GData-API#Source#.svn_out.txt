@@ -1,0 +1,3 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\.svn\all-wcprops, 6603b960356d34047bd8a11a42197f9a
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\.svn\dir-prop-base, 8b6b1a9ca404dbd1ea5f8f2f258023f5
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\.svn\entries, face190aeab3c2f62bbbcfff9fa1fd72

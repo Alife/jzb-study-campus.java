@@ -1,0 +1,4 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\ContactsSample\English.lproj\.svn\text-base\ContactsSampleWindow.xib.svn-base, a9c4e5f0f0d4f3b6da2e9a04c5549cae
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\ContactsSample\English.lproj\.svn\text-base\EditEntryWindow.xib.svn-base, 913082431bca26e3a2af5735a089f4f4
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\ContactsSample\English.lproj\.svn\text-base\InfoPlist.strings.svn-base, b1a09b7b30560de3e1e9f38e3307bae4
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\ContactsSample\English.lproj\.svn\text-base\MainMenu.xib.svn-base, 5c27fb1f8c029b28ee54a84579e5e081

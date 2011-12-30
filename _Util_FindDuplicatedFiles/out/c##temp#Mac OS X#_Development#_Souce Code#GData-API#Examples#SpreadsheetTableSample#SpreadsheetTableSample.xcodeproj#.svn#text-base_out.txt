@@ -1,0 +1,1 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\SpreadsheetTableSample\SpreadsheetTableSample.xcodeproj\.svn\text-base\project.pbxproj.svn-base, a5839ff6c3125776e0100a2ebac39b9a

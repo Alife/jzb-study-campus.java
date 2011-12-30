@@ -1,0 +1,1 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\BooksSample.xcodeproj\project.pbxproj, 55de1325cbdbfefbfc01f41b60297b9f

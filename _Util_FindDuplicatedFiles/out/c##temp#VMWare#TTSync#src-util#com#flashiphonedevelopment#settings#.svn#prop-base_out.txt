@@ -1,0 +1,2 @@
+c:\temp\VMWare\TTSync\src-util\com\flashiphonedevelopment\settings\.svn\prop-base\GlobalSettings.as.svn-base, 3ef09b74711586670285886f4bbfc66e
+c:\temp\VMWare\TTSync\src-util\com\flashiphonedevelopment\settings\.svn\prop-base\IPhoneAppSettings.as.svn-base, 3ef09b74711586670285886f4bbfc66e

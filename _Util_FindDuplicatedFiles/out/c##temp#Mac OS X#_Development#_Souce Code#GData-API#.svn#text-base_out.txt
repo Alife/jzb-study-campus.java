@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\.svn\text-base\COPYING.txt.svn-base, f3402931a0e7de5a32df9b2d4b3cf852
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\.svn\text-base\README.txt.svn-base, 157981c668a973754ef68c37bcc7eeff

@@ -1,0 +1,10 @@
+c:\temp\VMWare\JZBTest\.git\hooks\applypatch-msg.sample, 7ad6429d63892e7fc2a71671f1263775
+c:\temp\VMWare\JZBTest\.git\hooks\commit-msg.sample, 97ecc8fc7a622b87f6549e89b0c4957c
+c:\temp\VMWare\JZBTest\.git\hooks\post-commit.sample, 35d2eae2ca3c566cd9b4c7c4a2553552
+c:\temp\VMWare\JZBTest\.git\hooks\post-receive.sample, 0d0ebd4bb2bda7be8040f154ec87bca5
+c:\temp\VMWare\JZBTest\.git\hooks\post-update.sample, 06e268f660817b6f2a40c7d77471c10d
+c:\temp\VMWare\JZBTest\.git\hooks\pre-applypatch.sample, a67ab6096fc55124a8414db62c2f9a14
+c:\temp\VMWare\JZBTest\.git\hooks\pre-commit.sample, 38c6e72f8c253db8c9b398fc06076d5a
+c:\temp\VMWare\JZBTest\.git\hooks\pre-rebase.sample, 1f2d694cd8052f90e1041a3658d61956
+c:\temp\VMWare\JZBTest\.git\hooks\prepare-commit-msg.sample, bf8925128740c942538ff472925d8bd7
+c:\temp\VMWare\JZBTest\.git\hooks\update.sample, a9fe702517b1c43d3e5c819d96bd446a

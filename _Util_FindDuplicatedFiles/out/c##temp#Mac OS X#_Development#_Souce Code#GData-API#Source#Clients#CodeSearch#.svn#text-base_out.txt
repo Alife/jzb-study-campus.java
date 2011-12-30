@@ -1,0 +1,11 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Clients\CodeSearch\.svn\text-base\GDataCodeSearch.h.svn-base, 6cca4dbb877c509e151008c0c2043947
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Clients\CodeSearch\.svn\text-base\GDataCodeSearchFile.h.svn-base, 83cf8d3fe4df123fa46d17a1d962fc76
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Clients\CodeSearch\.svn\text-base\GDataCodeSearchFile.m.svn-base, dfcd732a6a12612af9101413148f1bd5
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Clients\CodeSearch\.svn\text-base\GDataCodeSearchMatch.h.svn-base, 26d33b7432607edc353de42b46d6f168
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Clients\CodeSearch\.svn\text-base\GDataCodeSearchMatch.m.svn-base, 7dc5d2783e85f54b85a12c46eac21f00
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Clients\CodeSearch\.svn\text-base\GDataCodeSearchPackage.h.svn-base, cfe7b84e6248f28525d3baf012e0fb96
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Clients\CodeSearch\.svn\text-base\GDataCodeSearchPackage.m.svn-base, e73bf0fde78d94e94d1c4222efd5a206
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Clients\CodeSearch\.svn\text-base\GDataEntryCodeSearch.h.svn-base, bbdd8afdee126410f46818ba9617c3c0
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Clients\CodeSearch\.svn\text-base\GDataEntryCodeSearch.m.svn-base, 12800e87569fe36a2a5f7d10d95b508f
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Clients\CodeSearch\.svn\text-base\GDataFeedCodeSearch.h.svn-base, 436c95b25aca2a9b0fb094270633a732
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Clients\CodeSearch\.svn\text-base\GDataFeedCodeSearch.m.svn-base, e38424a4614ce4737931fc1adc2b6f5c

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Cajero</title>
+<link href="../css/CJ_estilos.css" rel="stylesheet" type="text/css" />
+<link href="../fonts/stylesheet.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../css/iepngfix_tilebg.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.7.1.js"></script>
+<script type="text/javascript">
+
+    // When the DOM is ready, initialize the scripts.
+    jQuery(function( $ ){
+
+        // Get a reference to the container.
+        var container = $( "#capilla" );
+		var mueve = $( "#cabecera" );
+
+        // Bind the link to toggle the slide.
+        $( "#sube" ).click(
+            function( event ){
+                // Prevent the default event.
+                event.preventDefault();
+
+                // Toggle the slide based on its current
+                // visibility.
+                if (container.is( ":visible" )){
+
+                    // Hide - slide up.
+                    container.slideUp( 800 );
+					mueve.slideDown( 800 );
+
+                } else {
+
+                    // Show - slide down.
+                    container.slideDown( 500 );
+					mueve.slideUp( 500 );
+                }
+            }
+        );
+    });
+</script>
+
+</head>
+
+<body>
+<div id="mainContainer">
+<div id="dentro">
+<div id="cabecera">
+<div class="menuup_banner"><img src="../img/banner_h.png" /></div>
+<div class="logo"></div>
+</div>
+<div id="bgtrans">
+<div id="content">
+<div id="col3">	
+<div class="bloquetitu shadow">
+<h3>Main Menu </h3>
+<h2>Select a Transaction</h2>
+</div>
+</div>
+<div class="bloque_botones02">
+<div class="titcolumna shadow"><h4>Your Favorites</h4></div>
+  <ul class="lista02">
+		<li><a href="01_withdrawal_4.htm" target="_self"><p class="wrelieve">Get $60 </p><br><span class="wsubtitu">From Checking ***2566</span></a></li>
+		<li><a href="01_withdrawal_4.htm" target="_self"><p class="wrelieve">Get $40</p><br><span class="wsubtitu">From Checking ***2566</span> </a></li>
+		<li><a href="deposito_1.htm" target="_self"><p class="wrelieve">Deposit Check</p><br><span class="wsubtitu">Into Savings ***3354</span></a></li>
+	</ul>
+</div>
+<div class="bloque_botones">
+<div class="titcolumna shadow"><h4>Other Transactions</h4></div>
+	<ul class="lista01 col2">
+		<li><a href="#" target="_self"><p class="relieve">PIN Change</p></a></li>
+		<li><a href="#" target="_self"><p class="relieve">Overdraft Protection /<br>Opt-in</p></a></li>
+		<li><a href="mainmenu.htm" target="_self"><p class="relieve">Previous Options</p></a></li>
+	</ul>
+</div>
+
+
+</div>
+
+	<div id="pie">
+		<div class="botonfin">
+			<a id="sube" href="#" target="_self"><img src="../img/bot_qbalance.png" width="217" height="53" /></a>
+		</div><div class="botonfin">
+			<a href="setup_1.htm" target="_self"><img src="../img/bot_mysettings.png" width="194" height="53" /></a>
+		</div>
+		<div class="bloque_botonred"><a class="botonred" href="exit.htm" target="_self"><p class="wrelieve"> Exit </p></a></div>
+	</div>
+	
+	
+	<!-- menu quick balance -->
+
+	<div id="capilla">
+        <img src="../img/menuinfo.png" />
+	</div>
+    
+	<!-- fin menu quick balance -->
+	
+	
+</div>
+</div>
+</div>
+</body>
+</html>

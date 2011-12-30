@@ -1,0 +1,3 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\English.lproj\.svn\text-base\InfoPlist.strings.svn-base, b1a09b7b30560de3e1e9f38e3307bae4
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\English.lproj\.svn\text-base\MainMenu.xib.svn-base, d6d10c1629c4a97d6bc888e5e5137f94
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\English.lproj\.svn\text-base\YouTubeSampleWindow.xib.svn-base, 5bc1994dfeb904b1185c7b32bd5351b2

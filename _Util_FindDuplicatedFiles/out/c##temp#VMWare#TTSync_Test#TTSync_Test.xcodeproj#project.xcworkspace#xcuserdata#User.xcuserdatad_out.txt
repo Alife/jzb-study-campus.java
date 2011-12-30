@@ -1,0 +1,2 @@
+c:\temp\VMWare\TTSync_Test\TTSync_Test.xcodeproj\project.xcworkspace\xcuserdata\User.xcuserdatad\UserInterfaceState.xcuserstate, c8adf9fa259c837c3c37b7d24b1c87a1
+c:\temp\VMWare\TTSync_Test\TTSync_Test.xcodeproj\project.xcworkspace\xcuserdata\User.xcuserdatad\WorkspaceSettings.xcsettings, ffd1b0c8b5284efb9d7595e7c384a101

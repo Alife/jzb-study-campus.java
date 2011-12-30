@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src_SWT"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="src" path="src_Exif"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/SWT__LIB"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

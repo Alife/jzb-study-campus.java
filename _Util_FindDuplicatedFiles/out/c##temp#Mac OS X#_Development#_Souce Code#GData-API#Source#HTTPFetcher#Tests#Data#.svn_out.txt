@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\HTTPFetcher\Tests\Data\.svn\all-wcprops, f27b36a35748295b39cd3cf750045c13
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\HTTPFetcher\Tests\Data\.svn\entries, 3315947e8a6b5397504db9af7e1407eb

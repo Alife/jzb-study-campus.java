@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tasks>
+
+<!-- ************************************************************************************* -->
+<!-- Bajar las fotos de ciertos albums de un usuario                                       -->
+<!---   OJO: Se puede incluir el especial NOT_IN_ALBUM_PSET, cuidando si se usa una RegExp -->
+<!---   El getAlbumPhotos se baja todas. Si se necesita se DEBE introducir un filtro       -->
+<!--                                                                                       -->
+<!--    Las fotos se pueden filtrar por multiples criterios: nombre, tags, permiso         -->
+<!--      Sin se pone el filtro de un atributo tipo "boolean" se utilizará. Para no        -->
+<!--      tenerlo en cuenta se debe omitir.												   -->
+<!--      OJO: Los Tags van en minusculas y todo seguido: "Jose Antonio" => "joseantonio"  -->
+
+	<execAct actClass="com.jzb.flickr.act.GetUserInfoAct" 
+			 userName="victorcuervo" byEmail="false">
+
+		<forEach actClass="com.jzb.flickr.act.GetUserAlbumsAtc"
+			     userID="@id" regExp="Santiago de Chile|Salisbury" alsoNotInAlbum="true" >
+
+			<forEach actClass="com.jzb.flickr.act.GetAlbumPhotosAct"
+					 album="$item"> 
+
+				<execAct actClass="com.jzb.flickr.act.FilterPhotoAct"
+						 photo="$item" album="$parent.album"
+						 tagsRegExp="joseantonio"
+						 >
+					     <!--  nameRegExp=".*"-->
+					     <!--  isUnTagged="true"  tagsRegExp=".*" -->
+					     <!--  isFamily="true"  isFriend="true"  isPublic="true" -->
+
+					<execAct actClass="com.jzb.flickr.act.DownloadPhotoAct"
+							 photo="$item" albumName="$parent.album.title" 
+							 baseFolder="c:\temp" />
+
+				</execAct>
+
+			</forEach>
+
+		</forEach>
+
+	</execAct>
+    
+</tasks>

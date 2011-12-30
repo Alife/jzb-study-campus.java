@@ -1,0 +1,5 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\.svn\text-base\GTMOAuth2Authentication.h.svn-base, f3361c6d48cff9b458df1408d28d7876
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\.svn\text-base\GTMOAuth2Authentication.m.svn-base, 7fdd39dcf418e5e543400eefb62d4bf6
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\.svn\text-base\GTMOAuth2SignIn.h.svn-base, 98484826a049b7457d1d52e295907b0b
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\.svn\text-base\GTMOAuth2SignIn.m.svn-base, a4a42fa976c8376cb5ac50e66f838b62
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\.svn\text-base\ReleaseNotes.txt.svn-base, ff987f28c6674370cb1552797b59b0b8

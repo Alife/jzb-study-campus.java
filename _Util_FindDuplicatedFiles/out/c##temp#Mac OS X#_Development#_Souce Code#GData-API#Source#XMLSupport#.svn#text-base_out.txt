@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\XMLSupport\.svn\text-base\GDataXMLNode.h.svn-base, fd03fb3498c56b643ffa74085262bd53
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\XMLSupport\.svn\text-base\GDataXMLNode.m.svn-base, 69d1bf528cfe6c4f6ff3a2953438a627

@@ -1,0 +1,2 @@
+f:\VMWare\ClamXav.zip, 427e0f80585f91b0a052908c8c4cf351
+f:\VMWare\svn-Versions.zip, 7a0f2fed8f04895bad0687681e076d7f

@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\SpreadsheetTableSample\.svn\all-wcprops, 81dc1ba368ac19c902426baede686d3b
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\SpreadsheetTableSample\.svn\entries, 09f64a27d194de20de46d6c6c542944d

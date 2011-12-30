@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\DocsSample\English.lproj\.svn\all-wcprops, d4a58153429786826f73607355b50374
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\DocsSample\English.lproj\.svn\entries, c13fed5f90477016057c2b5fd2eb194f

@@ -1,0 +1,19 @@
+#include "nsISupports.idl"
+
+// AVISO: Los interfaces de tipo "API" NO PUEDEN tener atributos, sólo
+//        métodos. Ya que serán "envueltos" por la parte JS del puente
+//        en la página antes de ser retornados
+//        API + ValueObjects
+
+
+// ********************************************************************
+// Componente XPCOM que sirve de enlace entre las páginas y la
+// arquitectura cliente
+
+[scriptable, uuid(6fde3824-7665-11dc-8314-0800200c9a68)]
+interface IXPCOM_ATMBridge : nsISupports {
+    
+    readonly attribute string version;
+              
+    nsISupports getAPI(in string API_Name);
+};

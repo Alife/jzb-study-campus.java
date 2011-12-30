@@ -1,0 +1,3 @@
+c:\temp\VMWare\TTSync\src-util\com\flashiphonedevelopment\io\BPListNotBinaryError.as, ff08bf9849a37e0bb3f06b99759893d0
+c:\temp\VMWare\TTSync\src-util\com\flashiphonedevelopment\io\BPlistParser.as, 58c03bc4d2f12ad212ef1af6d89ca685
+c:\temp\VMWare\TTSync\src-util\com\flashiphonedevelopment\io\BPListParsingError.as, 9f65f8854df9183dbb99e5c69389f102

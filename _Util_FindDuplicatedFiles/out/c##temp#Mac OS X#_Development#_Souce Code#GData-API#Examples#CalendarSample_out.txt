@@ -1,0 +1,14 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\buildCopyScript, 0404be75752aa81ce8630dcd31fa3474
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\buildStripHeaders, ab1fbc26dd10da48f87c01a10cce488e
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\CalendarSampleAppController.h, 44f8331f26f77aa271a433e3184b61a7
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\CalendarSampleAppController.m, 0a402e18ddb2b66c604ba42770921a41
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\CalendarSampleWindowController.h, 7b30808f3767c62bcde60d2b5a3c72e1
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\CalendarSampleWindowController.m, 49a6474e7deb6be48aa1395cf3ab81c8
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\CalendarSample_Prefix.pch, bff3adf3f1e56bf5f5d78c156da36420
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\EditACLWindowController.h, 12435c139a0c46af0607ba66142ebaa8
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\EditACLWindowController.m, 436dcb936ba1106ac5f026e8b003bda9
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\EditEventWindowController.h, 29850b7e9f0a2705f2f7ee18e07160ce
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\EditEventWindowController.m, 9ae0e5ee5171e054b2f2c1b79594ae3b
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\Info.plist, 60ccfb54e25becb7c0002dbf1c36a9b3
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\main.m, 6bcefaa80e39f0eadd4318a91fb043df
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\README.txt, c4007d77ee9d02729a8c06c9e96687bd

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Cajero</title>
+<link href="../css/CJ_estilos.css" rel="stylesheet" type="text/css" />
+<link href="../fonts/stylesheet.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../css/iepngfix_tilebg.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.7.1.js"></script>
+	<script type="text/javascript">
+
+		// When the DOM is ready, initialize the scripts.
+		jQuery(function( $ ){
+
+			// Get a reference to the container.
+			var container = $( "#capilla" );
+			var mueve = $( "#cabecera" );
+
+			// Bind the link to toggle the slide.
+			$( "#sube" ).click(
+				function( event ){
+					// Prevent the default event.
+					event.preventDefault();
+
+					// Toggle the slide based on its current
+					// visibility.
+					if (container.is( ":visible" )){
+
+						// Hide - slide up.
+						container.slideUp( 800 );
+						mueve.slideDown( 800 );
+
+					} else {
+
+						// Show - slide down.
+						container.slideDown( 500 );
+						mueve.slideUp( 500 );
+					}
+				}
+			);
+		});
+	</script>
+
+</head>
+
+<body>
+<div id="mainContainer">
+<div id="dentro">
+<div id="cabecera">
+<div class="menuup">
+	<a href="javascript:history.back()" target="_self"><img src="../img/bot_back.png" width="130" height="48" /></a>	
+	<a href="mainmenu.htm" target="_self"><img src="../img/bot_mainmenu.png" width="158" height="48" /></a>
+	</div>
+<div class="logo"></div>
+</div>
+<div id="bgtrans">
+<div id="content">
+<div id="col3">	
+<div class="bloquetitu shadow">
+<h3>Smart Check Deposit</h3>
+<h2>Confirm Scanned Amount for Check 1</h2></div>
+</div>
+<div class=" uptitu shadow"><p class="titu20">If Incorrect,Select Edit to Enter New Amount.</p></div>
+<div class="bloque_check02">
+<div class="checkbig02"><img src="../img/img_checkbig.png" /></div>
+<div class="mod-izq"><a href="#"><img src="../img/bot_viewback.png" border="0" /></a></div>
+</div>
+
+<div class="bloque_botones top20">
+		<ul class="lista06">
+		<li><a href="deposito_5.htm" target="_self"><div class="med"></div>
+		<p class="relieve">$160.00 <br>Edit Amount</p>
+		</a></li>
+		<li><a href="deposito_3.htm" target="_self"><p class="relieve">Back to Check Deposit <br>Overview</p></a></li>
+		<li><a href="mainmenu.htm" target="_self"><p class="relieve">Return this Check<br>at End of Transaction</p></a></li>
+	</ul>
+	</div>
+
+</div>
+<div id="col3">
+</div>
+<div id="pie">
+<div class="botonfin"><a id="sube" href="#" target="_self"><img src="../img/bot_qbalance.png" width="217" height="53" /></a></div>
+<div class="bloque_botonred"><a class="botonred" href="exit.htm" target="_self"><p class="wrelieve"> Exit </p></a></div>
+</div>
+	<!-- menu quick balance -->
+	<div id="capilla">
+        <img src="../img/menuinfo.png" />
+	</div>
+	<!-- fin menu quick balance -->
+
+</div>
+</div>
+</div>
+</body>
+</html>

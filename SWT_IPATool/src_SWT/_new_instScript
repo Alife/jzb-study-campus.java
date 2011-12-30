@@ -1,0 +1,80 @@
+#!/bin/bash
+
+
+# ******** WARNING: Unix CR/LF mode must be used when editing this file ****************
+
+
+IPA_FILE=$1
+DEST_FOLDER=$2
+TMP_FOLDER=/tmp/inst2
+
+
+echo "------------- Checking if destination folder already exists -------------"
+if [ -d "/User/Applications/$DEST_FOLDER" ];
+then
+  echo "Error destination folder already exists!"
+  exit 1
+else
+  echo "OK. Folder is new"
+fi
+
+
+echo "------------- Deleting any previous Payload directory -------------"
+rm -f -r "$TMP_FOLDER/Payload/*"
+
+
+echo "------------- UNZIP the IPA bundle -------------"
+unzip -X -K -qq -o "$IPA_FILE" -d  "$TMP_FOLDER"
+if [ $? -ne 0 ]
+then
+  echo "UNZIP command failed!"
+  exit 1
+fi
+
+
+echo "------------- Renaming to installation folder -------------"
+mv -f "$TMP_FOLDER/Payload" "$TMP_FOLDER/$DEST_FOLDER"
+if [ $? -ne 0 ]
+then
+  echo "Error renaming to installation folder!"
+  exit 1
+fi
+
+
+echo "------------- Creating extra folders -------------"
+mkdir "$TMP_FOLDER/$DEST_FOLDER/Documents"
+mkdir "$TMP_FOLDER/$DEST_FOLDER/Library"
+mkdir "$TMP_FOLDER/$DEST_FOLDER/tmp"
+
+
+echo "------------- Set attributes to directories and executables -------------"
+chown -R mobile "$TMP_FOLDER/$DEST_FOLDER"
+chmod 0777 "$TMP_FOLDER/$DEST_FOLDER" -R
+if [ $? -ne 0 ]
+then
+  echo "Error setting files attributes!"
+  exit 1
+fi
+
+
+echo "------------- Move IPA bundle to its destination folder -------------"
+mv -f "$TMP_FOLDER/$DEST_FOLDER" "/User/Applications"
+if [ $? -ne 0 ]
+then
+  echo "Error moving IPA bundle files!"
+  exit 1
+fi
+
+
+echo "------------- Remove temporal files and folder -------------"
+rm -f -r $TMP_FOLDER/*
+if [ $? -ne 0 ]
+then
+  echo "Error removing temporal files and folder!"
+  exit 1
+fi
+
+#rm -f "/var/mobile/Library/Preferences/com.apple.springboard.plist"
+
+echo "------------- OK exit -------------"
+exit 0

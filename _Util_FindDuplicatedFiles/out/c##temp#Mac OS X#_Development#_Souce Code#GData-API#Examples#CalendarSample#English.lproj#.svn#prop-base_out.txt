@@ -1,0 +1,1 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\English.lproj\.svn\prop-base\InfoPlist.strings.svn-base, 065918826ee9eb9cf5dce307a2f8ba62

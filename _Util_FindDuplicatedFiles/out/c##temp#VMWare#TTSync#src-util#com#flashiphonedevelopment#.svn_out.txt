@@ -1,0 +1,3 @@
+c:\temp\VMWare\TTSync\src-util\com\flashiphonedevelopment\.svn\all-wcprops, c442a4a5bceed84439b4f67380fd7a59
+c:\temp\VMWare\TTSync\src-util\com\flashiphonedevelopment\.svn\entries, 44583598027f3101493fe0ec6095d520
+c:\temp\VMWare\TTSync\src-util\com\flashiphonedevelopment\.svn\format, c2d6ebb9d61f0ad801993e22bd377b6a

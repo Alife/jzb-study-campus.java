@@ -1,0 +1,19 @@
+#include "nsISupports.idl"
+
+
+// AVISO: Los interfaces de tipo "API" NO PUEDEN tener atributos, sólo
+//        métodos. Ya que serán "envueltos" por la parte JS del puente
+//        en la página antes de ser retornados
+
+
+
+
+// ********************************************************************
+// Funcionalidad del "CardReader" expuesta a las páginas
+[scriptable, uuid(6fde3824-7665-11dc-8314-0900200c9a69)]
+
+interface ITextToSpeech : nsISupports {
+
+    void say(in string text, in boolean queue); 
+};
+

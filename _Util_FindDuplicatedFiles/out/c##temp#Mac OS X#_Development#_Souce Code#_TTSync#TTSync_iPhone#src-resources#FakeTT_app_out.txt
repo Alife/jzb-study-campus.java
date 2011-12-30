@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSync_iPhone\src-resources\FakeTT_app\Info.plist, b4940023133f5f3c8895166302d5aeec
+c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSync_iPhone\src-resources\FakeTT_app\poi_dat, **UNKNOWN HASH**

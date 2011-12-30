@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+
+<title>Cajero</title>
+<link href="../css/CJ_estilos.css" rel="stylesheet" type="text/css" />
+<link type="text/css" href="../webfontkit/stylesheet.css" rel="stylesheet" />
+
+
+<script type="text/javascript" src="../../JS_Bridge.js"></script>
+
+
+<script type="text/javascript" src="../css/iepngfix_tilebg.js"></script>
+</head>
+
+<body onload="theAccController.activate('99','')" onkeydown="javascript:theAccController.onkeydown(event);">
+
+    <div id="mainContainer">
+        <div id="cabecera">
+            <div class="logo">
+            </div>
+        </div>
+        <div id="bgtrans">
+            <!-- ============================================================================ -->
+            <!-- ============ COMP. CABECERA ================================================ -->
+            <script>
+                var accesibleInfoText = "Select your preferred language"; 
+                new AccesibleLabel(1, accesibleInfoText);
+            </script>
+            <!-- ············································································ -->
+                
+            <!-- ============================================================================ -->
+            <!-- ============ COMP. ETIQUETA ================================================ -->
+            <script>
+                var accesibleInfoText = "Press 99 at any time to repeat the instructions from the beginning."; 
+                new AccesibleLabel(0, accesibleInfoText);
+            </script>
+            <!-- ············································································ -->
+                
+            <div id="content">
+                <div id="col3">
+                    <div class="bloquetituh shadow">
+                        <h3>
+                            Welcome
+                        </h3>
+                        <h2>
+                            Please select your language
+                        </h2>
+                    </div>
+                </div>
+                
+                
+                <!-- ============================================================================ -->
+                <!-- ============ COMP. BOTONERA COMPUESTA ====================================== -->
+                <script>
+                    var btnPanel = new AccesibleButtonPanel(2, "You have {0} choices.");
+                </script>
+                <!-- ············································································ -->
+                <div class="bloque_botones">
+                    <ul class="lista01">
+                        <!-- ============================================================================ -->
+                        <!-- ============ COMP. BOTON =================================================== -->
+                        <script>
+                            new AccesibleButton(btnPanel, 0, "mnu_opt_01", "01", "Being guided in English");
+                        </script>
+                        <!-- ············································································ -->
+                        <li>
+                            <a id="mnu_opt_01" href="00_enteryourpin.htm" target="_self">
+                                <p class="relieve">
+                                    English
+                                </p>
+                            </a>
+                        </li>
+                        <!-- ============================================================================ -->
+
+                        <!-- ============================================================================ -->
+                        <!-- ============ COMP. BOTON =================================================== -->
+                        <script>
+                            new AccesibleButton(btnPanel, 1, "mnu_opt_02", "02", "Guiado en Spagnol", null, "Para ser guiado en spagnol pretsione zero dos", "Opceeon zero dos seleccionadaa: Ser guiado en spagnol");
+                        </script>
+                        <!-- ············································································ -->
+                        <li>
+                            <a id="mnu_opt_02" href="00_enteryourpin.htm" target="_self">
+                                <p class="relieve">
+                                    Español
+                                </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="00_enteryourpin.htm" target="_self">
+                                <p class="relieve">
+                                    Português
+                                </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="00_enteryourpin.htm" target="_self">
+                                <p class="relieve">
+                                    Français
+                                </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="00_enteryourpin.htm" target="_self">
+                                <img src="../img/boton_grisJA.png" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="00_enteryourpin.htm" target="_self">
+                                <img src="../img/boton_grisJA2.png" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="pie">
+
+<!-- ============================================================================ -->
+<!-- ============ COMP. ETIQUETA ================================================ -->
+<script>
+    var accesibleInfoText = "The keypad is located approximately 3 feet off the ground and has 16 keys with three left columns arranged like a standard telephone keypad." + 
+                            "In addition to the numerical keys, to the right there are 4 functional keys." + 
+                            "The top right key is enter and is designated by an embossed circle." + 
+                            "The next key down is clear and is designated by an embossed vertical line or left arrow."+ 
+                            "The next key down is cancel and is designated by an embossed 'X'."  
+    new AccesibleLabel(3, accesibleInfoText);
+</script>
+<!-- ············································································ -->
+
+                <!-- ············································································ -->
+
+                <!-- ============================================================================ -->
+                <!-- ============ COMP. BOTON =================================================== -->
+                <script>
+                    new AccesibleButton(null, 4, "mnu_opt_cancel", "cancel", "Exit and return card", null, "");
+                </script>
+                <!-- ············································································ -->
+                <div class="bloque_botonred">
+                    <a id="mnu_opt_cancel" class="botonred" href="exit.htm" target="_self">
+                        <p class="wrelieve">
+                            Exit
+                        </p>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,251 @@
+<html>
+    <head>
+      <title>Test Form</title>
+
+
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
+<meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
+<link rel="apple-touch-icon" href="homescreen.png"/>
+<link rel="apple-touch-startup-image" href="startup.png"  />
+
+<link href="../framework/css/style.css" type="text/css" rel="stylesheet" />
+<script src="../framework/javascript/functions.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="../jq/jquery-1.4.4-dev.js"></script>
+
+<style type="text/css">
+.flip {
+    -webkit-animation-duration: .65s;
+}
+
+.flip-in {
+    -webkit-animation-duration: .65s;
+    -webkit-animation-name: flipinfromleft;
+}
+
+.flip-out {
+    -webkit-animation-duration: .65s;
+    -webkit-animation-name: flipouttoleft;
+}
+
+@-webkit-keyframes flipinfromleft {
+    from { -webkit-transform: rotateY(180deg) scale(.8); }
+    to { -webkit-transform: rotateY(0) scale(1); }
+}
+
+
+.divSlide-right {
+    -webkit-animation-duration: .65s;
+    -webkit-animation-name: slide-me-to-the-right;
+}
+@-webkit-keyframes slide-me-to-the-right {
+    from { left: 0px; }
+    to { left: 400px; }
+}
+
+.divSlide-left {
+    -webkit-animation-duration: .65s;
+    -webkit-animation-name: slide-me-to-the-left;
+}
+@-webkit-keyframes slide-me-to-the-left {
+    from { left: 320px; }
+    to { left: 0px; }
+}
+
+.divSlide-left2 {
+    -webkit-animation-duration: .65s;
+    -webkit-animation-name: slide-me-to-the-left2;
+}
+@-webkit-keyframes slide-me-to-the-left2 {
+    from { left: 0px; }
+    to { left: -320px; }
+}
+
+</style>
+
+
+
+<script type="text/javascript">
+
+    try {
+        
+         $(document).ready(function(){
+
+            //checkURL();
+            
+            $('ul li a').click(function (e){
+                checkURL(this.hash);
+            });
+    
+            //filling in the default content
+            default_content = $('#pageContent').html();
+    
+            $('#loading').css('visibility','hidden');
+            
+            //setInterval("checkURL()",250);
+        });
+
+        
+        var default_content="";
+        var lasturl="";
+        
+        function checkURL(hash) {
+
+            if(!hash) hash=window.location.hash;
+    
+            if(hash != lasturl) {
+                lasturl=hash;
+                // FIX - if we've used the history buttons to return to the homepage,
+                // fill the pageContent with the default_content
+                if(hash=="")
+                    $('#pageContent').html(default_content);
+                else
+                    loadPage(hash);
+            }
+        }  
+
+        function loadPage(aURL) {
+            aURL=aURL.replace('#','')+".html";
+            $('#loading').css('visibility','visible');
+            $.ajax({
+                type: "POST",
+                url: aURL,
+                //data: 'page='+url,
+                dataType: 'json',
+                success: function(data, textStatus, XMLHttpRequest){
+                    //alert("success: "+data.pepe+", "+textStatus);
+                    //$('#pageContent').html(data.pepe);
+                    slideMe();
+                    $('#loading').css('visibility','hidden');
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    //alert("error: "+textStatus+", "+errorThrown);
+                    $('#pageContent').html(default_content);
+                    $('#loading').css('visibility','hidden');
+                },
+                timeout:10000
+            });
+        }        
+        
+        var div_current = "mover2";
+        var div_out = "mover1";
+        
+        function slideMe() {
+
+            var myDiv1 = document.getElementById(div_current);
+            var myDiv2 = document.getElementById(div_out);
+
+            var s=div_current;
+            div_current=div_out;
+            div_out=s;
+            
+            myDiv1.style.left = "0px";
+            myDiv2.style.left = "320px";
+            myDiv1.className = "divSlide-left2";
+            myDiv2.className = "divSlide-left";
+            myDiv1.style.left = "-320px";
+            myDiv2.style.left = "0px";
+
+        }
+        
+        function slideMe2() {
+            var myDiv1 = document.getElementById(div_current);
+            var myDiv2 = document.getElementById(div_out);
+
+            var s=div_current;
+            div_current=div_out;
+            div_out=s;
+            
+            function moveAll(ev) {
+                myDiv1.removeEventListener('webkitAnimationEnd',moveAll);
+                myDiv2.removeEventListener('webkitAnimationEnd',moveAll);
+                ev.stopPropagation();
+                
+                myDiv1.style.visibility="hidden";
+                myDiv1.style.height="0px";
+                myDiv2.style.visibility="visible";
+                myDiv1.style.height="100%";
+                myDiv2.className = "divSlide-left";
+                myDiv2.style.left = "0px";
+            }
+            
+            myDiv1.addEventListener( 'webkitAnimationEnd', moveAll);
+
+            myDiv1.className = "divSlide-right";
+            myDiv1.style.left = "320px";
+        
+        }
+    } catch(e) {
+        alert(e);
+    }
+
+
+</script>
+
+    </head>
+    <body class="list">
+    
+        <div id="topbar">
+            <div id="title">Test Form</div>
+        </div>
+
+
+        <img id="loading" src="../ajax/ajax_load.gif" alt="loading" />
+        
+        <div id="pageContent"></div>
+
+        <div id="content">
+<div id="mover1" style="visibility:visible; position: absolute; top:0px; left:-320px; width:320">
+            <ul>
+                <li class="title">your title 1</li>
+                <li><a href="#out1"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page2"><span class="name">name</span><span class="arrow"></span></a></li>
+                
+                <li class="title">your title 2</li>
+                <li><a href="#page5"><span class="name">name</span><span class="arrow"></span></a></li>
+            </ul>
+</div>
+
+<div id="mover2" style="visibility:visible; position: absolute; top:0px; left:0px; width:320">
+            <ul>
+                <li class="title">your title x</li>
+                <li><a href="#out2"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page2x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page3x"><span class="name">name</span><span class="arrow"></span></a></li>
+                
+                <li class="title">your title y</li>
+                <li><a href="#page4x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page5x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page4x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page5x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page4x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page5x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page4x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page5x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page4x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page5x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page4x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page5x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page4x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page5x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page4x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page5x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page4x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page5x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page4x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page5x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page4x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page5x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page4x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page5x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page4x"><span class="name">name</span><span class="arrow"></span></a></li>
+                <li><a href="#page5x"><span class="name">name</span><span class="arrow"></span></a></li>
+            </ul>
+
+</div>
+        </div>
+
+      <div id="footer"> <a href="http://iwebkit.net">Powered by iWebKit</a> </div>
+    </body>
+</html>

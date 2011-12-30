@@ -1,0 +1,10 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BloggerSample\.svn\text-base\BloggerSampleAppController.h.svn-base, 85a5a93b7c6d239cae930ac65f293aa9
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BloggerSample\.svn\text-base\BloggerSampleAppController.m.svn-base, ce6abae9e5df5b74c26e1505271fa19e
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BloggerSample\.svn\text-base\BloggerSampleWindowController.h.svn-base, 05cc1680020592fca4b3a49282323963
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BloggerSample\.svn\text-base\BloggerSampleWindowController.m.svn-base, be5bbf7ad546ab3b418ee50ebfb76ee3
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BloggerSample\.svn\text-base\BloggerSample_Prefix.pch.svn-base, c6d56c16aa508c5b56eddf7b39e8957f
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BloggerSample\.svn\text-base\buildCopyScript.svn-base, 0404be75752aa81ce8630dcd31fa3474
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BloggerSample\.svn\text-base\buildStripHeaders.svn-base, ab1fbc26dd10da48f87c01a10cce488e
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BloggerSample\.svn\text-base\Info.plist.svn-base, ba279e7b2fb6654e3d5d62eff2b81fb0
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BloggerSample\.svn\text-base\main.m.svn-base, 6bcefaa80e39f0eadd4318a91fb043df
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BloggerSample\.svn\text-base\README.txt.svn-base, c4007d77ee9d02729a8c06c9e96687bd

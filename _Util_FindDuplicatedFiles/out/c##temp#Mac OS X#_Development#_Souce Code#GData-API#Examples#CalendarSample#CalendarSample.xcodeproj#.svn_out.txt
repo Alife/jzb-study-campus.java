@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\CalendarSample.xcodeproj\.svn\all-wcprops, fd67f439c4b482a25c940c7b8d083fd0
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\CalendarSample.xcodeproj\.svn\entries, a09e5d80963b39fdda57162da00c05f1

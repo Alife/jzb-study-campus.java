@@ -1,0 +1,48 @@
+* Comprobar si los interfaces, una vez compilados, se pueden mover a otro paquete. 
+  Lo mismo pasa con los componentes. No creo que deban estar estar en el mismo paquete que el interface.
+ 
+ 
+* En el tema de double-buffering, seguramente sea más fácil obtener un BMP o similar del estado
+  actual del browser y "superponerlo", en vez de estar con dos navegadores a la vez.
+  --> Esto quitaría problemas con un posible AJAX, gestión de cookies, etc. Y es más fácil de implementar
+
+
+* Cuando se esté navegando a la siguiente página, se debería desactivar el hardware. 
+  Los bundles deberían ofrecer un API común y cómodo (base) para que se les cómodamente a todos ellos ese tipo de órdenes.
+
+
+* Habrá que ver qué pasa con AJAX y si el controlador del navegador se entera de esas navegaciones (¿debe?) 
+  y sus posibles problemas. ==> Que no las confunda con una navegación estándar a la siguiente página.
+
+
+* Se debería crear un set consistente de funcionalidad base en la V1.0.0 del Bridge y todos 
+  los bundles que permita "salir de apuros".
+
+    * versión
+    * gestionaSituacionError
+    * desactivarHardWare
+    * ¿qué mas?
+
+  Se debería crear un "IBundleAPI", que extienda de nsISupport, y que obligue a tener esa funcionalidad
+
+
+* Tener cuidado con las invocaciones desde XPCOM a JS porque se lanzan XPCOMException que 
+  son RuntimeException y no están declaradas. Habrá que capturar Throwable en todos estos sitios.
+
+
+* Hay que estudiar muy bien todo tipo de situaciones anómalas y con potencialmente erróneas:
+    
+    - Dejo pendiente una petición asíncrona y se "atasca". ¿Quién gestiona el timeout?
+    - Cambio de página y la petición "atascada" intenta contestar
+    - Que se iteractue con los mismo objetos en el hilo principal y en un onTimer
+    - Qué pasa (si se pudiese) si se produce un "efecto doble-click" y se llama varias veces
+    
+  Habrá que definir muy bien los comportamientos en caso de error, ¿quién, cómo, ...?
+
+                     
+* No en las maquetas Mira, pero sí para probar en TestEnvironment, sería necesario contar con 
+  una implementación "dummy" de los bundles de dispositivos. De igual forma no se podrá utilizar
+  directamente un IE o un FF en local, debiendo darles una "Browser APP - Testing" que incluya
+  el XULRunner adecuado y que invoque a los bundles de pruebas.
+  
+                       

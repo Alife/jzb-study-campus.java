@@ -1,0 +1,241 @@
+/*=================== reset*/
+
+/* base font */
+html { font-size:62.5%; font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif; }
+body { margin:0; font-size:100%; } /*Estandar*/
+* html body { font-size:101%; font-size:14px; } /*IE6*/
+*:first-child+html body { font-size:101%; } /*IE7*/
+
+/* Resets de textos */
+h1, h2, h3, h4, h5, h6, p, pre, blockquote { margin: 0; }
+ul, ol, dl, dt, dd { padding:0; margin:0; }
+
+ul,ol { list-style: none; }
+
+/* Reset de tablas */
+table { border-collapse: collapse; width:100%; font-size: 1em; }
+td { vertical-align: top; }
+caption, th { text-align: left; }
+
+/* Enlaces */
+a { text-decoration: none; outline:none; color:#FFFFFF;}
+a:hover { text-decoration: none; color:#FFFFFF;}
+a img { border: none; }
+
+/* Formularios */
+form { margin:0; }
+fieldset { margin:0; padding:0; border: none; }
+legend { padding:0; }
+input, textarea, select { font-size: 1em;}
+address{font-style: normal;}
+
+/*    Clases genéricas
+************************************/
+
+/* clearfix */
+.clearfix:after {content:".";display:block;    height:0;clear:both;visibility:hidden;}
+.clearfix { display:inline-block; }
+/* Hide from IE Mac \*/
+.clearfix { display:block; }
+* html .clearfix { height:1px; }
+.clearboth {clear:both;}
+/* End hide from IE Mac */
+
+/* Columnas */
+.mod-izq { float: left; display:inline; }
+.mod-der { float: right; display:inline; }
+.center {text-align:center; margin:0 auto; display:block;}
+.hidden { display: none;}
+
+
+/* Reemplazo de imagenes */
+.reemplazo{display: block; overflow: hidden; text-indent: -9999px; font-size:0;}
+
+/* distancias*/
+.m10 {margin-top:1em;}
+.m20 {margin:2em;}
+.m30 {margin:3em;}
+.top20 {padding-top:280px; }
+
+
+
+/*genericos*/
+body{font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif; margin:0;padding:0;background-color:#F0F0F0; color:#FFFFFF; letter-spacing:-1px;}
+h2{font-size:32px;font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;}
+
+h3{font-size:22px; font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight: normal;
+    font-style: normal;letter-spacing:0.02em;}
+h4{font-size:22px; font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;letter-spacing:0;}
+h5{font-size:30px;font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight: normal;
+    font-style: normal;}
+
+
+
+
+/*Grids*/
+#mainContainer{width:1024px; height: 768px; margin:0 auto; background:url(../img/bg_top.jpg) no-repeat top center; position:relative;}
+#content {margin-left:35px; margin-top:16px;float:left; overflow:hidden; height:541px;}
+#col{ float:left; margin-right:12px; height:300px; border:1px solid #005500;}
+#pie {height:105px; border-top:1px solid #cdccca;position:relative;  left:35px; width:93%; padding:0px 0;float:left;}
+#insert {height:403px; border-top:1px solid #cdccca;position:absolute; left:35px; width:93%; padding:0;}
+#remove {height:403px; border-top:1px solid #cdccca;position:absolute; left:35px; margin-top:17px; width:93%; }
+#contentbanner {margin-left:35px; margin-top:16px;float:left; overflow:hidden; }
+#bigbanner {position:relative; top:15px;}
+
+#cabecera{height:97px; overflow:hidden;}
+.logo{background:transparent url(../img/logo.png) no-repeat left top; float:right; width:242px; height:73px; margin:18px -2px;}
+.menuup {margin:25px 0 0 35px; float:left;}
+.menuup_banner {margin:18px 0 0 37px; float:left;}
+#bgtrans {background:url(../img/bg_bottom.jpg) no-repeat left top; height:671px;}
+#capilla {bottom: 0px ;display: none ;position:absolute;width: 100% ;}
+
+/*efectos*/
+img, div {  }
+.shadow {text-shadow:#111111 1px 1px 1px;}
+.wshadow{text-shadow:#ffffff 1px 1px 1px;}
+.relieve{color: #111111;text-shadow: 0 0 white, 1px 1px #ffffff; /*filter: progid:DXImageTransform.Microsoft.DropShadow(offX=0,offY=-1,color=#ffffff);*/} 
+.wrelieve{color: #FFFFFF;text-shadow: 0 0 black, -1px -1px #111111; /*filter: progid:DXImageTransform.Microsoft.DropShadow(offX=0,offY=-1,color=#111111);*/} 
+.black {color:#000000; text-shadow:#ffffff 2px 1px 1px;/*filter: progid:DXImageTransform.Microsoft.Shadow(color=#111111, Direction=135, Strength=2);*/font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight: bold; font-size:24px;}
+.white {color:#ffffff; text-shadow:#111111 2px 1px 1px;/*filter: progid:DXImageTransform.Microsoft.Shadow(color=#111111, Direction=135, Strength=2);*/font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight: bold; font-size:24px;}
+
+
+/* titulos */
+.bloquetituh {margin-bottom:20px;}
+.bloquetitu {margin-bottom:32px;margin-left:0px;}
+.titcolumna {padding:0 0 15px 0;margin-left:3px;}
+.uptitu {margin:35px 0 14px 0;}
+.titu20{font-size:22px; font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight: normal;font-style: normal;letter-spacing:0.005em;}
+.titu20 a{font-size:22px; font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight: normal;font-style: normal;letter-spacing:0.005em;}
+
+/* listas*/
+.bloque_botones ul{margin:0;padding:0; float:left; display: inline-block;}
+.bloque_botones li {list-style:none;font-size:2.3em;float:left;cursor:pointer;display:block; }
+.lista01 li{overflow:hidden; background:transparent url(../img/boton_grisGR.png) no-repeat top left;list-style:none; margin:0 12px 13px 0; width:310px!important; height:96px;}
+.lista01 a{color:#ffffff;font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight: bold;
+     font-size:24px;line-height:1em;display:block;padding:0.5em 0 0 0.6em; height:100%}
+.lista01 li:hover{background:transparent url(../img/boton_grisGR_over.png) no-repeat left top;}
+.lista01 .relieve {color:#111111; text-shadow: 0 0 #FFFFFF, 1px 1px #ffffff; /*filter: progid:DXImageTransform.Microsoft.DropShadow(offX=0,offY=1,color=#ffffff);*/} 
+.col2{width:67%}
+
+.bloque_botones02 {float:left;}
+.bloque_botones02 ul{margin:0;padding:0;float:left;}
+.bloque_botones02 li {list-style:none;font-size:2.3em;cursor:pointer;display:block; }
+.lista02 li{overflow:hidden; background:transparent url(../img/boton_blackGR.png) no-repeat top left;list-style:none; margin:0 17px 13px 0;line-height:1em;width:294px!important; height:98px; }
+.lista02 a{color:#ffffff; font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight: bold; letter-spacing: 0.005em; line-height:1em;display:block; height:100%; padding:0.5em 0 0 0.6em;}
+.lista02 li:hover{background:transparent url(../img/boton_blackGR_over.png) no-repeat left top;}	
+.lista02 .wsubtitu {font-size:0.74em; color:#dbdbdb; text-shadow: 0 0 black, -1px -1px #111111; font-weight: bold; 
+/*filter: progid:DXImageTransform.Microsoft.DropShadow(offX=0,offY=-1,color=#111111);*/}
+.lista02 .wrelieve{color: #FFFFFF;text-shadow: 0 0 black, -1px -1px #111111; /*filter: progid:DXImageTransform.Microsoft.DropShadow(offX=0,offY=-1,color=#111111);*/} 
+
+.lista03 li{background:transparent url(../img/boton_grisPQ.png) no-repeat top left;list-style:none; margin:0.3em; width:238px!important; height:96px;}
+.lista03 a{color:#111111; font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight: bold; font-size:24px; line-height:1em;display:block;height:100%;padding:0.5em 0 0 0.6em;}
+.lista03 li:hover{background:transparent url(../img/boton_grisPQ_over.png) no-repeat left top;}
+
+
+.bloque_botones04 {margin:0 ;padding:0; float:left;}
+.bloque_botones04 li {list-style:none;font-size:2.3em;cursor:pointer;display:block; }
+.lista04 li{overflow:hidden; background:transparent url(../img/boton_gris.png) no-repeat top left;list-style:none; margin:0 12px 13px 0; width:310px!important; height:96px;}
+.lista04 a{color:#111111; font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight:bold; font-size:24px;line-height:1em;display:block;padding:0.5em 0 0 0.6em; height:100%}
+.lista04 li:hover{background:transparent url(../img/boton_gris_over.png) no-repeat left top;}	
+
+.lista04 .subtitu {font-size:22px; float:left; padding-top:0px; font-weight:bold; 
+color:#111111; text-shadow: 0 0 white, 1px 1px #ffffff; /*filter: progid:DXImageTransform.Microsoft.DropShadow(offX=0,offY=1,color=#ffffff);*/}
+.lista04 .relieve {color: #111111;text-shadow: 0 0 white, 1px 1px #ffffff;/* filter: progid:DXImageTransform.Microsoft.DropShadow(offX=0,offY=1,color=#ffffff);*/} 
+
+
+.lista05 li{overflow:hidden;list-style:none; margin:0.3em; width:294px!important; }
+.lista05 a{color:#111111; font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight: bold; font-size:24px;padding:1em 0 0 1.3em; }
+
+.lista06 li{overflow:inherit; background:transparent url(../img/boton_grisGR.png) no-repeat top left;list-style:none; margin:0 12px 13px 0;width:310px!important; height:96px;}
+.lista06 a{color:#111111; font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight:bold; font-size:24px; line-height:1em;display:block;padding:0.5em 0 0 0.6em; height:100%}
+.lista06 li:hover{background:transparent url(../img/boton_grisGR_over.png) no-repeat left top;}	
+
+.lista06 .subtitu {font-size:22px; float:left; padding-top:0px;font-weight:bold; 
+color:#111111; text-shadow: 0 0 white, 1px 1px #ffffff; /*filter: progid:DXImageTransform.Microsoft.DropShadow(offX=0,offY=1,color=#ffffff);*/}
+.lista06 .relieve {color: #111111;text-shadow: 0 0 white, 1px 1px #ffffff;/* filter: progid:DXImageTransform.Microsoft.DropShadow(offX=0,offY=1,color=#ffffff);*/} 
+
+
+li.botpq {background:transparent url(../img/boton_grisPEQ.png) no-repeat left top;height:56px;}
+li.botpq:hover{background:transparent url(../img/boton_grisPEQ_over.png) no-repeat left top;}
+li.botok {background:transparent url(../img/boton_ok.png) no-repeat left top;height:129px;}
+li.botok:hover{background:transparent url(../img/boton_ok_over.png) no-repeat left top;}
+
+
+.bloque_numeros {margin:0; display: inline-block; width:420px; float:left;}
+.bloque_numeros li {list-style:none;float:left;cursor:pointer;display:block; }
+.listan li{overflow:hidden; background:transparent url(../img/boton_num.png) no-repeat top left;list-style:none; width:120px!important; height:60px; padding:0.6em 0 0 2em}
+.listan a{color:#ffffff;font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight: bold;
+     font-size:36px; }
+.listan li:hover{background:transparent url(../img/boton_num_over.png) no-repeat left top;}
+.listan .relieve {color:#111111; text-shadow: 0 0 #FFFFFF, 1px 1px #ffffff;/* filter: progid:DXImageTransform.Microsoft.DropShadow(offX=0,offY=1,color=#ffffff);*/} 
+li.cero {margin-left:140px;}
+
+
+.bloquetxtacciones {width:300px;color:#ffffff; }
+.bloquetxtacciones li a{color:#ffffff;font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight: bold;
+     font-size:22px;}
+.trans {background: transparent; opacity: .25;}
+
+.animacion {float:left;width:440px; height:367px;background:transparent url(../img/bg_out.png) no-repeat top left; padding:25px 20px;}
+.blackbig {float:left;width:953px; height:407px;background:transparent url(../img/pix_transblack.png) repeat top left;}
+
+.bloque_checkp {margin-bottom:50px; display:block; }
+.bloque_check {text-align:center; margin:0 auto; display:block; margin-top:50px; width:900px;}
+.checkbig {height:252px;background:transparent url(../img/bg_checkbig.png) no-repeat top center;}
+
+.med{float:right; margin:-20px 16px 0 0;}
+
+.bloque_check02 {display:block; width:900px;}
+.checkbig02 {height:252px; float:left; margin-right:20px;}
+	
+.botonfin{float:left; margin-left:-3px;margin-top:7px;margin-right:6px;}
+.checkok {background-color:#00CC00}
+
+
+
+
+.bloque_botonred{margin-top:10px; text-align:left; float:right;}
+.botonred{background:transparent url(../img/boton_red.png) no-repeat left top;cursor:pointer;display:block;float:left;font-size:2.2em;padding:.3em 0 0 0.5em;width:160px!important; height:45px;color:#FFFFFF;font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight: bold;letter-spacing: 0.005em; }
+ 
+.procesing{margin:200px 0;}
+
+
+/* formulario */
+.bloque_form {width:400px; height:123px;}
+input{color:#fff;font-family:Verdana, sans-serif;font-size:4.1em; line-height:2.4em; text-align:center;padding:0;width:410px; height:2.4em; background:transparent url(../img/pin.png) no-repeat left top; border:none;}
+.bloque_form02{color:#fff;font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;font-weight: normal;font-size:5.1em; line-height:2.4em; padding:0 30px;width:422px; height:2.4em; background:transparent url(../img/form02.png) no-repeat left top; border:none;}
+
+
+/* botones con más espaciado */
+.bloque_botones_separated ul{margin-top:54px;padding:0; float:left; display: inline-block;}
+.bloque_botones_separated li {list-style:none;font-size:2.3em;float:left;cursor:pointer;display:block; }
+
+/* cheque animado */
+.loadingg{background:transparent url('../img/bg_result_onlyReceipt.png') no-repeat left top;width:532px;height:208px;margin:0 auto}
+.loadingg .check{background:transparent url('../img/Ico_check_01.png') no-repeat left top;width:2%;height:208px;}
+
+/* botones */
+.box{background:#f6f6f6 url('../img/boton_grisGR.png') no-repeat right bottom;cursor:pointer;float:left;margin-left:0.5em;margin-bottom:0.5em;max-width: 317px;}
+.box a{font-size:24px;padding:.2em 0 0 .4em;display:block;height:100px;color:#000;text-decoration:none;width:15em;position:relative}
+
+/* teclado virtual */
+textarea {
+} 
+.box_top {overflow: hidden;padding:0;position: relative;max-width: 800px;}
+.virtualKeyboard{width:900px;margin-top:0;margin-left: 0px;}
+.virtualKeyboard .keyboard{width:600px;}
+.virtualKeyboard .keyboard:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.virtualKeyboard .keyboard textarea{overflow:hidden;padding: 5px;color:#fff;text-shadow: 0 -1px #333;width:409px;height:71px;background:transparent url('../img/bg_inputKeyboard.png') no-repeat left top;border:0;text-align:right;font-size: 56px;padding: 18px 33px 8px 0px;font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;}
+.box_shadow3 .virtualKeyboard .keyboard input{overflow:hidden;padding: 5px;color:#fff;text-shadow: 0 -1px #333;width:352px;letter-spacing: 8px;height:71px;background:transparent url('../img/bg_inputInput.png') no-repeat left top;border:0;text-align:right;font-size: 40px;padding:14px 9px 10px 19px;font-family: FrutigerBold, Arial, Tahoma, Helvetica, sans-serif;text-align:center}
+.virtualKeyboard .keyboard ul{margin:0;padding:0;width: 500px;}
+.virtualKeyboard .keyboard ul:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.virtualKeyboard .keyboard ul li{height:60px;float:left;list-style-type:none;background:#f6f6f6 url('../img/boton_num.png') no-repeat right bottom;width:133px;font-family: FrutigerBold;font-weight: bold;  font-size:40px;text-align:left;cursor:pointer;margin:5px;color:#111111; text-shadow: 0 0 #FFFFFF, 1px 1px #ffffff;/* filter: progid:DXImageTransform.Microsoft.DropShadow(offX=0,offY=1,color=#ffffff);*/}
+.virtualKeyboard .keyboard ul li span{display: block;margin: 10px;}
+.virtualKeyboard .keyboard ul li.delete{width:267px;position:absolute;top:0px;left:490px;background:#f6f6f6 url('../img/boton_grisPEQ.png') no-repeat right bottom;font-size:24px;}
+.virtualKeyboard .keyboard input{height:60px;float:left;list-style-type:none;background:#f6f6f6 url('../img/boton_num.png') no-repeat right bottom;width:133px;font-family: FrutigerBold;font-weight: bold; font-size:40px;text-align:left;cursor:pointer;margin:5px;color:#111111; text-shadow: 0 0 #FFFFFF, 1px 1px #ffffff;/* filter: progid:DXImageTransform.Microsoft.DropShadow(offX=0,offY=1,color=#ffffff);*/}
+.virtualKeyboard .keyboard input#ok{width:267px;position:absolute;top:74px;left:490px;background:#f6f6f6 url('../img/boton_ok.png') no-repeat right top;font-family: FrutigerBold;padding:6px 0 122px 7px;border:0!important;font-size:24px;}
+.virtualKeyboard .keyboard ul li.zero{position:relative;left:143px}
+.numeric_keyboard{position:relative;top:7px;}
+.mesageInfo2{background:transparent url('../img/mesageinfo_small.png') no-repeat left top;position:absolute;left:400px;padding-left:56px;top: 10px;}
+.mesageInfo2 span{background:transparent url('../img/mesageinfo_large.png') no-repeat right top;display: block;padding:0.5em 0.5em 0.9em 0;font-family: FrutigerBold;color:#333;font-size:23px;width:330px;}
+

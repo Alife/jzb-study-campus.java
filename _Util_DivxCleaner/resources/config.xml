@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+    <process>
+        <srcPath>C:\WKSPs\Ganymede-Java\DivxCleaner\resources\src1</srcPath>
+        <srcPath>C:\WKSPs\Ganymede-Java\DivxCleaner\resources\src2</srcPath>
+        <srcPath>3</srcPath>
+        <dstPath>C:\WKSPs\Ganymede-Java\DivxCleaner\resources\out</dstPath>
+        <exts>avi;mkv;srt</exts>
+    </process>
+    
+	<filterRules>
+		<!--  modes: REMOVE, REPLACE, CUTRIGHT, SERIE_NAME, PREFIX, CHAPTER  -->
+
+        <!-- Limpiar el nombre antes de empezar -->
+		<filter mode="REPLACE" regexp="[\._-]" data=" " />
+		<filter mode="REPLACE" regexp=" ( )+" data=" " />
+
+
+        <!-- Antes de eliminar partes busca pistas de si es VOSE  -->
+		<filter mode="PREFIX"  regexp="[^a-z]vos[^a-z]|[^a-z]v o s[^a-z]|[^a-z]v o[^a-z]|[^a-z]vose[^a-z]|[^a-z]v o s e[^a-z]"	data="VOS_" />
+		<filter mode="REPLACE" regexp=" ( )+" data=" " />
+		<filter mode="REPLACE" regexp="^VOS " data="VOS_" />
+
+
+        <!-- Elimina a partir de ciertas cadenas de texto -->
+		<filter mode="CUTRIGHT" regexp=" Bdrip| hdrip| mp3| dvd| dvd.dvb| 5 1"	data="" />
+		<filter mode="CUTRIGHT" regexp=" repack| esp| Subs| hdtv| xvid| lol| www"	data="" />
+		<filter mode="CUTRIGHT" regexp=" ([^ ]*)Screener" data="" />
+		<filter mode="CUTRIGHT" regexp=" [0-9][0-9][0-9][0-9]" data="" />
+
+
+        <!--  Elimina los textos entre parentesis y corchetes-->
+		<filter mode="REMOVE" regexp="\([^\(]*\)" data="" />
+		<filter mode="REMOVE" regexp="\[[^\[]*\]" data="" />
+		<filter mode="REMOVE" regexp=" [0-9]*mb " data="" />
+
+
+        <!-- Busca patrones de numero de capitulo para ponerlo al principio -->
+		<filter mode="CHAPTER" regexp=" [0-9][0-9][0-9] " data="" />
+		<filter mode="CHAPTER" regexp="s[0-9]?[0-9]e[0-9]?[0-9]" data="" />
+		<filter mode="CHAPTER" regexp="[0-9]?[0-9]x[0-9]?[0-9]" data="" />
+		<filter mode="REPLACE" regexp="- |--" data="-" />
+
+
+        <!-- Limpia espacios sobrantes como tarea final -->
+		<filter mode="REPLACE" regexp=" ( )+" data=" " />
+
+
+        <!-- ******************************************************************************** -->
+        <!-- Busca nombres de series y solo deja eso y el capitulo como nombre de fichero -->
+		<filter mode="SERIE_NAME" regexp="Chuck" data="Chuck" />
+		<filter mode="SERIE_NAME" regexp="Persons Unknown" data="Persons Unknown" />
+		<filter mode="SERIE_NAME" regexp="Gravedad Cero" data="Gravedad Cero" />
+		<filter mode="SERIE_NAME" regexp="Breaking Bad" data="Breaking Bad" />
+
+<filter mode="SERIE_NAME" regexp="la oveja shaun" data="la oveja shaun" />
+	</filterRules>
+
+
+</config>

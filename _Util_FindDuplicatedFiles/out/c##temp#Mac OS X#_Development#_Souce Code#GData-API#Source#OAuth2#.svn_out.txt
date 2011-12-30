@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\.svn\all-wcprops, d74f03e59261582fe2260aa2e9d8ff1b
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\.svn\entries, 2eb162de2deedfea726757b8f99844b9

@@ -1,0 +1,23 @@
+<script language="JavaScript">
+<!--
+function setText() {
+    var n=1;
+    //var txt="@ECHO OFF\nSET DEST_DIR=xXxXx\n";
+    var txt="";
+    for(;;) {
+        var chk=document.getElementById("CHK_"+n);
+        if(chk==null) break;
+        if(chk.checked) {
+           txt+="MOVE \"";
+           txt+=document.getElementById("IMG_"+n).file;
+           txt+="ipa\" %DEST_DIR% \n";
+           txt+="MOVE \"";
+           txt+=document.getElementById("IMG_"+n).file;
+           txt+="jpg\" %DEST_DIR% \n";
+        }
+        n++;
+    }
+    document.getElementById("chkTxt").value=txt;
+}
+//-->
+</script>

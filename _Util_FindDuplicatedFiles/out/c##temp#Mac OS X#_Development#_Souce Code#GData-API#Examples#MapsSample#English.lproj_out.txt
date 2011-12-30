@@ -1,0 +1,3 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\MapsSample\English.lproj\InfoPlist.strings, ad53255026d1e6a1805744188c477986
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\MapsSample\English.lproj\MainMenu.xib, e914a504ab84bd456cd841806b1c1391
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\MapsSample\English.lproj\MapsSampleWindow.xib, 9a3297afa80e5af090d12268863dedfb

@@ -1,0 +1,2 @@
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Geo\.svn\text-base\GDataGeo.h.svn-base, 7f4633acda7856cbe2a08e8d906ff21c
+c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Geo\.svn\text-base\GDataGeo.m.svn-base, 3ce08bcb565b17c164dedfda0fad6980
