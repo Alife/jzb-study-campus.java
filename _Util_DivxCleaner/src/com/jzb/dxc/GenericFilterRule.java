@@ -19,6 +19,7 @@ public class GenericFilterRule implements IFilterRule {
     private Pattern m_pattern;
     private MODE    m_mode;
     private String  m_data;
+    public static String lastSerieNameMatched = null;
 
     public static final MODE getMode(String mode) throws Exception {
         mode = mode.toLowerCase();
@@ -81,6 +82,7 @@ public class GenericFilterRule implements IFilterRule {
         if (name.charAt(4) != '-' || !mc.find()) {
             return name;
         } else {
+            lastSerieNameMatched = this.m_data;
             return name.substring(0, 5) + m_data;
         }
     }

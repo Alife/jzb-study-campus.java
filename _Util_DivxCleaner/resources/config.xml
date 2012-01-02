@@ -2,11 +2,15 @@
 <config>
 
     <process>
-        <srcPath>C:\WKSPs\Ganymede-Java\DivxCleaner\resources\src1</srcPath>
-        <srcPath>C:\WKSPs\Ganymede-Java\DivxCleaner\resources\src2</srcPath>
-        <srcPath>3</srcPath>
-        <dstPath>C:\WKSPs\Ganymede-Java\DivxCleaner\resources\out</dstPath>
-        <exts>avi;mkv;srt</exts>
+        <srcPath>Z:\_Incoming\_traces</srcPath>
+        <dstPath>Z:\_Incoming</dstPath>
+        <!-- 
+        <srcPath>/home/jzarzuela/p2p/jdownloader</srcPath>
+        <srcPath>/home/jzarzuela/p2p/amule</srcPath>
+	    <srcPath>/home/jzarzuela/p2p/torrent-end</srcPath>
+        <dstPath>/media/Elements/disco_c/Videos_DivX/_Incoming</dstPath>
+		-->
+        <exts>avi;mkv;mpg;mp4;srt</exts>
     </process>
     
 	<filterRules>
@@ -24,10 +28,16 @@
 
 
         <!-- Elimina a partir de ciertas cadenas de texto -->
-		<filter mode="CUTRIGHT" regexp=" Bdrip| hdrip| mp3| dvd| dvd.dvb| 5 1"	data="" />
+		<filter mode="CUTRIGHT" regexp=" Bdrip| hdrip| mp3| dvd| dvd.dvb| 5 1|\[dvd"	data="" />
 		<filter mode="CUTRIGHT" regexp=" repack| esp| Subs| hdtv| xvid| lol| www"	data="" />
 		<filter mode="CUTRIGHT" regexp=" ([^ ]*)Screener" data="" />
 		<filter mode="CUTRIGHT" regexp=" [0-9][0-9][0-9][0-9]" data="" />
+		<filter mode="CUTRIGHT" regexp=" by cowboysgroup" data="" />
+		<filter mode="CUTRIGHT" regexp=" dvb rip" data="" />
+
+
+        <!-- Busca patrones de numero de capitulo para ponerlo al principio QUE ESTEN ENTRE PARENTESIS-->
+		<filter mode="CHAPTER" regexp="\[cap.[0-9][0-9][0-9]\]" data="" />
 
 
         <!--  Elimina los textos entre parentesis y corchetes-->
@@ -43,8 +53,12 @@
 		<filter mode="REPLACE" regexp="- |--" data="-" />
 
 
-        <!-- Limpia espacios sobrantes como tarea final -->
+        <!-- Limpia espacios sobrantes y ciertas cadenas como tarea final -->
+		<filter mode="REPLACE" regexp="ac3" data=" " />
+		<filter mode="REPLACE" regexp="\[spanish" data=" " />
 		<filter mode="REPLACE" regexp=" ( )+" data=" " />
+		<filter mode="REPLACE" regexp=" [\(\[]ts" data=" " />
+
 
 
         <!-- ******************************************************************************** -->
@@ -53,8 +67,44 @@
 		<filter mode="SERIE_NAME" regexp="Persons Unknown" data="Persons Unknown" />
 		<filter mode="SERIE_NAME" regexp="Gravedad Cero" data="Gravedad Cero" />
 		<filter mode="SERIE_NAME" regexp="Breaking Bad" data="Breaking Bad" />
+		<filter mode="SERIE_NAME" regexp="Caprica" data="Caprica" />
+		<filter mode="SERIE_NAME" regexp="Stargate Universe" data="Stargate Universe" />
+		<filter mode="SERIE_NAME" regexp="Sanctuary" data="Sanctuary" />
+		<filter mode="SERIE_NAME" regexp="Merlin" data="Merlin" />
+		<filter mode="SERIE_NAME" regexp="The Big Bang Theory" data="TBBT" />
+		<filter mode="SERIE_NAME" regexp="Supernatural" data="Supernatural" />
+		<filter mode="SERIE_NAME" regexp="No Ordinary Family" data="No Ordinary Family" />
+		<filter mode="SERIE_NAME" regexp="Boardwalk Empire" data="Boardwalk Empire" />
+		<filter mode="SERIE_NAME" regexp="The Walking Dead" data="The Walking Dead" />
+		<filter mode="SERIE_NAME" regexp="Misfits" data="Misfits" />
+		<filter mode="SERIE_NAME" regexp="primeval" data="primeval" />
+		<filter mode="SERIE_NAME" regexp="being human" data="being human" />
+		<filter mode="SERIE_NAME" regexp="fringe" data="fringe" />
+		<filter mode="SERIE_NAME" regexp="alphas" data="alphas" />
+		<filter mode="SERIE_NAME" regexp="eureka" data="eureka" />
+		<filter mode="SERIE_NAME" regexp="true blood" data="true blood" />
+		<filter mode="SERIE_NAME" regexp="haven" data="haven" />
+		<filter mode="SERIE_NAME" regexp="the vampire diaries" data="the vampire diaries" />
+		<filter mode="SERIE_NAME" regexp="the fades" data="the fades" />
+		<filter mode="SERIE_NAME" regexp="death valley" data="death valley" />
+		<filter mode="SERIE_NAME" regexp="american horror story" data="american horror story" />
+		<filter mode="SERIE_NAME" regexp="person of interest" data="person of interest" />
+		<filter mode="SERIE_NAME" regexp="tbbt" data="TBBT" />
+		<filter mode="SERIE_NAME" regexp="the gates ciudad de vampiros" data="the gates ciudad de vampiros" />
+		<filter mode="SERIE_NAME" regexp="once upon a time" data="once upon a time" />
+		<filter mode="SERIE_NAME" regexp="terra nova" data="terra nova" />
+		<filter mode="SERIE_NAME" regexp="the body farm" data="the body farm" />
+		<filter mode="SERIE_NAME" regexp="the killing" data="the killing" />
+		<filter mode="SERIE_NAME" regexp="pan am" data="pan am" />
+		<filter mode="SERIE_NAME" regexp="grimm" data="grimm" />
+		<filter mode="SERIE_NAME" regexp="hell on wheels" data="hell on wheels" />
+		<filter mode="SERIE_NAME" regexp="paradox" data="paradox" />
+		<filter mode="SERIE_NAME" regexp="treme" data="treme" />
+		<filter mode="SERIE_NAME" regexp="eleventh hour" data="eleventh hour" />
+		<filter mode="SERIE_NAME" regexp="11thhr" data="eleventh hour" />
+		<filter mode="SERIE_NAME" regexp="borgia" data="borgia" />
 
-<filter mode="SERIE_NAME" regexp="la oveja shaun" data="la oveja shaun" />
+
 	</filterRules>
 
 

@@ -61,16 +61,25 @@ public class Tracer {
     public static void trace(String msg, Object... args) {
         getOut().printf(msg, args);
         getOut().println();
+        
+        System.out.printf(msg, args);
+        System.out.println();
     }
 
     public static void error(String msg, Object... args) {
         getErr().printf(msg, args);
         getErr().println();
+        
+        System.out.printf(msg, args);
+        System.out.println();
     }
 
     public static void error(String msg, Throwable th) {
         getErr().println(msg);
         th.printStackTrace(getErr());
+
+        System.out.printf(msg);
+        th.printStackTrace(System.out);
     }
 
     public static boolean isInit() {
