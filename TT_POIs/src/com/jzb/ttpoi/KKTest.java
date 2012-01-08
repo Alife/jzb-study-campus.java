@@ -128,7 +128,7 @@ public class KKTest {
             }
 
             @Override
-            public void processFile(File f) throws Exception {
+            public void processFile(File f, File baseFolder) throws Exception {
 
                 if (f.getName().toLowerCase().endsWith("_all.ov2")) {
                     // Tracer._debug("Adding OV2 file: "+f);
