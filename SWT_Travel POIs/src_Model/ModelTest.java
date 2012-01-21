@@ -1,10 +1,10 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.jzb.tpoi.data.TMap;
 import com.jzb.tpoi.srvc.GMapService;
 import com.jzb.tpoi.srvc.ModelService;
 import com.jzb.tpoi.srvc.SyncService;
+import com.jzb.util.DefaultHttpProxy;
 import com.jzb.util.Des3Encrypter;
 
 /**
@@ -50,22 +50,20 @@ public class ModelTest {
      */
     public void doIt(String[] args) throws Exception {
 
+        DefaultHttpProxy.setDefaultProxy();
+
         ModelService.inst._setBaseFolder("C:\\Users\\n63636\\Desktop\\xIPAs\\gmaps");
-//        GMapService.inst.login(Des3Encrypter.decryptStr("PjN1Jb0t6CYNTbO/xEgJIjCPPPfsmPez"), Des3Encrypter.decryptStr("8ivdMeBQiyQtSs1BFkf+mw=="));
+        GMapService.inst.login(Des3Encrypter.decryptStr("PjN1Jb0t6CYNTbO/xEgJIjCPPPfsmPez"), Des3Encrypter.decryptStr("8ivdMeBQiyQtSs1BFkf+mw=="));
 
-//        ArrayList<TMap> mapsList = GMapService.inst.getUserMapsList();
-//        for (TMap map : mapsList) {
-//            GMapService.inst.readMapData(map);
-//            ModelService.inst.createMap(map);
-//        }
-
-        ArrayList<TMap> mapsList = ModelService.inst.getUserMapsList();
+        /**
+        ArrayList<TMap> mapsList = GMapService.inst.getUserMapsList();
         for (TMap map : mapsList) {
-            ModelService.inst.readMapData(map);
+            GMapService.inst.readMapData(map);
+            ModelService.inst.createMap(map);
         }
-        for (TMap map : mapsList) {
-            System.out.println(map.getAllPoints().size() + " - " +map.getDisplayName());
-        }
+        **/
+        
+        SyncService.inst.syncAllMaps();
 
     }
 

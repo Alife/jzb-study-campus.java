@@ -12,35 +12,55 @@ import java.io.ObjectOutput;
  * @author n63636
  * 
  */
-public abstract class TBaseEntity implements Externalizable {
+public abstract class TBaseEntity implements IIdentifiable, ITouchable, Externalizable {
 
     // Otros interesantes: Authors, ETag
     // Coincidira con la URL de edicion
 
-    private static final String LOCAL_ID_PREFIX = "@cafe0fea0";
+    private static final String LOCAL_ETAG_PREFIX  = "@Local-";
+    private static final String LOCAL_ID_PREFIX    = "@cafe-";
+    private static final String REMOTE_ETAG_PREFIX = "@Sync-";
+
+    private static long         s_idCounter        = Math.round(100L * Math.random());
+
+    private boolean             m_changed;
     private String              m_description;
-    // Solo por motivos de velocidad y evitar recalculos
-    private String              m_displayName;
     private TIcon               m_icon;
     private String              m_id;
     private boolean             m_markedAsDeleted;
     private String              m_name;
-    // Al mostrar un texto o al comparar, se utilizara este valor si no es null
     private String              m_shortName;
-    private SyncStatusType      m_syncStatus;
+    private String              m_syncETag;
     private TDateTime           m_ts_created;
     private TDateTime           m_ts_updated;
-
     private EntityType          m_type;
 
+    // Solo por motivos de velocidad y evitar recalculos
+    private String              t_displayName;
+    private SyncStatusType      t_syncStatus;
+
     // ---------------------------------------------------------------------------------
-    public static boolean _isLocalId(String id) {
-        return id.startsWith(LOCAL_ID_PREFIX);
+    public static synchronized String _calcRemoteCategoryETag() {
+        s_idCounter++;
+        return REMOTE_ETAG_PREFIX + System.currentTimeMillis() + "-" + s_idCounter;
     }
 
     // ---------------------------------------------------------------------------------
-    private static String _calcLocalId() {
-        return LOCAL_ID_PREFIX + System.currentTimeMillis();
+    private static synchronized String _calcLocalETag() {
+        s_idCounter++;
+        return LOCAL_ETAG_PREFIX + System.currentTimeMillis() + "-" + s_idCounter;
+    }
+
+    // ---------------------------------------------------------------------------------
+    private static synchronized String _calcLocalId() {
+        s_idCounter++;
+        return LOCAL_ID_PREFIX + System.currentTimeMillis() + "-" + s_idCounter;
+    }
+
+    // ---------------------------------------------------------------------------------
+    // Just to be called from chidren
+    TBaseEntity() {
+
     }
 
     // ---------------------------------------------------------------------------------
@@ -49,12 +69,32 @@ public abstract class TBaseEntity implements Externalizable {
         m_type = type;
         m_id = _calcLocalId();
         m_name = "";
-        m_description = "";
         m_shortName = null;
-        // @todo uno por defecto m_icon = ""
-        m_ts_created = m_ts_updated = new TDateTime(System.currentTimeMillis());
+        m_description = "";
+        // @todo uno por defecto
+        m_icon = TIcon.ERRONEUS_ICON;
+        m_changed = false;
         m_markedAsDeleted = false;
-        m_syncStatus = SyncStatusType.Sync_OK;
+        m_syncETag = _calcLocalETag();
+        t_syncStatus = SyncStatusType.Sync_OK;
+
+        m_ts_created = m_ts_updated = TDateTime.now();
+
+    }
+
+    // ---------------------------------------------------------------------------------
+    public void assignFrom(TBaseEntity other) {
+
+        m_type = other.m_type;
+        m_id = other.m_id;
+        m_name = other.m_name;
+        m_shortName = other.m_shortName;
+        m_syncETag = other.m_syncETag;
+        m_description = other.m_description;
+        m_icon = other.m_icon;
+        m_markedAsDeleted = other.m_markedAsDeleted;
+        m_ts_created = other.m_ts_created;
+        m_ts_updated = other.m_ts_updated;
     }
 
     // ---------------------------------------------------------------------------------
@@ -70,7 +110,7 @@ public abstract class TBaseEntity implements Externalizable {
      * @return the name or shortname
      */
     public String getDisplayName() {
-        return m_displayName;
+        return t_displayName;
     }
 
     // ---------------------------------------------------------------------------------
@@ -107,10 +147,18 @@ public abstract class TBaseEntity implements Externalizable {
 
     // ---------------------------------------------------------------------------------
     /**
+     * @return the syncETag
+     */
+    public String getSyncETag() {
+        return m_syncETag;
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
      * @return the syncStatus
      */
     public SyncStatusType getSyncStatus() {
-        return m_syncStatus;
+        return t_syncStatus;
     }
 
     // ---------------------------------------------------------------------------------
@@ -139,16 +187,23 @@ public abstract class TBaseEntity implements Externalizable {
 
     // ---------------------------------------------------------------------------------
     /**
+     * @return the changed
+     */
+    public boolean isChanged() {
+        return m_changed;
+    }
+
+    // ---------------------------------------------------------------------------------
+    public boolean isLocal() {
+        return m_syncETag.startsWith(LOCAL_ETAG_PREFIX);
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
      * @return the markedAsDeleted
      */
     public boolean isMarkedAsDeleted() {
         return m_markedAsDeleted;
-    }
-
-    // ---------------------------------------------------------------------------------
-    // Un ID "local" no tendra la parte de URL. Un ID "remoto" si la tendra
-    public boolean isSynchronized() {
-        return m_id.contains("maps.google.com");
     }
 
     // ---------------------------------------------------------------------------------
@@ -172,13 +227,14 @@ public abstract class TBaseEntity implements Externalizable {
         m_name = (String) in.readObject();
         m_shortName = (String) in.readObject();
         m_description = (String) in.readObject();
-        String iconName = (String) in.readObject();
-        if (iconName != null)
-            m_icon = TIcon.createFromName(iconName);
+        String iconURL = (String) in.readObject();
+        if (iconURL != null)
+            m_icon = TIcon.createFromURL(iconURL);
+        m_changed = in.readBoolean();
+        m_syncETag = (String) in.readObject();
+        m_markedAsDeleted = in.readBoolean();
         m_ts_created = new TDateTime(in.readLong());
         m_ts_updated = new TDateTime(in.readLong());
-        m_markedAsDeleted = in.readBoolean();
-        m_syncStatus = (SyncStatusType) in.readObject();
 
         _recalcDisplayName();
     }
@@ -237,7 +293,7 @@ public abstract class TBaseEntity implements Externalizable {
      *            the syncStatus to set
      */
     public void setSyncStatus(SyncStatusType syncStatus) {
-        m_syncStatus = syncStatus;
+        t_syncStatus = syncStatus;
     }
 
     // ---------------------------------------------------------------------------------
@@ -269,6 +325,7 @@ public abstract class TBaseEntity implements Externalizable {
 
     // ---------------------------------------------------------------------------------
     public void touchAsUpdated() {
+        m_changed = true;
         m_ts_updated = new TDateTime(System.currentTimeMillis());
     }
 
@@ -288,12 +345,31 @@ public abstract class TBaseEntity implements Externalizable {
 
     // ---------------------------------------------------------------------------------
     /**
+     * @param changed
+     *            the changed to set
+     */
+    public void updateChanged(boolean changed) {
+        m_changed = changed;
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
      * @param id
      *            the id to set
      */
     public void updateId(String id) {
         m_id = id;
-        touchAsUpdated();
+        // touchAsUpdated();
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
+     * @param syncETag
+     *            the syncETag to set
+     */
+    public void updateSyncETag(String syncETag) {
+        m_syncETag = syncETag;
+        // touchAsUpdated();
     }
 
     // ---------------------------------------------------------------------------------
@@ -308,26 +384,30 @@ public abstract class TBaseEntity implements Externalizable {
         out.writeObject(m_shortName);
         out.writeObject(m_description);
         if (m_icon != null)
-            out.writeObject(m_icon.getName());
+            out.writeObject(m_icon.getUrl());
         else
             out.writeObject(null);
+        out.writeBoolean(m_changed);
+        out.writeObject(m_syncETag);
+        out.writeBoolean(m_markedAsDeleted);
         out.writeLong(m_ts_created.getValue());
         out.writeLong(m_ts_updated.getValue());
-        out.writeBoolean(m_markedAsDeleted);
-        out.writeObject(m_syncStatus);
     }
 
     // ---------------------------------------------------------------------------------
     protected void xmlStringBody(StringBuffer sb, String ident) {
+
         sb.append(ident).append("<id>").append(m_id != null ? m_id : "").append("</id>\n");
         sb.append(ident).append("<name>").append(m_name != null ? m_name : "").append("</name>\n");
         sb.append(ident).append("<shortName>").append(m_shortName != null ? m_shortName : "").append("</shortName>\n");
+        sb.append(ident).append("<syncETag>").append(m_syncETag != null ? m_syncETag : "").append("</syncETag>\n");
+        sb.append(ident).append("<changed>").append(m_changed).append("</changed>\n");
         sb.append(ident).append("<description>").append(m_description != null ? m_description : "").append("</description>\n");
         sb.append(ident).append("<icon>").append(m_icon != null ? m_icon : "").append("</icon>\n");
+        sb.append(ident).append("<markedAsDeleted>").append(m_markedAsDeleted).append("</markedAsDeleted>\n");
         sb.append(ident).append("<ts_created>").append(m_ts_created != null ? m_ts_created : "").append("</ts_created>\n");
         sb.append(ident).append("<ts_updated>").append(m_ts_updated != null ? m_ts_updated : "").append("</ts_updated>\n");
-        sb.append(ident).append("<syncStatus>").append(m_syncStatus != null ? m_syncStatus : "").append("</syncStatus>\n");
-        sb.append(ident).append("<markedAsDeleted>").append(m_markedAsDeleted).append("</markedAsDeleted>\n");
+        sb.append(ident).append("<syncStatus>").append(t_syncStatus != null ? t_syncStatus : "").append("</syncStatus>\n");
     }
 
     // ---------------------------------------------------------------------------------
@@ -343,8 +423,8 @@ public abstract class TBaseEntity implements Externalizable {
     // ---------------------------------------------------------------------------------
     private void _recalcDisplayName() {
         if (m_shortName == null || m_shortName.length() == 0)
-            m_displayName = m_name;
+            t_displayName = m_name;
         else
-            m_displayName = m_shortName;
+            t_displayName = m_shortName;
     }
 }

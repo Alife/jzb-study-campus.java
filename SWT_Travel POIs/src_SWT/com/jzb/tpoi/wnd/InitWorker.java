@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jzb.ipa;
+package com.jzb.tpoi.wnd;
 
 import java.util.ArrayList;
 
@@ -46,7 +46,7 @@ public class InitWorker {
 
     private void _initMaps(final Panel_ListOfMaps mapListPanel) throws Exception {
         ModelService.inst._setBaseFolder("C:\\Users\\n63636\\Desktop\\xIPAs\\gmaps");
-        ArrayList<TMap> maps = ModelService.inst.getUserMapsList();
+        ArrayList<TMap> maps = ModelService.inst.getUserMapsList(false);
         mapListPanel.setMaps(maps);
     }
 

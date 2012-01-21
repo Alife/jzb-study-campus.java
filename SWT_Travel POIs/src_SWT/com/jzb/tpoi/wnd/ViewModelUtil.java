@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jzb.ipa;
+package com.jzb.tpoi.wnd;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,25 +22,29 @@ import com.jzb.tpoi.data.TPoint;
  */
 public class ViewModelUtil {
 
-    public static ArrayList<TMapElement> getFlatContent(TMap map, ArrayList<TCategory> categories) {
+    // ---------------------------------------------------------------------------------
+    public static ArrayList<TMapElement> getFlatContent(TMap map, TCategory category) {
 
         ArrayList<TMapElement> list = new ArrayList<TMapElement>();
 
-        if (categories == null || categories.size() == 0) {
-            for (TCategory cat : map.getAllCategories()) {
-                cat.setDisplayCount(cat.getAllPoints().size());
+        if (category == null) {
+            for (TCategory cat : map.getCategories()) {
+                cat.setDisplayCount(cat.getPoints().size());
                 list.add(cat);
             }
-            list.addAll(map.getAllPoints());
+            list.addAll(map.getPoints().values());
         } else {
-            Collection<TPoint> points1 = _getFilteredPointsByCategories(map, categories);
-            list.addAll(points1);
-            // list.addAll(categories.get(categories.size() - 1).getAllRecursivePoints());
+            for (TCategory cat : category.getSubCategories().values()) {
+                cat.setDisplayCount(cat.getPoints().size());
+                list.add(cat);
+            }
+            list.addAll(category.getPoints().values());
         }
 
         return list;
     }
 
+    // ---------------------------------------------------------------------------------
     public static ArrayList<TMapElement> getHierarchicalContent(TMap map, ArrayList<TCategory> categories) {
 
         Collection<TPoint> points1 = _getFilteredPointsByCategories(map, categories);
@@ -56,23 +60,24 @@ public class ViewModelUtil {
         return list;
     }
 
+    // ---------------------------------------------------------------------------------
     public static void shortCollection(ArrayList<? extends TBaseEntity> items, BaseEntityComparationType compType) {
 
         BaseEntityCompatator comparator = new BaseEntityCompatator(compType);
         Collections.sort(items, comparator);
     }
 
+    // ---------------------------------------------------------------------------------
     private static ArrayList<TPoint> _filterCategorizedPoints(Collection<TPoint> points, Collection<TCategory> categories) {
 
         ArrayList<TPoint> list = new ArrayList<TPoint>();
 
         for (TPoint p : points) {
 
-            String pointID = p.getId();
             boolean contained = false;
 
             for (TCategory cat : categories) {
-                if (cat.containsPointById(pointID, true)) {
+                if (cat.recursiveContainsPoint(p)) {
                     cat.incrementDisplayCount();
                     contained = true;
                 }
@@ -87,15 +92,16 @@ public class ViewModelUtil {
         return list;
     }
 
+    // ---------------------------------------------------------------------------------
     private static ArrayList<TCategory> _filterSubcategories(Collection<TCategory> categories) {
 
         ArrayList<TCategory> rootCategories = new ArrayList<TCategory>();
         for (TCategory c1 : categories) {
 
-            String catID = c1.getId();
             boolean contained = false;
+
             for (TCategory c2 : categories) {
-                if (c2.containsCategoryById(catID, true)) {
+                if (c2.recursiveContainsSubCategory(c1)) {
                     contained = true;
                     break;
                 }
@@ -111,10 +117,11 @@ public class ViewModelUtil {
         return rootCategories;
     }
 
+    // ---------------------------------------------------------------------------------
     private static Collection<TPoint> _getFilteredPointsByCategories(TMap map, ArrayList<TCategory> categories) {
 
         if (categories == null || categories.size() == 0) {
-            return map.getAllPoints();
+            return map.getPoints().values();
         }
 
         if (categories.size() == 1) {
@@ -131,19 +138,20 @@ public class ViewModelUtil {
 
     }
 
+    // ---------------------------------------------------------------------------------
     private static HashSet<TCategory> _getPointsCategories(TMap map, Collection<TPoint> points, Collection<TCategory> excludedCategories) {
 
         HashSet<TCategory> categories = new HashSet<TCategory>();
 
         for (TPoint p : points) {
-            String pointID = p.getId();
-            for (TCategory cat : map.getAllCategories()) {
+
+            for (TCategory cat : map.getCategories()) {
 
                 if (excludedCategories != null && excludedCategories.contains(cat)) {
                     continue;
                 }
 
-                if (cat.containsPointById(pointID)) {
+                if (cat.getPoints().contains(p)) {
                     categories.add(cat);
                 }
 

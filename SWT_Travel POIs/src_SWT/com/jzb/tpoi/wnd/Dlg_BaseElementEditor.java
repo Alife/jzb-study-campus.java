@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jzb.ipa;
+package com.jzb.tpoi.wnd;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,6 +36,7 @@ import com.jzb.tpoi.data.TPoint;
  */
 public class Dlg_BaseElementEditor extends Dialog {
 
+    private Text m_txtID;
     private TCategory   m_currentCat;
     private TBaseEntity m_entity;
     private boolean     m_isNew;
@@ -66,6 +67,7 @@ public class Dlg_BaseElementEditor extends Dialog {
     }
 
     protected void _initFields() {
+        m_txtID.setText(m_entity.getId());
         if (m_entity.getName() != null)
             m_txtName.setText(m_entity.getName());
         if (m_entity.getShortName() != null)
@@ -73,11 +75,11 @@ public class Dlg_BaseElementEditor extends Dialog {
         if (m_entity.getDescription() != null)
             m_txtDescription.setText(m_entity.getDescription());
         if (m_entity.getIcon() != null) {
-            m_txtIcon.setText(m_entity.getIcon().getName());
+            m_txtIcon.setText(m_entity.getIcon().getUrl());
         }
 
         if (m_entity instanceof TMapElement) {
-            _initFieldTableForMapElement();
+            _initFieldTableForBoth();
         }
 
         if (m_entity instanceof TCategory) {
@@ -91,11 +93,11 @@ public class Dlg_BaseElementEditor extends Dialog {
         m_entity.setShortName(m_txtShortName.getText());
         m_entity.setDescription(m_txtDescription.getText());
         if (m_txtIcon.getText() != null && m_txtIcon.getText().trim().length() > 0) {
-            m_entity.setIcon(TIcon.createFromName(m_txtIcon.getText()));
+            m_entity.setIcon(TIcon.createFromURL(m_txtIcon.getText()));
         }
 
         if (m_entity instanceof TMapElement) {
-            _setFieldTableForMapElement();
+            _setFieldTableForBoth();
         }
 
         if (m_entity instanceof TCategory) {
@@ -148,6 +150,13 @@ public class Dlg_BaseElementEditor extends Dialog {
         final GridLayout gridLayout = new GridLayout();
         gridLayout.numColumns = 2;
         container.setLayout(gridLayout);
+
+        final Label idLabel = new Label(container, SWT.NONE);
+        idLabel.setText("ID:");
+
+        m_txtID = new Text(container, SWT.READ_ONLY | SWT.BORDER);
+        final GridData gd_txtID = new GridData(SWT.FILL, SWT.CENTER, true, false);
+        m_txtID.setLayoutData(gd_txtID);
 
         final Label lblName = new Label(container, SWT.NONE);
         lblName.setText("Name:");
@@ -216,51 +225,33 @@ public class Dlg_BaseElementEditor extends Dialog {
      */
     @Override
     protected Point getInitialSize() {
-        return new Point(500, 440);
+        return new Point(500, 470);
     }
 
-    private void _initFieldTableForCategory() {
+    private void _initFieldTableForBoth() {
 
-        TCategory cat = (TCategory) m_entity;
+        boolean isACategory = (m_entity instanceof TCategory);
+        TCategory meAsCat = null;
+        TPoint meAsPoint = null;
 
-        m_tblPOIs.removeAll();
-
-        ArrayList<TPoint> points = new ArrayList<TPoint>(cat.getOwnerMap().getAllPoints());
-        BaseEntityCompatator comparator = new BaseEntityCompatator(BaseEntityComparationType.name);
-        Collections.sort(points, comparator);
-
-        for (TPoint point : points) {
-
-            TableItem item = new TableItem(m_tblPOIs, SWT.NONE);
-            item.setData(point);
-            item.setText(point.getDisplayName());
-            // item.setImage(image);
-
-            if (cat.getPointById(point.getId()) != null) {
-                item.setChecked(true);
-            }
+        if (isACategory) {
+            meAsCat = (TCategory) m_entity;
+        } else {
+            meAsPoint = (TPoint) m_entity;
         }
-    }
-
-    private void _initFieldTableForMapElement() {
-
-        TMapElement me = (TMapElement) m_entity;
-        boolean isACategory = (me instanceof TCategory);
-        String meID = me.getId();
 
         m_tblCategories.removeAll();
 
-        ArrayList<TCategory> categories = new ArrayList<TCategory>(me.getOwnerMap().getAllCategories());
+        ArrayList<TCategory> categories = new ArrayList<TCategory>(((TMapElement) m_entity).getOwnerMap().getCategories().values());
         BaseEntityCompatator comparator = new BaseEntityCompatator(BaseEntityComparationType.name);
         Collections.sort(categories, comparator);
 
         for (TCategory cat : categories) {
 
             if (isACategory) {
-                TCategory meAsCat = (TCategory) me;
                 // NO se puede asignar a si mismo
                 // y no debe estarlo por no crear ciclos
-                if (meAsCat.equals(cat) || meAsCat.containsCategoryById(cat.getId(), true)) {
+                if (meAsCat.equals(cat) || meAsCat.recursiveContainsSubCategory(cat)) {
                     continue;
                 }
             }
@@ -271,7 +262,7 @@ public class Dlg_BaseElementEditor extends Dialog {
             // item.setImage(image);
 
             boolean defCat = m_isNew && cat.equals(m_currentCat);
-            boolean contained = isACategory ? cat.containsCategoryById(meID) : cat.containsPointById(meID);
+            boolean contained = isACategory ? cat.getSubCategories().contains(meAsCat) : cat.getPoints().contains(meAsPoint);
 
             if (defCat || contained) {
                 item.setChecked(true);
@@ -281,35 +272,58 @@ public class Dlg_BaseElementEditor extends Dialog {
         }
     }
 
+    private void _initFieldTableForCategory() {
+
+        TCategory cat = (TCategory) m_entity;
+
+        m_tblPOIs.removeAll();
+
+        ArrayList<TPoint> points = new ArrayList<TPoint>(cat.getOwnerMap().getPoints().values());
+        BaseEntityCompatator comparator = new BaseEntityCompatator(BaseEntityComparationType.name);
+        Collections.sort(points, comparator);
+
+        for (TPoint point : points) {
+
+            TableItem item = new TableItem(m_tblPOIs, SWT.NONE);
+            item.setData(point);
+            item.setText(point.getDisplayName());
+            // item.setImage(image);
+
+            if (cat.getPoints().getById(point.getId()) != null) {
+                item.setChecked(true);
+            }
+        }
+    }
+
+    private void _setFieldTableForBoth() {
+
+        for (TableItem item : m_tblCategories.getItems()) {
+            TCategory cat = (TCategory) item.getData();
+            if (item.getChecked()) {
+                if (m_entity instanceof TCategory) {
+                    cat.getSubCategories().add((TCategory) m_entity);
+                } else {
+                    cat.getPoints().add((TPoint) m_entity);
+                }
+            } else {
+                if (m_entity instanceof TCategory) {
+                    cat.getSubCategories().remove((TCategory) m_entity);
+                } else {
+                    cat.getPoints().remove((TPoint) m_entity);
+                }
+            }
+        }
+    }
+
     private void _setFieldTableForCategory() {
 
         TCategory cat = (TCategory) m_entity;
         for (TableItem item : m_tblPOIs.getItems()) {
             TPoint point = (TPoint) item.getData();
             if (item.getChecked()) {
-                cat.addPoint(point);
+                cat.getPoints().add(point);
             } else {
-                cat.deletePoint(point);
-            }
-        }
-    }
-
-    private void _setFieldTableForMapElement() {
-
-        for (TableItem item : m_tblCategories.getItems()) {
-            TCategory cat = (TCategory) item.getData();
-            if (item.getChecked()) {
-                if (m_entity instanceof TCategory) {
-                    cat.addCategory((TCategory) m_entity);
-                } else {
-                    cat.addPoint((TPoint) m_entity);
-                }
-            } else {
-                if (m_entity instanceof TCategory) {
-                    cat.deleteCategory((TCategory) m_entity);
-                } else {
-                    cat.deletePoint((TPoint) m_entity);
-                }
+                cat.getPoints().remove(point);
             }
         }
     }

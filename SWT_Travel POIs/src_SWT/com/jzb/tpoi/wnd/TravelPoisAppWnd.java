@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jzb.ipa;
+package com.jzb.tpoi.wnd;
 
 import java.util.ArrayList;
 
@@ -97,7 +97,7 @@ public class TravelPoisAppWnd implements IMapPanelOwner {
     }
 
     /**
-     * @see com.jzb.ipa.IMapPanelOwner#navigateBackward()
+     * @see com.jzb.tpoi.wnd.IMapPanelOwner#navigateBackward()
      */
     public void navigateBackward() {
 
@@ -118,7 +118,7 @@ public class TravelPoisAppWnd implements IMapPanelOwner {
     }
 
     /**
-     * @see com.jzb.ipa.IMapPanelOwner#navigateForward(com.jzb.tpoi.data.TBaseEntity)
+     * @see com.jzb.tpoi.wnd.IMapPanelOwner#navigateForward(com.jzb.tpoi.data.TBaseEntity)
      */
     public void navigateForward(TBaseEntity entity) {
 

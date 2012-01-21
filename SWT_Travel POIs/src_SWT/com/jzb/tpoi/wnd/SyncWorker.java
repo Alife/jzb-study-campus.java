@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jzb.ipa;
+package com.jzb.tpoi.wnd;
 
 import com.jzb.swt.util.IProgressMonitor;
 import com.jzb.tpoi.srvc.GMapService;

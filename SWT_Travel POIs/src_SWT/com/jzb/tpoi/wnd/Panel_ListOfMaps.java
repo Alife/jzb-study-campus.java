@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jzb.ipa;
+package com.jzb.tpoi.wnd;
 
 import java.util.ArrayList;
 
@@ -204,6 +204,7 @@ public class Panel_ListOfMaps extends Composite {
 
     protected void _navigateTo() {
         TMap map = (TMap) m_mapsTable.getSelection()[0].getData();
+        map.toXmlString();
         m_panelOwner.navigateForward(map);
     }
 
@@ -239,7 +240,8 @@ public class Panel_ListOfMaps extends Composite {
     }
 
     private String _getCellName(TMap map) {
-        return map.getDisplayName();
+        // Local or Remote map
+        return map.getDisplayName() + (map.isLocal() ? " [L]" : " [R]");
     }
 
 }

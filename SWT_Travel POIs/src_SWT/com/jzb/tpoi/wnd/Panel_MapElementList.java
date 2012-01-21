@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jzb.ipa;
+package com.jzb.tpoi.wnd;
 
 import java.util.ArrayList;
 
@@ -280,7 +280,7 @@ public class Panel_MapElementList extends Composite {
         dlg.setEditingInfo(cat, true, m_currentCat);
         if (dlg.open() == 0) {
             try {
-                m_map.addCategory(cat);
+                m_map.getCategories().add(cat);
                 ModelService.inst.updateMap(m_map);
                 _refreshAllTableElements();
             } catch (Throwable th) {
@@ -304,7 +304,7 @@ public class Panel_MapElementList extends Composite {
         dlg.setEditingInfo(point, true, m_currentCat);
         if (dlg.open() == 0) {
             try {
-                m_map.addPoint(point);
+                m_map.getPoints().add(point);
                 ModelService.inst.updateMap(m_map);
                 _refreshAllTableElements();
             } catch (Throwable th) {
@@ -318,9 +318,9 @@ public class Panel_MapElementList extends Composite {
         if (_areYouSure(elem)) {
             try {
                 if (elem instanceof TCategory) {
-                    m_map.deleteCategory((TCategory) elem);
+                    m_map.getCategories().remove((TCategory) elem);
                 } else {
-                    m_map.deletePoint((TPoint) elem);
+                    m_map.getPoints().remove((TPoint) elem);
                 }
                 ModelService.inst.updateMap(m_map);
                 _refreshAllTableElements();
@@ -360,7 +360,7 @@ public class Panel_MapElementList extends Composite {
         m_elementsTable.removeAll();
         ArrayList<TMapElement> elements;
         if (m_btnFlat.getSelection()) {
-            elements = ViewModelUtil.getFlatContent(m_map, m_categoryNavStack);
+            elements = ViewModelUtil.getFlatContent(m_map, m_currentCat);
         } else {
             elements = ViewModelUtil.getHierarchicalContent(m_map, m_categoryNavStack);
         }

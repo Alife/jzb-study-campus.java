@@ -4,7 +4,7 @@
 package com.jzb.tpoi.data;
 
 import java.io.StringReader;
-import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,36 +17,55 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+import com.jzb.util.Tracer;
+
 /**
  * @author n63636
  * 
  */
 public class ExtendedInfo {
 
-    public static final String   EIP_COORDINATES     = "-101.804811,40.736959,0.0";
-    public static final String   EIP_ICON_URL        = "http://maps.gstatic.com/mapfiles/ms2/micons/earthquake.png";
-    public static final String   EXT_INFO_POINT_NAME = "@EXT_INFO";
+    /*--------------------------------------------------------------------------------------
+     * <extended_Info> 
+     *     <map>
+     *         <shortName/>
+     *         <iconName/>
+     *     </map>
+     *     <categories>
+     *         <category>
+     *             <id/>
+     *             <name/>
+     *             <shortName/>
+     *             <ETag/>
+     *             <description/>
+     *             <created_ts/>
+     *             <updated_ts/>
+     *             <iconName/>
+     *         </category
+     *         <categorizedLinks>
+     *             <catLink> 
+     *                 <catId/> 
+     *                 <pointIds>point_id1, point_id2,...</pointIds>
+     *                 <subCatsIds>cat_id1, cat_id2,...</subCatsIds>
+     *             </catLink> 
+     *         </categorizedLinks>
+     *     </categories>
+     * </extended_Info>
+     --------------------------------------------------------------------------------------*/
 
-    private ArrayList<TCategory> m_categories        = new ArrayList<TCategory>();
-    private TIcon                m_mapIcon;
-    private String               m_mapShortName;
+    public static final String EIP_DEF_COORDINATES = "-101.804811,40.736959,0.0";
+    public static final String EIP_DEF_ICON_URL    = "http://maps.gstatic.com/mapfiles/ms2/micons/earthquake.png";
+    public static final String EIP_NAME            = "@EXT_INFO";
 
     // ---------------------------------------------------------------------------------
-    public static TPoint createEmptyExtInfoPoint(TMap map) {
+    public static TPoint createEmptyExtInfoPoint() {
 
-        TPoint point = new TPoint(map);
-        point.setName(EXT_INFO_POINT_NAME);
+        TPoint point = new TPoint(null);
+        point.setName(EIP_NAME);
         point.setDescription("");
-        point.setIcon(TIcon.createFromURL(EIP_ICON_URL));
-        point.setCoordinates(new TCoordinates(EIP_COORDINATES));
-
-        String xml = "<extended_Info>\r\n" + "\r\n" + "    <map>\r\n" + "        <shortName></shortName>\r\n" + "        <icon>pepepepe</icon>\r\n" + "    </map>\r\n" + "\r\n"
-                + "    <categories>\r\n" + "        <category>\r\n" + "            <id>01010101001</id>\r\n" + "            <name>categoria1</name>\r\n"
-                + "            <shortName>cat1</shortName>\r\n" + "            <description>desc_categoria1</description>\r\n" + "            <created_ts>2012-01-04T21:00:00.000Z</created_ts>\r\n"
-                + "            <updated_ts>2012-01-04T21:00:00.000Z</updated_ts>\r\n" + "            <icon>icon_categoria1</icon>\r\n"
-                + "            <pointsInfo>0004b5a7a25e1191a242e@test , 908423409238409238409@pepe,48980948092380498234@luis</pointsInfo>\r\n" + "        </category>\r\n" + "    </categories>\r\n"
-                + "\r\n" + "</extended_Info>";
-
+        point.setIcon(TIcon.createFromURL(EIP_DEF_ICON_URL));
+        point.setCoordinates(new TCoordinates(EIP_DEF_COORDINATES));
+        String xml = "<extended_Info/>";
         point.setDescription(xml);
 
         return point;
@@ -55,18 +74,20 @@ public class ExtendedInfo {
 
     // ---------------------------------------------------------------------------------
     public static boolean isExtInfoPoint(TMapFigure mapFigure) {
-        return (mapFigure instanceof TPoint) && mapFigure.getName().equals(EXT_INFO_POINT_NAME);
+        return (mapFigure instanceof TPoint) && mapFigure.getName().equals(EIP_NAME);
     }
 
     // ---------------------------------------------------------------------------------
-    public static ExtendedInfo parseFromXml(TMap map) throws Exception {
+    // AQUI LOS PUNTOS DEL MAPA YA DEBEN ESTAR LEIDOS
+    public static void parseExtInfoFromXml(TMap map) throws Exception {
 
-        ExtendedInfo extInfo = new ExtendedInfo();
+        if (map.getExtInfoPoint() == null) {
+            return;
+        }
 
-        TPoint eiPoint = map.__getExtInfoPoint();
-        String xml = eiPoint.getDescription();
+        String xml = map.getExtInfoPoint().getDescription();
         if (!xml.contains("extended_Info")) {
-            return extInfo;
+            return;
         }
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -77,10 +98,12 @@ public class ExtendedInfo {
         XPath xpath = xpathFactory.newXPath();
 
         String val = xpath.evaluate("/extended_Info/map/shortName/text()", doc);
-        extInfo.setMapShortName(val);
+        if (val != null && val.length() > 0)
+            map.setShortName(val);
 
-        val = xpath.evaluate("/extended_Info/map/icon/text()", doc);
-        extInfo.setMapIcon(TIcon.createFromURL(val));
+        val = xpath.evaluate("/extended_Info/map/iconName/text()", doc);
+        if (val != null && val.length() > 0)
+            map.setIcon(TIcon.createFromName(val));
 
         NodeList nlist = (NodeList) xpath.evaluate("/extended_Info/categories/category", doc, XPathConstants.NODESET);
         for (int n = 0; n < nlist.getLength(); n++) {
@@ -96,7 +119,11 @@ public class ExtendedInfo {
             cat.setName(val);
 
             val = xpath.evaluate("shortName/text()", node);
-            cat.setShortName(val);
+            if (val != null && val.length() > 0)
+                cat.setShortName(val);
+
+            val = xpath.evaluate("ETag/text()", node);
+            cat.updateSyncETag(val);
 
             val = xpath.evaluate("description/text()", node);
             cat.setDescription(val);
@@ -107,69 +134,55 @@ public class ExtendedInfo {
             val = xpath.evaluate("updated_ts/text()", node);
             cat.setTS_Updated(TDateTime.parseDateTime(val));
 
-            val = xpath.evaluate("icon/text()", node);
-            cat.setIcon(TIcon.createFromURL(val));
+            val = xpath.evaluate("iconName/text()", node);
+            if (val != null && val.length() > 0)
+                cat.setIcon(TIcon.createFromName(val));
 
-            extInfo.addCategory(cat);
+            map.getCategories().add(cat);
+
         }
 
-        return extInfo;
+        // Enlaza las categorias con sus puntos y subcategorias
+        nlist = (NodeList) xpath.evaluate("/extended_Info/categorizedLinks/catLink", doc, XPathConstants.NODESET);
+        for (int n = 0; n < nlist.getLength(); n++) {
+
+            Node node = nlist.item(n);
+
+            val = xpath.evaluate("catId/text()", node);
+            TCategory cat = map.getCategories().getById(val);
+            if (cat == null) {
+                Tracer._warn("Container category not found: " + val);
+                continue;
+            }
+
+            val = xpath.evaluate("pointIds/text()", node);
+            StringTokenizer st = new StringTokenizer(val, ",");
+            while (st.hasMoreTokens()) {
+                String pointID = st.nextToken().trim();
+                TPoint point = map.getPoints().getById(pointID);
+                if (point != null) {
+                    cat.getPoints().add(point);
+                } else {
+                    Tracer._warn("Categorized point not found: " + pointID);
+                }
+            }
+
+            val = xpath.evaluate("subCatsIds/text()", node);
+            st = new StringTokenizer(val, ",");
+            while (st.hasMoreTokens()) {
+                String catID = st.nextToken().trim();
+                TCategory subCat = map.getCategories().getById(catID);
+                if (subCat != null) {
+                    cat.getCategories().add(subCat);
+                } else {
+                    Tracer._warn("Categorized subcategory not found: " + catID);
+                }
+            }
+        }
+
     }
 
     // ---------------------------------------------------------------------------------
-    public void addCategory(TCategory cat) {
-        m_categories.add(cat);
+    public ExtendedInfo() {
     }
-
-    // ---------------------------------------------------------------------------------
-    /**
-     * @return the categories
-     */
-    public ArrayList<TCategory> getCategories() {
-        return m_categories;
-    }
-
-    // ---------------------------------------------------------------------------------
-    /**
-     * @return the mapIcon
-     */
-    public TIcon getMapIcon() {
-        return m_mapIcon;
-    }
-
-    // ---------------------------------------------------------------------------------
-    /**
-     * @return the mapShortName
-     */
-    public String getMapShortName() {
-        return m_mapShortName;
-    }
-
-    // ---------------------------------------------------------------------------------
-    /**
-     * @param categories
-     *            the categories to set
-     */
-    public void setCategories(ArrayList<TCategory> categories) {
-        m_categories = categories;
-    }
-
-    // ---------------------------------------------------------------------------------
-    /**
-     * @param mapIcon
-     *            the mapIcon to set
-     */
-    public void setMapIcon(TIcon mapIcon) {
-        m_mapIcon = mapIcon;
-    }
-
-    // ---------------------------------------------------------------------------------
-    /**
-     * @param mapShortName
-     *            the mapShortName to set
-     */
-    public void setMapShortName(String mapShortName) {
-        m_mapShortName = mapShortName;
-    }
-
 }

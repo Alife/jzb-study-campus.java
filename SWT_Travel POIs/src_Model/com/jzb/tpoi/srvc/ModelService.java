@@ -34,12 +34,12 @@ public class ModelService {
 
     // ---------------------------------------------------------------------------------
     public void createMap(TMap map) throws Exception {
-        Tracer._debug("ModelService - createMap: " + (map != null ? map.getId() : "null"));
-        _saveMap(map);
+        Tracer._debug("ModelService - createMap: " + (map != null ? map.getName() + " - " + map.getId() : "null"));
+        _storeMapInfo(map);
     }
 
     // ---------------------------------------------------------------------------------
-    public ArrayList<TMap> getUserMapsList() throws Exception {
+    public ArrayList<TMap> getUserMapsList(boolean alsoDeleted) throws Exception {
 
         Tracer._debug("ModelService - getUserMaps (in)");
 
@@ -53,7 +53,7 @@ public class ModelService {
                 map.readHeaderExternal(ois);
                 ois.close();
 
-                if (!map.isMarkedAsDeleted()) {
+                if (!map.isMarkedAsDeleted() || alsoDeleted) {
                     list.add(map);
                 }
             }
@@ -65,21 +65,33 @@ public class ModelService {
     }
 
     // ---------------------------------------------------------------------------------
+    // Realmente no lo borra, lo marca como borrado para borrarlo al sincronizarlo
     public void markAsDeletedMap(TMap map) throws Exception {
-        Tracer._debug("ModelService - markAsDeletedMap: " + (map != null ? map.getId() : "null"));
-        if (map.isSynchronized()) {
-            map.markedAsDeleted(true);
-            _saveMap(map);
-        } else {
+        Tracer._debug("ModelService - markAsDeletedMap: " + (map != null ? map.getName() + " - " + map.getId() : "null"));
+        if (map.isLocal()) {
             Tracer._debug("ModelService - markAsDeletedMap: Map was just local. So it'll be truly deleted");
-            trulyDeleteMap(map);
+            _trulyDeleteMap(map);
+        } else {
+            map.markedAsDeleted(true);
+            _storeMapInfo(map);
+        }
+    }
+
+    // ---------------------------------------------------------------------------------
+    public void purgeDeleted() throws Exception {
+        Tracer._debug("ModelService - purgeDeleted");
+        ArrayList<TMap> deleted = getUserMapsList(true);
+        for (TMap map : deleted) {
+            if (map.isMarkedAsDeleted()) {
+                _trulyDeleteMap(map);
+            }
         }
     }
 
     // ---------------------------------------------------------------------------------
     public void readMapData(TMap map) throws Exception {
 
-        Tracer._debug("ModelService - readMapData: " + (map != null ? map.getId() : "null"));
+        Tracer._debug("ModelService - readMapData: " + (map != null ? map.getName() + " - " + map.getId() : "null"));
 
         File mapDataFile = new File(m_baseFolder, _getMapBaseFName(map.getId()) + MAP_DATA_FILE_EXT);
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(mapDataFile));
@@ -88,21 +100,10 @@ public class ModelService {
     }
 
     // ---------------------------------------------------------------------------------
-    public void trulyDeleteMap(TMap map) throws Exception {
-
-        Tracer._debug("ModelService - trulyDeleteMap: " + (map != null ? map.getId() : "null"));
-
-        File mapHeaderFile = new File(m_baseFolder, _getMapBaseFName(map.getId()) + MAP_HEADER_FILE_EXT);
-        File mapDataFile = new File(m_baseFolder, _getMapBaseFName(map.getId()) + MAP_DATA_FILE_EXT);
-        mapHeaderFile.delete();
-        mapDataFile.delete();
-    }
-
-    // ---------------------------------------------------------------------------------
     public void updateMap(TMap map) throws Exception {
 
-        Tracer._debug("ModelService - updateMap: " + (map != null ? map.getId() : "null"));
-        _saveMap(map);
+        Tracer._debug("ModelService - updateMap: " + (map != null ? map.getName() + " - " + map.getId() : "null"));
+        _storeMapInfo(map);
     }
 
     // ---------------------------------------------------------------------------------
@@ -124,7 +125,7 @@ public class ModelService {
     }
 
     // ---------------------------------------------------------------------------------
-    private void _saveMap(TMap map) throws Exception {
+    private void _storeMapInfo(TMap map) throws Exception {
 
         ObjectOutputStream oos;
 
@@ -139,5 +140,16 @@ public class ModelService {
         map.writeHeaderExternal(oos);
         oos.close();
 
+    }
+
+    // ---------------------------------------------------------------------------------
+    private void _trulyDeleteMap(TMap map) throws Exception {
+
+        Tracer._debug("ModelService - trulyDeleteMap: " + (map != null ? map.getName() + " - " + map.getId() : "null"));
+
+        File mapHeaderFile = new File(m_baseFolder, _getMapBaseFName(map.getId()) + MAP_HEADER_FILE_EXT);
+        File mapDataFile = new File(m_baseFolder, _getMapBaseFName(map.getId()) + MAP_DATA_FILE_EXT);
+        mapHeaderFile.delete();
+        mapDataFile.delete();
     }
 }

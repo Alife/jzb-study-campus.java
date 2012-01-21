@@ -9,8 +9,12 @@ package com.jzb.tpoi.data;
  */
 public class TIcon {
 
-    private String m_name;
-    private String m_url;
+    private static String     NAME_ERRONEUS_ICON = "Icono para Error";
+    public static final TIcon ERRONEUS_ICON      = createFromName(NAME_ERRONEUS_ICON);
+
+    private String            m_name;
+
+    private String            m_url;
 
     // ---------------------------------------------------------------------------------
     public static TIcon createFromName(String name) {
