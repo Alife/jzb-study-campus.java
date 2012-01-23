@@ -9,9 +9,12 @@ import java.util.Collections;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
@@ -26,6 +29,7 @@ import com.jzb.tpoi.data.BaseEntityComparationType;
 import com.jzb.tpoi.data.BaseEntityCompatator;
 import com.jzb.tpoi.data.TBaseEntity;
 import com.jzb.tpoi.data.TCategory;
+import com.jzb.tpoi.data.TCoordinates;
 import com.jzb.tpoi.data.TIcon;
 import com.jzb.tpoi.data.TMapElement;
 import com.jzb.tpoi.data.TPoint;
@@ -36,14 +40,27 @@ import com.jzb.tpoi.data.TPoint;
  */
 public class Dlg_BaseElementEditor extends Dialog {
 
-    private Text m_txtID;
+    private Button      m_Button;
     private TCategory   m_currentCat;
     private TBaseEntity m_entity;
+    private Label       m_IdLabel;
     private boolean     m_isNew;
+    private Label       m_LblCategories;
+    private Label       m_LblDescription;
+    private Label       m_LblIcon;
+    private Label       m_LblLat;
+    private Label       m_LblLng;
+    private Label       m_LblName;
+    private Label       m_LblPOIs;
+    private Label       m_LblShortName;
+    private Shell       m_parentShell;
     private Table       m_tblCategories;
     private Table       m_tblPOIs;
     private Text        m_txtDescription;
     private Text        m_txtIcon;
+    private Text        m_txtID;
+    private Text        m_txtLat;
+    private Text        m_txtLng;
     private Text        m_txtName;
     private Text        m_txtShortName;
 
@@ -54,6 +71,7 @@ public class Dlg_BaseElementEditor extends Dialog {
      */
     public Dlg_BaseElementEditor(Shell parentShell) {
         super(parentShell);
+        m_parentShell = parentShell;
     }
 
     /**
@@ -78,6 +96,14 @@ public class Dlg_BaseElementEditor extends Dialog {
             m_txtIcon.setText(m_entity.getIcon().getUrl());
         }
 
+        if (m_entity instanceof TPoint) {
+            TPoint point = (TPoint) m_entity;
+            if (point.getCoordinates() != null) {
+                m_txtLat.setText("" + point.getCoordinates().getLat());
+                m_txtLng.setText("" + point.getCoordinates().getLng());
+            }
+        }
+
         if (m_entity instanceof TMapElement) {
             _initFieldTableForBoth();
         }
@@ -94,6 +120,16 @@ public class Dlg_BaseElementEditor extends Dialog {
         m_entity.setDescription(m_txtDescription.getText());
         if (m_txtIcon.getText() != null && m_txtIcon.getText().trim().length() > 0) {
             m_entity.setIcon(TIcon.createFromURL(m_txtIcon.getText()));
+        }
+
+        if (m_entity instanceof TPoint) {
+            try {
+                String val = m_txtLat.getText() + "," + m_txtLng.getText() + ", 0.0";
+                TCoordinates coord = new TCoordinates(val);
+                TPoint point = (TPoint) m_entity;
+                point.setCoordinates(coord);
+            } catch (Throwable th) {
+            }
         }
 
         if (m_entity instanceof TMapElement) {
@@ -148,51 +184,80 @@ public class Dlg_BaseElementEditor extends Dialog {
     protected Control createDialogArea(Composite parent) {
         Composite container = (Composite) super.createDialogArea(parent);
         final GridLayout gridLayout = new GridLayout();
-        gridLayout.numColumns = 2;
+        gridLayout.numColumns = 4;
         container.setLayout(gridLayout);
 
-        final Label idLabel = new Label(container, SWT.NONE);
-        idLabel.setText("ID:");
+        m_IdLabel = new Label(container, SWT.NONE);
+        m_IdLabel.setText("ID:");
 
         m_txtID = new Text(container, SWT.READ_ONLY | SWT.BORDER);
-        final GridData gd_txtID = new GridData(SWT.FILL, SWT.CENTER, true, false);
+        final GridData gd_txtID = new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1);
         m_txtID.setLayoutData(gd_txtID);
 
-        final Label lblName = new Label(container, SWT.NONE);
-        lblName.setText("Name:");
+        m_LblName = new Label(container, SWT.NONE);
+        m_LblName.setText("Name:");
 
         m_txtName = new Text(container, SWT.BORDER);
-        final GridData gd_txtName = new GridData(SWT.FILL, SWT.CENTER, true, false);
+        final GridData gd_txtName = new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1);
         m_txtName.setLayoutData(gd_txtName);
 
-        final Label lblShortName = new Label(container, SWT.NONE);
-        lblShortName.setText("Short Name:");
+        m_LblShortName = new Label(container, SWT.NONE);
+        m_LblShortName.setText("Short Name:");
 
         m_txtShortName = new Text(container, SWT.BORDER);
-        final GridData gd_txtShortName = new GridData(SWT.FILL, SWT.CENTER, true, false);
+        final GridData gd_txtShortName = new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1);
         m_txtShortName.setLayoutData(gd_txtShortName);
 
-        final Label lblDescription = new Label(container, SWT.NONE);
-        lblDescription.setText("Description:");
+        m_LblDescription = new Label(container, SWT.NONE);
+        m_LblDescription.setText("Description:");
 
         m_txtDescription = new Text(container, SWT.MULTI | SWT.BORDER);
-        final GridData gd_txtDescription = new GridData(SWT.FILL, SWT.CENTER, true, false);
+        final GridData gd_txtDescription = new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1);
         gd_txtDescription.heightHint = 60;
         m_txtDescription.setLayoutData(gd_txtDescription);
 
-        final Label lblIcon = new Label(container, SWT.NONE);
-        lblIcon.setText("Icon:");
+        m_LblLat = new Label(container, SWT.NONE);
+        m_LblLat.setText("Lat:");
+
+        m_txtLat = new Text(container, SWT.BORDER);
+        final GridData gd_txtLat = new GridData(SWT.FILL, SWT.CENTER, true, false);
+        m_txtLat.setLayoutData(gd_txtLat);
+
+        m_LblLng = new Label(container, SWT.NONE);
+        m_LblLng.setText("Lng:");
+
+        m_txtLng = new Text(container, SWT.BORDER);
+        final GridData gd_txtLng = new GridData(SWT.FILL, SWT.CENTER, true, false);
+        m_txtLng.setLayoutData(gd_txtLng);
+
+        m_LblIcon = new Label(container, SWT.NONE);
+        m_LblIcon.setText("Icon:");
 
         m_txtIcon = new Text(container, SWT.BORDER);
-        final GridData gd_txtIcon = new GridData(SWT.FILL, SWT.CENTER, true, false);
+        final GridData gd_txtIcon = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
         m_txtIcon.setLayoutData(gd_txtIcon);
 
-        final Label lblCategories = new Label(container, SWT.NONE);
-        lblCategories.setText("Belongs to\ncategories:");
+        m_Button = new Button(container, SWT.NONE);
+        m_Button.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void widgetSelected(final SelectionEvent e) {
+                Dlg_IconEditor dlg = new Dlg_IconEditor(m_parentShell);
+                dlg.setEditingInfo(m_txtIcon.getText());
+                if (dlg.open() == 0) {
+                    m_txtIcon.setText(dlg.getSelIconURL());
+                }
+            }
+        });
+        m_Button.setText("...");
+
+        m_LblCategories = new Label(container, SWT.NONE);
+        m_LblCategories.setText("Belongs to\ncategories:");
 
         m_tblCategories = new Table(container, SWT.CHECK | SWT.MULTI | SWT.BORDER);
         m_tblCategories.setLinesVisible(true);
-        final GridData gd_tblCategories = new GridData(SWT.FILL, SWT.FILL, true, true);
+        final GridData gd_tblCategories = new GridData(SWT.FILL, SWT.FILL, true, true, 3, 1);
         gd_tblCategories.heightHint = 200;
         m_tblCategories.setLayoutData(gd_tblCategories);
 
@@ -200,21 +265,24 @@ public class Dlg_BaseElementEditor extends Dialog {
         colCategories.setWidth(300);
         colCategories.setText("Categories");
 
-        final Label lblPOIs = new Label(container, SWT.NONE);
-        lblPOIs.setText("POIs\ncategorized:");
+        m_LblPOIs = new Label(container, SWT.NONE);
+        m_LblPOIs.setText("POIs\ncategorized:");
 
         m_tblPOIs = new Table(container, SWT.CHECK | SWT.MULTI | SWT.BORDER);
         m_tblPOIs.setLinesVisible(true);
         m_tblPOIs.setHeaderVisible(false);
-        final GridData gd_tblPOIS = new GridData(SWT.FILL, SWT.FILL, true, true);
+        final GridData gd_tblPOIS = new GridData(SWT.FILL, SWT.FILL, true, true, 3, 1);
         gd_tblPOIS.heightHint = 200;
         m_tblPOIs.setLayoutData(gd_tblPOIS);
 
         final TableColumn colPOIs = new TableColumn(m_tblPOIs, SWT.NONE);
         colPOIs.setWidth(300);
         colPOIs.setText("POIs:");
+        container.setTabList(new Control[] { m_LblName, m_txtName, m_LblShortName, m_txtShortName, m_LblDescription, m_txtDescription, m_LblLat, m_txtLat, m_LblLng, m_txtLng, m_LblIcon, m_txtIcon,
+                m_Button, m_LblCategories, m_tblCategories, m_LblPOIs, m_tblPOIs, m_IdLabel, m_txtID });
 
         _initFields();
+        m_txtName.setFocus();
 
         //
         return container;
@@ -298,19 +366,27 @@ public class Dlg_BaseElementEditor extends Dialog {
     private void _setFieldTableForBoth() {
 
         for (TableItem item : m_tblCategories.getItems()) {
+
             TCategory cat = (TCategory) item.getData();
+
+            boolean modified;
             if (item.getChecked()) {
                 if (m_entity instanceof TCategory) {
-                    cat.getSubCategories().add((TCategory) m_entity);
+                    modified = cat.getSubCategories().add((TCategory) m_entity);
                 } else {
-                    cat.getPoints().add((TPoint) m_entity);
+                    modified = cat.getPoints().add((TPoint) m_entity);
                 }
             } else {
                 if (m_entity instanceof TCategory) {
-                    cat.getSubCategories().remove((TCategory) m_entity);
+                    modified = cat.getSubCategories().remove((TCategory) m_entity);
                 } else {
-                    cat.getPoints().remove((TPoint) m_entity);
+                    modified = cat.getPoints().remove((TPoint) m_entity);
                 }
+            }
+
+            if (modified) {
+                cat.touchAsUpdated();
+                m_entity.touchAsUpdated();
             }
         }
     }
@@ -318,13 +394,23 @@ public class Dlg_BaseElementEditor extends Dialog {
     private void _setFieldTableForCategory() {
 
         TCategory cat = (TCategory) m_entity;
+
         for (TableItem item : m_tblPOIs.getItems()) {
+
             TPoint point = (TPoint) item.getData();
+
+            boolean modified;
             if (item.getChecked()) {
-                cat.getPoints().add(point);
+                modified = cat.getPoints().add(point);
             } else {
-                cat.getPoints().remove(point);
+                modified = cat.getPoints().remove(point);
             }
+
+            if (modified) {
+                cat.touchAsUpdated();
+                point.touchAsUpdated();
+            }
+
         }
     }
 }

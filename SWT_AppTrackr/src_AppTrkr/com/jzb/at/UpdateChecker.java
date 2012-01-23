@@ -132,7 +132,7 @@ public class UpdateChecker {
 
         IFileProcessor myProcessor = new IFileProcessor() {
 
-            public void processFile(File f) throws Exception {
+            public void processFile(File f, File baseFolder) throws Exception {
                 if (FileUtils.getExtension(f).equals("ipa")) {
                     String fname = f.getName();
                     IPAData ipaData = new IPAData();

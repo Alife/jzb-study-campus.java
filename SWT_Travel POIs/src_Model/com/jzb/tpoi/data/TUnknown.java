@@ -14,4 +14,14 @@ public class TUnknown extends TMapFigure {
         super(EntityType.Unknown, ownerMap);
     }
 
+    // ---------------------------------------------------------------------------------
+    /**
+     * @see com.jzb.tpoi.data.TBaseEntity#getDefaultIcon()
+     */
+    @Override
+    protected TIcon getDefaultIcon() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

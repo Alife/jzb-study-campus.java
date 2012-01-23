@@ -166,6 +166,7 @@ public class Panel_ListOfMaps extends Composite {
         dlg.setEditingInfo(map, true, null);
         if (dlg.open() == 0) {
             try {
+                map.touchAsUpdated();
                 ModelService.inst.createMap(map);
                 m_maps.add(map);
                 _refreshAllTableElements();
@@ -194,6 +195,7 @@ public class Panel_ListOfMaps extends Composite {
         dlg.setEditingInfo(map, false, null);
         if (dlg.open() == 0) {
             try {
+                map.touchAsUpdated();
                 ModelService.inst.updateMap(map);
                 _refreshAllTableElements();
             } catch (Throwable th) {

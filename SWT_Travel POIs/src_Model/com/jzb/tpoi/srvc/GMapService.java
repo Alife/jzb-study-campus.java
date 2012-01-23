@@ -11,6 +11,7 @@ import com.google.gdata.data.HtmlTextConstruct;
 import com.google.gdata.data.PlainTextConstruct;
 import com.google.gdata.data.TextConstruct;
 import com.google.gdata.data.XhtmlTextConstruct;
+import com.google.gdata.data.extensions.CustomProperty;
 import com.google.gdata.data.maps.FeatureEntry;
 import com.google.gdata.data.maps.FeatureFeed;
 import com.google.gdata.data.maps.MapEntry;
@@ -18,6 +19,8 @@ import com.google.gdata.data.maps.MapFeed;
 import com.google.gdata.util.XmlBlob;
 import com.jzb.tpoi.data.ExtendedInfo;
 import com.jzb.tpoi.data.SyncStatusType;
+import com.jzb.tpoi.data.TBaseEntity;
+import com.jzb.tpoi.data.TCategory;
 import com.jzb.tpoi.data.TDateTime;
 import com.jzb.tpoi.data.TMap;
 import com.jzb.tpoi.data.TMapFigure;
@@ -58,7 +61,7 @@ public class GMapService {
         }
         // ************************************************************************************
 
-        MapEntry mapEntry = _fill_GMapEntry_From_Map(map);
+        MapEntry newMapEntry = _fill_GMapEntry_From_Map(map);
 
         // First calc feed URL. For doing that user_id is needed and get maps list must be called first
         if (m_logedUser_ID == null) {
@@ -66,23 +69,14 @@ public class GMapService {
         }
         final URL feedUrl = new URL("http://maps.google.com/maps/feeds/maps/" + m_logedUser_ID + "/full");
 
-        // Calls google service to create the new map
-        MapEntry newMapEntry = m_srvcClient.insert(feedUrl, mapEntry);
-
-        // Update map info from new entry created
-        _fill_Map_From_GMapEntry(map, newMapEntry);
-
-        // Maps are created as public by default. Changes it to private
-        final URL editMapUrl = new URL(newMapEntry.getEditLink().getHref());
-        com.google.gdata.data.extensions.CustomProperty customProperty = new com.google.gdata.data.extensions.CustomProperty();
-        customProperty.setName("api_visible");
-        customProperty.setValue("0");
+        CustomProperty customProperty = new CustomProperty("api_visible", null, null, "false");
         newMapEntry.addCustomProperty(customProperty);
 
-        MapEntry updatedMapEntry = m_srvcClient.update(editMapUrl, newMapEntry);
+        // Calls google service to create the new map
+        MapEntry createdMapEntry = m_srvcClient.insert(feedUrl, newMapEntry);
 
-        // Update map info from new entry updated
-        _fill_Map_From_GMapEntry(map, updatedMapEntry);
+        // Update map info from new entry created
+        _fill_Map_From_GMapEntry(map, createdMapEntry);
 
     }
 
@@ -176,13 +170,14 @@ public class GMapService {
         _readMapPoints(map);
 
         // Añade las caracteristicas adicionales
-        ExtendedInfo.parseExtInfoFromXml(map);
+        try {
+            ExtendedInfo.parseMapExtInfo(map);
+        } catch (Throwable th) {
+            Tracer._error("Error parsin extended info: ", th);
+        }
 
         // Se debe restaurar el TS_Update despues de los cambios de elementos
         map.setTS_Updated(updateTime);
-
-        // Pone todo como recien leido: Sin cambios, sin nada borrado, Sync_OK, etc.
-        map.resetChanged();
     }
 
     // ---------------------------------------------------------------------------------
@@ -198,26 +193,36 @@ public class GMapService {
         // ************************************************************************************
 
         boolean allOK = true;
-        
-        ArrayList<TPoint> points = new ArrayList<TPoint>(map.getPoints().values());
-        for (TPoint point : points) {
 
-            System.out.println(point.getName() + " - " + point.getSyncStatus());
-
-            switch (point.getSyncStatus()) {
+        // Primero todas las categorias (se hace una copia porque borra cosas)
+        ArrayList<TCategory> cats = new ArrayList<TCategory>(map.getCategories().values());
+        for (TCategory cat : cats) {
+            switch (cat.getSyncStatus()) {
                 case Sync_Create_Remote:
-                    allOK &= _gmap_update_CreateEntry(point);
+                case Sync_Update_Remote:
+                    cat.updateSyncETag(TBaseEntity._calcRemoteCategoryETag());
                     break;
                 case Sync_Delete_Remote:
-                    allOK &= _gmap_update_DeleteEntry(point);
-                    map.getPoints().remove(point);
-                    break;
-                case Sync_Update_Remote:
-                    allOK &= _gmap_update_UpdateEntry(point);
+                    cat.getOwnerMap().getCategories().remove(cat);
                     break;
             }
-
         }
+
+        // Luego todos los puntos (se hace una copia porque borra cosas)
+        ArrayList<TPoint> points = new ArrayList<TPoint>(map.getPoints().values());
+        for (TPoint point : points) {
+            allOK &= _gmap_update_ProcessPoint(point);
+        }
+
+        // Actualiza el punto de informacion extendida y lo graba
+        ExtendedInfo.updateExtInfoPoint(map);
+        TPoint eip = map.getExtInfoPoint();
+        if (eip.isLocal()) {
+            eip.setSyncStatus(SyncStatusType.Sync_Create_Remote);
+        } else {
+            eip.setSyncStatus(SyncStatusType.Sync_Update_Remote);
+        }
+        allOK &= _gmap_update_ProcessPoint(eip);
 
         // Si actualizo bien todos los puntos actualiza el mapa y resetea
         if (allOK) {
@@ -227,7 +232,7 @@ public class GMapService {
             _fill_Map_From_GMapEntry(map, updatedMap);
 
             // Pone todo como recien leido: Sin cambios, sin nada borrado, Sync_OK, etc.
-            map.resetChanged();
+            map.clearUpdated();
         }
 
     }
@@ -312,10 +317,7 @@ public class GMapService {
         map.updateSyncETag(entry.getEtag());
         map.setDescription(_getXHTMLText(entry.getSummary()));
         map.setTS_Created(new TDateTime(entry.getPublished().getValue()));
-
-        // OJO: Se debe leer el ultimo porque sino cambiaria al hacer "Sets" anteriores
         map.setTS_Updated(new TDateTime(entry.getUpdated().getValue()));
-        map.updateChanged(false);
     }
 
     // ---------------------------------------------------------------------------------
@@ -325,12 +327,9 @@ public class GMapService {
         element.setName(entry.getTitle().getPlainText());
         element.updateSyncETag(entry.getEtag());
         element.setTS_Created(new TDateTime(entry.getPublished().getValue()));
+        element.setTS_Updated(new TDateTime(entry.getUpdated().getValue()));
         element.assignFromKmlBlob(entry.getKml().getBlob());
         element.setSyncStatus(SyncStatusType.Sync_OK);
-
-        // OJO: Se debe leer el ultimo porque sino cambiaria al hacer "Sets" anteriores
-        element.setTS_Updated(new TDateTime(entry.getUpdated().getValue()));
-        element.updateChanged(false);
     }
 
     // ---------------------------------------------------------------------------------
@@ -382,6 +381,28 @@ public class GMapService {
         } catch (Throwable th) {
             return false;
         }
+    }
+
+    // ---------------------------------------------------------------------------------
+    private boolean _gmap_update_ProcessPoint(TPoint point) {
+
+        Tracer._debug("  ---> SYNC POINT: " + point.getName() + " - " + point.getSyncStatus());
+
+        boolean allOK = true;
+        switch (point.getSyncStatus()) {
+            case Sync_Create_Remote:
+                allOK = _gmap_update_CreateEntry(point);
+                break;
+            case Sync_Delete_Remote:
+                allOK = _gmap_update_DeleteEntry(point);
+                point.getOwnerMap().getPoints().remove(point);
+                break;
+            case Sync_Update_Remote:
+                allOK = _gmap_update_UpdateEntry(point);
+                break;
+        }
+
+        return allOK;
     }
 
     // ---------------------------------------------------------------------------------

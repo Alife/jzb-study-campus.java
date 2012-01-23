@@ -15,13 +15,15 @@ import java.util.StringTokenizer;
  */
 public class TCoordinates implements Externalizable {
 
-    public static double DEFAULT_ALT = 0.0;
-    public static double DEFAULT_LAT = 0.0;
-    public static double DEFAULT_LNG = 0.0;
+    private static final long serialVersionUID = -721223449665344978L;
 
-    private double       m_alt;
-    private double       m_lat;
-    private double       m_lng;
+    public static double      DEFAULT_ALT      = 0.0;
+    public static double      DEFAULT_LAT      = 0.0;
+    public static double      DEFAULT_LNG      = 0.0;
+
+    private double            m_alt;
+    private double            m_lat;
+    private double            m_lng;
 
     // ---------------------------------------------------------------------------------
     public TCoordinates() {
@@ -53,6 +55,20 @@ public class TCoordinates implements Externalizable {
             m_lat = Double.parseDouble(st.nextToken());
             m_lng = Double.parseDouble(st.nextToken());
             m_alt = Double.parseDouble(st.nextToken());
+        }
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj.getClass().equals(this.getClass())) {
+            TCoordinates casted = (TCoordinates) obj;
+            return m_lat == casted.m_lat && m_lng == casted.m_lng && m_alt == casted.m_alt;
+        } else {
+            return false;
         }
     }
 

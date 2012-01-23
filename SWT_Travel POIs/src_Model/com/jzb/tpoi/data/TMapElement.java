@@ -11,7 +11,6 @@ public abstract class TMapElement extends TBaseEntity {
 
     private TMap m_ownerMap;
 
-    
     // ---------------------------------------------------------------------------------
     protected TMapElement(EntityType type, TMap ownerMap) {
         super(type);
@@ -36,7 +35,21 @@ public abstract class TMapElement extends TBaseEntity {
 
     // ---------------------------------------------------------------------------------
     /**
-     * @param ownerMap the ownerMap to set
+     * @see com.jzb.tpoi.data.TBaseEntity#updateId(java.lang.String)
+     */
+    @Override
+    public void updateId(String id) {
+        String oldId = getId();
+        super.updateId(id);
+        if (m_ownerMap != null) {
+            m_ownerMap._fixItemID(oldId);
+        }
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
+     * @param ownerMap
+     *            the ownerMap to set
      */
     public void updateOwnerMap(TMap ownerMap) {
         m_ownerMap = ownerMap;

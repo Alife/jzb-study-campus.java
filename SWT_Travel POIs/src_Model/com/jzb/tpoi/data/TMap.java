@@ -72,8 +72,7 @@ public class TMap extends TBaseEntity {
     // ---------------------------------------------------------------------------------
     public TMap() {
         super(EntityType.Map);
-        m_extInfoPoint = ExtendedInfo.createEmptyExtInfoPoint();
-        m_extInfoPoint.updateOwnerMap(this);
+        m_extInfoPoint = ExtendedInfo.createEmptyExtInfoPoint(this);
     }
 
     // ---------------------------------------------------------------------------------
@@ -122,8 +121,33 @@ public class TMap extends TBaseEntity {
         m_categories.clear();
         m_deletedPoints.clear();
         m_deletedCategories.clear();
-        m_extInfoPoint = ExtendedInfo.createEmptyExtInfoPoint();
-        m_extInfoPoint.updateOwnerMap(this);
+        m_extInfoPoint.setDescription("");
+    }
+
+    // ---------------------------------------------------------------------------------
+    @Override
+    public void clearUpdated() {
+
+        super.clearUpdated();
+        setSyncStatus(SyncStatusType.Sync_OK);
+
+        m_extInfoPoint.clearUpdated();
+        m_extInfoPoint.setSyncStatus(SyncStatusType.Sync_OK);
+
+        for (TPoint point : m_points) {
+            point.clearUpdated();
+            point.setSyncStatus(SyncStatusType.Sync_OK);
+        }
+
+        m_deletedPoints.clear();
+
+        for (TCategory cat : m_categories) {
+            cat.clearUpdated();
+            cat.setSyncStatus(SyncStatusType.Sync_OK);
+        }
+
+        m_deletedCategories.clear();
+
     }
 
     // ---------------------------------------------------------------------------------
@@ -246,41 +270,12 @@ public class TMap extends TBaseEntity {
     }
 
     // ---------------------------------------------------------------------------------
-    public void resetChanged() {
-
-        if (m_extInfoPoint != null) {
-            m_extInfoPoint.updateChanged(false);
-            m_extInfoPoint.setSyncStatus(SyncStatusType.Sync_OK);
-
-        }
-
-        for (TPoint point : m_points) {
-            point.updateChanged(false);
-            point.setSyncStatus(SyncStatusType.Sync_OK);
-        }
-
-        m_deletedPoints.clear();
-
-        for (TCategory cat : m_categories) {
-            cat.updateChanged(false);
-            cat.setSyncStatus(SyncStatusType.Sync_OK);
-        }
-
-        m_deletedCategories.clear();
-
-        // Por ultimo marca el estado como sincronizado y todo sin modificar
-        setSyncStatus(SyncStatusType.Sync_OK);
-        updateChanged(false);
-        
-    }
-
-    // ---------------------------------------------------------------------------------
     /**
      * @param extInfoPoint
      *            the extInfoPoint to set
      */
     public void setExtInfoPoint(TPoint extInfoPoint) {
-        m_extInfoPoint = extInfoPoint;
+        m_extInfoPoint = extInfoPoint != null ? extInfoPoint : ExtendedInfo.createEmptyExtInfoPoint(this);
     }
 
     // ---------------------------------------------------------------------------------
@@ -388,12 +383,19 @@ public class TMap extends TBaseEntity {
             sb.append(ident).append("</deletedCategories>\n");
         }
 
-        if (m_extInfoPoint == null) {
-            sb.append(ident).append("<ext_info_point/>\n");
-        } else {
-            sb.append(ident).append("<ext_info_point>\n");
-            sb.append(m_extInfoPoint.toXmlString(ident + "  ")).append("\n");
-            sb.append(ident).append("</ext_info_point>\n");
-        }
+        sb.append(ident).append("<ext_info_point>\n");
+        sb.append(m_extInfoPoint.toXmlString(ident + "  ")).append("\n");
+        sb.append(ident).append("</ext_info_point>\n");
+    }
+
+    // ---------------------------------------------------------------------------------
+    protected void _fixItemID(String oldID) {
+        m_points.fixItemID(oldID);
+    }
+
+    // ---------------------------------------------------------------------------------
+    @Override
+    protected TIcon getDefaultIcon() {
+        return TIcon.createFromURL(TIcon.DEFAULT_POINT_ICON_URL);
     }
 }

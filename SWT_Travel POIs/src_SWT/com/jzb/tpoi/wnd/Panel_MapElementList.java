@@ -280,6 +280,8 @@ public class Panel_MapElementList extends Composite {
         dlg.setEditingInfo(cat, true, m_currentCat);
         if (dlg.open() == 0) {
             try {
+                cat.touchAsUpdated();
+                m_map.touchAsUpdated();
                 m_map.getCategories().add(cat);
                 ModelService.inst.updateMap(m_map);
                 _refreshAllTableElements();
@@ -304,6 +306,8 @@ public class Panel_MapElementList extends Composite {
         dlg.setEditingInfo(point, true, m_currentCat);
         if (dlg.open() == 0) {
             try {
+                point.touchAsUpdated();
+                m_map.touchAsUpdated();
                 m_map.getPoints().add(point);
                 ModelService.inst.updateMap(m_map);
                 _refreshAllTableElements();
@@ -322,6 +326,7 @@ public class Panel_MapElementList extends Composite {
                 } else {
                     m_map.getPoints().remove((TPoint) elem);
                 }
+                m_map.touchAsUpdated();
                 ModelService.inst.updateMap(m_map);
                 _refreshAllTableElements();
             } catch (Throwable th) {
@@ -336,6 +341,7 @@ public class Panel_MapElementList extends Composite {
         dlg.setEditingInfo(elem, false, m_currentCat);
         if (dlg.open() == 0) {
             try {
+                elem.touchAsUpdated();
                 ModelService.inst.updateMap(m_map);
                 _refreshAllTableElements();
             } catch (Throwable th) {

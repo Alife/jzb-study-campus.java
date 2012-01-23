@@ -5,15 +5,7 @@
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Level;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
-
-import com.google.api.gbase.client.FeedURLFactory;
-import com.google.gdata.client.http.HttpGDataRequest;
 import com.google.gdata.client.maps.MapsService;
 import com.google.gdata.data.Content;
 import com.google.gdata.data.Link;
@@ -26,8 +18,6 @@ import com.google.gdata.data.maps.FeatureEntry;
 import com.google.gdata.data.maps.FeatureFeed;
 import com.google.gdata.data.maps.MapEntry;
 import com.google.gdata.data.maps.MapFeed;
-import com.google.gdata.data.spreadsheet.CellEntry;
-import com.google.gdata.data.spreadsheet.CellFeed;
 import com.google.gdata.util.ServiceException;
 import com.google.gdata.util.XmlBlob;
 import com.jzb.util.DefaultHttpProxy;
@@ -171,78 +161,49 @@ public class TestGMaps {
 
     private void batchUpdateMap(MapsService myService) throws ServiceException, IOException {
 
-        // P-1
-        // http://maps.google.com/maps/feeds/features/212026791974164037226/0004b6dcbec20d9576aad/full/0004b6dcc0c5982a33c95
-        // P-2
-        // http://maps.google.com/maps/feeds/features/212026791974164037226/0004b6dcbec20d9576aad/full/0004b6dcc0c5ae8feaf7a
+        // Request feature info
+        FeatureFeed feed1 = new FeatureFeed();
+        FeatureEntry entry1 = new FeatureEntry();
+        entry1.setId("http://maps.google.com/maps/feeds/features/212026791974164037226/0004b708854a57f76c6be/full/0004b708870a39c20418d");
+        BatchUtils.setBatchId(entry1, "Batch-Id-Query-1");
+        BatchUtils.setBatchOperationType(feed1, BatchOperationType.QUERY);
+        feed1.getEntries().add(entry1);
+        final URL batchMapUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004b708854a57f76c6be/full/batch");
+        FeatureFeed result = myService.batch(batchMapUrl, feed1);
 
-        FeatureFeed ff1 = new FeatureFeed();
-        FeatureEntry fe1 = new FeatureEntry();
-        fe1.setId("http://maps.google.com/maps/feeds/features/212026791974164037226/0004b6dcbec20d9576aad/full/0004b6dcc0c5982a33c95");
-
-        BatchUtils.setBatchId(fe1, "P-1-Id");
-        // BatchUtils.setBatchOperationType(fe1, BatchOperationType.QUERY);
-        BatchUtils.setBatchOperationType(fe1, BatchOperationType.QUERY);
-
-        ff1.getEntries().add(fe1);
-        final URL batchMapUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004b6dcbec20d9576aad/full/batch");
-        FeatureFeed result = myService.batch(batchMapUrl, ff1);
-
-        FeatureFeed ff2 = new FeatureFeed();
+        // Iterates resulting feed adding entries to a new feed for updating. Note: There should be just one entry
+        FeatureFeed updatingFeed = new FeatureFeed();
         for (FeatureEntry entry : result.getEntries()) {
+
+            // Traces some info
             String batchId = BatchUtils.getBatchId(entry);
             BatchStatus status = BatchUtils.getBatchStatus(entry);
-            System.out.println(batchId + " status (" + status.getReason() + ") " + status.getContent());
+            System.out.println("Batch operation: " + batchId + " status (" + status.getReason() + ") " + status.getContent());
 
-            // _dumpProperties(entry);
-
-            FeatureEntry fe2 = new FeatureEntry(entry);
-            fe2.setTitle(new PlainTextConstruct("P-1-retocado"));
+            // Creates a new entry from previous one and updates it
+            FeatureEntry updatingEntry = new FeatureEntry(entry);
+            updatingEntry.setTitle(new PlainTextConstruct("changedPOI"));
             XmlBlob kml = new XmlBlob();
-            kml.setBlob("<Placemark><name>P-1-retocado</name><description/><Style><IconStyle><Icon><href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href></Icon></IconStyle></Style><Point><coordinates>-5.812011,42.21244,0.0</coordinates></Point></Placemark>");
-            fe2.setKml(kml);
-            BatchUtils.setBatchId(fe2, "P-1-Id");
-            BatchUtils.setBatchOperationType(fe2, BatchOperationType.UPDATE);
-            fe2.setId("http://maps.google.com/maps/feeds/features/212026791974164037226/0004b6dcbec20d9576aad/full/0004b6dcc0c5982a33c95");
-            ff2.setEtag("pepe");
-            System.out.println(fe2.isImmutable());
-            ff2.getEntries().add(fe2);
-            // _dumpProperties(fe2);
+            kml.setBlob("<Placemark><name>changedPOI</name><description/><Style id=\"style11\"><IconStyle><Icon><href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href></Icon></IconStyle></Style><Point><coordinates>-5.812011,42.21244,0.0</coordinates></Point></Placemark>");
+            updatingEntry.setKml(kml);
+            BatchUtils.setBatchId(updatingEntry, "Batch-Id-Update-1");
+            BatchUtils.setBatchOperationType(updatingEntry, BatchOperationType.UPDATE);
+            updatingEntry.setSummary(new PlainTextConstruct("updating info"));
+
+            // Adds it to the feed
+            updatingFeed.getEntries().add(updatingEntry);
         }
 
-        result = myService.batch(batchMapUrl, ff2);
+        // Sends the batch updating request
+        result = myService.batch(batchMapUrl, updatingFeed);
 
-        /*
-         * 
-         * final URL featureEntryUrl_P1 = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004b6dcbec20d9576aad/full/0004b6dcc0c5982a33c95"); FeatureEntry entryP1 =
-         * myService.getEntry(featureEntryUrl_P1, FeatureEntry.class); entryP1.setTitle(new PlainTextConstruct("P-1-retocado")); BatchUtils.setBatchOperationType(entryP1, BatchOperationType.UPDATE);
-         * BatchUtils.setBatchId(entryP1, "P-1-Id");
-         * 
-         * final URL featureEntryUrl_P2 = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004b6dcbec20d9576aad/full/0004b6dcc0c5ae8feaf7a"); FeatureEntry entryP2 =
-         * myService.getEntry(featureEntryUrl_P2, FeatureEntry.class); entryP2.setTitle(new PlainTextConstruct("P-2-borrado")); BatchUtils.setBatchOperationType(entryP2, BatchOperationType.UPDATE);
-         * BatchUtils.setBatchId(entryP2, "P-2-Id");
-         * 
-         * // FeatureEntry entryP3 = new FeatureEntry(); // entryP3.setTitle(new PlainTextConstruct("P-3-retocado")); // XmlBlob kml = new XmlBlob(); // kml.setBlob(
-         * "<Placemark><name>P-3-new</name><description/><Style><IconStyle><Icon><href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href></Icon></IconStyle></Style><Point><coordinates>-5.812011,42.21244,0.0</coordinates></Point></Placemark>"
-         * ); // entryP3.setKml(kml); // BatchUtils.setBatchOperationType(entryP3, BatchOperationType.INSERT); // BatchUtils.setBatchId(entryP3, "P-3-Id");
-         * 
-         * ArrayList<FeatureEntry> entries = new ArrayList<FeatureEntry>(); entries.add(entryP1); entries.add(entryP2); // entries.add(entryP3); FeatureFeed bfeed = new FeatureFeed();
-         * bfeed.setEntries(entries); bfeed.setService(myService);
-         * 
-         * // getFeedBatchLink() final URL batchMapUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004b6dcbec20d9576aad/full/batch"); FeatureFeed result =
-         * myService.batch(batchMapUrl, bfeed);
-         */
+        // Iterates the result again showing the status
         for (FeatureEntry entry : result.getEntries()) {
+
+            // Traces some info
             String batchId = BatchUtils.getBatchId(entry);
             BatchStatus status = BatchUtils.getBatchStatus(entry);
-            System.out.println(batchId + " status (" + status.getReason() + ") " + status.getContent());
-            if (BatchUtils.isSuccess(entry)) {
-                _dumpProperties(entry);
-
-            } else {
-                System.err.println(batchId + " failed");
-                // _dumpProperties(entry);
-            }
+            System.out.println("Batch operation: " + batchId + " status (" + status.getReason() + ") " + status.getContent());
         }
     }
 
@@ -321,7 +282,7 @@ public class TestGMaps {
     private void getFeatures(MapsService myService) throws ServiceException, IOException {
 
         // Get a feature feed for a specific map
-        final URL featureFeedUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004b6dcbec20d9576aad/full");
+        final URL featureFeedUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004b708854a57f76c6be/full");
         FeatureFeed featureFeed = myService.getFeed(featureFeedUrl, FeatureFeed.class);
 
         System.out.println("Features of the Map:");

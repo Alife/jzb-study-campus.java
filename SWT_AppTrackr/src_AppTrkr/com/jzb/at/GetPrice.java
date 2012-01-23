@@ -6,7 +6,6 @@ package com.jzb.at;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import org.json.JSONObject;
@@ -225,7 +224,7 @@ public class GetPrice {
 
         IFileProcessor myProcessor = new IFileProcessor() {
 
-            public void processFile(File f) throws Exception {
+            public void processFile(File f, File baseFolder) throws Exception {
                 if (FileUtils.getExtension(f).equals("ipa")) {
                     String fname = f.getName();
                     IPAData ipaData = new IPAData();

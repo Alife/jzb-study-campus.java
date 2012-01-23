@@ -8,9 +8,6 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.util.EnumSet;
-import java.util.HashSet;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -24,9 +21,6 @@ import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
-import com.google.gdata.util.common.xml.XmlWriter;
-import com.google.gdata.util.common.xml.XmlWriter.WriterFlags;
-
 /**
  * @author n63636
  * 
@@ -38,6 +32,7 @@ public abstract class TMapFigure extends TMapElement {
     // ---------------------------------------------------------------------------------
     protected TMapFigure(EntityType type, TMap ownerMap) {
         super(type, ownerMap);
+        m_kmlBlob = "<nothing/>";
     }
 
     // ---------------------------------------------------------------------------------
@@ -48,6 +43,21 @@ public abstract class TMapFigure extends TMapElement {
         TMapFigure casted_other = (TMapFigure) other;
 
         m_kmlBlob = casted_other.m_kmlBlob;
+    }
+
+    // ---------------------------------------------------------------------------------
+    public void assignFromKmlBlob(String kmlBlob) throws Exception {
+
+        m_kmlBlob = kmlBlob != null ? kmlBlob : "<nothing/>";
+
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder docBuilder = factory.newDocumentBuilder();
+        Document doc = docBuilder.parse(new InputSource(new StringReader(kmlBlob)));
+
+        XPathFactory xpathFactory = XPathFactory.newInstance();
+        XPath xpath = xpathFactory.newXPath();
+
+        _parseFromKmlBlob(doc, xpath);
     }
 
     // ---------------------------------------------------------------------------------
@@ -69,33 +79,11 @@ public abstract class TMapFigure extends TMapElement {
     }
 
     // ---------------------------------------------------------------------------------
-    public void assignFromKmlBlob(String kmlBlob) throws Exception {
-
-        m_kmlBlob = kmlBlob;
-
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder docBuilder = factory.newDocumentBuilder();
-        Document doc = docBuilder.parse(new InputSource(new StringReader(kmlBlob)));
-
-        XPathFactory xpathFactory = XPathFactory.newInstance();
-        XPath xpath = xpathFactory.newXPath();
-
-        _parseFromKmlBlob(doc, xpath);
-
-        touchAsUpdated();
-
-    }
-
-    // ---------------------------------------------------------------------------------
-    protected void _updateKmlBlob(Document doc, XPath xpath) throws Exception {
-    }
-
-    // ---------------------------------------------------------------------------------
     public String refreshKmlBlob() throws Exception {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = factory.newDocumentBuilder();
-        Document doc = docBuilder.parse(new InputSource(new StringReader(m_kmlBlob != null ? m_kmlBlob : "<nothing/>")));
+        Document doc = docBuilder.parse(new InputSource(new StringReader(m_kmlBlob)));
 
         XPathFactory xpathFactory = XPathFactory.newInstance();
         XPath xpath = xpathFactory.newXPath();
@@ -121,16 +109,6 @@ public abstract class TMapFigure extends TMapElement {
 
     // ---------------------------------------------------------------------------------
     /**
-     * @param kmlBlob
-     *            the kmlBlob to set
-     */
-    protected void _setKmlBlob(String kmlBlob) {
-        m_kmlBlob = kmlBlob;
-        //touchAsUpdated();
-    }
-
-    // ---------------------------------------------------------------------------------
-    /**
      * @see com.jzb.tpoi.data.TBaseEntity#writeExternal(java.io.ObjectOutput)
      */
     @Override
@@ -143,7 +121,18 @@ public abstract class TMapFigure extends TMapElement {
     @Override
     public void xmlStringBody(StringBuffer sb, String ident) {
         super.xmlStringBody(sb, ident);
-        sb.append(ident).append("<kmlBlob><![CDATA[").append(m_kmlBlob != null ? m_kmlBlob : "").append("]]></kmlBlob>\n");
+        sb.append(ident).append("<kmlBlob><![CDATA[").append(m_kmlBlob).append("]]></kmlBlob>\n");
+    }
+
+    // ---------------------------------------------------------------------------------
+    protected String _cleanHTML(String val) {
+        // Hay que limpiarlo????
+        // &#39;
+        // &ecirc;
+        // &ntilde;
+        // &iacute;
+        val = val;
+        return val;
     }
 
     // ---------------------------------------------------------------------------------
@@ -157,13 +146,16 @@ public abstract class TMapFigure extends TMapElement {
     }
 
     // ---------------------------------------------------------------------------------
-    protected String _cleanHTML(String val) {
-        // Hay que limpiarlo????
-        // &#39;
-        // &ecirc;
-        // &ntilde;
-        // &iacute;
-        val = val;
-        return val;
+    /**
+     * @param kmlBlob
+     *            the kmlBlob to set
+     */
+    protected void _setKmlBlob(String kmlBlob) {
+        m_kmlBlob = kmlBlob;
+        // touchAsUpdated();
+    }
+
+    // ---------------------------------------------------------------------------------
+    protected void _updateKmlBlob(Document doc, XPath xpath) throws Exception {
     }
 }

@@ -55,6 +55,8 @@ public class DefaultHttpProxy {
             HTTPConnection.setProxyServer(proxyHost, proxyPort);
             AuthorizationInfo.addBasicAuthorization(proxyHost, proxyPort, realm, userName, userPwd);
 
+            Tracer._debug("Connection checked!. Going through default proxy.");
+
         } catch (Exception ex) {
             Tracer._warn("Cannot connect with the proxy. Using direct connection...");
         }

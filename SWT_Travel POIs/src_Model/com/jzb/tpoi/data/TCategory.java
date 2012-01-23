@@ -194,4 +194,14 @@ public class TCategory extends TMapElement {
         }
 
     }
+
+    // ---------------------------------------------------------------------------------
+    /**
+     * @see com.jzb.tpoi.data.TBaseEntity#getDefaultIcon()
+     */
+    @Override
+    protected TIcon getDefaultIcon() {
+        // TODO Auto-generated method stub
+        return TIcon.createFromURL(TIcon.DEFAULT_CAT_ICON_URL);
+    }
 }

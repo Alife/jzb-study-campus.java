@@ -21,51 +21,17 @@ import com.jzb.tpoi.data.NMCollection.LinkedColl;
  */
 public class TPoint extends TMapFigure {
 
-    public static final String      DEFAULT_GMAP_ICON_URL = "http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png";
+    private static long             s_idCounter  = Math.round(100L * Math.random());
 
     @LinkedColl(name = "points")
-    private NMCollection<TCategory> m_categories          = new NMCollection<TCategory>(this);
+    private NMCollection<TCategory> m_categories = new NMCollection<TCategory>(this);
 
     private TCoordinates            m_coordinates;
-
-    private static long             s_idCounter           = Math.round(100L * Math.random());
-
-    // ---------------------------------------------------------------------------------
-    public String refreshKmlBlob() throws Exception {
-
-        StringBuffer kmlStr = new StringBuffer();
-
-        kmlStr.append("<Placemark><name>");
-        kmlStr.append(getName());
-        kmlStr.append("</name><description>");
-        kmlStr.append(getDescription());
-        kmlStr.append("</description>");
-        if (getIcon() != null) {
-            s_idCounter++;
-            String styleID = "Style-" + System.currentTimeMillis() + "-" + s_idCounter;
-            kmlStr.append("<Style id=\"").append(styleID).append("\"><IconStyle><Icon><href>");
-            kmlStr.append(getIcon().getUrl());
-            kmlStr.append("</href></Icon></IconStyle></Style>");
-        } else {
-            kmlStr.append("<Style/>");
-        }
-        kmlStr.append("<Point><coordinates>");
-        if (getCoordinates() != null) {
-            kmlStr.append(getCoordinates().toString());
-        } else {
-            kmlStr.append("0.0, 0.0, 0.0");
-        }
-        kmlStr.append("</coordinates></Point></Placemark>");
-
-        return kmlStr.toString();
-    }
 
     // ---------------------------------------------------------------------------------
     public TPoint(TMap ownerMap) {
         super(EntityType.Point, ownerMap);
         m_coordinates = new TCoordinates();
-        setIcon(TIcon.createFromURL(DEFAULT_GMAP_ICON_URL));
-        updateChanged(false);
     }
 
     // ---------------------------------------------------------------------------------
@@ -123,6 +89,19 @@ public class TPoint extends TMapFigure {
 
     // ---------------------------------------------------------------------------------
     /**
+     * @see com.jzb.tpoi.data.TBaseEntity#infoEquals(java.lang.Object)
+     */
+    @Override
+    public boolean infoEquals(TBaseEntity obj) {
+        if (super.infoEquals(obj)) {
+            return m_coordinates.equals(((TPoint) obj).m_coordinates);
+        } else {
+            return false;
+        }
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
      * @see com.jzb.tpoi.data.TMapFigure#readExternal(java.io.ObjectInput)
      */
     @Override
@@ -132,13 +111,39 @@ public class TPoint extends TMapFigure {
     }
 
     // ---------------------------------------------------------------------------------
+    @Override
+    public String refreshKmlBlob() throws Exception {
+
+        StringBuffer kmlStr = new StringBuffer();
+
+        kmlStr.append("<Placemark><name>");
+        kmlStr.append(getName());
+        kmlStr.append("</name><description>");
+        kmlStr.append(getDescription());
+        kmlStr.append("</description>");
+        s_idCounter++;
+        String styleID = "Style-" + System.currentTimeMillis() + "-" + s_idCounter;
+        kmlStr.append("<Style id=\"").append(styleID).append("\"><IconStyle><Icon><href>");
+        kmlStr.append(getIcon().getUrl());
+        kmlStr.append("</href></Icon></IconStyle></Style>");
+        kmlStr.append("<Point><coordinates>");
+        if (getCoordinates() != null) {
+            kmlStr.append(getCoordinates().toString());
+        } else {
+            kmlStr.append("0.0, 0.0, 0.0");
+        }
+        kmlStr.append("</coordinates></Point></Placemark>");
+
+        return kmlStr.toString();
+    }
+
+    // ---------------------------------------------------------------------------------
     /**
      * @param coordinates
      *            the coordinates to set
      */
     public void setCoordinates(TCoordinates coordinates) {
-        m_coordinates = coordinates;
-        touchAsUpdated();
+        m_coordinates = coordinates != null ? coordinates : new TCoordinates();
     }
 
     // ---------------------------------------------------------------------------------
@@ -155,7 +160,7 @@ public class TPoint extends TMapFigure {
     @Override
     public void xmlStringBody(StringBuffer sb, String ident) {
         super.xmlStringBody(sb, ident);
-        sb.append(ident).append("<coordinates>").append(m_coordinates != null ? m_coordinates : "").append("</coordinates>\n");
+        sb.append(ident).append("<coordinates>").append(m_coordinates).append("</coordinates>\n");
 
         if (m_categories.size() <= 0) {
             sb.append(ident).append("<categories/>\n");
@@ -173,6 +178,30 @@ public class TPoint extends TMapFigure {
     }
 
     // ---------------------------------------------------------------------------------
+    @Override
+    protected void _parseFromKmlBlob(Document doc, XPath xpath) throws Exception {
+
+        String val = xpath.evaluate("/Placemark/name/text()", doc);
+        setName(val);
+
+        val = xpath.evaluate("/Placemark/description/text()", doc);
+        setDescription(_cleanHTML(val));
+
+        val = xpath.evaluate("/Placemark/Style/IconStyle/Icon/href/text()", doc);
+        if (val == null || val.length() == 0) {
+            setIcon(TIcon.createFromURL(TIcon.DEFAULT_MAP_ICON_URL));
+        } else {
+            setIcon(TIcon.createFromURL(val));
+        }
+
+        val = xpath.evaluate("/Placemark/Point/coordinates/text()", doc);
+        if (val != null && val.length() > 0) {
+            m_coordinates = new TCoordinates(val);
+        }
+    }
+
+    // ---------------------------------------------------------------------------------
+    @Override
     protected void _updateKmlBlob(Document doc, XPath xpath) throws Exception {
 
         Node node = (Node) xpath.evaluate("/Placemark/name/text()", doc, XPathConstants.NODE);
@@ -197,26 +226,14 @@ public class TPoint extends TMapFigure {
     }
 
     // ---------------------------------------------------------------------------------
+    /**
+     * @see com.jzb.tpoi.data.TBaseEntity#getDefaultIcon()
+     */
     @Override
-    protected void _parseFromKmlBlob(Document doc, XPath xpath) throws Exception {
+    protected TIcon getDefaultIcon() {
+        // TODO Auto-generated method stub
+        return TIcon.createFromURL(TIcon.DEFAULT_POINT_ICON_URL);
 
-        String val = xpath.evaluate("/Placemark/name/text()", doc);
-        setName(val);
-
-        val = xpath.evaluate("/Placemark/description/text()", doc);
-        setDescription(_cleanHTML(val));
-
-        val = xpath.evaluate("/Placemark/Style/IconStyle/Icon/href/text()", doc);
-        if (val == null || val.length() == 0) {
-            setIcon(TIcon.createFromURL(DEFAULT_GMAP_ICON_URL));
-        } else {
-            setIcon(TIcon.createFromURL(val));
-        }
-
-        val = xpath.evaluate("/Placemark/Point/coordinates/text()", doc);
-        if (val != null && val.length() > 0) {
-            m_coordinates = new TCoordinates(val);
-        }
     }
 
 }

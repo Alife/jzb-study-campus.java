@@ -71,8 +71,7 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
         m_name = "";
         m_shortName = null;
         m_description = "";
-        // @todo uno por defecto
-        m_icon = TIcon.ERRONEUS_ICON;
+        m_icon = getDefaultIcon();
         m_changed = false;
         m_markedAsDeleted = false;
         m_syncETag = _calcLocalETag();
@@ -95,6 +94,11 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
         m_markedAsDeleted = other.m_markedAsDeleted;
         m_ts_created = other.m_ts_created;
         m_ts_updated = other.m_ts_updated;
+    }
+
+    // ---------------------------------------------------------------------------------
+    public void clearUpdated() {
+        m_changed = false;
     }
 
     // ---------------------------------------------------------------------------------
@@ -186,6 +190,37 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
     }
 
     // ---------------------------------------------------------------------------------
+    public boolean infoEquals(TBaseEntity obj) {
+
+        if (obj == null)
+            return false;
+
+        if (m_markedAsDeleted != obj.m_markedAsDeleted)
+            return false;
+        if (!m_id.equals(obj.m_id))
+            return false;
+        if (!m_name.endsWith(obj.m_name))
+            return false;
+        if (!m_syncETag.endsWith(obj.m_syncETag))
+            return false;
+        if (!m_description.endsWith(obj.m_description))
+            return false;
+        if (m_shortName==null && obj.m_shortName!=null)
+            return false;
+        if(m_shortName!=null && !m_shortName.equals(obj.m_shortName))
+            return false;
+        if (!m_icon.equals(obj.m_icon))
+            return false;
+        if (!m_ts_created.equals(obj.m_ts_created))
+            return false;
+//        if (!m_ts_updated.equals(obj.m_ts_updated))
+//            return false;
+
+        return true;
+
+    }
+
+    // ---------------------------------------------------------------------------------
     /**
      * @return the changed
      */
@@ -213,7 +248,7 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
      */
     public void markedAsDeleted(boolean markedAsDeleted) {
         m_markedAsDeleted = markedAsDeleted;
-        touchAsUpdated();
+
     }
 
     // ---------------------------------------------------------------------------------
@@ -227,9 +262,7 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
         m_name = (String) in.readObject();
         m_shortName = (String) in.readObject();
         m_description = (String) in.readObject();
-        String iconURL = (String) in.readObject();
-        if (iconURL != null)
-            m_icon = TIcon.createFromURL(iconURL);
+        m_icon = TIcon.createFromSmallURL((String) in.readObject());
         m_changed = in.readBoolean();
         m_syncETag = (String) in.readObject();
         m_markedAsDeleted = in.readBoolean();
@@ -246,7 +279,6 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
      */
     public void setDescription(String description) {
         m_description = description == null ? null : description.trim();
-        touchAsUpdated();
     }
 
     // ---------------------------------------------------------------------------------
@@ -255,8 +287,10 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
      *            the icon to set
      */
     public void setIcon(TIcon icon) {
-        m_icon = icon;
-        touchAsUpdated();
+        if (icon != null)
+            m_icon = icon;
+        else
+            m_icon = getDefaultIcon();
     }
 
     // ---------------------------------------------------------------------------------
@@ -266,11 +300,9 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
      */
     public void setName(String name) {
 
-        m_name = name == null ? null : name.trim();
+        m_name = name == null ? "" : name.trim();
 
         _recalcDisplayName();
-
-        touchAsUpdated();
     }
 
     // ---------------------------------------------------------------------------------
@@ -283,8 +315,6 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
         m_shortName = shortName == null ? null : shortName.trim();
 
         _recalcDisplayName();
-
-        touchAsUpdated();
     }
 
     // ---------------------------------------------------------------------------------
@@ -345,21 +375,11 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
 
     // ---------------------------------------------------------------------------------
     /**
-     * @param changed
-     *            the changed to set
-     */
-    public void updateChanged(boolean changed) {
-        m_changed = changed;
-    }
-
-    // ---------------------------------------------------------------------------------
-    /**
      * @param id
      *            the id to set
      */
     public void updateId(String id) {
         m_id = id;
-        // touchAsUpdated();
     }
 
     // ---------------------------------------------------------------------------------
@@ -369,7 +389,6 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
      */
     public void updateSyncETag(String syncETag) {
         m_syncETag = syncETag;
-        // touchAsUpdated();
     }
 
     // ---------------------------------------------------------------------------------
@@ -383,10 +402,7 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
         out.writeObject(m_name);
         out.writeObject(m_shortName);
         out.writeObject(m_description);
-        if (m_icon != null)
-            out.writeObject(m_icon.getUrl());
-        else
-            out.writeObject(null);
+        out.writeObject(m_icon.getSmallUrl());
         out.writeBoolean(m_changed);
         out.writeObject(m_syncETag);
         out.writeBoolean(m_markedAsDeleted);
@@ -395,19 +411,22 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
     }
 
     // ---------------------------------------------------------------------------------
+    protected abstract TIcon getDefaultIcon();
+
+    // ---------------------------------------------------------------------------------
     protected void xmlStringBody(StringBuffer sb, String ident) {
 
-        sb.append(ident).append("<id>").append(m_id != null ? m_id : "").append("</id>\n");
-        sb.append(ident).append("<name>").append(m_name != null ? m_name : "").append("</name>\n");
+        sb.append(ident).append("<id>").append(m_id).append("</id>\n");
+        sb.append(ident).append("<name>").append(m_name).append("</name>\n");
         sb.append(ident).append("<shortName>").append(m_shortName != null ? m_shortName : "").append("</shortName>\n");
-        sb.append(ident).append("<syncETag>").append(m_syncETag != null ? m_syncETag : "").append("</syncETag>\n");
+        sb.append(ident).append("<syncETag>").append(m_syncETag).append("</syncETag>\n");
+        sb.append(ident).append("<syncStatus>").append(t_syncStatus).append("</syncStatus>\n");
         sb.append(ident).append("<changed>").append(m_changed).append("</changed>\n");
-        sb.append(ident).append("<description>").append(m_description != null ? m_description : "").append("</description>\n");
-        sb.append(ident).append("<icon>").append(m_icon != null ? m_icon : "").append("</icon>\n");
+        sb.append(ident).append("<description>").append(m_description).append("</description>\n");
+        sb.append(ident).append("<icon>").append(m_icon).append("</icon>\n");
         sb.append(ident).append("<markedAsDeleted>").append(m_markedAsDeleted).append("</markedAsDeleted>\n");
-        sb.append(ident).append("<ts_created>").append(m_ts_created != null ? m_ts_created : "").append("</ts_created>\n");
-        sb.append(ident).append("<ts_updated>").append(m_ts_updated != null ? m_ts_updated : "").append("</ts_updated>\n");
-        sb.append(ident).append("<syncStatus>").append(t_syncStatus != null ? t_syncStatus : "").append("</syncStatus>\n");
+        sb.append(ident).append("<ts_created>").append(m_ts_created).append("</ts_created>\n");
+        sb.append(ident).append("<ts_updated>").append(m_ts_updated).append("</ts_updated>\n");
     }
 
     // ---------------------------------------------------------------------------------

@@ -65,6 +65,11 @@ public class TabbedTracerImpl extends Tracer {
                 int lc = control.getLineCount() - 1;
                 control.setTopIndex(lc);
                 setTabTitle(level, lc);
+                
+                if(level==Level.ERROR) {
+                    CTabItem tb = getTab(level);
+                    tb.getParent().setSelection(tb);
+                }
             }
         });
     }
