@@ -3,7 +3,7 @@
  */
 package com.jzb.tpoi.srvc;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.Comparator;
 
 import com.jzb.tpoi.data.NMCollection;
@@ -21,22 +21,6 @@ import com.jzb.util.Tracer;
 public class SyncService {
 
     public static SyncService inst = new SyncService();
-
-    // ---------------------------------------------------------------------------------
-    public void syncMaps(TMap localMap, TMap remoteMap) throws Exception {
-
-        NMCollection<TMap> localMaps = new NMCollection<TMap>(null);
-        NMCollection<TMap> localDeletedMaps = new NMCollection<TMap>(null);
-        NMCollection<TMap> remoteMaps = new NMCollection<TMap>(null);
-
-        if (localMap != null)
-            localMaps.add(localMap);
-
-        if (remoteMap != null)
-            remoteMaps.add(remoteMap);
-
-        _syncMapsCollections(localMaps, localDeletedMaps, remoteMaps);
-    }
 
     // ---------------------------------------------------------------------------------
     public void syncAllMaps() throws Exception {
@@ -58,6 +42,78 @@ public class SyncService {
         }
 
         _syncMapsCollections(localMaps, localDeletedMaps, remoteMaps);
+    }
+
+    // ---------------------------------------------------------------------------------
+    public void syncMaps(TMap localMap, TMap remoteMap) throws Exception {
+
+        NMCollection<TMap> localMaps = new NMCollection<TMap>(null);
+        NMCollection<TMap> localDeletedMaps = new NMCollection<TMap>(null);
+        NMCollection<TMap> remoteMaps = new NMCollection<TMap>(null);
+
+        if (localMap != null)
+            localMaps.add(localMap);
+
+        if (remoteMap != null)
+            remoteMaps.add(remoteMap);
+
+        _syncMapsCollections(localMaps, localDeletedMaps, remoteMaps);
+    }
+
+    // ---------------------------------------------------------------------------------
+    private void _mergeMaps(TMap localMap, TMap remoteMap) {
+
+        // Mezcla primero los puntos
+        CollectionsMerger<TPoint> pointMerger = new CollectionsMerger<TPoint>(null);
+        pointMerger.merge(localMap, localMap.getPoints(), localMap.getDeletedPoints(), remoteMap.getPoints());
+
+        // Luego mezcla las categorias creando un ordenador que pone primero a quien es subcategoria de otro
+        CollectionsMerger.ISorter<TCategory> catSorter = new CollectionsMerger.ISorter<TCategory>() {
+
+            public void sort(ArrayList<TCategory> list) {
+
+                ArrayList<TCategory> sortedList = new ArrayList<TCategory>();
+
+                while (list.size() > 0) {
+                    TCategory cat1 = list.remove(0);
+                    boolean addThisCat = true;
+                    for (TCategory cat2 : list) {
+                        if (cat1.recursiveContainsSubCategory(cat2)) {
+                            addThisCat = false;
+                            break;
+                        }
+                    }
+                    if (addThisCat) {
+                        // La saca y la da por ordenada
+                        sortedList.add(cat1);
+                    } else {
+                        // La retorna para luego
+                        list.add(cat1);
+                    }
+                }
+
+                // Retorna la lista ordenada por categorizacion
+                list.addAll(sortedList);
+            }
+        };
+
+        CollectionsMerger<TCategory> catMerger = new CollectionsMerger<TCategory>(catSorter);
+        catMerger.merge(localMap, localMap.getCategories(), localMap.getDeletedCategories(), remoteMap.getCategories());
+
+        for (TCategory lcat : localMap.getCategories()) {
+            if (lcat.getSyncStatus() == SyncStatusType.Sync_Create_Local) {
+                TCategory rcat = remoteMap.getCategories().getById(lcat.getId());
+                if(lcat.equals(rcat)) {
+                }
+            }
+        }
+        
+        // Por ultimo el ExtInfoPoint
+        TPoint leip = localMap.getExtInfoPoint();
+        TPoint reip = remoteMap.getExtInfoPoint();
+        String xml = leip.getDescription();
+        leip.mergeFrom(reip, true);
+        leip.setDescription(xml);
     }
 
     // ---------------------------------------------------------------------------------
@@ -154,42 +210,5 @@ public class SyncService {
         // Once synchronization is done "marked as deleted" items can be purged
         ModelService.inst.purgeDeleted();
 
-    }
-
-    // ---------------------------------------------------------------------------------
-    private void _mergeMaps(TMap localMap, TMap remoteMap) {
-
-        // Luego mezcla las categorias
-        Comparator<TCategory> catComp = new Comparator<TCategory>() {
-
-            public int compare(TCategory c1, TCategory c2) {
-                boolean subCat = c1.recursiveContainsSubCategory(c2);
-                if (subCat) {
-                    return 1;
-                } else {
-                    return -1;
-                }
-            }
-        };
-
-        CollectionsMerger<TCategory> catMerger = new CollectionsMerger<TCategory>(catComp);
-        catMerger.merge(localMap, localMap.getCategories(), localMap.getDeletedCategories(), remoteMap.getCategories());
-
-        // Mezcla primero los puntos
-        CollectionsMerger<TPoint> pointMerger = new CollectionsMerger<TPoint>(null);
-        pointMerger.merge(localMap, localMap.getPoints(), localMap.getDeletedPoints(), remoteMap.getPoints());
-
-        // Cambia la sincronizacion remota si solo había cambios de categorias
-        /*
-         * for (TPoint localPoint : localMap.getPoints()) { if (localPoint.getSyncStatus() == SyncStatusType.Sync_Update_Remote) { TPoint remotePoint =
-         * remoteMap.getPoints().getById(localPoint.getId()); if (localPoint.infoEquals(remotePoint)) { localPoint.setSyncStatus(SyncStatusType.Sync_OK); } } }
-         */
-
-        // Por ultimo el ExtInfoPoint
-        TPoint leip = localMap.getExtInfoPoint();
-        TPoint reip = remoteMap.getExtInfoPoint();
-        String xml = leip.getDescription();
-        leip.mergeFrom(reip);
-        leip.setDescription(xml);
     }
 }

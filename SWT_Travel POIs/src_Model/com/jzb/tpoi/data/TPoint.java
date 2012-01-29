@@ -35,26 +35,6 @@ public class TPoint extends TMapFigure {
     }
 
     // ---------------------------------------------------------------------------------
-    // Copia los datos y las categorias
-    @Override
-    public void mergeFrom(TBaseEntity other, boolean conflict) {
-
-        super.mergeFrom(other, conflict);
-        TPoint casted_other = (TPoint) other;
-
-        m_coordinates = casted_other.m_coordinates;
-
-        TMap myMap = getOwnerMap();
-        m_categories.clear();
-        for (TCategory cat : casted_other.m_categories) {
-            TCategory myCat = myMap.getCategories().getById(cat.getId());
-            if (myCat != null) {
-                m_categories.add(myCat);
-            }
-        }
-    }
-
-    // ---------------------------------------------------------------------------------
     public String calcShortID() {
 
         String shortID;
@@ -94,6 +74,22 @@ public class TPoint extends TMapFigure {
         } else {
             return false;
         }
+    }
+
+    // ---------------------------------------------------------------------------------
+    // Copia SOLO los datos. NO las categorias. Se sincroniza de "abajo" (puntos) hacia "arriba" (cats)
+    @Override
+    public void mergeFrom(TBaseEntity other, boolean conflict) {
+
+        super.mergeFrom(other, conflict);
+        TPoint casted_other = (TPoint) other;
+
+        m_coordinates = casted_other.m_coordinates;
+
+        /*
+         * TMap myMap = getOwnerMap(); m_categories.clear(); for (TCategory cat : casted_other.m_categories) { TCategory myCat = myMap.getCategories().getById(cat.getId()); if (myCat != null) {
+         * m_categories.add(myCat); } }
+         */
     }
 
     // ---------------------------------------------------------------------------------
@@ -144,6 +140,19 @@ public class TPoint extends TMapFigure {
 
     // ---------------------------------------------------------------------------------
     /**
+     * @see com.jzb.tpoi.data.TBaseEntity#updateId(java.lang.String)
+     */
+    @Override
+    public void updateId(String id) {
+        String oldId = getId();
+        super.updateId(id);
+        for (TCategory cat : m_categories) {
+            cat._fixSubItemID(oldId, this);
+        }
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
      * @see com.jzb.tpoi.data.TMapFigure#writeExternal(java.io.ObjectOutput)
      */
     @Override
@@ -170,6 +179,17 @@ public class TPoint extends TMapFigure {
                 first = false;
             }
             sb.append("</categories>\n");
+        }
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
+     * @see com.jzb.tpoi.data.TBaseEntity#_fixSubItemID(java.lang.String, com.jzb.tpoi.data.TBaseEntity)
+     */
+    @Override
+    protected void _fixSubItemID(String oldID, TBaseEntity item) {
+        if (item instanceof TCategory) {
+            m_categories.fixItemID(oldID);
         }
     }
 

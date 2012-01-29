@@ -1,14 +1,11 @@
 import java.util.ArrayList;
 
 import com.jzb.tpoi.data.GMercatorProjection;
-import com.jzb.tpoi.data.NMCollection;
-import com.jzb.tpoi.data.TCategory;
 import com.jzb.tpoi.data.TCoordinates;
 import com.jzb.tpoi.data.TMap;
 import com.jzb.tpoi.data.TPoint;
 import com.jzb.tpoi.srvc.GMapService;
 import com.jzb.tpoi.srvc.ModelService;
-import com.jzb.tpoi.srvc.SyncService;
 import com.jzb.util.DefaultHttpProxy;
 import com.jzb.util.Des3Encrypter;
 import com.jzb.util.Tracer;
@@ -61,7 +58,7 @@ public class ModelTest {
         System.out.println(new TCoordinates(GMercatorProjection.XToLng(200), GMercatorProjection.YToLat(200)));
         System.out.println(new TCoordinates(GMercatorProjection.XToLng(250), GMercatorProjection.YToLat(200)));
 
-        //System.exit(0);
+        // System.exit(0);
 
         DefaultHttpProxy.setDefaultProxy();
 

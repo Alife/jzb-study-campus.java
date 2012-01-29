@@ -82,21 +82,6 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
     }
 
     // ---------------------------------------------------------------------------------
-    public void mergeFrom(TBaseEntity other, boolean conflict) {
-
-        m_type = other.m_type;
-        m_id = other.m_id;
-        m_name = other.m_name;
-        m_shortName = other.m_shortName;
-        m_syncETag = other.m_syncETag;
-        m_description = other.m_description;
-        m_icon = other.m_icon;
-        m_markedAsDeleted = other.m_markedAsDeleted;
-        m_ts_created = other.m_ts_created;
-        m_ts_updated = other.m_ts_updated;
-    }
-
-    // ---------------------------------------------------------------------------------
     public void clearUpdated() {
         m_changed = false;
     }
@@ -205,16 +190,16 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
             return false;
         if (!m_description.endsWith(obj.m_description))
             return false;
-        if (m_shortName==null && obj.m_shortName!=null)
+        if (m_shortName == null && obj.m_shortName != null)
             return false;
-        if(m_shortName!=null && !m_shortName.equals(obj.m_shortName))
+        if (m_shortName != null && !m_shortName.equals(obj.m_shortName))
             return false;
         if (!m_icon.equals(obj.m_icon))
             return false;
         if (!m_ts_created.equals(obj.m_ts_created))
             return false;
-//        if (!m_ts_updated.equals(obj.m_ts_updated))
-//            return false;
+        // if (!m_ts_updated.equals(obj.m_ts_updated))
+        // return false;
 
         return true;
 
@@ -249,6 +234,21 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
     public void markedAsDeleted(boolean markedAsDeleted) {
         m_markedAsDeleted = markedAsDeleted;
 
+    }
+
+    // ---------------------------------------------------------------------------------
+    public void mergeFrom(TBaseEntity other, boolean conflict) {
+
+        m_type = other.m_type;
+        m_id = other.m_id;
+        m_name = other.m_name;
+        m_shortName = other.m_shortName;
+        m_syncETag = other.m_syncETag;
+        m_description = other.m_description;
+        m_icon = other.m_icon;
+        m_markedAsDeleted = other.m_markedAsDeleted;
+        m_ts_created = other.m_ts_created;
+        m_ts_updated = other.m_ts_updated;
     }
 
     // ---------------------------------------------------------------------------------
@@ -409,6 +409,9 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
         out.writeLong(m_ts_created.getValue());
         out.writeLong(m_ts_updated.getValue());
     }
+
+    // ---------------------------------------------------------------------------------
+    protected abstract void _fixSubItemID(String oldID, TBaseEntity item);
 
     // ---------------------------------------------------------------------------------
     protected abstract TIcon getDefaultIcon();

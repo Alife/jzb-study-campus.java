@@ -8,6 +8,7 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.io.StringReader;
 import java.io.StringWriter;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -36,16 +37,6 @@ public abstract class TMapFigure extends TMapElement {
     }
 
     // ---------------------------------------------------------------------------------
-    @Override
-    public void mergeFrom(TBaseEntity other, boolean conflict) {
-
-        super.mergeFrom(other, conflict);
-        TMapFigure casted_other = (TMapFigure) other;
-
-        m_kmlBlob = casted_other.m_kmlBlob;
-    }
-
-    // ---------------------------------------------------------------------------------
     public void assignFromKmlBlob(String kmlBlob) throws Exception {
 
         m_kmlBlob = kmlBlob != null ? kmlBlob : "<nothing/>";
@@ -66,6 +57,16 @@ public abstract class TMapFigure extends TMapElement {
      */
     public String getKmlBlob() {
         return m_kmlBlob;
+    }
+
+    // ---------------------------------------------------------------------------------
+    @Override
+    public void mergeFrom(TBaseEntity other, boolean conflict) {
+
+        super.mergeFrom(other, conflict);
+        TMapFigure casted_other = (TMapFigure) other;
+
+        m_kmlBlob = casted_other.m_kmlBlob;
     }
 
     // ---------------------------------------------------------------------------------

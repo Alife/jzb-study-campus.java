@@ -18,14 +18,6 @@ import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 import javax.swing.SwingUtilities;
 
-import com.jzb.tpoi.data.EntityType;
-import com.jzb.tpoi.data.GMercatorProjection;
-import com.jzb.tpoi.data.TCategory;
-import com.jzb.tpoi.data.TCoordinates;
-import com.jzb.tpoi.data.TMap;
-import com.jzb.tpoi.data.TMapElement;
-import com.jzb.tpoi.data.TPoint;
-
 import prefuse.Constants;
 import prefuse.Display;
 import prefuse.Visualization;
@@ -53,6 +45,14 @@ import prefuse.visual.VisualGraph;
 import prefuse.visual.VisualItem;
 import prefuse.visual.tuple.TableEdgeItem;
 
+import com.jzb.tpoi.data.EntityType;
+import com.jzb.tpoi.data.GMercatorProjection;
+import com.jzb.tpoi.data.TCategory;
+import com.jzb.tpoi.data.TCoordinates;
+import com.jzb.tpoi.data.TMap;
+import com.jzb.tpoi.data.TMapElement;
+import com.jzb.tpoi.data.TPoint;
+
 /**
  * @author n63636
  * 
@@ -60,22 +60,9 @@ import prefuse.visual.tuple.TableEdgeItem;
 @SuppressWarnings({ "serial", "synthetic-access" })
 public class SwingMapPanel extends JPanel {
 
-    private static enum TB_OPTION {
-        OPT_ADD_CAT, OPT_ADD_POI, OPT_CONNECT, OPT_DEL, OPT_MODIFY, OPT_NOTHING, OPT_PAN
-    }
-
     // -------------------------------------------------------------------------------------
     private class MyControl extends ControlAdapter {
 
-        // -------------------------------------------------------------------------------------
-        public void itemDragged(VisualItem item, MouseEvent e) {
-            
-            TMapElement element = (TMapElement) item.get("value");
-            element.setCoordinates(new TCoordinates(GMercatorProjection.XToLng(e.getX()), GMercatorProjection.YToLat(e.getY())));
-            _markAsTouched(element);
-            m_vis.repaint();
-        }
-        
         // -------------------------------------------------------------------------------------
         public void itemClicked(VisualItem item, MouseEvent e) {
 
@@ -93,34 +80,34 @@ public class SwingMapPanel extends JPanel {
                     if (item instanceof TableEdgeItem) {
                         NodeItem ni1 = ((TableEdgeItem) item).getSourceItem();
                         NodeItem ni2 = ((TableEdgeItem) item).getTargetItem();
-                        TCategory cat = (TCategory) ni1.get("value");
+                        TCategory catOrig = (TCategory) ni1.get("value");
                         TMapElement element = (TMapElement) ni2.get("value");
                         if (element.getType() == EntityType.Category) {
-                            cat.getSubCategories().remove((TCategory) element);
+                            catOrig.getSubCategories().remove((TCategory) element);
                         } else {
-                            cat.getPoints().remove((TPoint) element);
+                            catOrig.getPoints().remove((TPoint) element);
                         }
-                        _markAsTouched(cat);
-                        _markAsTouched(element);
+                        _markAsTouched(catOrig);
+                        // _markAsTouched(element); NO SE MARCA UN ELEMENTO POR PERDER INFORMACION DE CATEGORIZACION
                         m_graph.removeEdge(item.getRow());
                     } else {
                         me = (TMapElement) item.get("value");
                         if (me.getType() == EntityType.Point) {
-                            for (TCategory cat : ((TPoint) me).getCategories()) {
-                                _markAsTouched(cat);
+                            for (TCategory catOrig : ((TPoint) me).getCategories()) {
+                                _markAsTouched(catOrig);
                             }
                             m_map.getPoints().remove((TPoint) me);
+                            _markAsTouched(me);
                         } else {
-                            for (TCategory cat : ((TCategory) me).getCategories()) {
-                                _markAsTouched(cat);
+                            for (TCategory catOrig : ((TCategory) me).getCategories()) {
+                                _markAsTouched(catOrig);
                             }
-                            for (TCategory cat : ((TCategory) me).getSubCategories()) {
-                                _markAsTouched(cat);
-                            }
-                            for (TPoint point : ((TCategory) me).getPoints()) {
-                                _markAsTouched(point);
-                            }
+                            // NO SE MARCAN LOS ELEMENTOS CATEGORIZADOS POR LA PERDIDA DE INFORMACION DE CATEGORIA
+                            /*
+                             * for (TCategory cat : ((TCategory) me).getSubCategories()) { _markAsTouched(cat); } for (TPoint point : ((TCategory) me).getPoints()) { _markAsTouched(point); }
+                             */
                             m_map.getCategories().remove((TCategory) me);
+                            _markAsTouched(me);
                         }
                         m_graph.removeNode(item.getRow());
                     }
@@ -134,20 +121,24 @@ public class SwingMapPanel extends JPanel {
                             m_originItem = item;
                         }
                     } else {
-                        TCategory cat = (TCategory) m_originItem.get("value");
+                        TCategory catOrig = (TCategory) m_originItem.get("value");
                         if (me.getType() == EntityType.Category) {
-                            if (cat.getSubCategories().add((TCategory) me)) {
-                                _markAsTouched(cat);
-                                _markAsTouched(me);
+                            if (catOrig.getSubCategories().add((TCategory) me)) {
+                                // Solo la marca si no existia ya esa union
+                                _markAsTouched(catOrig);
+                                // NO SE MARCAN LOS ELEMENTOS CATEGORIZADOS POR LA INFORMACION DE CATEGORIZACION
+                                // _markAsTouched(me);
                             }
                         } else {
-                            if (cat.getPoints().add((TPoint) me)) {
-                                _markAsTouched(cat);
-                                _markAsTouched(me);
+                            if (catOrig.getPoints().add((TPoint) me)) {
+                                // Solo la marca si no existia ya esa union
+                                _markAsTouched(catOrig);
+                                // NO SE MARCAN LOS ELEMENTOS CATEGORIZADOS POR LA INFORMACION DE CATEGORIZACION
+                                // _markAsTouched(me);
                             }
                         }
 
-                        _linkCatToElement(cat, me);
+                        _linkCatToElement(catOrig, me);
                         m_originItem = null;
                         m_vis.repaint();
                         return;
@@ -161,6 +152,15 @@ public class SwingMapPanel extends JPanel {
 
             m_lastSelectedItem = item;
             m_lastSelectedItem.setInt(VisualItem.TEXTCOLOR, ColorLib.rgb(255, 0, 0));
+            m_vis.repaint();
+        }
+
+        // -------------------------------------------------------------------------------------
+        public void itemDragged(VisualItem item, MouseEvent e) {
+
+            TMapElement element = (TMapElement) item.get("value");
+            element.setCoordinates(new TCoordinates(GMercatorProjection.XToLng(e.getX()), GMercatorProjection.YToLat(e.getY())));
+            _markAsTouched(element);
             m_vis.repaint();
         }
 
@@ -194,13 +194,16 @@ public class SwingMapPanel extends JPanel {
 
             element.setName(response);
             element.setCoordinates(new TCoordinates(GMercatorProjection.XToLng(e.getX()), GMercatorProjection.YToLat(e.getY())));
-            _createElement(element);
-            _markAsTouched(element);
+            _createElement(element, true);
 
             m_vis.repaint();
 
         }
 
+    }
+
+    private static enum TB_OPTION {
+        OPT_ADD_CAT, OPT_ADD_POI, OPT_CONNECT, OPT_DEL, OPT_MODIFY, OPT_NOTHING, OPT_PAN
     }
 
     private ButtonGroup   m_ButtonGroup      = new ButtonGroup();
@@ -312,16 +315,20 @@ public class SwingMapPanel extends JPanel {
     }
 
     // -------------------------------------------------------------------------------------
-    private Node _createElement(TMapElement item) {
+    private Node _createElement(TMapElement item, boolean asTouched) {
+
+        if (asTouched) {
+            item.touchAsUpdated();
+        }
 
         Node n = m_graph.addNode();
         n.set("value", item);
         VisualItem f = (VisualItem) m_visualGraph.getNode(n.getRow());
 
         if (item.getType() == EntityType.Point)
-            f.setString("name", item.getName() + " [" + item.getSyncETag().substring(9, 14) + "]");
+            f.setString("name", (asTouched ? "* " : "") + item.getName() + " [" + item.getSyncETag().substring(9, 14) + "]");
         else
-            f.setString("name", item.getName() + " [" + item.getSyncETag().substring(item.getSyncETag().length()-5) + "]");
+            f.setString("name", (asTouched ? "* " : "") + item.getName() + " [" + item.getSyncETag().substring(item.getSyncETag().length() - 5) + "]");
 
         f.setInt(VisualItem.STROKECOLOR, ColorLib.gray(0));
         f.setInt(VisualItem.TEXTCOLOR, ColorLib.gray(0));
@@ -349,11 +356,11 @@ public class SwingMapPanel extends JPanel {
         m_toolOption = TB_OPTION.OPT_NOTHING;
 
         for (TPoint point : m_map.getPoints()) {
-            _createElement(point);
+            _createElement(point, false);
         }
 
         for (TCategory cat : m_map.getCategories()) {
-            _createElement(cat);
+            _createElement(cat, false);
         }
 
         for (TCategory cat : m_map.getCategories()) {
@@ -426,35 +433,6 @@ public class SwingMapPanel extends JPanel {
     }
 
     // -------------------------------------------------------------------------------------
-    private Node _searchNodeForTMapElement(TMapElement me) {
-
-        Iterator iter = m_graph.getNodes().tuples();
-        while (iter.hasNext()) {
-            TableTuple tt = (TableTuple) iter.next();
-            if (tt.get("value").equals(me)) {
-                Node node = m_graph.getNode(tt.getRow());
-                return node;
-            }
-        }
-        return null;
-    }
-
-    // -------------------------------------------------------------------------------------
-    private void _markAsTouched(TMapElement item) {
-
-        item.getOwnerMap().touchAsUpdated();
-        item.touchAsUpdated();
-        Node node = _searchNodeForTMapElement(item);
-        if (node != null) {
-            if (item.getType() == EntityType.Point)
-                node.setString("name", "* "+item.getName() + " [" + item.getSyncETag().substring(9, 14) + "]");
-            else
-                node.setString("name", "* "+item.getName() + " [" + item.getSyncETag().substring(item.getSyncETag().length()-5) + "]");
-            m_vis.repaint();
-        }
-    }
-
-    // -------------------------------------------------------------------------------------
     private void _linkCatToElement(TCategory aCat, TMapElement aElement) {
 
         Node n1 = _searchNodeForTMapElement(aCat);
@@ -467,6 +445,35 @@ public class SwingMapPanel extends JPanel {
             f.setInt(VisualItem.FILLCOLOR, ColorLib.gray(200));
         }
 
+    }
+
+    // -------------------------------------------------------------------------------------
+    private void _markAsTouched(TMapElement item) {
+
+        item.getOwnerMap().touchAsUpdated();
+        item.touchAsUpdated();
+        Node node = _searchNodeForTMapElement(item);
+        if (node != null) {
+            if (item.getType() == EntityType.Point)
+                node.setString("name", "* " + item.getName() + " [" + item.getSyncETag().substring(9, 14) + "]");
+            else
+                node.setString("name", "* " + item.getName() + " [" + item.getSyncETag().substring(item.getSyncETag().length() - 5) + "]");
+            m_vis.repaint();
+        }
+    }
+
+    // -------------------------------------------------------------------------------------
+    private Node _searchNodeForTMapElement(TMapElement me) {
+
+        Iterator iter = m_graph.getNodes().tuples();
+        while (iter.hasNext()) {
+            TableTuple tt = (TableTuple) iter.next();
+            if (tt.get("value").equals(me)) {
+                Node node = m_graph.getNode(tt.getRow());
+                return node;
+            }
+        }
+        return null;
     }
 
 }

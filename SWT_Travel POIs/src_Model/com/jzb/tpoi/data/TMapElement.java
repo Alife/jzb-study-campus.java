@@ -12,31 +12,20 @@ public abstract class TMapElement extends TBaseEntity {
     private TMap m_ownerMap;
 
     // ---------------------------------------------------------------------------------
-    //************ QUITAR ***************
-    //************ QUITAR ***************
-    //************ QUITAR ***************
-    //************ QUITAR ***************
-    //************ QUITAR ***************
-    //************ QUITAR ***************
-    public TCoordinates getCoordinates() {
-        return null;
-    }
-    
-    // ---------------------------------------------------------------------------------
-    //************ QUITAR ***************
-    //************ QUITAR ***************
-    //************ QUITAR ***************
-    //************ QUITAR ***************
-    //************ QUITAR ***************
-    //************ QUITAR ***************
-    public void setCoordinates(TCoordinates coor) {
-        
-    }
-    
-    // ---------------------------------------------------------------------------------
     protected TMapElement(EntityType type, TMap ownerMap) {
         super(type);
         m_ownerMap = ownerMap;
+    }
+
+    // ---------------------------------------------------------------------------------
+    // ************ QUITAR ***************
+    // ************ QUITAR ***************
+    // ************ QUITAR ***************
+    // ************ QUITAR ***************
+    // ************ QUITAR ***************
+    // ************ QUITAR ***************
+    public TCoordinates getCoordinates() {
+        return null;
     }
 
     // ---------------------------------------------------------------------------------
@@ -45,6 +34,17 @@ public abstract class TMapElement extends TBaseEntity {
      */
     public TMap getOwnerMap() {
         return m_ownerMap;
+    }
+
+    // ---------------------------------------------------------------------------------
+    // ************ QUITAR ***************
+    // ************ QUITAR ***************
+    // ************ QUITAR ***************
+    // ************ QUITAR ***************
+    // ************ QUITAR ***************
+    // ************ QUITAR ***************
+    public void setCoordinates(TCoordinates coor) {
+
     }
 
     // ---------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ public abstract class TMapElement extends TBaseEntity {
         String oldId = getId();
         super.updateId(id);
         if (m_ownerMap != null) {
-            m_ownerMap._fixItemID(oldId);
+            m_ownerMap._fixSubItemID(oldId, this);
         }
     }
 

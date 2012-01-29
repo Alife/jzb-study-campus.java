@@ -15,11 +15,11 @@ import java.util.StringTokenizer;
  */
 public class TCoordinates implements Externalizable {
 
-    private static final long serialVersionUID = -721223449665344978L;
-
     public static double      DEFAULT_ALT      = 0.0;
+
     public static double      DEFAULT_LAT      = 0.0;
     public static double      DEFAULT_LNG      = 0.0;
+    private static final long serialVersionUID = -721223449665344978L;
 
     private double            m_alt;
     private double            m_lat;

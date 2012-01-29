@@ -6,10 +6,7 @@ package com.jzb.tpoi.gg;
 import java.util.ArrayList;
 
 import com.jzb.swt.util.IProgressMonitor;
-import com.jzb.tpoi.data.GMercatorProjection;
-import com.jzb.tpoi.data.TCoordinates;
 import com.jzb.tpoi.data.TMap;
-import com.jzb.tpoi.data.TPoint;
 import com.jzb.tpoi.srvc.GMapService;
 import com.jzb.tpoi.srvc.ModelService;
 import com.jzb.tpoi.srvc.SyncService;
@@ -55,26 +52,6 @@ public class MapSyncWorker {
         }, "RenameWorker").start();
     }
 
-    private void _syncMap(final String baseFolder, final TMap lmap, final INotification sink) throws Exception {
-
-        if (!GMapService.inst.isLoggedIn()) {
-            GMapService.inst.login(Des3Encrypter.decryptStr("PjN1Jb0t6CYNTbO/xEgJIjCPPPfsmPez"), Des3Encrypter.decryptStr("8ivdMeBQiyQtSs1BFkf+mw=="));
-        }
-
-        ArrayList<TMap> maps = GMapService.inst.getUserMapsList();
-        TMap rmap = _searchMap(maps,"@vtest");
-        if(rmap!=null) {
-            GMapService.inst.readMapData(rmap);
-        }
-        
-        ModelService.inst._setBaseFolder(baseFolder);
-        ModelService.inst.updateMap(lmap);
-        SyncService.inst.syncMaps(lmap,rmap);
-                
-        sink.mapSynced(lmap);
-        
-    }
-
     private TMap _searchMap(ArrayList<TMap> maps, String name) {
         for (TMap map : maps) {
             if (map.getName().equals(name)) {
@@ -82,6 +59,26 @@ public class MapSyncWorker {
             }
         }
         return null;
+    }
+
+    private void _syncMap(final String baseFolder, final TMap lmap, final INotification sink) throws Exception {
+
+        if (!GMapService.inst.isLoggedIn()) {
+            GMapService.inst.login(Des3Encrypter.decryptStr("PjN1Jb0t6CYNTbO/xEgJIjCPPPfsmPez"), Des3Encrypter.decryptStr("8ivdMeBQiyQtSs1BFkf+mw=="));
+        }
+
+        ArrayList<TMap> maps = GMapService.inst.getUserMapsList();
+        TMap rmap = _searchMap(maps, "@vtest");
+        if (rmap != null) {
+            GMapService.inst.readMapData(rmap);
+        }
+
+        ModelService.inst._setBaseFolder(baseFolder);
+        ModelService.inst.updateMap(lmap);
+        SyncService.inst.syncMaps(lmap, rmap);
+
+        sink.mapSynced(lmap);
+
     }
 
 }

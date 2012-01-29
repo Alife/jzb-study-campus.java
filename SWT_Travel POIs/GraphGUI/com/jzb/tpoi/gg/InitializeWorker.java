@@ -123,18 +123,16 @@ public class InitializeWorker {
 
         TPoint p1 = new TPoint(amap);
         p1.setName("P-1");
-        p1.setCoordinates(new TCoordinates(GMercatorProjection.XToLng(100), GMercatorProjection.YToLat(100)));
+        p1.setCoordinates(new TCoordinates(GMercatorProjection.XToLng(250), GMercatorProjection.YToLat(150)));
         amap.getPoints().add(p1);
         p1.setSyncStatus(SyncStatusType.Sync_Create_Remote);
 
-
         c = new TCategory(amap);
         c.setName("C-1");
-        c.setCoordinates(new TCoordinates(GMercatorProjection.XToLng(100), GMercatorProjection.YToLat(50)));
+        c.setCoordinates(new TCoordinates(GMercatorProjection.XToLng(250), GMercatorProjection.YToLat(100)));
         amap.getCategories().add(c);
         c.getPoints().add(p1);
         c.setSyncStatus(SyncStatusType.Sync_Create_Remote);
-
 
         return amap;
     }

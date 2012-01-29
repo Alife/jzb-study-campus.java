@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.List;
+
 import com.google.gdata.client.maps.MapsService;
 import com.google.gdata.data.Content;
 import com.google.gdata.data.Link;

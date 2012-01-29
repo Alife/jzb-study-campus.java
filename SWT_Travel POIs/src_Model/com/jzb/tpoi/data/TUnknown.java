@@ -16,6 +16,14 @@ public class TUnknown extends TMapFigure {
 
     // ---------------------------------------------------------------------------------
     /**
+     * @see com.jzb.tpoi.data.TBaseEntity#_fixSubItemID(java.lang.String, com.jzb.tpoi.data.TBaseEntity)
+     */
+    @Override
+    protected void _fixSubItemID(String oldID, TBaseEntity item) {
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
      * @see com.jzb.tpoi.data.TBaseEntity#getDefaultIcon()
      */
     @Override

@@ -48,12 +48,6 @@ import com.swtdesigner.SWTResourceManager;
 @SuppressWarnings("synthetic-access")
 public class PoisMapAppWnd {
 
-    private Button m_btnInitialize;
-    private Button m_btnSyncMap2;
-    private Button m_btnReadMap2;
-    private Button m_btnSyncMap1;
-    private Button m_btnReadMap1;
-
     private class ProgressMonitor implements IProgressMonitor {
 
         /**
@@ -72,22 +66,29 @@ public class PoisMapAppWnd {
     }
 
     private static final String   APP_NAME       = "Pois_Map";
-
     private static AppPreferences s_prefs        = new AppPreferences(APP_NAME);
-
     private TMap                  m_activeMap1;
     private TMap                  m_activeMap2;
 
+    private Button                m_btnInitialize;
+
+    private Button                m_btnReadMap1;
+
+    private Button                m_btnReadMap2;
+
+    private Button                m_btnSyncMap1;
+    private Button                m_btnSyncMap2;
+
     private ProgressMonitor       m_monitor;
     private Shell                 m_PoisMapShell;
+    private SwingMapPanel         m_smPanel1;
+    private SwingMapPanel         m_smPanel2;
     private TabbedTracerImpl      m_tabbedTracer = new TabbedTracerImpl();
     private Text                  m_txtMapsFolder1;
     private Text                  m_txtMapsFolder2;
+
     private Text                  m_txtPassword;
     private Text                  m_txtUser;
-
-    private SwingMapPanel         m_smPanel1;
-    private SwingMapPanel         m_smPanel2;
 
     /**
      * Launch the application
@@ -373,35 +374,27 @@ public class PoisMapAppWnd {
 
     }
 
-    private void _selectFolder(Text control) {
-        DirectoryDialog dd = new DirectoryDialog(m_PoisMapShell);
-        dd.setFilterPath(control.getText());
-        String newValue = dd.open();
-        if (newValue != null)
-            control.setText(newValue);
-    }
+    private void _initialize() {
+        _executionStarted();
+        InitializeWorker worker = new InitializeWorker(m_monitor);
+        worker.init(m_txtMapsFolder1.getText(), m_txtMapsFolder2.getText(), new InitializeWorker.INotification() {
 
-    private void _setWndPosition() {
-        Rectangle r = Display.getDefault().getBounds();
-        // int w = (80 * r.width) / 100;
-        int w = m_PoisMapShell.getSize().x;
-        int h = (80 * r.height) / 100;
-        // int h = m_PoisMapShell.getSize().y;
-        int x = (r.width - w) / 2;
-        int y = (r.height - h) / 2;
-        m_PoisMapShell.setBounds(x, y, w, h);
-    }
+            public void done() {
 
-    private void _updatePrefs() {
-        try {
-            s_prefs.setPref("mapsFolder1", m_txtMapsFolder1.getText());
-            s_prefs.setPref("mapsFolder2", m_txtMapsFolder2.getText());
-            s_prefs.setPref("user", Des3Encrypter.encryptStr(m_txtUser.getText()));
-            s_prefs.setPref("password", Des3Encrypter.encryptStr(m_txtPassword.getText()));
+                Display.getDefault().asyncExec(new Runnable() {
 
-            s_prefs.save();
-        } catch (Exception ex) {
-        }
+                    public void run() {
+                        _readMap1();
+                    }
+                });
+                Display.getDefault().asyncExec(new Runnable() {
+
+                    public void run() {
+                        _readMap2();
+                    }
+                });
+            }
+        });
     }
 
     private void _readMap1() {
@@ -428,6 +421,25 @@ public class PoisMapAppWnd {
         });
     }
 
+    private void _selectFolder(Text control) {
+        DirectoryDialog dd = new DirectoryDialog(m_PoisMapShell);
+        dd.setFilterPath(control.getText());
+        String newValue = dd.open();
+        if (newValue != null)
+            control.setText(newValue);
+    }
+
+    private void _setWndPosition() {
+        Rectangle r = Display.getDefault().getBounds();
+        // int w = (80 * r.width) / 100;
+        int w = m_PoisMapShell.getSize().x;
+        int h = (80 * r.height) / 100;
+        // int h = m_PoisMapShell.getSize().y;
+        int x = (r.width - w) / 2;
+        int y = (r.height - h) / 2;
+        m_PoisMapShell.setBounds(x, y, w, h);
+    }
+
     private void _syncMap1() {
         _executionStarted();
         MapSyncWorker worker = new MapSyncWorker(m_monitor);
@@ -452,26 +464,15 @@ public class PoisMapAppWnd {
         });
     }
 
-    private void _initialize() {
-        _executionStarted();
-        InitializeWorker worker = new InitializeWorker(m_monitor);
-        worker.init(m_txtMapsFolder1.getText(), m_txtMapsFolder2.getText(), new InitializeWorker.INotification() {
+    private void _updatePrefs() {
+        try {
+            s_prefs.setPref("mapsFolder1", m_txtMapsFolder1.getText());
+            s_prefs.setPref("mapsFolder2", m_txtMapsFolder2.getText());
+            s_prefs.setPref("user", Des3Encrypter.encryptStr(m_txtUser.getText()));
+            s_prefs.setPref("password", Des3Encrypter.encryptStr(m_txtPassword.getText()));
 
-            public void done() {
-
-                Display.getDefault().asyncExec(new Runnable() {
-
-                    public void run() {
-                        _readMap1();
-                    }
-                });
-                Display.getDefault().asyncExec(new Runnable() {
-
-                    public void run() {
-                        _readMap2();
-                    }
-                });
-            }
-        });
+            s_prefs.save();
+        } catch (Exception ex) {
+        }
     }
 }

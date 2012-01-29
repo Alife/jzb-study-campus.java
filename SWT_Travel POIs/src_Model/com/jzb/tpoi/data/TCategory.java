@@ -37,31 +37,6 @@ public class TCategory extends TMapElement {
     }
 
     // ---------------------------------------------------------------------------------
-    // Copia los datos y las categorias, pero NO EL RESTO
-    @Override
-    public void mergeFrom(TBaseEntity other, boolean conflict) {
-
-        super.mergeFrom(other, conflict);
-        TCategory casted_other = (TCategory) other;
-
-        t_coordinates = casted_other.t_coordinates;
-        
-        // Si una categoria padre no existe en su mapa la copia desde el otro
-        TMap myMap = getOwnerMap();
-        m_categories.clear();
-        for (TCategory cat : casted_other.m_categories) {
-            TCategory myCat = myMap.getCategories().getById(cat.getId());
-            if (myCat == null) {
-                myCat = new TCategory(myMap);
-                myCat.mergeFrom(cat,false);
-                myMap.getCategories().add(myCat);
-            }
-            m_categories.add(myCat);
-        }
-
-    }
-
-    // ---------------------------------------------------------------------------------
     /**
      * @return the points
      */
@@ -123,6 +98,58 @@ public class TCategory extends TMapElement {
     }
 
     // ---------------------------------------------------------------------------------
+    // Copia los datos, los puntos y las subcategorias, pero NO HACIA "arriba". Eso su cat "padre"
+    @Override
+    public void mergeFrom(TBaseEntity other, boolean conflict) {
+
+        super.mergeFrom(other, conflict);
+        TCategory casted_other = (TCategory) other;
+
+        t_coordinates = casted_other.t_coordinates;
+
+        TMap myMap = getOwnerMap();
+
+        // Se copia los puntos que categoriza desde la otra.
+        // El que borre los suyos o no, depende de si estan en conflicto. En cuyo caso se queda con todos
+        // Si un punto o subcategoria se ha borrado en una iteración de merge previa, habrá borrado su enlace
+        // NOTA 1: Cualquier punto que se intente enlazar, por el orden del "merge" deberá existir previamente
+        // NOTA 2: Si no se borra mi contenido, puede que algun punto ya este enlazado y NO debe quedar DOBLE
+        if (!conflict) {
+            m_points.clear();
+        }
+        // Itero los puntos de la otra categoria
+        for (TPoint point : casted_other.m_points) {
+            // si no lo tengo lo añado
+            TPoint myPoint = m_points.getById(point.getId());
+            if (myPoint == null) {
+                // Siempre que exista en mi mapa
+                myPoint = myMap.getPoints().getById(point.getId());
+                if (myPoint != null) {
+                    m_points.add(myPoint);
+                }
+            }
+        }
+
+        // Lo mismo que antes con las subcategorias
+        if (!conflict) {
+            m_subCategories.clear();
+        }
+        // Itero las subcategorias de la otra categoria
+        for (TCategory scat : casted_other.m_subCategories) {
+            // si no la tengo lo añado
+            TCategory mySCat = m_subCategories.getById(scat.getId());
+            if (mySCat == null) {
+                // Siempre que exista en mi mapa
+                mySCat = myMap.getCategories().getById(scat.getId());
+                if (mySCat != null) {
+                    m_subCategories.add(mySCat);
+                }
+            }
+        }
+
+    }
+
+    // ---------------------------------------------------------------------------------
     /**
      * @see com.jzb.tpoi.data.TMapFigure#readExternal(java.io.ObjectInput)
      */
@@ -176,6 +203,25 @@ public class TCategory extends TMapElement {
      */
     public void setDisplayCount(int displayCount) {
         t_displayCount = displayCount;
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
+     * @see com.jzb.tpoi.data.TBaseEntity#updateId(java.lang.String)
+     */
+    @Override
+    public void updateId(String id) {
+
+        String oldId = getId();
+        super.updateId(id);
+
+        for (TCategory cat : m_categories) {
+            cat._fixSubItemID(oldId, this);
+        }
+
+        for (TPoint point : m_points) {
+            point._fixSubItemID(oldId, this);
+        }
     }
 
     // ---------------------------------------------------------------------------------
@@ -235,6 +281,19 @@ public class TCategory extends TMapElement {
             sb.append("</subCategories>\n");
         }
 
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
+     * @see com.jzb.tpoi.data.TBaseEntity#_fixSubItemID(java.lang.String, com.jzb.tpoi.data.TBaseEntity)
+     */
+    @Override
+    protected void _fixSubItemID(String oldID, TBaseEntity item) {
+        if (item instanceof TPoint) {
+            m_points.fixItemID(oldID);
+        } else {
+            m_subCategories.fixItemID(oldID);
+        }
     }
 
     // ---------------------------------------------------------------------------------

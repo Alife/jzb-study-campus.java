@@ -14,10 +14,9 @@ import com.jzb.tpoi.srvc.ModelService;
 import com.jzb.util.DefaultHttpProxy;
 import com.jzb.util.Des3Encrypter;
 
-
 /**
  * @author n63636
- *
+ * 
  */
 public class MapsAppWnd {
 
@@ -25,6 +24,7 @@ public class MapsAppWnd {
 
     /**
      * Launch the application
+     * 
      * @param args
      */
     public static void main(String args[]) {
@@ -50,7 +50,7 @@ public class MapsAppWnd {
 
         ModelService.inst._setBaseFolder("C:\\Users\\n63636\\Desktop\\xIPAs\\gmaps");
         GMapService.inst.login(Des3Encrypter.decryptStr("PjN1Jb0t6CYNTbO/xEgJIjCPPPfsmPez"), Des3Encrypter.decryptStr("8ivdMeBQiyQtSs1BFkf+mw=="));
-        
+
     }
 
     /**

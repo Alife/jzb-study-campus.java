@@ -77,17 +77,6 @@ public class TMap extends TBaseEntity {
     }
 
     // ---------------------------------------------------------------------------------
-    // Copia los datos basicos e informacion del punto extendido
-    @Override
-    public void mergeFrom(TBaseEntity other, boolean conflict) {
-
-        super.mergeFrom(other, conflict);
-        TMap casted_other = (TMap) other;
-
-        m_extInfoPoint.mergeFrom(casted_other.m_extInfoPoint);
-    }
-
-    // ---------------------------------------------------------------------------------
     public void clearInfo() {
         m_points.clear();
         m_categories.clear();
@@ -160,6 +149,15 @@ public class TMap extends TBaseEntity {
      */
     public NMCollection<TPoint> getPoints() {
         return m_points;
+    }
+
+    // ---------------------------------------------------------------------------------
+    // Copia SOLO los datos basicos
+    @Override
+    public void mergeFrom(TBaseEntity other, boolean conflict) {
+
+        super.mergeFrom(other, conflict);
+
     }
 
     // ---------------------------------------------------------------------------------
@@ -365,8 +363,12 @@ public class TMap extends TBaseEntity {
     }
 
     // ---------------------------------------------------------------------------------
-    protected void _fixItemID(String oldID) {
-        m_points.fixItemID(oldID);
+    protected void _fixSubItemID(String oldID, TBaseEntity item) {
+        if (item instanceof TPoint) {
+            m_points.fixItemID(oldID);
+        } else {
+            m_categories.fixItemID(oldID);
+        }
     }
 
     // ---------------------------------------------------------------------------------
