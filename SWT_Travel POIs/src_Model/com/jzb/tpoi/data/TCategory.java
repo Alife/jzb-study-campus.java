@@ -3,6 +3,9 @@
  */
 package com.jzb.tpoi.data;
 
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -23,37 +26,39 @@ public class TCategory extends TMapElement {
     @LinkedColl(name = "categories")
     private NMCollection<TCategory> m_subCategories = new NMCollection<TCategory>(this);
 
+    private TCoordinates            t_coordinates;
     // Solo para temas de cuenta de elementos en pantalla. No se almacena ni inicializa
     private int                     t_displayCount;
 
     // ---------------------------------------------------------------------------------
     public TCategory(TMap ownerMap) {
         super(EntityType.Category, ownerMap);
+        t_coordinates = new TCoordinates();
     }
 
     // ---------------------------------------------------------------------------------
-    // Copia los datos y las categorias, pero NO LOS PUNTOS
+    // Copia los datos y las categorias, pero NO EL RESTO
     @Override
-    public void assignFrom(TBaseEntity other) {
+    public void mergeFrom(TBaseEntity other, boolean conflict) {
 
-        super.assignFrom(other);
+        super.mergeFrom(other, conflict);
         TCategory casted_other = (TCategory) other;
 
-        m_points.clear();
-        m_subCategories.clear();
-        m_categories.clear();
-
-        // Si las categorias en "other" no existen en este mapa la creas como nuevas de forma recursiva
+        t_coordinates = casted_other.t_coordinates;
+        
+        // Si una categoria padre no existe en su mapa la copia desde el otro
         TMap myMap = getOwnerMap();
+        m_categories.clear();
         for (TCategory cat : casted_other.m_categories) {
             TCategory myCat = myMap.getCategories().getById(cat.getId());
             if (myCat == null) {
                 myCat = new TCategory(myMap);
-                myCat.assignFrom(cat);
+                myCat.mergeFrom(cat,false);
                 myMap.getCategories().add(myCat);
             }
             m_categories.add(myCat);
         }
+
     }
 
     // ---------------------------------------------------------------------------------
@@ -75,6 +80,14 @@ public class TCategory extends TMapElement {
      */
     public NMCollection<TCategory> getCategories() {
         return m_categories;
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
+     * @return the coordinates
+     */
+    public TCoordinates getCoordinates() {
+        return t_coordinates;
     }
 
     // ---------------------------------------------------------------------------------
@@ -110,6 +123,16 @@ public class TCategory extends TMapElement {
     }
 
     // ---------------------------------------------------------------------------------
+    /**
+     * @see com.jzb.tpoi.data.TMapFigure#readExternal(java.io.ObjectInput)
+     */
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        super.readExternal(in);
+        t_coordinates = (TCoordinates) in.readObject();
+    }
+
+    // ---------------------------------------------------------------------------------
     public boolean recursiveContainsPoint(TPoint p) {
         if (getPoints().contains(p)) {
             return true;
@@ -139,11 +162,30 @@ public class TCategory extends TMapElement {
 
     // ---------------------------------------------------------------------------------
     /**
+     * @param coordinates
+     *            the coordinates to set
+     */
+    public void setCoordinates(TCoordinates coordinates) {
+        t_coordinates = coordinates != null ? coordinates : new TCoordinates();
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
      * @param displayCount
      *            the displayCount to set
      */
     public void setDisplayCount(int displayCount) {
         t_displayCount = displayCount;
+    }
+
+    // ---------------------------------------------------------------------------------
+    /**
+     * @see com.jzb.tpoi.data.TMapFigure#writeExternal(java.io.ObjectOutput)
+     */
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+        super.writeExternal(out);
+        out.writeObject(t_coordinates);
     }
 
     // ---------------------------------------------------------------------------------

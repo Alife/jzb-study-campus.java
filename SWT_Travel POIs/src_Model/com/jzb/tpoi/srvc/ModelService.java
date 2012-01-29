@@ -28,6 +28,7 @@ public class ModelService {
     // ---------------------------------------------------------------------------------
     public void _setBaseFolder(String baseFolderName) {
         m_baseFolder = new File(baseFolderName);
+        m_baseFolder.mkdirs();
         Tracer._debug("ModelService - setBaseFolder: " + baseFolderName);
 
     }
@@ -95,6 +96,7 @@ public class ModelService {
 
         File mapDataFile = new File(m_baseFolder, _getMapBaseFName(map.getId()) + MAP_DATA_FILE_EXT);
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(mapDataFile));
+        map.clearInfo();
         map.readBodyExternal(ois);
         ois.close();
     }

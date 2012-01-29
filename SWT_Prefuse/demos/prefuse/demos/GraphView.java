@@ -263,7 +263,7 @@ public class GraphView extends JPanel {
     public static JFrame demo(String datafile, String label) {
         Graph g = null;
         if ( datafile == null ) {
-            g = GraphLib.getGrid(15,15);
+            g = GraphLib.getGrid(3,3);
             label = "label";
         } else {
             try {

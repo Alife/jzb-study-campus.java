@@ -21,6 +21,27 @@ import prefuse.visual.VisualItem;
 public interface Control extends EventListener, 
     MouseListener, MouseMotionListener, MouseWheelListener, KeyListener
 {
+    
+    /**
+     * This flag indicates that the Shift key was down when the event
+     * occurred.
+     */
+    public static final int SHIFT_MASK      = 1 << 0;
+
+    /**
+     * This flag indicates that the Control key was down when the event
+     * occurred.
+     */
+    public static final int CTRL_MASK       = 1 << 1;
+    
+    /**
+     * This flag indicates that the Alt key was down when
+     * the event occurred. For mouse events, this flag indicates that the
+     * middle mouse button was pressed or released.
+     */
+    public static final int ALT_MASK        = 1 << 3;
+    
+    
     /** Represents the use of the left mouse button */
     public static final int LEFT_MOUSE_BUTTON   = MouseEvent.BUTTON1_MASK;
     /** Represents the use of the middle mouse button */

@@ -3,6 +3,9 @@
  */
 package com.jzb.tpoi.srvc;
 
+import java.util.Collections;
+import java.util.Comparator;
+
 import com.jzb.tpoi.data.NMCollection;
 import com.jzb.tpoi.data.SyncStatusType;
 import com.jzb.tpoi.data.TBaseEntity;
@@ -18,6 +21,22 @@ import com.jzb.util.Tracer;
 public class SyncService {
 
     public static SyncService inst = new SyncService();
+
+    // ---------------------------------------------------------------------------------
+    public void syncMaps(TMap localMap, TMap remoteMap) throws Exception {
+
+        NMCollection<TMap> localMaps = new NMCollection<TMap>(null);
+        NMCollection<TMap> localDeletedMaps = new NMCollection<TMap>(null);
+        NMCollection<TMap> remoteMaps = new NMCollection<TMap>(null);
+
+        if (localMap != null)
+            localMaps.add(localMap);
+
+        if (remoteMap != null)
+            remoteMaps.add(remoteMap);
+
+        _syncMapsCollections(localMaps, localDeletedMaps, remoteMaps);
+    }
 
     // ---------------------------------------------------------------------------------
     public void syncAllMaps() throws Exception {
@@ -38,8 +57,14 @@ public class SyncService {
             }
         }
 
+        _syncMapsCollections(localMaps, localDeletedMaps, remoteMaps);
+    }
+
+    // ---------------------------------------------------------------------------------
+    private void _syncMapsCollections(NMCollection<TMap> localMaps, NMCollection<TMap> localDeletedMaps, NMCollection<TMap> remoteMaps) throws Exception {
+
         // Merge differences in local maps
-        CollectionsMerger<TMap> merger = new CollectionsMerger<TMap>();
+        CollectionsMerger<TMap> merger = new CollectionsMerger<TMap>(null);
         merger.merge(null, localMaps, localDeletedMaps, remoteMaps);
 
         // Trazas
@@ -111,8 +136,8 @@ public class SyncService {
                 case Sync_Update_Remote:
 
                     // Lee la informacion de ambos mapas
-                    TMap remoteMap = remoteMaps.getById(map.getId());
                     ModelService.inst.readMapData(map);
+                    TMap remoteMap = remoteMaps.getById(map.getId());
                     GMapService.inst.readMapData(remoteMap);
 
                     // Mezcla ambos mapas dejando el resultado en el local
@@ -134,29 +159,37 @@ public class SyncService {
     // ---------------------------------------------------------------------------------
     private void _mergeMaps(TMap localMap, TMap remoteMap) {
 
-        // Mezcla primero las Categorias
-        CollectionsMerger<TCategory> catMerger = new CollectionsMerger<TCategory>();
+        // Luego mezcla las categorias
+        Comparator<TCategory> catComp = new Comparator<TCategory>() {
+
+            public int compare(TCategory c1, TCategory c2) {
+                boolean subCat = c1.recursiveContainsSubCategory(c2);
+                if (subCat) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
+        };
+
+        CollectionsMerger<TCategory> catMerger = new CollectionsMerger<TCategory>(catComp);
         catMerger.merge(localMap, localMap.getCategories(), localMap.getDeletedCategories(), remoteMap.getCategories());
 
-        // Luego mezcla los puntos
-        CollectionsMerger<TPoint> pointMerger = new CollectionsMerger<TPoint>();
+        // Mezcla primero los puntos
+        CollectionsMerger<TPoint> pointMerger = new CollectionsMerger<TPoint>(null);
         pointMerger.merge(localMap, localMap.getPoints(), localMap.getDeletedPoints(), remoteMap.getPoints());
 
         // Cambia la sincronizacion remota si solo había cambios de categorias
-        for (TPoint localPoint : localMap.getPoints()) {
-            if (localPoint.getSyncStatus() == SyncStatusType.Sync_Update_Remote) {
-                TPoint remotePoint = remoteMap.getPoints().getById(localPoint.getId());
-                if (localPoint.infoEquals(remotePoint)) {
-                    localPoint.setSyncStatus(SyncStatusType.Sync_OK);
-                }
-            }
-        }
+        /*
+         * for (TPoint localPoint : localMap.getPoints()) { if (localPoint.getSyncStatus() == SyncStatusType.Sync_Update_Remote) { TPoint remotePoint =
+         * remoteMap.getPoints().getById(localPoint.getId()); if (localPoint.infoEquals(remotePoint)) { localPoint.setSyncStatus(SyncStatusType.Sync_OK); } } }
+         */
 
         // Por ultimo el ExtInfoPoint
         TPoint leip = localMap.getExtInfoPoint();
         TPoint reip = remoteMap.getExtInfoPoint();
         String xml = leip.getDescription();
-        leip.assignFrom(reip);
+        leip.mergeFrom(reip);
         leip.setDescription(xml);
     }
 }

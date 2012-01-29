@@ -37,24 +37,20 @@ public class TPoint extends TMapFigure {
     // ---------------------------------------------------------------------------------
     // Copia los datos y las categorias
     @Override
-    public void assignFrom(TBaseEntity other) {
+    public void mergeFrom(TBaseEntity other, boolean conflict) {
 
-        super.assignFrom(other);
+        super.mergeFrom(other, conflict);
         TPoint casted_other = (TPoint) other;
 
         m_coordinates = casted_other.m_coordinates;
 
-        // Si la categoria en "other" no existe la crea desde la otra
-        m_categories.clear();
         TMap myMap = getOwnerMap();
+        m_categories.clear();
         for (TCategory cat : casted_other.m_categories) {
             TCategory myCat = myMap.getCategories().getById(cat.getId());
-            if (myCat == null) {
-                myCat = new TCategory(myMap);
-                myCat.assignFrom(cat);
-                myMap.getCategories().add(myCat);
+            if (myCat != null) {
+                m_categories.add(myCat);
             }
-            m_categories.add(myCat);
         }
     }
 

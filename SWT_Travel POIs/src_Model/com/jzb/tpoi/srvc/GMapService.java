@@ -37,11 +37,12 @@ public class GMapService {
 
     private static String      m_logedUser_ID = null;
     private static MapsService m_srvcClient;
-    private static String      m_user;
+    private static String      m_user         = null;
 
     // ---------------------------------------------------------------------------------
     public GMapService() {
 
+        Tracer._debug("GMapService - creating instance");
         m_srvcClient = new MapsService("yourCo-yourAppName-v1");
         m_srvcClient.setConnectTimeout(20000);
     }
@@ -140,6 +141,11 @@ public class GMapService {
     }
 
     // ---------------------------------------------------------------------------------
+    public boolean isLoggedIn() {
+        return m_user != null;
+    }
+
+    // ---------------------------------------------------------------------------------
     public void login(String user, String pwd) throws Exception {
 
         Tracer._debug("GMapService - login: " + user);
@@ -147,6 +153,15 @@ public class GMapService {
         m_user = user;
         m_srvcClient.setUserCredentials(m_user, pwd);
         m_logedUser_ID = null;
+    }
+
+    // ---------------------------------------------------------------------------------
+    public void logout() throws Exception {
+
+        Tracer._debug("GMapService - logout");
+        m_user = null;
+        m_logedUser_ID = null;
+        m_srvcClient.setUserToken(null);
     }
 
     // ---------------------------------------------------------------------------------
@@ -197,6 +212,7 @@ public class GMapService {
         // Primero todas las categorias (se hace una copia porque borra cosas)
         ArrayList<TCategory> cats = new ArrayList<TCategory>(map.getCategories().values());
         for (TCategory cat : cats) {
+            Tracer._debug("  ---> SYNC CAT: " + cat.getName() + " - " + cat.getSyncStatus());
             switch (cat.getSyncStatus()) {
                 case Sync_Create_Remote:
                 case Sync_Update_Remote:

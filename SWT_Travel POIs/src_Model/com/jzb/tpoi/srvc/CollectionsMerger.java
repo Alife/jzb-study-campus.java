@@ -4,6 +4,8 @@
 package com.jzb.tpoi.srvc;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import com.jzb.tpoi.data.NMCollection;
 import com.jzb.tpoi.data.SyncStatusType;
@@ -19,13 +21,24 @@ import com.jzb.util.Tracer;
  */
 public class CollectionsMerger<T_Item extends TBaseEntity> {
 
+    private Comparator<T_Item> m_comp;
+    
+    // ---------------------------------------------------------------------------------
+    public CollectionsMerger(Comparator<T_Item> comp) {
+        m_comp=comp;
+    }
+    
     // ---------------------------------------------------------------------------------
     public void merge(TMap localMap, NMCollection<T_Item> locals, NMCollection<T_Item> deletedLocals, NMCollection<T_Item> remotes) {
 
         ArrayList<T_Item> _localsToDelete = new ArrayList<T_Item>();
 
         // Check Local list against Remote list
-        for (T_Item localEntity : locals.values()) {
+        ArrayList<T_Item> locals2 = new ArrayList<T_Item>(locals.values());
+        if (m_comp != null) {
+            Collections.sort(locals2, m_comp);
+        }
+        for (T_Item localEntity : locals2) {
 
             T_Item remoteEntity = remotes.getById(localEntity.getId());
 
@@ -53,7 +66,7 @@ public class CollectionsMerger<T_Item extends TBaseEntity> {
                     } else {
                         // Conflict!!: Both entities where updated
                         // Local entity gets updated from remote. Local changes are lost.
-                        localEntity.assignFrom(remoteEntity);
+                        localEntity.mergeFrom(remoteEntity);
                         localEntity.setSyncStatus(SyncStatusType.Sync_Update_Local);
                     }
                 } else {
@@ -62,7 +75,7 @@ public class CollectionsMerger<T_Item extends TBaseEntity> {
                         localEntity.setSyncStatus(SyncStatusType.Sync_OK);
                     } else {
                         // Local entity gets updated from remote
-                        localEntity.assignFrom(remoteEntity);
+                        localEntity.mergeFrom(remoteEntity);
                         localEntity.setSyncStatus(SyncStatusType.Sync_Update_Local);
                     }
                 }
@@ -82,21 +95,21 @@ public class CollectionsMerger<T_Item extends TBaseEntity> {
                 if (localEntity == null) {
                     // create local entity from remote
                     T_Item newEntity = _createNewLocalEntity(localMap, remoteEntity);
-                    newEntity.assignFrom(remoteEntity);
+                    newEntity.mergeFrom(remoteEntity);
                     newEntity.setSyncStatus(SyncStatusType.Sync_Create_Local);
                     locals.add(newEntity);
                 } else {
                     if (localEntity.getSyncETag().equals(remoteEntity.getSyncETag())) {
                         // Delete remote entity as it was not modified and local was deleted
                         T_Item newEntity = _createNewLocalEntity(localMap, remoteEntity);
-                        newEntity.assignFrom(localEntity);
+                        newEntity.mergeFrom(localEntity);
                         newEntity.setSyncStatus(SyncStatusType.Sync_Delete_Remote);
                         locals.add(newEntity);
                     } else {
                         // Conflict: Local was deleted but remote was modified
                         // Create local entity from remote
                         T_Item newEntity = _createNewLocalEntity(localMap, remoteEntity);
-                        newEntity.assignFrom(remoteEntity);
+                        newEntity.mergeFrom(remoteEntity);
                         newEntity.setSyncStatus(SyncStatusType.Sync_Create_Local);
                         locals.add(newEntity);
                     }

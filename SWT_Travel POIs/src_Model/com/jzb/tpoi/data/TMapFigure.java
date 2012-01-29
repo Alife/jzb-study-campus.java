@@ -37,9 +37,9 @@ public abstract class TMapFigure extends TMapElement {
 
     // ---------------------------------------------------------------------------------
     @Override
-    public void assignFrom(TBaseEntity other) {
+    public void mergeFrom(TBaseEntity other, boolean conflict) {
 
-        super.assignFrom(other);
+        super.mergeFrom(other, conflict);
         TMapFigure casted_other = (TMapFigure) other;
 
         m_kmlBlob = casted_other.m_kmlBlob;

@@ -82,7 +82,7 @@ public abstract class TBaseEntity implements IIdentifiable, ITouchable, External
     }
 
     // ---------------------------------------------------------------------------------
-    public void assignFrom(TBaseEntity other) {
+    public void mergeFrom(TBaseEntity other, boolean conflict) {
 
         m_type = other.m_type;
         m_id = other.m_id;

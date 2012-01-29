@@ -12,6 +12,28 @@ public abstract class TMapElement extends TBaseEntity {
     private TMap m_ownerMap;
 
     // ---------------------------------------------------------------------------------
+    //************ QUITAR ***************
+    //************ QUITAR ***************
+    //************ QUITAR ***************
+    //************ QUITAR ***************
+    //************ QUITAR ***************
+    //************ QUITAR ***************
+    public TCoordinates getCoordinates() {
+        return null;
+    }
+    
+    // ---------------------------------------------------------------------------------
+    //************ QUITAR ***************
+    //************ QUITAR ***************
+    //************ QUITAR ***************
+    //************ QUITAR ***************
+    //************ QUITAR ***************
+    //************ QUITAR ***************
+    public void setCoordinates(TCoordinates coor) {
+        
+    }
+    
+    // ---------------------------------------------------------------------------------
     protected TMapElement(EntityType type, TMap ownerMap) {
         super(type);
         m_ownerMap = ownerMap;

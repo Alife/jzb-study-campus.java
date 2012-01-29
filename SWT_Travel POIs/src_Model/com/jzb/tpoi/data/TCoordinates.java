@@ -33,12 +33,12 @@ public class TCoordinates implements Externalizable {
     }
 
     // ---------------------------------------------------------------------------------
-    public TCoordinates(double lat, double lng) {
-        this(lat, lng, 0.0);
+    public TCoordinates(double lng, double lat) {
+        this(lng, lat, 0.0);
     }
 
     // ---------------------------------------------------------------------------------
-    public TCoordinates(double lat, double lng, double alt) {
+    public TCoordinates(double lng, double lat, double alt) {
         m_lat = lat;
         m_lng = lng;
         m_alt = alt;
@@ -52,8 +52,8 @@ public class TCoordinates implements Externalizable {
             m_alt = DEFAULT_ALT;
         } else {
             StringTokenizer st = new StringTokenizer(str, ",");
-            m_lat = Double.parseDouble(st.nextToken());
             m_lng = Double.parseDouble(st.nextToken());
+            m_lat = Double.parseDouble(st.nextToken());
             m_alt = Double.parseDouble(st.nextToken());
         }
     }
@@ -101,8 +101,8 @@ public class TCoordinates implements Externalizable {
      * @see java.io.Externalizable#readExternal(java.io.ObjectInput)
      */
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        m_lat = in.readDouble();
         m_lng = in.readDouble();
+        m_lat = in.readDouble();
         m_alt = in.readDouble();
     }
 
@@ -112,7 +112,7 @@ public class TCoordinates implements Externalizable {
      */
     @Override
     public String toString() {
-        return m_lat + "," + m_lng + "," + m_alt;
+        return m_lng + "," + m_lat + "," + m_alt;
     }
 
     // ---------------------------------------------------------------------------------
@@ -120,8 +120,8 @@ public class TCoordinates implements Externalizable {
      * @see java.io.Externalizable#writeExternal(java.io.ObjectOutput)
      */
     public void writeExternal(ObjectOutput out) throws IOException {
-        out.writeDouble(m_lat);
         out.writeDouble(m_lng);
+        out.writeDouble(m_lat);
         out.writeDouble(m_alt);
     }
 

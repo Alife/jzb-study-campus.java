@@ -23,6 +23,7 @@ public class TMap extends TBaseEntity {
                                                             @Override
                                                             protected void dlbUnlink(TCategory item) {
                                                                 item.getPoints().clear();
+                                                                item.getCategories().clear();
                                                                 item.getSubCategories().clear();
                                                                 if (!item.isLocal()) {
                                                                     m_deletedCategories.add(item);
@@ -76,43 +77,14 @@ public class TMap extends TBaseEntity {
     }
 
     // ---------------------------------------------------------------------------------
-    // Copia los datos, los puntos y las categorias
+    // Copia los datos basicos e informacion del punto extendido
     @Override
-    public void assignFrom(TBaseEntity other) {
+    public void mergeFrom(TBaseEntity other, boolean conflict) {
 
-        super.assignFrom(other);
+        super.mergeFrom(other, conflict);
         TMap casted_other = (TMap) other;
 
-        m_extInfoPoint.assignFrom(casted_other.m_extInfoPoint);
-
-        m_points.clear();
-        m_deletedPoints.clear();
-        m_categories.clear();
-        m_deletedCategories.clear();
-
-        for (TCategory cat : casted_other.m_categories) {
-            TCategory myCat = new TCategory(this);
-            m_categories.add(myCat);
-            myCat.assignFrom(cat);
-        }
-
-        for (TCategory cat : casted_other.m_deletedCategories) {
-            TCategory myCat = new TCategory(this);
-            m_deletedCategories.add(myCat);
-            myCat.assignFrom(cat);
-        }
-
-        for (TPoint point : casted_other.m_points) {
-            TPoint myPoint = new TPoint(this);
-            m_points.add(myPoint);
-            myPoint.assignFrom(point);
-        }
-
-        for (TPoint point : casted_other.m_deletedPoints) {
-            TPoint myPoint = new TPoint(this);
-            m_deletedPoints.add(myPoint);
-            myPoint.assignFrom(point);
-        }
+        m_extInfoPoint.mergeFrom(casted_other.m_extInfoPoint);
     }
 
     // ---------------------------------------------------------------------------------
@@ -198,6 +170,7 @@ public class TMap extends TBaseEntity {
 
         int len;
 
+        m_categories.clear();
         len = in.readInt();
         for (int n = 0; n < len; n++) {
             TCategory cat = new TCategory(this);
@@ -205,6 +178,7 @@ public class TMap extends TBaseEntity {
             m_categories.add(cat);
         }
 
+        m_points.clear();
         len = in.readInt();
         for (int n = 0; n < len; n++) {
             TPoint point = new TPoint(this);
@@ -212,6 +186,7 @@ public class TMap extends TBaseEntity {
             m_points.add(point);
         }
 
+        m_deletedCategories.clear();
         len = in.readInt();
         for (int n = 0; n < len; n++) {
             TCategory cat = new TCategory(this);
@@ -219,6 +194,7 @@ public class TMap extends TBaseEntity {
             m_deletedCategories.add(cat);
         }
 
+        m_deletedPoints.clear();
         len = in.readInt();
         for (int n = 0; n < len; n++) {
             TPoint point = new TPoint(this);
