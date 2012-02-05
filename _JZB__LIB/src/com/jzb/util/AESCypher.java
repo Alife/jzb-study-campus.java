@@ -54,12 +54,12 @@ public class AESCypher {
         val = encryptStr("cosa","pwd");
         System.out.println(val);
         
-        val = "pepepe";
-        System.out.println(val);
-
         val = decryptStr(val,"pwd");
         System.out.println(val);
         
+        val = "otra cosa cifrada";
+        val = decryptStr(val,"mega password");
+        System.out.println(val);
     }
 
     public static String encryptStr(String toEncrypt, String pwd) throws Exception {
