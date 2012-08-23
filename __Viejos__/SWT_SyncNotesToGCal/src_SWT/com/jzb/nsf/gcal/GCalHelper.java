@@ -22,8 +22,8 @@ import com.google.gdata.data.extensions.When;
 import com.google.gdata.data.extensions.Where;
 import com.google.gdata.data.extensions.Reminder.Method;
 import com.jzb.nsf.notes.NotesCalData;
-import com.jzb.swt.util.ITracer;
-import com.jzb.swt.util.Preferences;
+import com.jzb.util.AppPreferences;
+import com.jzb.util.Tracer;
 
 /**
  * @author n000013
@@ -39,35 +39,33 @@ public class GCalHelper {
     private boolean               m_justCheck;
 
     private CalendarService       m_myService;
-    private ITracer               m_tracer;
 
-    public GCalHelper(ITracer tracer, boolean justCheck) {
-        m_tracer = tracer;
+    public GCalHelper(boolean justCheck) {
         m_justCheck = justCheck;
     }
 
-    public static void encodeUserPwd(Preferences prefs, String newUser, String newPwd) {
+    public static void encodeUserPwd(AppPreferences prefs, String newUser, String newPwd) {
         prefs.setPref("gcal.user", _getEncodedText(newUser));
         prefs.setPref("gcal.pwd", _getEncodedText(newPwd));
     }
 
-    public void init(final Preferences prefs) throws Exception {
+    public void init(final AppPreferences prefs) throws Exception {
 
-        m_tracer._info("Initializing GCal conexion");
+        Tracer._info("Initializing GCal conexion");
 
         String userName = _getClearText(prefs.getPref("gcal.user", ""));
         String pwd = _getClearText(prefs.getPref("gcal.pwd", ""));
 
-        m_tracer._debug("Checking 'use.proxy' preference");
+        Tracer._debug("Checking 'use.proxy' preference");
         if (prefs.getPrefBool("use.proxy", true)) {
-            m_tracer._debug("Using proxy in order to connect to Google Calendar");
+            Tracer._debug("Using proxy in order to connect to Google Calendar");
             System.setProperty("http.proxyHost", prefs.getPref("proxy.host", "cache.sscc.banesto.es"));
             System.setProperty("http.proxyPort", prefs.getPref("proxy.port", "8080"));
             System.setProperty("https.proxyHost", prefs.getPref("proxy.host", "cache.sscc.banesto.es"));
             System.setProperty("https.proxyPort", prefs.getPref("proxy.port", "8080"));
         }
 
-        m_tracer._debug("Connecting with Google Calendar Service");
+        Tracer._debug("Connecting with Google Calendar Service");
 
         m_myService = new CalendarService("JZB_GCal_Sync");
         m_myService.setUserCredentials(userName, pwd);
@@ -88,11 +86,11 @@ public class GCalHelper {
 
     private void _addNewNotesEntries(ArrayList<NotesCalData> ncdList) throws Exception {
 
-        m_tracer._info("Adding new Notes entries to Google Calendar");
+        Tracer._info("Adding new Notes entries to Google Calendar");
         for (NotesCalData ncd : ncdList) {
             CalendarEventEntry gEntry = _createGoogleEventEntry(ncd);
             if (gEntry != null) {
-                m_tracer._debug("* Inserting new event: [" + _getWhenDate(gEntry) + "] " + gEntry.getTitle().getPlainText());
+                Tracer._debug("* Inserting new event: [" + _getWhenDate(gEntry) + "] " + gEntry.getTitle().getPlainText());
                 _gSrvc_insert(m_eventFeedUrl, gEntry);
             }
         }
@@ -101,7 +99,7 @@ public class GCalHelper {
 
     private CalendarEventEntry _createGoogleEventEntry(NotesCalData ncd) throws Exception {
 
-        m_tracer._debug("Creating new GoogleEventEntry from Notes database element");
+        Tracer._debug("Creating new GoogleEventEntry from Notes database element");
 
         CalendarEventEntry gEv = new CalendarEventEntry();
 
@@ -137,7 +135,7 @@ public class GCalHelper {
 
         } else {
 
-            m_tracer._warn("JUST weekly repeated appointments are understood. Others will be misunderstood");
+            Tracer._warn("JUST weekly repeated appointments are understood. Others will be misunderstood");
             
             // If it's a repeating event this has to be done
             Recurrence recur = new Recurrence();
@@ -157,7 +155,7 @@ public class GCalHelper {
 
     private void _deleteAllNotesEvents() throws Exception {
 
-        m_tracer._info("* Deleting all previous Lotus Notes entries from Google Calendar");
+        Tracer._info("* Deleting all previous Lotus Notes entries from Google Calendar");
         for (;;) {
 
             CalendarEventFeed cef = _gSrvc_getFeed(m_eventFeedUrl, CalendarEventFeed.class);
@@ -223,7 +221,7 @@ public class GCalHelper {
                 return;
             } catch (Exception e) {
                 ex = e;
-                m_tracer._warn("Retrying to delete GCal entry. Error caught: " + ex.getClass().getName() + " - " + ex.getMessage());
+                Tracer._warn("Retrying to delete GCal entry. Error caught: " + ex.getClass().getName() + " - " + ex.getMessage());
             }
         }
         throw ex;
@@ -238,7 +236,7 @@ public class GCalHelper {
             } catch (Exception e) {
                 ex = e;
             }
-            m_tracer._debug("Retrying. Error caught: " + ex.getClass().getName() + " - " + ex.getMessage());
+            Tracer._debug("Retrying. Error caught: " + ex.getClass().getName() + " - " + ex.getMessage());
         }
         throw ex;
     }
@@ -255,7 +253,7 @@ public class GCalHelper {
             } catch (Exception e) {
                 ex = e;
             }
-            m_tracer._debug("Retrying. Error caught: " + ex.getClass().getName() + " - " + ex.getMessage());
+            Tracer._debug("Retrying. Error caught: " + ex.getClass().getName() + " - " + ex.getMessage());
         }
         throw ex;
     }

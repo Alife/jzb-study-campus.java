@@ -1,5 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSyncLib\src-code\code\task\home\st\Task_CategorizePOIs.as, 7ba89c2006d9d7ed491fb3fde48665b4
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSyncLib\src-code\code\task\home\st\Task_CleanBeforeUpdate.as, d158bc8214664c102ecdfbd81c3cabb1
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSyncLib\src-code\code\task\home\st\Task_LoadKmlFile.as, 06649c578d372583941e976ac5338e72
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSyncLib\src-code\code\task\home\st\Task_ParseTTCatInfo.as, 88e17d18f0291a400cfa02358625c2ef
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSyncLib\src-code\code\task\home\st\Task_WriteOV2Files.as, 4c537854357a134fd2ec0395342acb8f

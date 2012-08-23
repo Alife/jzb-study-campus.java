@@ -10,6 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.jzb.futil.FileExtFilter;
+import com.jzb.futil.FileExtFilter.IncludeFolders;
 import com.jzb.swt.util.BaseWorker;
 import com.jzb.swt.util.IProgressMonitor;
 import com.jzb.util.Tracer;
@@ -45,7 +46,7 @@ public class RenameAsFolderWorker extends BaseWorker {
     private void _rename(final File baseFolder) throws Exception {
 
         // Gets just image files and folders
-        File fList[] = baseFolder.listFiles(FileExtFilter.imgFilter(true));
+        File fList[] = baseFolder.listFiles(FileExtFilter.imgFilter(IncludeFolders.YES));
 
         // Split them and short the files to establish the counting properly
         TreeSet<File> allFiles = new TreeSet<File>();

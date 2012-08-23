@@ -1,2 +1,0 @@
-c:\temp\VMWare\TTSync\.DS_Store, dd5bc439b3e4d36fcf1f13e0d3f5af4f
-c:\temp\VMWare\TTSync\._.DS_Store, d744faa76958d8d2376d211ea37d210e

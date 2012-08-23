@@ -5,20 +5,17 @@ package com.jzb.atm;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.browser.LocationListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.ShellAdapter;
 import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.mozilla.interfaces.ITextToSpeech;
 import org.mozilla.interfaces.nsIConsoleListener;
 import org.mozilla.interfaces.nsIConsoleMessage;
 import org.mozilla.interfaces.nsIConsoleService;
@@ -28,14 +25,14 @@ import org.mozilla.xpcom.IXPCOMError;
 import org.mozilla.xpcom.Mozilla;
 import org.mozilla.xpcom.XPCOMException;
 
+import swing2swt.layout.BorderLayout;
+
 import com.jzb.atm.mz.CardReader_SWT;
-import com.jzb.atm.mz.CardReader_Sync;
+import com.jzb.atm.mz.CardReader_SWT.SWT_Callback;
 import com.jzb.atm.mz.TextToSpeech;
 import com.jzb.atm.mz.XPCOM_ATMBridge;
 import com.jzb.atm.mz.XULRunnerInitializer;
-import com.jzb.atm.mz.CardReader_SWT.SWT_Callback;
 import com.swtdesigner.SWTResourceManager;
-import swing2swt.layout.BorderLayout;
 
 /**
  * @author n000013
@@ -158,8 +155,12 @@ public class ATMTestAppWnd {
 
         m_shell.setImage(SWTResourceManager.getImage(ATMTestAppWnd.class, "/Properties.ico"));
         {
+           try {
             m_browser = new Browser(m_shell, SWT.BORDER | SWT.MOZILLA);
             //m_browser = new Browser(m_shell, SWT.BORDER);
+           } catch(Throwable th) {
+               th.printStackTrace();
+           }
         }
 
         final Group cardReaderSimulatorGroup = new Group(m_shell, SWT.NONE);
@@ -213,7 +214,6 @@ public class ATMTestAppWnd {
                 m_browser.setFocus();
             }
         });
-        
         
         
         m_browser.setFocus();

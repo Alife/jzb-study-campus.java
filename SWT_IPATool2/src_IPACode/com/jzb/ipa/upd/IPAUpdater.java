@@ -213,6 +213,10 @@ public class IPAUpdater {
                         Tracer._error("IPA file duplicated found reading folder info:");
                         Tracer._error("  " + ii.ipaFile);
                         Tracer._error("  " + oo.ipaFile);
+                        if(ii.ver.compareTo(oo.ver) < 0) {
+                            // Deja en la hashmap la version mas nueva
+                            IPAs.put(oo.pkg, oo);
+                        }
                     }
                 } else if (lfname.endsWith(".jpg") && lfname.contains("_pk[")) {
 

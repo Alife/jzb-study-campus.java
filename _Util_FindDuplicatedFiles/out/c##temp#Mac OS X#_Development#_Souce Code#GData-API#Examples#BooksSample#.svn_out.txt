@@ -1,2 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\.svn\all-wcprops, d9787dec1eba4d2418d48c6a8a843e7a
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\.svn\entries, ad6e95f9d01f9fa159e77460a8b3ae9b

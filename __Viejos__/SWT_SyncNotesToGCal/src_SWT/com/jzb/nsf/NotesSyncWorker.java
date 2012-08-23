@@ -12,8 +12,8 @@ import com.jzb.nsf.notes.NotesCalData;
 import com.jzb.nsf.notes.NotesCalReader;
 import com.jzb.swt.util.BaseWorker;
 import com.jzb.swt.util.IProgressMonitor;
-import com.jzb.swt.util.ITracer;
-import com.jzb.swt.util.Preferences;
+import com.jzb.util.AppPreferences;
+import com.jzb.util.Tracer;
 
 /**
  * @author n000013
@@ -23,19 +23,19 @@ public class NotesSyncWorker extends BaseWorker {
 
     private static final char[] HEXADECIMAL = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 
-    public NotesSyncWorker(boolean justChecking, ITracer tracer, IProgressMonitor monitor) {
-        super(justChecking, tracer, monitor);
+    public NotesSyncWorker(boolean justChecking, IProgressMonitor monitor) {
+        super(justChecking, monitor);
     }
 
-    public void syncCalendars(final Preferences prefs) {
+    public void syncCalendars(final AppPreferences prefs) {
 
         @SuppressWarnings("synthetic-access")
         ICallable callable = new ICallable() {
 
             public Object call() throws Exception {
-                m_tracer._info("** Synchronizing Google calendar with Notes Calendar info");
+                Tracer._info("** Synchronizing Google calendar with Notes Calendar info");
                 boolean infoChanged =_syncCalendars(prefs);
-                m_tracer._info("** Synchronizing process done.");
+                Tracer._info("** Synchronizing process done.");
                 
                 return infoChanged;
             }
@@ -72,29 +72,29 @@ public class NotesSyncWorker extends BaseWorker {
         return WindowsUtils.listRunningProcesses().contains("nlnotes.exe");
     }
 
-    private boolean _syncCalendars(final Preferences prefs) throws Exception {
+    private boolean _syncCalendars(final AppPreferences prefs) throws Exception {
 
         boolean infoChanged = false;
         
         if (!_isLotusNotesRunning()) {
-            m_tracer._info("* Lotus Notes is not running. Skipping synchronization.");
+            Tracer._info("* Lotus Notes is not running. Skipping synchronization.");
         } else {
-            m_tracer._debug("");
-            NotesCalReader ncr = new NotesCalReader(m_tracer);
+            Tracer._debug("");
+            NotesCalReader ncr = new NotesCalReader();
             ncr.init(prefs.getPref("nsf_dataSource", "*NOT_DEFINED*"));
             ArrayList<NotesCalData> ncdList = ncr.getAppointments();
 
             String prvDigest = prefs.getPref("prevAppDigest","*nothing*");
             String digest = _calcElementsDigest(ncdList);
             if (prvDigest.equals(digest)) {
-                m_tracer._info("* Lotus Notes info has not changed since last check");
+                Tracer._info("* Lotus Notes info has not changed since last check");
             } else {
-                m_tracer._debug("");
-                m_tracer._info("* Lotus Notes info has changed");
-                m_tracer._debug("   previous Digest: "+prvDigest);
-                m_tracer._debug("   current Digest:  "+digest);
-                m_tracer._debug("");
-                GCalHelper gch = new GCalHelper(m_tracer, m_justChecking);
+                Tracer._debug("");
+                Tracer._info("* Lotus Notes info has changed");
+                Tracer._debug("   previous Digest: "+prvDigest);
+                Tracer._debug("   current Digest:  "+digest);
+                Tracer._debug("");
+                GCalHelper gch = new GCalHelper(m_justChecking);
                 gch.init(prefs);
                 gch.syncCalendar(ncdList);
 

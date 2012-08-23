@@ -15,10 +15,12 @@ public class PStreamTracer extends Tracer {
     private PrintStream m_ps;
 
     public PStreamTracer() {
+        super(false);
         m_ps = System.out;
     }
 
     public PStreamTracer(PrintStream ps) {
+        super(false);
         m_ps = ps;
     }
 

@@ -34,8 +34,8 @@ import org.eclipse.swt.widgets.Text;
 import com.jzb.nsf.DGetUsrPwd.T_UsrPwd;
 import com.jzb.nsf.gcal.GCalHelper;
 import com.jzb.swt.util.IProgressMonitor;
-import com.jzb.swt.util.Preferences;
 import com.jzb.swt.util.TabbedTracerImpl;
+import com.jzb.util.AppPreferences;
 import com.swtdesigner.SWTResourceManager;
 import org.eclipse.swt.events.ShellAdapter;
 import org.eclipse.swt.events.ShellEvent;
@@ -70,7 +70,7 @@ public class NotesSyncAppWnd {
     }
 
     private static final String APP_NAME = "JZB_GCal_Sync";
-    private static Preferences  s_prefs  = new Preferences(APP_NAME);
+    private static AppPreferences  s_prefs  = new AppPreferences(APP_NAME);
 
     private Button              m_btnSync;
     private Button              m_chkAutoSync;
@@ -476,7 +476,7 @@ public class NotesSyncAppWnd {
         _executionStarted();
         _updatePrefs();
 
-        NotesSyncWorker gcsw = new NotesSyncWorker(m_chkJustCheck.getSelection(), m_tracer, m_monitor);
+        NotesSyncWorker gcsw = new NotesSyncWorker(m_chkJustCheck.getSelection(), m_monitor);
         gcsw.syncCalendars(s_prefs);
     }
 

@@ -1,2 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSyncLib\src-util\com\flashiphonedevelopment\settings\.svn\text-base\GlobalSettings.as.svn-base, c385315ebcba21dfa83f78a23fd27fb3
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSyncLib\src-util\com\flashiphonedevelopment\settings\.svn\text-base\IPhoneAppSettings.as.svn-base, 3faf3a9c5fbc51fe56e37af8845d391d

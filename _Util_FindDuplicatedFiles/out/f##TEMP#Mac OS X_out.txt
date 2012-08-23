@@ -1,6 +1,0 @@
-f:\TEMP\Mac OS X\MacFUSE-2.0.3,2.dmg, ba55c26a0f49414ee850610f01c2d636
-f:\TEMP\Mac OS X\ntfs-3g-2010.10.2-macosx.dmg, 8b1c81e5d1e1724cb8e48b5846db908f
-f:\TEMP\Mac OS X\RTUSBD2870-4.1.7.0UI-4.0.6.0_2011_09_23.dmg, de97d8fccf19acfd12539dfffe7b6cfc
-f:\TEMP\Mac OS X\SleepEnabler.kext.zip, aac8a39f689680fbd39f011beaeda9d3
-f:\TEMP\Mac OS X\Traduccion de Automator.us (por Neyblack para Applesfera).pdf, 130a0f4cd1b66c103d32e77c6f12946e
-f:\TEMP\Mac OS X\VoodooBattery.kext.zip, 156edce972a3ba500456e0b636bb944b

@@ -80,6 +80,12 @@ public class ImgOrgAppWnd {
      */
     public static void main(String[] args) {
         try {
+            // En SWT hay que ajustar el tama–o de los fonts en Mac OS
+            String OS_Name = System.getProperty("os.name");
+            if (OS_Name != null && OS_Name.toLowerCase().contains("mac os")) {
+                System.setProperty("org.eclipse.swt.internal.carbon.smallFonts", "true");
+            }
+            
             s_prefs.load(true);
             ImgOrgAppWnd window = new ImgOrgAppWnd();
             window.open();
@@ -217,7 +223,7 @@ public class ImgOrgAppWnd {
 
         final Label timeToBeLabel = new Label(composite_4, SWT.NONE);
         timeToBeLabel.setText("Time offset (could be negative):");
-        timeToBeLabel.setBounds(10, 20, 193, 16);
+        timeToBeLabel.setBounds(11, 20, 193, 16);
 
         final Spinner spnYear = new Spinner(composite_4, SWT.BORDER);
         spnYear.setBounds(209, 19, 46, 19);

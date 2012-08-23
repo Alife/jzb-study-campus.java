@@ -22,6 +22,7 @@ import com.jzb.ttpoi.data.TPOIData;
 public class ConversionUtil {
 
     private static CharsetEncoder s_chEncoder = new MyCharSet().newEncoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT);
+    private static HashMap<String, String> s_styleCatMap = null;
 
     public static String getCategoryFromStyle(String style) {
 
@@ -54,7 +55,7 @@ public class ConversionUtil {
             } else {
                 return style;
             }
-        } else if (style.contains("/mapfiles/ms/micons") || style.contains("/kml/shapes")) {
+        } else if (style.contains("/mapfiles/ms/micons") || style.contains("/mapfiles/ms2/micons") || style.contains("/kml/shapes")) {
             int p1 = style.lastIndexOf('/') + 1;
             if (p1 >= 0) {
                 int p2 = style.lastIndexOf('.');
@@ -80,18 +81,19 @@ public class ConversionUtil {
 
     public static HashMap<String, String> getDefaultParseCategories() {
 
-        HashMap<String, String> styleCatMap = new HashMap<String, String>();
-        try {
-            Properties props = new Properties();
-            props.load(MyCharSet.class.getResourceAsStream("DefaultCategories.properties"));
-            for(Entry entry:props.entrySet()) {
-                styleCatMap.put(entry.getKey().toString(),entry.getValue().toString());
+        if (s_styleCatMap == null) {
+            s_styleCatMap = new HashMap<String, String>();
+            try {
+                Properties props = new Properties();
+                props.load(MyCharSet.class.getResourceAsStream("DefaultCategories.properties"));
+                for (Entry entry : props.entrySet()) {
+                    s_styleCatMap.put(entry.getKey().toString(), entry.getValue().toString());
+                }
+            } catch (IOException ex) {
+                System.err.println("Error (" + ex.getClass().getName() + ") reading values from 'DefaultCategories.properties': " + ex.getMessage());
             }
-        } catch (IOException ex) {
-            System.err.println("Error ("+ex.getClass().getName()+") reading values from 'DefaultCategories.properties': "+ex.getMessage());
         }
-
-        return styleCatMap;
+        return s_styleCatMap;
     }
 
     public static String getOV2Text(String text) {

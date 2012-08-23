@@ -1,3 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\English.lproj\InfoPlist.strings, b1a09b7b30560de3e1e9f38e3307bae4
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\English.lproj\MainMenu.xib, d6d10c1629c4a97d6bc888e5e5137f94
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\English.lproj\YouTubeSampleWindow.xib, 5bc1994dfeb904b1185c7b32bd5351b2

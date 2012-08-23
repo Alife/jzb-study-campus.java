@@ -1,3 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSyncLib\src-util\com\.svn\all-wcprops, 8fc972b03e12d4cbcc4876f612e00a95
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSyncLib\src-util\com\.svn\entries, 5777681a73d952a68eaf86dd6c0b3b74
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSyncLib\src-util\com\.svn\format, c2d6ebb9d61f0ad801993e22bd377b6a

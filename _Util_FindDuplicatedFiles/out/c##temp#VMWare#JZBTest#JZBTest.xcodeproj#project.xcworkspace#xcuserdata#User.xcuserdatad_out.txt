@@ -1,2 +1,0 @@
-c:\temp\VMWare\JZBTest\JZBTest.xcodeproj\project.xcworkspace\xcuserdata\User.xcuserdatad\UserInterfaceState.xcuserstate, bb871cc087efd3a373fe56102767ed9c
-c:\temp\VMWare\JZBTest\JZBTest.xcodeproj\project.xcworkspace\xcuserdata\User.xcuserdatad\WorkspaceSettings.xcsettings, ffd1b0c8b5284efb9d7595e7c384a101

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>A5##PK 123,900##Acceso Talavera oeste. Polígono industrial##http://www.dgt.es/camaras/camara-2700001-61.jpg</string>
+</array>
+</plist>

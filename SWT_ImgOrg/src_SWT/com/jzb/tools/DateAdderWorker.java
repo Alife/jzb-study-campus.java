@@ -16,6 +16,7 @@ import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.jzb.futil.FileExtFilter;
+import com.jzb.futil.FileExtFilter.IncludeFolders;
 import com.jzb.swt.util.BaseWorker;
 import com.jzb.swt.util.IProgressMonitor;
 import com.jzb.util.Tracer;
@@ -67,7 +68,7 @@ public class DateAdderWorker extends BaseWorker {
     private void _addDateToFiles(final File baseFolder, final int years, final int months, final int days, final int hours, final int mins, final int secs) throws Exception {
 
         // Gets just image files and folders
-        File fList[] = baseFolder.listFiles(FileExtFilter.imgFilter(true));
+        File fList[] = baseFolder.listFiles(FileExtFilter.imgFilter(IncludeFolders.YES));
 
         // Split them and short the files to establish the counting properly
         TreeSet<File> allFiles = new TreeSet<File>();
@@ -147,7 +148,7 @@ public class DateAdderWorker extends BaseWorker {
 
     private void _removeDateFromFiles(final File baseFolder) throws Exception {
         // Gets just image files and folders
-        File fList[] = baseFolder.listFiles(FileExtFilter.imgFilter(true));
+        File fList[] = baseFolder.listFiles(FileExtFilter.imgFilter(IncludeFolders.YES));
 
         // Split them and short the files to establish the counting properly
         TreeSet<File> allFiles = new TreeSet<File>();

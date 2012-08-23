@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
-import com.jzb.swt.util.ITracer;
 
 /**
  * @author n000013
@@ -16,7 +15,6 @@ import com.jzb.swt.util.ITracer;
  */
 public class NotesTester {
 
-    ITracer m_trz;
 
     /**
      * Static Main starting method

@@ -1,9 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\MapsSample\.svn\text-base\buildCopyScript.svn-base, 0404be75752aa81ce8630dcd31fa3474
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\MapsSample\.svn\text-base\buildStripHeaders.svn-base, ab1fbc26dd10da48f87c01a10cce488e
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\MapsSample\.svn\text-base\Info.plist.svn-base, b081405af3dc46e80a9108095c2485a2
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\MapsSample\.svn\text-base\main.m.svn-base, b80a5576c2cd8708cc37886b656928be
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\MapsSample\.svn\text-base\MapsSampleAppController.h.svn-base, f9a094b547081a85587f031e44ac59c7
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\MapsSample\.svn\text-base\MapsSampleAppController.m.svn-base, 9107155cff44d6d6c81385217958dffb
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\MapsSample\.svn\text-base\MapsSampleWindowController.h.svn-base, 3fde1eb4e0ad0314f46622738c3ac460
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\MapsSample\.svn\text-base\MapsSampleWindowController.m.svn-base, 451f42754ac09ac988c2dc8afcd3e8db
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\MapsSample\.svn\text-base\README.txt.svn-base, edae82ef26bbb3e2ab12bc14f13cd3d0

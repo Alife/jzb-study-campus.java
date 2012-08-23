@@ -71,7 +71,7 @@ public class UpdateWorker {
 
         for (File f : iTunesFolder.listFiles()) {
             if (f.isDirectory()) {
-                File itf = new File(f, "iTunes Media\\Mobile Applications");
+                File itf = new File(f, "iTunes Media"+File.separator+"Mobile Applications");
                 if (itf.exists()) {
                     folders.add(itf);
                 }

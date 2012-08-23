@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>firstRun</key>
+	<false/>
+	<key>idleSessionTime</key>
+	<real>0.0</real>
+	<key>lastSessionLength</key>
+	<real>100.23439002037048</real>
+	<key>offlineSessionCount</key>
+	<integer>0</integer>
+	<key>originalUDID</key>
+	<string>85f2fe30799f14ae79d371cfd71b6c14e8e18904</string>
+	<key>sessionEndDate</key>
+	<date>2011-03-27T10:18:29Z</date>
+	<key>sessionStartDate</key>
+	<date>2011-03-27T10:16:49Z</date>
+</dict>
+</plist>

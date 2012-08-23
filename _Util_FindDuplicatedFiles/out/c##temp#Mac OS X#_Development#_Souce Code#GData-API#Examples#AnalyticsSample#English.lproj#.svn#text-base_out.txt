@@ -1,3 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\AnalyticsSample\English.lproj\.svn\text-base\AnalyticsSampleWindow.xib.svn-base, 4c32ce71f88a8a8d9d35970489d01367
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\AnalyticsSample\English.lproj\.svn\text-base\InfoPlist.strings.svn-base, 184433a3817ce6a9cfb5012e643a8965
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\AnalyticsSample\English.lproj\.svn\text-base\MainMenu.xib.svn-base, f4781355087c5a8cdf1f38b1024b6d96

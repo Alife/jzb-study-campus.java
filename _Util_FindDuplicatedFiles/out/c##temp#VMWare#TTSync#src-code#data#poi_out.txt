@@ -1,5 +1,0 @@
-c:\temp\VMWare\TTSync\src-code\data\poi\POICategory.as, a9036b3e813ed08a9c2832cda5ad8a6e
-c:\temp\VMWare\TTSync\src-code\data\poi\POIData.as, 9be2821c2e2f116a6e62701778ec6fce
-c:\temp\VMWare\TTSync\src-code\data\poi\POIData_Ext.as, 5c3c7ccb01cfcee92ebb4e2053d1cc94
-c:\temp\VMWare\TTSync\src-code\data\poi\POIData_Ex_Icons.as, e78d5be829e5057998f37fc9dfe3a4eb
-c:\temp\VMWare\TTSync\src-code\data\poi\POIFile.as, 9d1e1e4ca7cd133a9071a9ccac3d1c4a

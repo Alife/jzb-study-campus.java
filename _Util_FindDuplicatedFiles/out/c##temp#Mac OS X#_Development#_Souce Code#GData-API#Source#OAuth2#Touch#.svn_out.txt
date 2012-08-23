@@ -1,2 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\Touch\.svn\all-wcprops, 2afebb287beb59587010a7b13e039c66
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\Touch\.svn\entries, 01a19d3f85d4228acdb6fb1ed45ad8b4

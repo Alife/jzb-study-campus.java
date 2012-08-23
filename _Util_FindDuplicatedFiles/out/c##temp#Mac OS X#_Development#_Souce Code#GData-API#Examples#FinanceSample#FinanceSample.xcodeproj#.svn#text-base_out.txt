@@ -1,1 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\FinanceSample\FinanceSample.xcodeproj\.svn\text-base\project.pbxproj.svn-base, 834d25a20e4b408b135fb61fd9b65481

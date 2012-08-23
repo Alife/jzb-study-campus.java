@@ -1,3 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\English.lproj\BooksSampleWindow.xib, b77821c7d441a6a82f4ee2f9650ce16e
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\English.lproj\InfoPlist.strings, b1a09b7b30560de3e1e9f38e3307bae4
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\English.lproj\MainMenu.xib, 75407b541b9439bd2707c5d6d8517456

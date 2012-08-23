@@ -1,3 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\FinanceSample\English.lproj\FinanceSampleWindow.xib, 7bfcc5c18ae88c560cffd10c6a12a1f0
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\FinanceSample\English.lproj\InfoPlist.strings, b1a09b7b30560de3e1e9f38e3307bae4
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\FinanceSample\English.lproj\MainMenu.xib, 26ac1652051aad8869d8ceba7732d7b5

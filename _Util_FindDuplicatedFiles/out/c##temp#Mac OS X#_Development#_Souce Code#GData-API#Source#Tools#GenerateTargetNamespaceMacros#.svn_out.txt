@@ -1,2 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Tools\GenerateTargetNamespaceMacros\.svn\all-wcprops, 5068613fb4189b4cdf5ccdd37c2e7a7c
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Tools\GenerateTargetNamespaceMacros\.svn\entries, 1a4153b0356673b51f2544dd25c0d8c7

@@ -1,3 +1,0 @@
-c:\temp\VMWare\TTSync\src-util\com\flashiphonedevelopment\address\events\.svn\all-wcprops, d8c4541305644149b40ce8dc88db0e05
-c:\temp\VMWare\TTSync\src-util\com\flashiphonedevelopment\address\events\.svn\entries, 5c3b4e1a1453e28837c41ddb7fc1a827
-c:\temp\VMWare\TTSync\src-util\com\flashiphonedevelopment\address\events\.svn\format, c2d6ebb9d61f0ad801993e22bd377b6a

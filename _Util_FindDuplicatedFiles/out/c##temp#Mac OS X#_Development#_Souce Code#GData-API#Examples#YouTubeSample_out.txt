@@ -1,9 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\buildCopyScript, 0404be75752aa81ce8630dcd31fa3474
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\buildStripHeaders, ab1fbc26dd10da48f87c01a10cce488e
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\Info.plist, 61fc26cf217a647950431b35e09a2948
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\main.m, b7e25eb548f338808226215513f43d0f
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\README.txt, c4007d77ee9d02729a8c06c9e96687bd
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\YouTubeSampleAppController.h, cb67692b9b6e16fc8982c502fc811c74
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\YouTubeSampleAppController.m, da17868d89188e58ecfd113f939cb1d2
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\YouTubeSampleWindowController.h, 8c1cda153b0dc962aa949724c577790f
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\YouTubeSample\YouTubeSampleWindowController.m, a05c911569690fec0786bf66eb00f8ce

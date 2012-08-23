@@ -93,7 +93,7 @@ public class ProcessFiles {
 
         if (fileCount > 0 && m_count > 0) {
 
-            long timeLeft = (System.currentTimeMillis() - m_startTime) * (fileCount - m_count) / m_count;
+            long timeLeft = ((System.currentTimeMillis() - m_startTime) * (fileCount - m_count)) / m_count;
 
             long sec = timeLeft / 1000;
             if (timeLeft > 60000) {
@@ -224,7 +224,7 @@ public class ProcessFiles {
             relativePath = "_root_";
         }
         */
-        String relativePath = folder.getAbsolutePath().replace('\\', '#').replace(':', '#');
+        String relativePath = folder.getAbsolutePath().replace(File.separatorChar, '#').replace(':', '#');
         File outFile = new File(m_outFolder, relativePath + "_out.txt");
         return outFile;
     }

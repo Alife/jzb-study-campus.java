@@ -1,9 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\.svn\text-base\BooksSampleAppController.h.svn-base, 7486244945d157440adf1f410f9bc067
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\.svn\text-base\BooksSampleAppController.m.svn-base, 33c11b44e4a61c410f649463730b6569
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\.svn\text-base\BooksSampleWindowController.h.svn-base, 3e8bf294410170249994bca654249b00
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\.svn\text-base\BooksSampleWindowController.m.svn-base, 88d07d27b2122924358c7c47996a94d4
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\.svn\text-base\buildCopyScript.svn-base, 09e9bb7b8956f5229c228c46d6b7caea
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\.svn\text-base\buildStripHeaders.svn-base, ab1fbc26dd10da48f87c01a10cce488e
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\.svn\text-base\Info.plist.svn-base, 0ebf2b3f9b66266eddfe2419ad3e2bf9
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\.svn\text-base\main.m.svn-base, b7e25eb548f338808226215513f43d0f
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\BooksSample\.svn\text-base\README.txt.svn-base, edae82ef26bbb3e2ab12bc14f13cd3d0

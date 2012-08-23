@@ -9,9 +9,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.text.DecimalFormat;
+import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
+
+import javax.naming.ldap.SortControl;
 
 /**
  * @author n63636
@@ -127,7 +130,9 @@ public class ITunesDump {
      */
     public void doIt(String[] args) throws Exception {
 
-        File bbddFile = new File("C:\\Users\\n63636\\AppData\\Roaming\\Apple Computer\\MobileSync\\Backup\\2e1e42c63ba707a2ab1b9ffb95f9a1e7f38ecfc1\\Manifest.mbdb");
+        // iPad   = 82def3f693ad6959d3ae4528d656e2aeb2809f58
+        // iPhone = 2e1e42c63ba707a2ab1b9ffb95f9a1e7f38ecfc1
+        File bbddFile = new File("/Users/jzarzuela/Library/Application Support/MobileSync/Backup/82def3f693ad6959d3ae4528d656e2aeb2809f58/Manifest.mbdb");
         TreeMap<String, DomainDumpInfo> records = _readBackupInfo(bbddFile);
 
         // ******************************************
@@ -138,14 +143,14 @@ public class ITunesDump {
 
         _printInfo(bbddFile.getParentFile(), records, toFilter);
 
-        File destFolder = new File("C:\\Users\\n63636\\Desktop\\Nueva carpeta\\kk");
-        _makeCopy(bbddFile.getParentFile(), destFolder, records, toFilter);
+        //File destFolder = new File("C:\\Users\\n63636\\Desktop\\Nueva carpeta\\kk");
+        //_makeCopy(bbddFile.getParentFile(), destFolder, records, toFilter);
 
     }
 
     private void _printInfo(File itunesBackupFolder, TreeMap<String, DomainDumpInfo> sortedRecords, String toFilter) throws Exception {
 
-        DecimalFormat df = new DecimalFormat("###,##0");
+        DecimalFormat df = new DecimalFormat("000,000,000");
         if (toFilter != null)
             toFilter = toFilter.toLowerCase();
 
@@ -160,7 +165,7 @@ public class ITunesDump {
                 }
 
                 System.out.println();
-                System.out.println("-- " + domain + "(" + df.format(size) + ") ------------------------------------------------------------------");
+                System.out.println(df.format(size)+" -- " + domain + "(" + df.format(size) + ") ------------------------------------------------------------------");
 //                for (TDBRecord rec : entry.getValue().records) {
 //                    if (rec.fileLength > 0) {
 //                        File ofile = new File(itunesBackupFolder, rec.GUID);
@@ -178,7 +183,7 @@ public class ITunesDump {
 
     private void _makeCopy(File itunesBackupFolder, File destFolder, TreeMap<String, DomainDumpInfo> sortedRecords, String toFilter) throws Exception {
 
-        DecimalFormat df = new DecimalFormat("000,000,000");
+        DecimalFormat df = new DecimalFormat("000,000,000,000");
 
         if (toFilter != null)
             toFilter = toFilter.toLowerCase();

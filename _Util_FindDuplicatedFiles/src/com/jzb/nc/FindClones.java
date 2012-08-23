@@ -51,9 +51,9 @@ public class FindClones {
     public void doIt(String[] args) throws Exception {
 
         
-        File outputFolder = new File("C:\\WKSPs\\Consolidado\\_Util_FindDuplicatedFiles\\out");
+        File outputFolder = new File("/Users/jzarzuela/Documents/java-Campus/_Util_FindDuplicatedFiles/out");
         
-        PrintStream ps = new PrintStream(new File(outputFolder,"..\\clones.txt"));
+        PrintStream ps = new PrintStream(new File(outputFolder,"../clones.txt"));
         PrintStream _sys_out_=System.out;
         System.setOut(ps);
 

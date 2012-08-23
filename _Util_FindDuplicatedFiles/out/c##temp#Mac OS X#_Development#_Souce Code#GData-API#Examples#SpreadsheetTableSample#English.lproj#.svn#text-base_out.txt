@@ -1,3 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\SpreadsheetTableSample\English.lproj\.svn\text-base\InfoPlist.strings.svn-base, 1ceb654b02cf6c383bea3367a12ed367
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\SpreadsheetTableSample\English.lproj\.svn\text-base\MainMenu.xib.svn-base, f7a2c0adee756e4a4d91353229e0a2d3
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\SpreadsheetTableSample\English.lproj\.svn\text-base\SpreadsheetTableSampleWindow.xib.svn-base, 7d1e7ee96ae2197d4895a06dcf3d04e0

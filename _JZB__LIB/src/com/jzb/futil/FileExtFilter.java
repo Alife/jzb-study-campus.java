@@ -12,34 +12,48 @@ import java.io.FileFilter;
  */
 public class FileExtFilter implements FileFilter {
 
-    public static FileExtFilter imgFilter(boolean allowFolders) {
-        return new FileExtFilter(allowFolders, "jpg", "gif", "png", "bmp", "cr2");
+    static public enum IncludeFolders {
+        YES, NO
     }
-    
-    private String  m_AllowedExts[] = {};
-    private boolean m_allowFolders;
 
-    public FileExtFilter(boolean allowFolders, String... allowedExts) {
-        m_allowFolders = allowFolders;
+    public static FileExtFilter imgFilter(IncludeFolders includeFolders) {
+        return new FileExtFilter(includeFolders, "jpg", "gif", "png", "bmp", "cr2");
+    }
 
-        m_AllowedExts = allowedExts;
+    public static FileExtFilter folderFilter() {
+        return new FileExtFilter(IncludeFolders.YES, (String[]) null);
+    }
+
+    private String         m_allowedExts[] = {};
+    private IncludeFolders m_includeFolders;
+
+    public FileExtFilter(IncludeFolders includeFolders, String... allowedExts) {
+        m_includeFolders = includeFolders;
+
+        m_allowedExts = allowedExts;
     }
 
     /**
      * @see java.io.FileFilter#accept(java.io.File)
      */
     public boolean accept(File file) {
-        return (m_allowFolders && file.isDirectory()) || checkFileExt(file);
+        return (m_includeFolders == IncludeFolders.YES && file.isDirectory()) || checkFileExt(file);
     }
 
     private boolean checkFileExt(File file) {
+
+        if (m_allowedExts == null || m_allowedExts.length == 0)
+            return false;
+
         String ext = getFileExt(file);
         if (ext.length() == 0)
             return false;
-        for (String s : m_AllowedExts) {
+
+        for (String s : m_allowedExts) {
             if (s.equalsIgnoreCase(ext))
                 return true;
         }
+
         return false;
     }
 

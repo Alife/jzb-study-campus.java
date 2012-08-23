@@ -1,7 +1,0 @@
-c:\temp\hackintosh\Yes\AppleACPIBatteryManager.kext.zip, 07357b8c98f6bc5ff5b4f38828eb06f2
-c:\temp\hackintosh\Yes\AppleIntelE1000e.zip, c54f086e6e6f1466e7562d05f010189d
-c:\temp\hackintosh\Yes\IOPCIFamily-113.zip, 2ad3cf4cc7769c1ad48b80d79ccc2b2f
-c:\temp\hackintosh\Yes\Kext_Utility.app.v2.5.0b.Lion.ready.zip, 1ddffa15279fda83a56957493233f1a2
-c:\temp\hackintosh\Yes\OSX86Tools_1.0.150.zip, fe8881371cef2ab5b6f09e261b53cda2
-c:\temp\hackintosh\Yes\ps-2.zip, 5e2386fe2d073e86290ce1b8ac42beb4
-c:\temp\hackintosh\Yes\SleepEnabler.kext.zip, aac8a39f689680fbd39f011beaeda9d3

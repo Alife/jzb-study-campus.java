@@ -17,6 +17,19 @@ public class DefaultHttpProxy {
 
     private static AppPreferences s_prefs = new AppPreferences("DefaultHttpProxy");
 
+    public static void storeInfo(String proxyHost, int proxyPort, String user, String pwd, String realm) throws Exception {
+        
+        Tracer._debug("Storing connection info for default proxy");
+        
+        s_prefs.setPref("ProxyHost", proxyHost);
+        s_prefs.setPrefLong("ProxyPort", proxyPort);
+
+        s_prefs.setPref("user",_getEncodedText(user!=null?user:""));
+        s_prefs.setPref("pwd",_getEncodedText(pwd!=null?pwd:""));
+        s_prefs.setPref("realm",realm!=null?realm:"");
+        s_prefs.save();
+    }
+    
     public static void setDefaultProxy() {
 
         try {
@@ -55,7 +68,7 @@ public class DefaultHttpProxy {
             HTTPConnection.setProxyServer(proxyHost, proxyPort);
             AuthorizationInfo.addBasicAuthorization(proxyHost, proxyPort, realm, userName, userPwd);
 
-            Tracer._debug("Connection checked!. Going through default proxy.");
+            Tracer._debug("Connection checked!. Going through default proxy ("+proxyHost+":"+proxyPort+").");
 
         } catch (Exception ex) {
             Tracer._warn("Cannot connect with the proxy. Using direct connection...");
@@ -79,7 +92,6 @@ public class DefaultHttpProxy {
         return msg;
     }
 
-    @SuppressWarnings("unused")
     private static String _getEncodedText(String cad) {
 
         String msg = "";

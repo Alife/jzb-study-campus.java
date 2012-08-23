@@ -6,6 +6,8 @@ package com.jzb.util;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * @author n63636
@@ -17,15 +19,40 @@ public abstract class Tracer {
         DEBUG, ERROR, INFO, WARN
     }
 
-    private static Tracer    s_tracer  = new PStreamTracer();
+    private static Tracer          s_tracer   = new PStreamTracer();
 
-    private StringBuffer     m_sbDebug = new StringBuffer();
-    private StringBuffer     m_sbError = new StringBuffer();
-    private StringBuffer     m_sbInfo  = new StringBuffer();
+    private StringBuffer           m_sbDebug  = new StringBuffer();
+    private StringBuffer           m_sbError  = new StringBuffer();
+    private StringBuffer           m_sbInfo   = new StringBuffer();
+    private StringBuffer           m_sbWarn   = new StringBuffer();
 
-    private StringBuffer     m_sbWarn  = new StringBuffer();                            ;
+    private volatile transient int m_cntDebug = 0;
+    private int                    m_cntError = 0;
+    private int                    m_cntInfo  = 0;
+    private int                    m_cntWarn  = 0;
 
-    private SimpleDateFormat m_sdf     = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
+    private Timer                  m_flushTimer;
+
+    private SimpleDateFormat       m_sdf      = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
+
+    private boolean                m_buffered;
+
+    public Tracer(boolean buffered) {
+        m_buffered = buffered;
+        if (buffered) {
+            m_flushTimer = new Timer("flushTimer", true);
+
+            TimerTask flushTask = new TimerTask() {
+
+                @Override
+                public void run() {
+                    Tracer.flush();
+                }
+            };
+
+            m_flushTimer.schedule(flushTask, 2000, 2000);
+        }
+    }
 
     protected boolean _propagateLevels(Level l) {
         return false;
@@ -96,6 +123,10 @@ public abstract class Tracer {
         s_tracer._reset();
     }
 
+    public static void flush() {
+        s_tracer._flush();
+    }
+
     public static void setTracer(Tracer tracer) {
         s_tracer = tracer;
     }
@@ -142,6 +173,24 @@ public abstract class Tracer {
         _addTraceText(Level.WARN, sw.getBuffer().toString());
     }
 
+    protected void _flush() {
+
+        StringBuffer sb;
+
+        for (Level level : Level.values()) {
+            sb = _getStringBuffer(level);
+            int len;
+            synchronized (sb) {
+                len = sb.length();
+            }
+            if (len > 0) {
+                _showTraceText(level, sb);
+                _resetBufferCount(level);
+            }
+        }
+
+    }
+
     protected void _reset() {
     }
 
@@ -152,12 +201,49 @@ public abstract class Tracer {
         String threadName = Thread.currentThread().getName();
         String fullMsg = Tracer.getLevelText(level) + " " + m_sdf.format(System.currentTimeMillis()) + " " + threadName + "\t- " + (msg != null ? msg : "null") + "\r\n";
 
+        int counter;
         StringBuffer sb = _getStringBuffer(level);
         synchronized (sb) {
             sb.append(fullMsg);
+            counter = _incBufferCount(level);
         }
 
-        _showTraceText(level, sb);
+        if (!m_buffered || counter >= 50) {
+            _resetBufferCount(level);
+            _showTraceText(level, sb);
+        }
+    }
+
+    private synchronized int _incBufferCount(Level level) {
+        switch (level) {
+            case DEBUG:
+                return ++m_cntDebug;
+            case INFO:
+                return ++m_cntInfo;
+            case WARN:
+                return ++m_cntWarn;
+            case ERROR:
+                return ++m_cntError;
+            default:
+                // by default we return "debug"
+                return ++m_cntDebug;
+        }
+    }
+
+    private synchronized void _resetBufferCount(Level level) {
+        switch (level) {
+            case DEBUG:
+                m_cntDebug = 0;
+            case INFO:
+                m_cntInfo = 0;
+            case WARN:
+                m_cntWarn = 0;
+            case ERROR:
+                m_cntError = 0;
+            default:
+                // by default we return "debug"
+                m_cntDebug = 0;
+        }
     }
 
     private StringBuffer _getStringBuffer(Level level) {
@@ -173,7 +259,6 @@ public abstract class Tracer {
             default:
                 // by default we return "debug"
                 return m_sbDebug;
-
         }
     }
 

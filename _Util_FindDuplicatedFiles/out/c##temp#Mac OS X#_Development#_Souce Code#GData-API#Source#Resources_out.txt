@@ -1,3 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Resources\DevelopmentTestApplication-Info.plist, 1bcda5a4ac328b8623a87e1810e24f57
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Resources\GDataFramework-Info.plist, bc05d464b1ac7caa9b18c5b5a0f930c8
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Resources\GDataUnitTests-Info.plist, ee1a16a0434e48822f378f2f9e98c674

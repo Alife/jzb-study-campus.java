@@ -15,6 +15,8 @@ import com.google.gdata.data.PlainTextConstruct;
 import com.google.gdata.data.batch.BatchOperationType;
 import com.google.gdata.data.batch.BatchStatus;
 import com.google.gdata.data.batch.BatchUtils;
+import com.google.gdata.data.calendar.CalendarEventEntry;
+import com.google.gdata.data.extensions.ExtendedProperty;
 import com.google.gdata.data.maps.FeatureEntry;
 import com.google.gdata.data.maps.FeatureFeed;
 import com.google.gdata.data.maps.MapEntry;
@@ -92,14 +94,14 @@ public class TestGMaps {
         // System.out.println("----------------------------------------------------------------------");
         // updateFeature(myService);
 
-        // System.out.println("----------------------------------------------------------------------");
-        // getFeatureInfo(myService);
+        System.out.println("----------------------------------------------------------------------");
+        getFeatureInfo(myService);
 
         // System.out.println("----------------------------------------------------------------------");
         // createFeature(myService);
 
-        System.out.println("----------------------------------------------------------------------");
-        batchUpdateMap(myService);
+        //System.out.println("----------------------------------------------------------------------");
+        //batchUpdateMap(myService);
 
     }
 
@@ -266,12 +268,15 @@ public class TestGMaps {
     private void getFeatureInfo(MapsService myService) throws ServiceException, IOException {
 
         // Get a feature entry from its self URL (returned in the feature feed)
-        final URL featureEntryUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004b5a757bcd80415f84/full/0004b5a758bb312533d26");
+        final URL featureEntryUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004c209ce96e61cbf972/full/0004c209cf319b70ede3c");
 
         FeatureEntry entry = myService.getEntry(featureEntryUrl, FeatureEntry.class);
 
         // Print out the KML
         try {
+            List<ExtendedProperty> list=entry.getRepeatingExtension(ExtendedProperty.class);
+            System.out.println(list);
+
             _dumpProperties(entry);
             // XmlBlob kml = ((OtherContent) entry.getContent()).getXml();
             // System.out.println(kml.getBlob());
@@ -283,7 +288,7 @@ public class TestGMaps {
     private void getFeatures(MapsService myService) throws ServiceException, IOException {
 
         // Get a feature feed for a specific map
-        final URL featureFeedUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004b708854a57f76c6be/full");
+        final URL featureFeedUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004c209ce96e61cbf972/full");
         FeatureFeed featureFeed = myService.getFeed(featureFeedUrl, FeatureFeed.class);
 
         System.out.println("Features of the Map:");
@@ -314,7 +319,7 @@ public class TestGMaps {
         // Request the self link on a particular map
         // Note that you should replace the URL to a self link of
         // a particular map
-        final URL mapSelfUrl = new URL("http://maps.google.com/maps/feeds/maps/212026791974164037226/full/0004b6dcbec20d9576aad");
+        final URL mapSelfUrl = new URL("http://maps.google.com/maps/feeds/maps/212026791974164037226/full/0004c209ce96e61cbf972");
         MapEntry map = myService.getEntry(mapSelfUrl, MapEntry.class);
 
         _dumpProperties(map);
@@ -342,7 +347,7 @@ public class TestGMaps {
             System.out.println("\n------------------------------------------------------------------");
             // _dumpProperties(entry);
             System.out.println(entry.getTitle().getPlainText());
-            System.out.println(entry.getEditLink().getHref());
+            System.out.println(entry.getEditLink()!=null?entry.getEditLink().getHref():"- - -");
             // for (Person p : entry.getAuthors()) {
             // System.out.println(p.getName());
             // System.out.println(p.getEmail());
@@ -361,7 +366,7 @@ public class TestGMaps {
         // Request the default metafeed
         // Replace userID, mapID and featureID with appropriate values for your map
 
-        final URL featureEditUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004b6dcbec20d9576aad/full/0004b6dcc0c5982a33c95");
+        final URL featureEditUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004c209ce96e61cbf972/full/0004c209cf319b70ede3c");
         FeatureEntry featureEntry = myService.getEntry(featureEditUrl, FeatureEntry.class);
         featureEntry.setTitle(new PlainTextConstruct("Otro Nombre 2"));
         featureEntry.setSummary(new PlainTextConstruct("que sera esto?"));
@@ -374,6 +379,13 @@ public class TestGMaps {
         // Note that the KML should only include one <Placemark> entry
         featureEntry.setKml(kml);
 
+        ExtendedProperty prop = new ExtendedProperty();
+        prop.setName("hola");
+        prop.setValue("adios");
+        List<ExtendedProperty> list=featureEntry.getRepeatingExtension(ExtendedProperty.class);
+        list.add(prop);
+
+        
         FeatureEntry fe = myService.update(featureEditUrl, featureEntry);
         _dumpProperties(fe);
         return fe;

@@ -1,3 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSync_iPhone\src-views\views\comps\GMapItem_Ex_ItemRender.mxml, 653be9cddc0aa107d202e2e018f162b3
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSync_iPhone\src-views\views\comps\MyBusyPanel.mxml, ec9cb81e4af1d5951b90d7fdffac5027
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSync_iPhone\src-views\views\comps\MyIconItemRenderer.mxml, 13705e0197633c7a054a5ada737418de

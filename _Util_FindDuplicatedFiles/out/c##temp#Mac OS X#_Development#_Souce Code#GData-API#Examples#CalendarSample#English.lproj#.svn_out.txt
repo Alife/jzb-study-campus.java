@@ -1,2 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\English.lproj\.svn\all-wcprops, 09cf77786b6bee3bcdc15424f5b8d68a
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\English.lproj\.svn\entries, 122a0ea9be64484c3ecfd2c18968ac19

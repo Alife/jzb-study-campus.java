@@ -27,9 +27,11 @@ public class TabbedTracerImpl extends Tracer {
     public Font     m_errorFont;
 
     public TabbedTracerImpl() {
+        super(true);
     }
 
     public TabbedTracerImpl(CTabItem debug, CTabItem info, CTabItem warn, CTabItem error) {
+        super(true);
         m_debugTab = debug;
         m_infoTab = info;
         m_warnTab = warn;
@@ -59,22 +61,26 @@ public class TabbedTracerImpl extends Tracer {
                     sb.setLength(0);
                 }
 
-                Text control = getTextControl(level);
-                control.append(fullMsg);
+                if (fullMsg.length() > 0) {
+                    Text control = getTextControl(level);
+                    control.append(fullMsg);
 
-                int lc = control.getLineCount() - 1;
-                control.setTopIndex(lc);
-                setTabTitle(level, lc);
-                
-                if(level==Level.ERROR) {
-                    CTabItem tb = getTab(level);
-                    tb.getParent().setSelection(tb);
+                    int lc = control.getLineCount() - 1;
+                    control.setTopIndex(lc);
+                    setTabTitle(level, lc);
+
+                    if (level == Level.ERROR) {
+                        CTabItem tb = getTab(level);
+                        tb.getParent().setSelection(tb);
+                    }
                 }
             }
         });
     }
 
     protected void _reset() {
+
+        super._reset();
 
         Display.getDefault().asyncExec(new Runnable() {
 
@@ -189,7 +195,7 @@ public class TabbedTracerImpl extends Tracer {
         tabTraces.setSelection(0);
         tabTraces.setFocus();
 
-        m_errorFont = getFont("Arial", 12, SWT.BOLD,false,false);
+        m_errorFont = getFont("Arial", 12, SWT.BOLD, false, false);
 
         return tabTraces;
     }
@@ -231,7 +237,7 @@ public class TabbedTracerImpl extends Tracer {
             }
         }
         font = new Font(Display.getCurrent(), fontData);
-        
+
         return font;
     }
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Data</key>
+	<dict>
+		<key>Application</key>
+		<dict>
+			<key>display-background-without-price</key>
+			<false/>
+		</dict>
+		<key>iHandyAlerts</key>
+		<dict>
+			<key>CustomAlertSupportedVersion</key>
+			<string>5.0</string>
+			<key>RateAlert</key>
+			<dict>
+				<key>AccumulatedUseTime</key>
+				<integer>5</integer>
+				<key>DaysFromFirstUse</key>
+				<integer>5</integer>
+				<key>Probability</key>
+				<integer>50</integer>
+				<key>UseCount</key>
+				<integer>5</integer>
+			</dict>
+		</dict>
+		<key>iHandyWidgets</key>
+		<dict>
+			<key>BannerType</key>
+			<integer>0</integer>
+			<key>EnableWidgetsBadge</key>
+			<true/>
+			<key>EntryPage</key>
+			<string>ihandyalarmclockpro</string>
+		</dict>
+	</dict>
+	<key>MinimumUpdateInterval</key>
+	<integer>0</integer>
+</dict>
+</plist>

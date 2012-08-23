@@ -439,7 +439,7 @@ public class GCalSync {
         eventTimes.setStartTime(startTime);
         eventTimes.setEndTime(endTime);
         Reminder rem = new Reminder();
-        rem.setMethod(Method.ALERT);
+        rem.setMethod(Method.ALERT);  //TODO: Parece que falla con entradas tipo:TRIGGER:-P3D
         rem.setMinutes(5);
         eventTimes.setExtension(rem);
         gEv.getTimes().clear(); // Clear previous values before setting the new one
@@ -539,7 +539,8 @@ public class GCalSync {
         _trace("iCal info read from: " + fName);
         CalendarBuilder cb = new CalendarBuilder();
         FileInputStream fis = new FileInputStream(inFile);
-        InputStreamReader isr = new InputStreamReader(fis, "ISO-8859-15");
+        //InputStreamReader isr = new InputStreamReader(fis, "ISO-8859-15");
+        InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
 
         VCalendar ical = cb.build(isr);
 

@@ -1,3 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSyncLib\src-code\code\task\stngs\Task_Init_SearchTTInst.as, 70a72268e04a5111aa4cd1e85895875b
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSyncLib\src-code\code\task\stngs\Task_Init_UpdateGMaps.as, 64dfa091321e458e135b655b869c0d21
-c:\temp\Mac OS X\_Development\_Souce Code\_TTSync\TTSyncLib\src-code\code\task\stngs\Task_UpdateGMaps.as, be0d5fadbf0574f581f9afebfcefecc6

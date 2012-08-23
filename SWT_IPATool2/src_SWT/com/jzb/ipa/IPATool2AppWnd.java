@@ -53,9 +53,9 @@ public class IPATool2AppWnd {
 
     }
 
-    private static final String   APP_NAME = "IPATool2";
+    private static final String   APP_NAME       = "IPATool2";
 
-    private static AppPreferences s_prefs  = new AppPreferences(APP_NAME);
+    private static AppPreferences s_prefs        = new AppPreferences(APP_NAME);
 
     private ProgressMonitor       m_monitor;
     private Shell                 m_shell;
@@ -82,6 +82,12 @@ public class IPATool2AppWnd {
      */
     public static void main(String[] args) {
         try {
+            // En SWT hay que ajustar el tama–o de los fonts en Mac OS
+            String OS_Name = System.getProperty("os.name");
+            if (OS_Name != null && OS_Name.toLowerCase().contains("mac os")) {
+                System.setProperty("org.eclipse.swt.internal.carbon.smallFonts", "true");
+            }
+
             s_prefs.load(true);
             IPATool2AppWnd window = new IPATool2AppWnd();
             window.open();

@@ -1,2 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\COPYING.txt, f3402931a0e7de5a32df9b2d4b3cf852
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\README.txt, 157981c668a973754ef68c37bcc7eeff

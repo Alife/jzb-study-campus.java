@@ -1,9 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Introspection\.svn\text-base\GDataAtomCategoryGroup.h.svn-base, effd399eca0d0fdd87469d6dff9f244e
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Introspection\.svn\text-base\GDataAtomCategoryGroup.m.svn-base, 5f814fefebf900c26270715d06c1e780
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Introspection\.svn\text-base\GDataAtomCollection.h.svn-base, 166b3e327f21136f59f310cfebb1bca4
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Introspection\.svn\text-base\GDataAtomCollection.m.svn-base, d9d179a9c5010beb4a119cd54e654211
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Introspection\.svn\text-base\GDataAtomServiceDocument.h.svn-base, ac4c3fe227c67fffe47aabcd29322253
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Introspection\.svn\text-base\GDataAtomServiceDocument.m.svn-base, 6633c351ee759fbbee91701a2a6118e4
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Introspection\.svn\text-base\GDataAtomWorkspace.h.svn-base, 7e17450dbc2bfe1ffb96ddcc9ba171f1
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Introspection\.svn\text-base\GDataAtomWorkspace.m.svn-base, 9173a21cff064af07ee1c95725e7741b
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Introspection\.svn\text-base\GDataServiceIntrospection.h.svn-base, b312dae9ddf98e3adaa61a53712f432a

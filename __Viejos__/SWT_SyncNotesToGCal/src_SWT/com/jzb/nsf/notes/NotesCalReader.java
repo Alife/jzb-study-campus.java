@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.jzb.swt.util.ITracer;
+import com.jzb.util.Tracer;
 
 /**
  * @author n000013
@@ -19,10 +19,8 @@ import com.jzb.swt.util.ITracer;
 public class NotesCalReader {
 
     private String  m_dataSourceURL;
-    private ITracer m_tracer;
 
-    public NotesCalReader(ITracer tracer) {
-        m_tracer = tracer;
+    public NotesCalReader() {
     }
 
     public ArrayList<NotesCalData> getAppointments() throws Exception {
@@ -32,19 +30,19 @@ public class NotesCalReader {
         ResultSet rs = null;
 
         try {
-            m_tracer._info("Reading appointments info from Notes database");
+            Tracer._info("Reading appointments info from Notes database");
 
-            m_tracer._debug("Connecting to Notes database: " + m_dataSourceURL);
+            Tracer._debug("Connecting to Notes database: " + m_dataSourceURL);
             con = DriverManager.getConnection(m_dataSourceURL); // , usr, pswd);
-            m_tracer._debug("Connection created");
+            Tracer._debug("Connection created");
 
-            m_tracer._debug("Executing query to retrieve calendar data");
+            Tracer._debug("Executing query to retrieve calendar data");
             String strSQL = "SELECT Subject, Body, txtStartDateTime, txtEndDateTime, Location, Repeats, tmpChair FROM Appointment, AppJoinView WHERE Appointment.NoteID=AppJoinView.NoteID";
             stm = con.createStatement();
             rs = stm.executeQuery(strSQL);
-            m_tracer._debug("Query executed");
+            Tracer._debug("Query executed");
 
-            m_tracer._debug("Iterating retrieved calendar data");
+            Tracer._debug("Iterating retrieved calendar data");
             ArrayList<NotesCalData> ncdList = new ArrayList<NotesCalData>();
             while (rs.next()) {
                 NotesCalData ncd = new NotesCalData();
@@ -58,11 +56,11 @@ public class NotesCalReader {
                 ncdList.add(ncd);
             }
 
-            m_tracer._info("All appointments info have been read");
+            Tracer._info("All appointments info have been read");
             return ncdList;
 
         } catch (Throwable th) {
-            // m_tracer._error("Error reading appointments info from Notes database", th);
+            // Tracer._error("Error reading appointments info from Notes database", th);
             throw new Exception("Error reading appointments info from Notes database", th);
 
         } finally {
@@ -75,14 +73,14 @@ public class NotesCalReader {
     public void init(String dsName) throws Exception {
 
         try {
-            m_tracer._debug("Loading ODBC-JDBC bridge class an native libraries");
+            Tracer._debug("Loading ODBC-JDBC bridge class an native libraries");
             Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-            m_tracer._debug("ODBC-JDBC bridge loaded");
+            Tracer._debug("ODBC-JDBC bridge loaded");
 
             m_dataSourceURL = "jdbc:odbc:" + dsName;
 
         } catch (Throwable th) {
-            // m_tracer._error("Error loading ODBC-JDBC bridge class", th);
+            // Tracer._error("Error loading ODBC-JDBC bridge class", th);
             throw new Exception("Error loading ODBC-JDBC bridge class", th);
         }
 
@@ -100,17 +98,17 @@ public class NotesCalReader {
     private void _safeClose(Object obj) {
         try {
             if (obj instanceof ResultSet) {
-                m_tracer._debug("Closing SQL ResultSet");
+                Tracer._debug("Closing SQL ResultSet");
                 ((ResultSet) obj).close();
             } else if (obj instanceof Statement) {
-                m_tracer._debug("Closing SQL Statement");
+                Tracer._debug("Closing SQL Statement");
                 ((Statement) obj).close();
             } else if (obj instanceof Connection) {
-                m_tracer._debug("Closing SQL Connection");
+                Tracer._debug("Closing SQL Connection");
                 ((Connection) obj).close();
             }
         } catch (SQLException ex) {
-            m_tracer._error("Closing SQL element");
+            Tracer._error("Closing SQL element");
         }
     }
 

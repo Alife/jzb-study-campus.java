@@ -93,17 +93,17 @@ public class KMLFileWriter {
         pw.println("</kml>");
     }
 
-    private static final String s_gStyles[] = { "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/blue-dot.png", "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/green-dot.png",
-            "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/ltblue-dot.png", "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/pink-dot.png",
-            "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/purple-dot.png", "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/red-dot.png",
-            "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/yellow-dot.png", "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/blue-pushpin.png",
-            "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/grn-pushpin.png", "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/ltblu-pushpin.png",
-            "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/pink-pushpin.png", "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/purple-pushpin.png",
-            "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/red-pushpin.png", "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/ylw-pushpin.png",
-            "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/blue.png", "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/green.png",
-            "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/lightblue.png", "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/pink.png",
-            "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/purple.png", "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/red.png",
-            "http://maps.gstatic.com/intl/es_es/mapfiles/ms/micons/yellow.png" };
+    private static final String s_gStyles[] = { "http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png", "http://maps.gstatic.com/mapfiles/ms2/micons/green-dot.png",
+            "http://maps.gstatic.com/mapfiles/ms2/micons/ltblue-dot.png", "http://maps.gstatic.com/mapfiles/ms2/micons/pink-dot.png",
+            "http://maps.gstatic.com/mapfiles/ms2/micons/purple-dot.png", "http://maps.gstatic.com/mapfiles/ms2/micons/red-dot.png",
+            "http://maps.gstatic.com/mapfiles/ms2/micons/yellow-dot.png", "http://maps.gstatic.com/mapfiles/ms2/micons/blue-pushpin.png",
+            "http://maps.gstatic.com/mapfiles/ms2/micons/grn-pushpin.png", "http://maps.gstatic.com/mapfiles/ms2/micons/ltblu-pushpin.png",
+            "http://maps.gstatic.com/mapfiles/ms2/micons/pink-pushpin.png", "http://maps.gstatic.com/mapfiles/ms2/micons/purple-pushpin.png",
+            "http://maps.gstatic.com/mapfiles/ms2/micons/red-pushpin.png", "http://maps.gstatic.com/mapfiles/ms2/micons/ylw-pushpin.png",
+            "http://maps.gstatic.com/mapfiles/ms2/micons/blue.png", "http://maps.gstatic.com/mapfiles/ms2/micons/green.png",
+            "http://maps.gstatic.com/mapfiles/ms2/micons/lightblue.png", "http://maps.gstatic.com/mapfiles/ms2/micons/pink.png",
+            "http://maps.gstatic.com/mapfiles/ms2/micons/purple.png", "http://maps.gstatic.com/mapfiles/ms2/micons/red.png",
+            "http://maps.gstatic.com/mapfiles/ms2/micons/yellow.png" };
 
     private static void _printHeader(PrintWriter pw, TPOIFileData fileData, HashMap<String, Integer> styleIndexes) throws Exception {
 

@@ -3,6 +3,11 @@
  */
 package com.jzb.ttpoi;
 
+import java.io.File;
+
+import com.jzb.ttpoi.util.FileTransform;
+import com.jzb.ttpoi.util.KMLDownload;
+
 /**
  * @author n63636
  * 
@@ -39,7 +44,11 @@ public class AllTest {
      *             if something fails during the execution
      */
     public void doIt(String[] args) throws Exception {
-        KMLDownload.main(null);
-        POITest.main(null);
+        
+        File kmlFolder = new File("C:\\Users\\n63636\\Desktop\\Nueva carpeta\\_KMLs_");
+        File ov2Folder = new File("C:\\Users\\n63636\\Desktop\\Nueva carpeta\\_OV2s_");
+        
+        KMLDownload.downloadAllMaps(kmlFolder);
+        FileTransform.transformAllKMLtoOV2(kmlFolder,ov2Folder, true);
     }
 }

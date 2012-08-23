@@ -1,8 +1,0 @@
-c:\temp\VMWare\JZBTest\.git\.COMMIT_EDITMSG.swp, cea03a624f0b4e404f39de3523761eea
-c:\temp\VMWare\JZBTest\.git\._sourcetreeconfig, 315a188d78e53d614f410e929a546e91
-c:\temp\VMWare\JZBTest\.git\COMMIT_EDITMSG, 1607cf193c877448b04e5f11a179f972
-c:\temp\VMWare\JZBTest\.git\config, 66d0b4e6f1fa3620768f5109c487d32e
-c:\temp\VMWare\JZBTest\.git\description, 6c9c6ff7876cb53af6be5c7cf0faab11
-c:\temp\VMWare\JZBTest\.git\HEAD, 00f3597b55ee276b1808de7bcbb3c08a
-c:\temp\VMWare\JZBTest\.git\index, 9aa89cbdf30c7ce30021e00d396386f5
-c:\temp\VMWare\JZBTest\.git\sourcetreeconfig, 44b8785c3bb42526c83157bf37c46ef7

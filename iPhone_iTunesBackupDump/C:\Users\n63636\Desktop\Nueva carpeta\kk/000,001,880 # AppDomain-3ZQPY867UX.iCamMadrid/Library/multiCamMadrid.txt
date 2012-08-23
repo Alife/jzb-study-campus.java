@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>http://www.dgt.es/camaras/camara-2700001-9.jpg</string>
+	<string>http://www.dgt.es/camaras/camara-2700001-53.jpg</string>
+	<string>http://www.dgt.es/camaras/camara-2700001-11.jpg</string>
+	<string>http://www.dgt.es/camaras/camara-2700001-75.jpg</string>
+	<string>http://www.dgt.es/camaras/camara-2700001-38.jpg</string>
+	<string>http://www.dgt.es/camaras/camara-2700001-36.jpg</string>
+</array>
+</plist>

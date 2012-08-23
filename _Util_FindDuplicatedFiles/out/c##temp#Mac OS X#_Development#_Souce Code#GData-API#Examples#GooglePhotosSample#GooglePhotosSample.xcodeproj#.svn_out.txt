@@ -1,2 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\GooglePhotosSample.xcodeproj\.svn\all-wcprops, a497af32311c403b2c84ea4debd419cd
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\GooglePhotosSample.xcodeproj\.svn\entries, 1cbd8efd85740578610199b75968f1eb

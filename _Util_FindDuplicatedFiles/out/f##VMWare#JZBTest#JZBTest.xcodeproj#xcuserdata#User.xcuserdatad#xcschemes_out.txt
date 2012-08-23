@@ -1,2 +1,0 @@
-f:\VMWare\JZBTest\JZBTest.xcodeproj\xcuserdata\User.xcuserdatad\xcschemes\JZBTest.xcscheme, 47fbb030dbb62d843114e76ce7532e99
-f:\VMWare\JZBTest\JZBTest.xcodeproj\xcuserdata\User.xcuserdatad\xcschemes\xcschememanagement.plist, 39183a49a9ed08c16c9dc6ec4071a3dd

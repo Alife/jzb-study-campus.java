@@ -1,3 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\Touch\GTMOAuth2ViewControllerTouch.h, b38bcb9200c5d345e4f956f1c79a989c
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\Touch\GTMOAuth2ViewControllerTouch.m, 726f85bcaf3bbc82fb5414db119bf7aa
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\OAuth2\Touch\GTMOAuth2ViewTouch.xib, 75aac89fb7d1ade4f134e0272b10643e

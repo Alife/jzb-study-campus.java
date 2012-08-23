@@ -1,8 +1,0 @@
-c:\temp\hackintosh\Chameleon-2.0-RC4-r684-bin.tar.gz, aab1283e29d2f513f73310f4e03d4740
-c:\temp\hackintosh\Chimera-1.5.4.zip, 062660bba8469eb450ea969a852bff90
-c:\temp\hackintosh\iBoot-3.2.0.zip, ad178aba3be4070f510e952df6548e13
-c:\temp\hackintosh\iBoot-Legacy-2.7.2.zip, ce5efe0fb254567b2027aa4a4901c565
-c:\temp\hackintosh\MultiBeast-3.9.0.zip, dd02c7301010bef1a2af86905c948367
-c:\temp\hackintosh\MultiBeast-4.0.2-LION.zip, 86dfb6001a76158ae6c12459b09b2058
-c:\temp\hackintosh\tmsetup.zip, e5a815484870c69e062e0cfe8d4e2a6a
-c:\temp\hackintosh\unetbootin-windows-563.exe, 4c26899baaa17d5a128cea5c559a247e

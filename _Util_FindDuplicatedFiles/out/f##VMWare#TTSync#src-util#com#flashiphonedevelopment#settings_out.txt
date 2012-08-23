@@ -1,2 +1,0 @@
-f:\VMWare\TTSync\src-util\com\flashiphonedevelopment\settings\GlobalSettings.as, c385315ebcba21dfa83f78a23fd27fb3
-f:\VMWare\TTSync\src-util\com\flashiphonedevelopment\settings\IPhoneAppSettings.as, 3faf3a9c5fbc51fe56e37af8845d391d

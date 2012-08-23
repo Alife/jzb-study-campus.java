@@ -1,3 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\English.lproj\.svn\text-base\GooglePhotosSampleWindow.xib.svn-base, 6c4965dca4fa51466d260b5da7001b57
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\English.lproj\.svn\text-base\InfoPlist.strings.svn-base, 8b24ec6fa6f9130495b3e12f8ba5cff5
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\GooglePhotosSample\English.lproj\.svn\text-base\MainMenu.xib.svn-base, 07734218a7d04a754b23b96aca7f1470

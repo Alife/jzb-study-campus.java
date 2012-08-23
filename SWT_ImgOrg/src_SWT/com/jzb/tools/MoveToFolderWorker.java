@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.jzb.futil.FileExtFilter;
+import com.jzb.futil.FileExtFilter.IncludeFolders;
 import com.jzb.swt.util.BaseWorker;
 import com.jzb.swt.util.IProgressMonitor;
 import com.jzb.util.Tracer;
@@ -60,7 +61,7 @@ public class MoveToFolderWorker extends BaseWorker {
     private void _separateInFolders(final File baseFolder) throws Exception {
 
         // Gets just image files and folders
-        File fList[] = baseFolder.listFiles(FileExtFilter.imgFilter(true));
+        File fList[] = baseFolder.listFiles(FileExtFilter.imgFilter(IncludeFolders.YES));
 
         // Iterate files
         for (File aFile : fList) {
@@ -166,7 +167,7 @@ public class MoveToFolderWorker extends BaseWorker {
         Tracer._debug("");
 
         // Gets just image files and folders
-        File fList[] = aFolder.listFiles(FileExtFilter.imgFilter(true));
+        File fList[] = aFolder.listFiles(FileExtFilter.imgFilter(IncludeFolders.YES));
 
         // Iterate list
         for (File aFile : fList) {

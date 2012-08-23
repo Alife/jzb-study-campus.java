@@ -6,19 +6,17 @@ import com.jzb.util.DefaultHttpProxy;
 
 public class XULRunnerInitializer {
 
-    static final String        XULRUNNER_PATH      = "org.eclipse.swt.browser.XULRunnerPath";             //$NON-NLS-1$
+    static final String        XULRUNNER_PATH      = "org.eclipse.swt.browser.XULRunnerPath";                             //$NON-NLS-1$
 
-    public static final String XULRUNNER_DIRECTORY = "C:/WKSPs/Consolidado/XULRunner/mozilla/xulrunner";
+    public static final String XULRUNNER_DIRECTORY = 
+            //"/Users/jzarzuela/Documents/java-Campus/XULRunner/mozilla/xulrunner";
 
+    "Library/Frameworks/XUL.framework/Versions/1.9.0.17";
+    
     public static void initialize() {
-        File xulRunnerRoot = null;
-        try {
-            xulRunnerRoot = new File(XULRUNNER_DIRECTORY);
-        } catch (Exception e) {
-        }
-
+        File xulRunnerRoot = new File(XULRUNNER_DIRECTORY);
         if (xulRunnerRoot != null) {
-            System.setProperty(XULRUNNER_PATH, xulRunnerRoot.getAbsolutePath());
+            //System.setProperty(XULRUNNER_PATH, xulRunnerRoot.getAbsolutePath());
 
             DefaultHttpProxy.setDefaultProxy();
         }

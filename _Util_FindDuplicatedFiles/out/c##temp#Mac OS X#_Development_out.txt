@@ -1,5 +1,0 @@
-c:\temp\Mac OS X\_Development\eclipse-SDK-3.6.2-macosx-cocoa-x86_64.tar.gz, 72f7189e0fd9dc5ac44e28ccc1cd4432
-c:\temp\Mac OS X\_Development\eclipse-SDK-3.6.2-macosx-cocoa.tar.gz, 15104bfcc93bf4988be6c82caaa6c3ea
-c:\temp\Mac OS X\_Development\JavaForMacOSX10.6Update5.dmg, d2f0f9af85b9078eda0f5dec99e3c39c
-c:\temp\Mac OS X\_Development\xcode_4.0.2_and_ios_sdk_4.3.dmg, 5b8cb0b140adabce3430b9ddbac4b5e5
-c:\temp\Mac OS X\_Development\_Souce Code.zip, ca6d04fabd76a11bdcbda8ad579ac454

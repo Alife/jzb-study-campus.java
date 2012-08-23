@@ -50,8 +50,8 @@ public class Main {
         //********************************************************************************
         //********************************************************************************
         final File baseFolders[] = {
-                new File("f:\\"),
-                new File("c:\\temp")
+                new File("/Users/jzarzuela/Desktop/jzb/Fotos"),
+                new File("/Users/jzarzuela/Desktop/jzb/backup-discoextr/_Backup_/_Fotos_")
         };
         //********************************************************************************
         //********************************************************************************
@@ -60,7 +60,7 @@ public class Main {
         
         
         
-        final File outputFolder = new File("C:\\WKSPs\\Consolidado\\_Util_FindDuplicatedFiles\\out");
+        final File outputFolder = new File("/Users/jzarzuela/Documents/java-Campus/_Util_FindDuplicatedFiles/out");
         outputFolder.mkdirs();
         
         
@@ -95,6 +95,7 @@ public class Main {
     
     private void _iterateFolder(File folder) {
         
+        System.out.println("--"+folder);
         long t2=System.currentTimeMillis();
         if(t2-m_t1>=5000) {
             m_t1=t2;

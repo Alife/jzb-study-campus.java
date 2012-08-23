@@ -1,5 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\English.lproj\.svn\text-base\CalendarSampleWindow.xib.svn-base, c46716e8e8737984e7f3f3f967f6c701
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\English.lproj\.svn\text-base\EditACLWindow.xib.svn-base, b9d9c0cfda330f4bd2e3e90be04758d7
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\English.lproj\.svn\text-base\EditEventWindow.xib.svn-base, 7d3a595702d3208fc82d8788b66b0e82
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\English.lproj\.svn\text-base\InfoPlist.strings.svn-base, 31828dea93ea4700f792f06c2f4b2500
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Examples\CalendarSample\English.lproj\.svn\text-base\MainMenu.xib.svn-base, cf9693334ed0e889369d7e2834cdafba

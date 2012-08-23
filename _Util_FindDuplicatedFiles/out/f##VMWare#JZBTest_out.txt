@@ -1,2 +1,0 @@
-f:\VMWare\JZBTest\.DS_Store, 0a7a33682d282e63107cfc73c1985c16
-f:\VMWare\JZBTest\._.DS_Store, e218a8dff84fc975f30fb0a0dab75a9b

@@ -1,1 +1,0 @@
-c:\temp\Mac OS X\_Development\_Souce Code\GData-API\Source\Resources\English.lproj\InfoPlist.strings, 430409c7d94b11ee4bf31c5b03ae424a
