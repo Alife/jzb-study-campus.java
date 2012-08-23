@@ -44,20 +44,22 @@ public class DeleteEmptyFoldersUI extends BaseUI {
 
     // --------------------------------------------------------------------------------------------------------
     @Override
-    protected void checkSubclass() {
-        // Disable the check that prevents subclassing of SWT components
+    public String getTaskDescription() {
+        String description = "";
+        description += "<p>Deletes all subfolders that don't have any file inside.</p>";
+        return description;
     }
 
     // --------------------------------------------------------------------------------------------------------
+    @Override
     public String getTaskName() {
         return "Delete empty folders";
     }
 
     // --------------------------------------------------------------------------------------------------------
-    public String getTaskDescription() {
-        String description = "";
-        description += "<p>Deletes all subfolders that don't have any file inside.</p>";
-        return description;
+    @Override
+    protected void checkSubclass() {
+        // Disable the check that prevents subclassing of SWT components
     }
 
     // --------------------------------------------------------------------------------------------------------

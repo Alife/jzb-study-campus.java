@@ -8,9 +8,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TreeSet;
 
+import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
+import com.drew.metadata.exif.ExifSubIFDDirectory;
 
 /**
  * @author n000013
@@ -83,8 +85,8 @@ public class PrintDate {
             if (!jpegFile.getName().toLowerCase().endsWith(".jpg"))
                 continue;
 
-            Metadata metadata = JpegMetadataReader.readMetadata(jpegFile);
-            Directory dir = metadata.getDirectory(com.drew.metadata.exif.ExifDirectory.class);
+            Metadata metadata = ImageMetadataReader.readMetadata(jpegFile);
+            ExifSubIFDDirectory dir = metadata.getDirectory(ExifSubIFDDirectory.class);
             Date d = null;
             try {
                 d = dir.getDate(36868);// EXIF_DATE_TIME);

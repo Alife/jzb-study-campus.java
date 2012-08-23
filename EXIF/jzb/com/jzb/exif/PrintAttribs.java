@@ -6,10 +6,12 @@ package com.jzb.exif;
 import java.io.File;
 import java.util.Iterator;
 
+import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
+import com.drew.metadata.exif.ExifSubIFDDirectory;
 
 /**
  * @author n000013
@@ -59,9 +61,9 @@ public class PrintAttribs {
 
     private void _printFileAttrib(File jpegFile) throws Exception {
         System.out.println("----> "+jpegFile.getName());
-        Metadata metadata = JpegMetadataReader.readMetadata(jpegFile);
-        Directory dir = metadata.getDirectory(com.drew.metadata.exif.ExifDirectory.class);
-        Iterator iter=dir.getTagIterator();
+        Metadata metadata = ImageMetadataReader.readMetadata(jpegFile);
+        ExifSubIFDDirectory dir = metadata.getDirectory(ExifSubIFDDirectory.class);
+        Iterator iter=dir.getTags().iterator();
         while(iter.hasNext()) {
             Tag tag = (Tag) iter.next();
             System.out.println(tag.getTagTypeHex()+" "+tag+" "+dir.getObject(tag.getTagType()));

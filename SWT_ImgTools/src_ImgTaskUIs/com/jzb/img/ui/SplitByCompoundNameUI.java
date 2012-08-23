@@ -44,21 +44,23 @@ public class SplitByCompoundNameUI extends BaseUI {
 
     // --------------------------------------------------------------------------------------------------------
     @Override
-    protected void checkSubclass() {
-        // Disable the check that prevents subclassing of SWT components
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public String getTaskName() {
-        return "Split by CompoundName";
-    }
-
-    // --------------------------------------------------------------------------------------------------------
     public String getTaskDescription() {
         String description = "";
         description += "<p>Splits files moving them into subfolders named after the parts of the compound name.</p>";
         description += "<p><b>Note:</b><i> No recursive processing is done and files without a compound name won't be moved.</i></p>";
         return description;
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    public String getTaskName() {
+        return "Split by CompoundName";
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    protected void checkSubclass() {
+        // Disable the check that prevents subclassing of SWT components
     }
 
     // --------------------------------------------------------------------------------------------------------

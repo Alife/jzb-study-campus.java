@@ -25,10 +25,10 @@ import org.eclipse.wb.swt.SWTResourceManager;
  */
 public class RenameWithRegExprUI extends BaseUI {
 
+    private Label m_lblResult;
+    private Text  m_txtExample;
     private Text  m_txtRegExpr;
     private Text  m_txtReplacement;
-    private Text  m_txtExample;
-    private Label m_lblResult;
 
     // --------------------------------------------------------------------------------------------------------
     /**
@@ -48,6 +48,7 @@ public class RenameWithRegExprUI extends BaseUI {
         m_txtRegExpr = new Text(this, SWT.BORDER);
         m_txtRegExpr.addModifyListener(new ModifyListener() {
 
+            @Override
             @SuppressWarnings("synthetic-access")
             public void modifyText(ModifyEvent e) {
                 _evaluateRegExpr();
@@ -74,6 +75,7 @@ public class RenameWithRegExprUI extends BaseUI {
         m_txtReplacement = new Text(this, SWT.BORDER);
         m_txtReplacement.addModifyListener(new ModifyListener() {
 
+            @Override
             @SuppressWarnings("synthetic-access")
             public void modifyText(ModifyEvent e) {
                 _evaluateRegExpr();
@@ -88,6 +90,7 @@ public class RenameWithRegExprUI extends BaseUI {
         m_txtExample = new Text(this, SWT.BORDER);
         m_txtExample.addModifyListener(new ModifyListener() {
 
+            @Override
             @SuppressWarnings("synthetic-access")
             public void modifyText(ModifyEvent e) {
                 _evaluateRegExpr();
@@ -131,16 +134,6 @@ public class RenameWithRegExprUI extends BaseUI {
 
     // --------------------------------------------------------------------------------------------------------
     @Override
-    protected void checkSubclass() {
-        // Disable the check that prevents subclassing of SWT components
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public String getTaskName() {
-        return "Rename with RegExpr";
-    }
-
-    // --------------------------------------------------------------------------------------------------------
     public String getTaskDescription() {
         String description = "";
         description += "<p><b>Compound:</b> Renames files using the closest compound name.<br/>";
@@ -152,6 +145,18 @@ public class RenameWithRegExprUI extends BaseUI {
         description += "<tr><td><b>Replacement:</b></td><td>Replacement value, with <b>'\\n'</b>, to be used when parsin file's names.</td><td>&nbsp;&nbsp;</td><td>\\1-#\\2-\\3_[\\4]</td></tr>";
         description += "</table>";
         return description;
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    public String getTaskName() {
+        return "Rename with RegExpr";
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    protected void checkSubclass() {
+        // Disable the check that prevents subclassing of SWT components
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -168,14 +173,14 @@ public class RenameWithRegExprUI extends BaseUI {
                 Pattern pt = Pattern.compile(regExpr);
                 if (pt.matcher(example).matches()) {
                     result = RenameWithRegExpr.getReplacementName(replacement, pt, example);
-                    if(result.indexOf(".")<0) {
-                        result+=".jpg";
+                    if (result.indexOf(".") < 0) {
+                        result += ".jpg";
                     }
-                } 
-                if (result==null || !NameComposer.isCompoundName(result)) {
-                    if(result==null) {
-                        m_lblResult.setText("*NOMATCH* "+example);
-                    }else {
+                }
+                if (result == null || !NameComposer.isCompoundName(result)) {
+                    if (result == null) {
+                        m_lblResult.setText("*NOMATCH* " + example);
+                    } else {
                         m_lblResult.setText(result);
                     }
                     m_lblResult.setForeground(SWTResourceManager.getColor(SWT.COLOR_DARK_RED));

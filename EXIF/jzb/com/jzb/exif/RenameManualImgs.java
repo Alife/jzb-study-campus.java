@@ -6,10 +6,12 @@ package com.jzb.exif;
 import java.io.File;
 import java.util.Iterator;
 
+import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
+import com.drew.metadata.exif.ExifSubIFDDirectory;
 
 /**
  * @author n000013
@@ -73,8 +75,8 @@ public class RenameManualImgs {
         int p1=jpegFile.getName().indexOf('-');
         String justName = jpegFile.getName().substring(0,p1);
         
-        Metadata metadata = JpegMetadataReader.readMetadata(jpegFile);
-        Directory dir = metadata.getDirectory(com.drew.metadata.exif.ExifDirectory.class);
+        Metadata metadata = ImageMetadataReader.readMetadata(jpegFile);
+        ExifSubIFDDirectory dir = metadata.getDirectory(ExifSubIFDDirectory.class);
         //_printDIR(dir);
         
         int FocalLen = dir.getInt(37386);
@@ -102,8 +104,8 @@ public class RenameManualImgs {
         int p1=jpegFile.getName().lastIndexOf('.');
         String justName = jpegFile.getName().substring(0,p1);
         
-        Metadata metadata = JpegMetadataReader.readMetadata(jpegFile);
-        Directory dir = metadata.getDirectory(com.drew.metadata.exif.ExifDirectory.class);
+        Metadata metadata = ImageMetadataReader.readMetadata(jpegFile);
+        ExifSubIFDDirectory dir = metadata.getDirectory(ExifSubIFDDirectory.class);
 //        _printDIR(dir);
         
         int FocalLen = dir.getInt(37386);
@@ -126,7 +128,7 @@ public class RenameManualImgs {
 
     private void _printDIR(Directory dir) throws Exception {
         System.out.println("***************************************************************");
-        Iterator iter=dir.getTagIterator();
+        Iterator iter=dir.getTags().iterator();
         while(iter.hasNext()) {
             Tag tag=(Tag)iter.next();
             System.out.println(tag.getTagName()+"("+tag.getTagType()+"): "+tag.getDescription());

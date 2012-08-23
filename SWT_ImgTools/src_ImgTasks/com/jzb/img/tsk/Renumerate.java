@@ -16,11 +16,11 @@ import com.jzb.util.Tracer;
  */
 public class Renumerate extends BaseTask {
 
-    private static final int COUNTER_INCREMENT = 5;
-
     public static enum ResetByFolder {
         NO, YES
     }
+
+    private static final int COUNTER_INCREMENT = 5;
 
     // --------------------------------------------------------------------------------------------------------
     public Renumerate(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) {

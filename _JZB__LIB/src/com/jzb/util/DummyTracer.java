@@ -9,7 +9,8 @@ package com.jzb.util;
  */
 public class DummyTracer extends Tracer {
 
-    public DummyTracer() {
+    public DummyTracer(boolean buffered) {
+        super(buffered);
     }
 
     protected void __debug(String msg) {

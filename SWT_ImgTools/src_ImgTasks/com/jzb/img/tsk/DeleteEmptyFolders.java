@@ -15,6 +15,25 @@ import com.jzb.util.Tracer;
 public class DeleteEmptyFolders extends BaseTask {
 
     // --------------------------------------------------------------------------------------------------------
+    protected static void _deleteFolder(File folder, JustCheck justChecking) {
+        boolean done = justChecking == JustCheck.YES ? false : folder.delete();
+        if (justChecking == JustCheck.YES || done) {
+            Tracer._debug("Deleted empty folder: '" + folder.getName() + "'");
+        } else {
+            Tracer._error("Deleting empty folder: '" + folder.getName() + "'");
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    protected static void _deleteMacDS_Store(File folder) {
+        for (File f : folder.listFiles()) {
+            if (f.getName().equals(".DS_Store")) {
+                f.delete();
+            }
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
     public DeleteEmptyFolders(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) {
         super(justChecking, baseFolder, recursive);
     }
@@ -36,50 +55,29 @@ public class DeleteEmptyFolders extends BaseTask {
         // Gets just folders
         File fList[] = folder.listFiles(FileExtFilter.folderFilter());
 
-        if(fList==null) {
+        if (fList == null) {
             return;
         }
-        
+
         // ---------------------------------------------
         // Iterate subfolders
         for (File sfolder : fList) {
             _deleteEmptyFolders(sfolder);
         }
 
-        
         Tracer._debug("");
         Tracer._debug("Deleting empty subfolders in folder: '" + folder + "'");
         Tracer._debug("");
 
-        
         // ---------------------------------------------
         // Delete MAC OS X special files
         _deleteMacDS_Store(folder);
-        
+
         // ---------------------------------------------
         // Delete empty subfolders
         for (File sfolder : fList) {
-            if (sfolder.listFiles()!=null && sfolder.listFiles().length == 0) {
+            if (sfolder.listFiles() != null && sfolder.listFiles().length == 0) {
                 _deleteFolder(sfolder, m_justChecking);
-            } 
-        }
-    }
-    
-    // --------------------------------------------------------------------------------------------------------
-    protected static void _deleteFolder(File folder, JustCheck justChecking) {
-        boolean done = justChecking == JustCheck.YES ? false : folder.delete();
-        if (justChecking == JustCheck.YES || done) {
-            Tracer._debug("Deleted empty folder: '" + folder.getName() + "'");
-        } else {
-            Tracer._error("Deleting empty folder: '" + folder.getName() + "'");
-        }
-    }
-    
-    // --------------------------------------------------------------------------------------------------------
-    protected static void _deleteMacDS_Store(File folder) {
-        for (File f : folder.listFiles()) {
-            if(f.getName().equals(".DS_Store")) {
-                f.delete();
             }
         }
     }

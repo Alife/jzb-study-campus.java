@@ -11,9 +11,11 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
+import com.drew.metadata.exif.ExifSubIFDDirectory;
 import com.sun.xml.internal.ws.encoding.TagInfoset;
 
 /**
@@ -133,8 +135,8 @@ public class SearchForPano {
             return info;
         }
 
-        Metadata metadata = JpegMetadataReader.readMetadata(jpegFile);
-        Directory dir = metadata.getDirectory(com.drew.metadata.exif.ExifDirectory.class);
+        Metadata metadata = ImageMetadataReader.readMetadata(jpegFile);
+        ExifSubIFDDirectory dir = metadata.getDirectory(ExifSubIFDDirectory.class);
 
         try {
             info._date = dir.getDate(EXIF_DATE_TIME).getTime();

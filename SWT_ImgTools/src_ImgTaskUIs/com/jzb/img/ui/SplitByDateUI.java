@@ -22,12 +22,12 @@ import org.eclipse.swt.widgets.Label;
 public class SplitByDateUI extends BaseUI {
 
     private Button  m_chkGroup;
-    private Spinner m_spYears;
-    private Spinner m_spMonths;
-    private Spinner m_spMinutes;
     private Spinner m_spDays;
-    private Spinner m_spSeconds;
     private Spinner m_spHours;
+    private Spinner m_spMinutes;
+    private Spinner m_spMonths;
+    private Spinner m_spSeconds;
+    private Spinner m_spYears;
 
     // --------------------------------------------------------------------------------------------------------
     /**
@@ -119,16 +119,6 @@ public class SplitByDateUI extends BaseUI {
 
     // --------------------------------------------------------------------------------------------------------
     @Override
-    protected void checkSubclass() {
-        // Disable the check that prevents subclassing of SWT components
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public String getTaskName() {
-        return "Split by date";
-    }
-
-    // --------------------------------------------------------------------------------------------------------
     public String getTaskDescription() {
         String description = "";
         description += "<p><b>Split by date:</b> Splits files moving them into subfolders named after the EXIF creation time.</p>";
@@ -136,6 +126,18 @@ public class SplitByDateUI extends BaseUI {
         description += "<p><b>Time offset:</b> Offset to be added to (or subtracted from) the file's creation date when generating the timestamp.</p>";
         description += "<p><b>Note:</b><i> In image files without EXIF information, file's LAST MODIFICATION time will be used (adding '*' to the name)</i></p>";
         return description;
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    public String getTaskName() {
+        return "Split by date";
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    protected void checkSubclass() {
+        // Disable the check that prevents subclassing of SWT components
     }
 
     // --------------------------------------------------------------------------------------------------------

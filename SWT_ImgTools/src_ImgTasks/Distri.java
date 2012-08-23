@@ -1,6 +1,5 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -17,12 +16,10 @@ import java.util.TreeMap;
  */
 public class Distri {
 
-    private static final DecimalFormat s_df1 = new DecimalFormat("000.00");
-
     public static class TInfo {
 
-        public double value;
         public double dist;
+        public double value;
 
         /**
          * @see java.lang.Object#toString()
@@ -35,6 +32,8 @@ public class Distri {
             return val;
         }
     }
+
+    private static final DecimalFormat s_df1 = new DecimalFormat("000.00");
 
     /**
      * Static Main starting method
@@ -120,6 +119,25 @@ public class Distri {
     }
 
     // ------------------------------------------------------------------------------------------------------------
+    private double _calcExcessiveDist(List<TInfo> infos) {
+
+        double avgDist = 0;
+        double avgDev = 0;
+
+        for (int n = 0; n < infos.size() - 1; n++) {
+            avgDist += infos.get(n).dist;
+        }
+        avgDist /= infos.size() - 1;
+
+        for (int n = 0; n < infos.size() - 1; n++) {
+            avgDev += (infos.get(n).dist - avgDist) * (infos.get(n).dist - avgDist);
+        }
+        avgDev = Math.sqrt(avgDev / (infos.size() - 1));
+
+        return avgDist + avgDev;
+    }
+
+    // ------------------------------------------------------------------------------------------------------------
     private double _getMaxDist(List<TInfo> infos) {
 
         double maxDist = 0;
@@ -132,20 +150,35 @@ public class Distri {
     }
 
     // ------------------------------------------------------------------------------------------------------------
+    private void _sortAndCalcDist(ArrayList<TInfo> infos) {
+
+        Collections.sort(infos, new Comparator<TInfo>() {
+
+            @Override
+            public int compare(TInfo o1, TInfo o2) {
+                return (int) (o1.value - o2.value);
+            }
+        });
+
+        for (int n = 0; n < infos.size() - 1; n++) {
+            double dist = Math.abs(infos.get(n).value - infos.get(n + 1).value);
+            infos.get(n).dist = dist;
+        }
+    }
+
+    // ------------------------------------------------------------------------------------------------------------
     private void _splitInGroups(List<TInfo> infos, TreeMap<String, List<TInfo>> groups, double minDist) {
 
-        if (infos.size() < 2 || _getMaxDist(infos)<=minDist) {
+        if (infos.size() < 2 || _getMaxDist(infos) <= minDist) {
             return;
         }
 
-
-
         double excessiveDist = _calcExcessiveDist(infos);
-        
+
         ArrayList<List<TInfo>> groupsFound = new ArrayList<List<TInfo>>();
 
         int p1 = 0;
-        for (int n = 0; n < infos.size()-1; n++) {
+        for (int n = 0; n < infos.size() - 1; n++) {
             if (infos.get(n).dist > excessiveDist) {
                 String key = "Grp-" + infos.get(p1).value;
                 List<TInfo> group = infos.subList(p1, n + 1);
@@ -169,42 +202,6 @@ public class Distri {
             }
         }
 
-    }
-
-    // ------------------------------------------------------------------------------------------------------------
-    private void _sortAndCalcDist(ArrayList<TInfo> infos) {
-
-        Collections.sort(infos, new Comparator<TInfo>() {
-
-            @Override
-            public int compare(TInfo o1, TInfo o2) {
-                return (int) (o1.value - o2.value);
-            }
-        });
-
-        for (int n = 0; n < infos.size() - 1; n++) {
-            double dist = Math.abs(infos.get(n).value - infos.get(n + 1).value);
-            infos.get(n).dist = dist;
-        }
-    }
-
-    // ------------------------------------------------------------------------------------------------------------
-    private double _calcExcessiveDist(List<TInfo> infos) {
-
-        double avgDist = 0;
-        double avgDev = 0;
-
-        for (int n = 0; n < infos.size() - 1; n++) {
-            avgDist += infos.get(n).dist;
-        }
-        avgDist /= infos.size() - 1;
-
-        for (int n = 0; n < infos.size() - 1; n++) {
-            avgDev += (infos.get(n).dist - avgDist) * (infos.get(n).dist - avgDist);
-        }
-        avgDev = Math.sqrt(avgDev / (infos.size() - 1));
-
-        return avgDist + avgDev;
     }
 
 }

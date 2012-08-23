@@ -7,9 +7,11 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
+import com.drew.metadata.exif.ExifSubIFDDirectory;
 
 /**
  * @author n63636
@@ -64,8 +66,8 @@ public class SeparateByDate {
             if (!jpegFile.getName().toLowerCase().endsWith(".jpg"))
                 continue;
 
-            Metadata metadata = JpegMetadataReader.readMetadata(jpegFile);
-            Directory dir = metadata.getDirectory(com.drew.metadata.exif.ExifDirectory.class);
+            Metadata metadata = ImageMetadataReader.readMetadata(jpegFile);
+            ExifSubIFDDirectory dir = metadata.getDirectory(ExifSubIFDDirectory.class);
             Date d = null;
             try {
                 d = dir.getDate(EXIF_DATE_TIME);

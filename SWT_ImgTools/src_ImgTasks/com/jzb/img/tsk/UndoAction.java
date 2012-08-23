@@ -40,8 +40,6 @@ public class UndoAction extends BaseTask {
         for (UndoInfo ui : info) {
             _renameFile(ui.newFile, ui.origFile);
         }
-        
-        
 
     }
 }

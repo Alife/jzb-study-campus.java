@@ -14,12 +14,12 @@ import com.jzb.img.tsk.BaseTask.RecursiveProcessing;
  */
 public interface ITaskWnd {
 
+    public File getBaseFolder();
+
     public JustCheck getJustCheck();
 
     public RecursiveProcessing getRecursiveProcessing();
 
-    public File getBaseFolder();
-    
     public void runTask(String taskName, Runnable task);
 
 }

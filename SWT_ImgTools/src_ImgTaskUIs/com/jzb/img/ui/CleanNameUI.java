@@ -43,7 +43,7 @@ public class CleanNameUI extends BaseUI {
         });
         m_btnCleanName.setBounds(79, 6, 94, 28);
         m_btnCleanName.setText("Clean Name");
-        
+
         m_chkForce = new Button(this, SWT.CHECK);
         m_chkForce.setBounds(10, 11, 63, 18);
         m_chkForce.setText("Force");
@@ -52,21 +52,23 @@ public class CleanNameUI extends BaseUI {
 
     // --------------------------------------------------------------------------------------------------------
     @Override
-    protected void checkSubclass() {
-        // Disable the check that prevents subclassing of SWT components
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public String getTaskName() {
-        return "Clean Names";
-    }
-
-    // --------------------------------------------------------------------------------------------------------
     public String getTaskDescription() {
         String description = "";
         description += "<p>Renames files keeping just the \"Image File Name\" part (the original name) from the compound file's names.</p>";
         description += "<b>Force:</b> Tries to clean the name even though it wasn't detected as a proper compound name. It will use anything found between brakets as the original name.";
         return description;
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    public String getTaskName() {
+        return "Clean Names";
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    protected void checkSubclass() {
+        // Disable the check that prevents subclassing of SWT components
     }
 
     // --------------------------------------------------------------------------------------------------------

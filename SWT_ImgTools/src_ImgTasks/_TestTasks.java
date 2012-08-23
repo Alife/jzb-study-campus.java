@@ -63,9 +63,8 @@ public class _TestTasks {
      */
     public void doIt(String[] args) throws Exception {
 
-        
-        //File baseFolder = new File("/Users/jzarzuela/Documents/_TMP_/test/2010_03_18-21_Leon");
-        //File baseFolder = new File("/Users/jzarzuela/Documents/_TMP_/test/2006_03_20-24_Dublin");
+        // File baseFolder = new File("/Users/jzarzuela/Documents/_TMP_/test/2010_03_18-21_Leon");
+        // File baseFolder = new File("/Users/jzarzuela/Documents/_TMP_/test/2006_03_20-24_Dublin");
         File baseFolder = new File("/Users/jzarzuela/Desktop/jzb/backup-discoextr/_Backup_/_Fotos_/Business_Jose");
 
         // _test_CompoundNames();
@@ -77,35 +76,10 @@ public class _TestTasks {
         // _test_SplitByDate(JustCheck.YES, baseFolder, RecursiveProcessing.YES);
         // _test_RenameAsFolder(JustCheck.YES, baseFolder, RecursiveProcessing.YES, AggregateFolders.YES);
         // _test_Renumerate(JustCheck.YES, baseFolder, RecursiveProcessing.YES, 10, ResetByFolder.YES);
-        //_test_SearchNamePattern(JustCheck.YES, baseFolder, RecursiveProcessing.YES);
-        //_test_RanameByPattern(JustCheck.YES, baseFolder, RecursiveProcessing.YES,"Dublin_(@@@@@)-([^-]*)-IMGP(@@@@@)","Dublin-#\\1_\\2_[IMGP\\3]");
+        // _test_SearchNamePattern(JustCheck.YES, baseFolder, RecursiveProcessing.YES);
+        // _test_RanameByPattern(JustCheck.YES, baseFolder, RecursiveProcessing.YES,"Dublin_(@@@@@)-([^-]*)-IMGP(@@@@@)","Dublin-#\\1_\\2_[IMGP\\3]");
         _test_RanameTryCompoundName(JustCheck.YES, baseFolder, RecursiveProcessing.YES);
-        
-        
-    }
 
-    // --------------------------------------------------------------------------------------------------------
-    private void _test_RanameTryCompoundName(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) throws Exception {
-        RenameWithRegExpr task = new RenameWithRegExpr(justChecking, baseFolder, recursive);
-        task.renameTryCompoundName();
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    private void _test_RanameByPattern(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive, String regexpr, String replacement) throws Exception {
-        RenameWithRegExpr task = new RenameWithRegExpr(justChecking, baseFolder, recursive);
-        task.renameByRegExpr(regexpr,replacement);
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    private void _test_SearchNamePattern(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) throws Exception {
-        RenameWithRegExpr task = new RenameWithRegExpr(justChecking, baseFolder, recursive);
-        task.searchPatterns();
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    private void _test_Renumerate(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive, int baseCounter, ResetByFolder resetByFolder) throws Exception {
-        Renumerate task = new Renumerate(justChecking, baseFolder, recursive);
-        task.renumerate(baseCounter, resetByFolder);
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -115,15 +89,15 @@ public class _TestTasks {
     }
 
     // --------------------------------------------------------------------------------------------------------
-    private void _test_MoveFromSubfolders(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) throws Exception {
-        MoveFromSubfolders task = new MoveFromSubfolders(justChecking, baseFolder, recursive);
-        task.moveFromSubfolder(DeleteEmpty.YES);
-    }
-
-    // --------------------------------------------------------------------------------------------------------
     private void _test_CompoundNames() throws Exception {
         String name = "uno-dos-#00000-juan-$0000=00=00-00=00=00$*=pedro_pepe_[pepe].pppppp";
         System.out.println(NameComposer.isCompoundName(name));
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    private void _test_MoveFromSubfolders(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) throws Exception {
+        MoveFromSubfolders task = new MoveFromSubfolders(justChecking, baseFolder, recursive);
+        task.moveFromSubfolder(DeleteEmpty.YES);
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -156,15 +130,21 @@ public class _TestTasks {
     }
 
     // --------------------------------------------------------------------------------------------------------
-    private void _test_RenameAsFolder(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) throws Exception {
-        RenameWithFolders task = new RenameWithFolders(justChecking, baseFolder, recursive);
-        task.renameAsSubfolder();
+    private void _test_RanameByPattern(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive, String regexpr, String replacement) throws Exception {
+        RenameWithRegExpr task = new RenameWithRegExpr(justChecking, baseFolder, recursive);
+        task.renameByRegExpr(regexpr, replacement);
     }
 
     // --------------------------------------------------------------------------------------------------------
-    private void _test_SplitByDate(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) throws Exception {
-        SplitByDate task = new SplitByDate(justChecking, baseFolder, recursive);
-        task.splitByDate(GroupByCloseness.NO,new BaseTask.TimeStampShift());
+    private void _test_RanameTryCompoundName(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) throws Exception {
+        RenameWithRegExpr task = new RenameWithRegExpr(justChecking, baseFolder, recursive);
+        task.renameTryCompoundName();
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    private void _test_RenameAsFolder(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) throws Exception {
+        RenameWithFolders task = new RenameWithFolders(justChecking, baseFolder, recursive);
+        task.renameAsSubfolder();
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -173,6 +153,24 @@ public class _TestTasks {
         BaseTask.TimeStampShift tshift = new BaseTask.TimeStampShift(100, 10, 0, 0, 0, 0);
         task.addTimeDate(tshift);
         // task.removeTimeDate();
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    private void _test_Renumerate(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive, int baseCounter, ResetByFolder resetByFolder) throws Exception {
+        Renumerate task = new Renumerate(justChecking, baseFolder, recursive);
+        task.renumerate(baseCounter, resetByFolder);
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    private void _test_SearchNamePattern(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) throws Exception {
+        RenameWithRegExpr task = new RenameWithRegExpr(justChecking, baseFolder, recursive);
+        task.searchPatterns();
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    private void _test_SplitByDate(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) throws Exception {
+        SplitByDate task = new SplitByDate(justChecking, baseFolder, recursive);
+        task.splitByDate(GroupByCloseness.NO, new BaseTask.TimeStampShift());
     }
 
 }

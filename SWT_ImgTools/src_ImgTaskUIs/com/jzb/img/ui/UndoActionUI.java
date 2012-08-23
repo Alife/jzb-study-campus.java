@@ -44,20 +44,22 @@ public class UndoActionUI extends BaseUI {
 
     // --------------------------------------------------------------------------------------------------------
     @Override
-    protected void checkSubclass() {
-        // Disable the check that prevents subclassing of SWT components
+    public String getTaskDescription() {
+        String description = "";
+        description += "<p>Undoes last changes made on file's names</p>";
+        return description;
     }
 
     // --------------------------------------------------------------------------------------------------------
+    @Override
     public String getTaskName() {
         return "Undo last action";
     }
 
     // --------------------------------------------------------------------------------------------------------
-    public String getTaskDescription() {
-        String description = "";
-        description += "<p>Undoes last changes made on file's names</p>";
-        return description;
+    @Override
+    protected void checkSubclass() {
+        // Disable the check that prevents subclassing of SWT components
     }
 
     // --------------------------------------------------------------------------------------------------------

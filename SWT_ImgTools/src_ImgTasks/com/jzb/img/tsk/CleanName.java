@@ -76,7 +76,7 @@ public class CleanName extends BaseTask {
                     if (p2 >= 0) {
                         int p3 = fName.indexOf('.', p2);
                         if (p3 >= 0) {
-                            newName = fName.substring(p1 + 1, p2)+fName.substring(p3);
+                            newName = fName.substring(p1 + 1, p2) + fName.substring(p3);
                         } else {
                             newName = fName.substring(p1 + 1, p2);
                         }

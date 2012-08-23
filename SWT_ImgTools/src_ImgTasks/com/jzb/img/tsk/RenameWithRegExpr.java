@@ -49,47 +49,6 @@ public class RenameWithRegExpr extends BaseTask {
     }
 
     // --------------------------------------------------------------------------------------------------------
-    public RenameWithRegExpr(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) {
-        super(justChecking, baseFolder, recursive);
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public void renameByRegExpr(String regexpr, String replacement) {
-
-        try {
-            _checkBaseFolder();
-            regexpr = regexpr.replaceAll("\\^@", "[\\^0-9]");
-            regexpr = regexpr.replaceAll("@", "[0-9]");
-            Pattern pt = Pattern.compile(regexpr);
-            _renameByRegExpr(m_baseFolder, pt, replacement);
-        } catch (Exception ex) {
-            Tracer._error("Error processing action", ex);
-        }
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public void renameTryCompoundName() {
-
-        try {
-            _checkBaseFolder();
-            _renameTryCompoundName(m_baseFolder);
-        } catch (Exception ex) {
-            Tracer._error("Error processing action", ex);
-        }
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public void searchPatterns() {
-
-        try {
-            _checkBaseFolder();
-            _searchPatterns(m_baseFolder);
-        } catch (Exception ex) {
-            Tracer._error("Error processing action", ex);
-        }
-    }
-
-    // --------------------------------------------------------------------------------------------------------
     public static NameComposer tryToCalcCompoundName(String fname, String fext) {
 
         Matcher indexMatcher = s_indexPattern.matcher(fname);
@@ -146,6 +105,47 @@ public class RenameWithRegExpr extends BaseTask {
         }
 
         return nc;
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    public RenameWithRegExpr(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) {
+        super(justChecking, baseFolder, recursive);
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    public void renameByRegExpr(String regexpr, String replacement) {
+
+        try {
+            _checkBaseFolder();
+            regexpr = regexpr.replaceAll("\\^@", "[\\^0-9]");
+            regexpr = regexpr.replaceAll("@", "[0-9]");
+            Pattern pt = Pattern.compile(regexpr);
+            _renameByRegExpr(m_baseFolder, pt, replacement);
+        } catch (Exception ex) {
+            Tracer._error("Error processing action", ex);
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    public void renameTryCompoundName() {
+
+        try {
+            _checkBaseFolder();
+            _renameTryCompoundName(m_baseFolder);
+        } catch (Exception ex) {
+            Tracer._error("Error processing action", ex);
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    public void searchPatterns() {
+
+        try {
+            _checkBaseFolder();
+            _searchPatterns(m_baseFolder);
+        } catch (Exception ex) {
+            Tracer._error("Error processing action", ex);
+        }
     }
 
     // --------------------------------------------------------------------------------------------------------

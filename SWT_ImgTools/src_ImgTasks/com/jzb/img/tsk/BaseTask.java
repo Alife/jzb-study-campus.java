@@ -26,28 +26,13 @@ public abstract class BaseTask {
         NO, YES
     }
 
-    protected static class UndoInfo {
-
-        public File newFile;
-        public File origFile;
-    }
-
-    protected File                m_baseFolder;
-    protected JustCheck           m_justChecking;
-    protected NameComposer        m_nc = new NameComposer();
-
-    protected RecursiveProcessing m_recursive;
-    private boolean               m_dontUndo;
-
-    private File                  m_undoFile;
-
     public static class TimeStampShift {
 
         public int years, months, days, hours, mins, secs;
 
         public TimeStampShift() {
         }
-        
+
         public TimeStampShift(int shiftYears, int shiftMonths, int shiftDays, int shiftHours, int shiftMins, int shiftSecs) {
             this.years = shiftYears;
             this.months = shiftMonths;
@@ -57,6 +42,22 @@ public abstract class BaseTask {
             this.secs = shiftSecs;
         }
     }
+
+    protected static class UndoInfo {
+
+        public File newFile;
+        public File origFile;
+    }
+
+    protected File                m_baseFolder;
+    protected JustCheck           m_justChecking;
+
+    protected NameComposer        m_nc = new NameComposer();
+    protected RecursiveProcessing m_recursive;
+
+    private boolean               m_dontUndo;
+
+    private File                  m_undoFile;
 
     // --------------------------------------------------------------------------------------------------------
     protected BaseTask(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) {

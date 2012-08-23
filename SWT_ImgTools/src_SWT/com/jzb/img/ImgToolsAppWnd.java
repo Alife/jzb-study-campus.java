@@ -51,17 +51,6 @@ public class ImgToolsAppWnd implements ITaskWnd {
     private static final String     APP_NAME       = "ImgTools";
 
     private static AppPreferences   s_prefs        = new AppPreferences(APP_NAME);
-    private Button                  m_chkJustCheck;
-    private Button                  m_chkRecurse;
-
-    private Shell                   m_shell;
-    private Text                    m_txtBaseFolder;
-    private TabbedTracerImpl        m_tabbedTracer = new TabbedTracerImpl();
-    private Composite               m_compOperation;
-    private Composite               m_compMain;
-
-    private BaseUI                  m_taskUI       = null;
-    private HashMap<String, BaseUI> m_taskUIs      = new HashMap<String, BaseUI>();
     private static final String     UI_CLASSES[]   = {
                                                    //
             "com.jzb.img.ui.UndoActionUI", //
@@ -75,9 +64,20 @@ public class ImgToolsAppWnd implements ITaskWnd {
             "com.jzb.img.ui.RenameWithTimestampUI", //
             "com.jzb.img.ui.RenameWithRegExprUI" //
                                                    };
-
-    private Combo                   m_cmbOperation;
     private Browser                 m_brwDescription;
+
+    private Button                  m_chkJustCheck;
+    private Button                  m_chkRecurse;
+    private Combo                   m_cmbOperation;
+    private Composite               m_compMain;
+    private Composite               m_compOperation;
+
+    private Shell                   m_shell;
+    private TabbedTracerImpl        m_tabbedTracer = new TabbedTracerImpl();
+    private BaseUI                  m_taskUI       = null;
+
+    private HashMap<String, BaseUI> m_taskUIs      = new HashMap<String, BaseUI>();
+    private Text                    m_txtBaseFolder;
 
     // --------------------------------------------------------------------------------------------------------
     /**
@@ -103,6 +103,32 @@ public class ImgToolsAppWnd implements ITaskWnd {
     }
 
     // --------------------------------------------------------------------------------------------------------
+    @Override
+    public File getBaseFolder() {
+        return new File(m_txtBaseFolder.getText());
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    public JustCheck getJustCheck() {
+        if (m_chkJustCheck.getSelection()) {
+            return JustCheck.YES;
+        } else {
+            return JustCheck.NO;
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    public RecursiveProcessing getRecursiveProcessing() {
+        if (m_chkRecurse.getSelection()) {
+            return RecursiveProcessing.YES;
+        } else {
+            return RecursiveProcessing.NO;
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
     /**
      * Open the window
      */
@@ -120,6 +146,31 @@ public class ImgToolsAppWnd implements ITaskWnd {
             if (!display.readAndDispatch())
                 display.sleep();
         }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    public void runTask(final String taskName, final Runnable task) {
+
+        Runnable runner = new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    Tracer.reset();
+                    Tracer._info("Task execution started [" + taskName + "]");
+                    _executionStarted();
+                    task.run();
+                    Tracer._info("Task execution ended [" + taskName + "]");
+                } catch (Throwable th) {
+                    Tracer._error("Task execution failed [" + taskName + "]", th);
+                }
+                _executionEnded();
+            }
+        };
+
+        Thread thread = new Thread(runner, taskName);
+        thread.start();
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -148,6 +199,7 @@ public class ImgToolsAppWnd implements ITaskWnd {
         m_txtBaseFolder.setBounds(60, 16, 781, 25);
         m_txtBaseFolder.addDisposeListener(new DisposeListener() {
 
+            @Override
             public void widgetDisposed(final DisposeEvent e) {
                 s_prefs.setPref("baseFolder", m_txtBaseFolder.getText());
             }
@@ -271,67 +323,11 @@ public class ImgToolsAppWnd implements ITaskWnd {
     }
 
     // --------------------------------------------------------------------------------------------------------
-    public JustCheck getJustCheck() {
-        if (m_chkJustCheck.getSelection()) {
-            return JustCheck.YES;
-        } else {
-            return JustCheck.NO;
-        }
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public RecursiveProcessing getRecursiveProcessing() {
-        if (m_chkRecurse.getSelection()) {
-            return RecursiveProcessing.YES;
-        } else {
-            return RecursiveProcessing.NO;
-        }
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public File getBaseFolder() {
-        return new File(m_txtBaseFolder.getText());
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public void runTask(final String taskName, final Runnable task) {
-
-        Runnable runner = new Runnable() {
-
-            public void run() {
-                try {
-                    Tracer.reset();
-                    Tracer._info("Task execution started [" + taskName + "]");
-                    _executionStarted();
-                    task.run();
-                    Tracer._info("Task execution ended [" + taskName + "]");
-                } catch (Throwable th) {
-                    Tracer._error("Task execution failed [" + taskName + "]", th);
-                }
-                _executionEnded();
-            }
-        };
-
-        Thread thread = new Thread(runner, taskName);
-        thread.start();
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    private void _executionStarted() {
-        Display.getDefault().asyncExec(new Runnable() {
-
-            public void run() {
-                _fullDisableControl(m_compMain);
-            }
-
-        });
-    }
-
-    // --------------------------------------------------------------------------------------------------------
     private void _executionEnded() {
         Tracer.flush();
         Display.getDefault().asyncExec(new Runnable() {
 
+            @Override
             public void run() {
                 _fullEnableControl(m_compMain);
                 m_chkJustCheck.setSelection(true);
@@ -341,23 +337,44 @@ public class ImgToolsAppWnd implements ITaskWnd {
     }
 
     // --------------------------------------------------------------------------------------------------------
+    private void _executionStarted() {
+        Display.getDefault().asyncExec(new Runnable() {
+
+            @Override
+            public void run() {
+                _fullDisableControl(m_compMain);
+            }
+
+        });
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    private void _fullDisableControl(Control control) {
+        control.setEnabled(false);
+        if (control instanceof Composite) {
+            Control children[] = ((Composite) control).getChildren();
+            for (Control child : children) {
+                _fullDisableControl(child);
+            }
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    private void _fullEnableControl(Control control) {
+        control.setEnabled(true);
+        if (control instanceof Composite) {
+            Control children[] = ((Composite) control).getChildren();
+            for (Control child : children) {
+                _fullEnableControl(child);
+            }
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
     private void _initFields() throws Exception {
 
         m_txtBaseFolder.setText(s_prefs.getPref("baseFolder", ""));
 
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    private void _setWndPosition() {
-
-        Rectangle r = Display.getDefault().getBounds();
-
-        int w = (80 * r.width) / 100;
-        w = m_shell.getSize().x; // NO LE CAMBIA EL ANHO
-        int h = (80 * r.height) / 100;
-        int x = (int) ((r.width - w) * 0.5);
-        int y = (int) ((r.height - h) * 0.35);
-        m_shell.setBounds(x, y, w, h);
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -376,30 +393,21 @@ public class ImgToolsAppWnd implements ITaskWnd {
             String text = "<html>" + h + "<body bgcolor='#D7D7D7'>" + m_taskUI.getTaskDescription() + "</font></body></html>";
             m_brwDescription.setText(text);
         }
-        
+
         m_chkJustCheck.setSelection(true);
 
     }
 
     // --------------------------------------------------------------------------------------------------------
-    private void _fullEnableControl(Control control) {
-        control.setEnabled(true);
-        if (control instanceof Composite) {
-            Control children[] = ((Composite) control).getChildren();
-            for (Control child : children) {
-                _fullEnableControl(child);
-            }
-        }
-    }
+    private void _setWndPosition() {
 
-    // --------------------------------------------------------------------------------------------------------
-    private void _fullDisableControl(Control control) {
-        control.setEnabled(false);
-        if (control instanceof Composite) {
-            Control children[] = ((Composite) control).getChildren();
-            for (Control child : children) {
-                _fullDisableControl(child);
-            }
-        }
+        Rectangle r = Display.getDefault().getBounds();
+
+        int w = (80 * r.width) / 100;
+        w = m_shell.getSize().x; // NO LE CAMBIA EL ANHO
+        int h = (80 * r.height) / 100;
+        int x = (int) ((r.width - w) * 0.5);
+        int y = (int) ((r.height - h) * 0.35);
+        m_shell.setBounds(x, y, w, h);
     }
 }

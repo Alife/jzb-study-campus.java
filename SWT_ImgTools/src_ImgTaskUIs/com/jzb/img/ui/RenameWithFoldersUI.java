@@ -44,22 +44,24 @@ public class RenameWithFoldersUI extends BaseUI {
 
     // --------------------------------------------------------------------------------------------------------
     @Override
-    protected void checkSubclass() {
-        // Disable the check that prevents subclassing of SWT components
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public String getTaskName() {
-        return "Rename with subfolder";
-    }
-
-    // --------------------------------------------------------------------------------------------------------
     public String getTaskDescription() {
         String description = "";
         description += "<p>Renames image files using folder's names as Group and Subgroup Names</p>";
         description += "<p><b><font color='red'>Warning:</font></b><i> Current compound name parts will be replaced with folders' information. Just 'Name' part will remain unchanged.</i></p>";
         description += "<p><b>Note:</b><i> Subgroup Names will start (optional) with a folder which name starts with '" + RenameWithFolders.SUBGROUP_MARKER + "'.</i></p>";
         return description;
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    public String getTaskName() {
+        return "Rename with subfolder";
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    protected void checkSubclass() {
+        // Disable the check that prevents subclassing of SWT components
     }
 
     // --------------------------------------------------------------------------------------------------------

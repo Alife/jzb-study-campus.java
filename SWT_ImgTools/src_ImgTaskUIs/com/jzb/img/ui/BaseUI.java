@@ -5,7 +5,6 @@ package com.jzb.img.ui;
 
 import org.eclipse.swt.widgets.Composite;
 
-
 /**
  * @author jzarzuela
  * 
@@ -20,21 +19,21 @@ public abstract class BaseUI extends Composite {
     }
 
     // --------------------------------------------------------------------------------------------------------
+    public abstract String getTaskDescription();
+
+    // --------------------------------------------------------------------------------------------------------
     public abstract String getTaskName();
 
     // --------------------------------------------------------------------------------------------------------
-    public  abstract String getTaskDescription();
+    public ITaskWnd getTaskWnd() {
+        return m_taskWnd;
+    }
 
     // --------------------------------------------------------------------------------------------------------
     public void setTaskWnd(ITaskWnd taskWnd) {
         m_taskWnd = taskWnd;
     }
 
-    // --------------------------------------------------------------------------------------------------------
-    public ITaskWnd getTaskWnd() {
-        return m_taskWnd;
-    }
-    
     // --------------------------------------------------------------------------------------------------------
     protected int _parseInt(String value) {
         try {

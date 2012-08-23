@@ -6,9 +6,11 @@ package com.jzb.exif;
 import java.io.File;
 
 
+import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.jpeg.JpegMetadataReader;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
+import com.drew.metadata.exif.ExifSubIFDDirectory;
 
 
 /**
@@ -59,8 +61,8 @@ public class PrintManualImgs {
 
     private void _printFileAttrib(File jpegFile) throws Exception {
 
-        Metadata metadata = JpegMetadataReader.readMetadata(jpegFile);
-        Directory dir = metadata.getDirectory(com.drew.metadata.exif.ExifDirectory.class);
+        Metadata metadata = ImageMetadataReader.readMetadata(jpegFile);
+        ExifSubIFDDirectory dir = metadata.getDirectory(ExifSubIFDDirectory.class);
         int value=dir.getInt(EXIF_Exposure_Program);
         if(value!=2) {
             System.out.printf("move \"%s\" ..\\manual \n",jpegFile);

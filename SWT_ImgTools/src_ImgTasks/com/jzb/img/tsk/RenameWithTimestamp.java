@@ -11,9 +11,9 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.drew.imaging.jpeg.JpegMetadataReader;
-import com.drew.metadata.Directory;
+import com.drew.imaging.ImageMetadataReader;
 import com.drew.metadata.Metadata;
+import com.drew.metadata.exif.ExifSubIFDDirectory;
 import com.jzb.futil.FileExtFilter;
 import com.jzb.futil.FileExtFilter.IncludeFolders;
 import com.jzb.util.Tracer;
@@ -25,8 +25,54 @@ import com.jzb.util.Tracer;
 public class RenameWithTimestamp extends BaseTask {
 
     private static final String           NO_TIME_STR   = "$0000=00=00 00=00=00$=";
-    private Pattern                       m_checkDateRE = Pattern.compile("\\$[0-9][0-9][0-9][0-9]=[0-9][0-9]=[0-9][0-9] [0-9][0-9]=[0-9][0-9]=[0-9][0-9]\\$\\**=");
     private static final SimpleDateFormat s_sdf         = new SimpleDateFormat("$yyyy=MM=dd HH=mm=ss$");
+    private Pattern                       m_checkDateRE = Pattern.compile("\\$[0-9][0-9][0-9][0-9]=[0-9][0-9]=[0-9][0-9] [0-9][0-9]=[0-9][0-9]=[0-9][0-9]\\$\\**=");
+
+    // --------------------------------------------------------------------------------------------------------
+    protected static String _getExifDateStr(File file, TimeStampShift shiftTimeStamp) {
+
+        try {
+
+            long timestamp = _getExifDateTimestamp(file, shiftTimeStamp);
+
+            boolean fromEXIF = true;
+            if (timestamp < 0) {
+                fromEXIF = false;
+                timestamp = -timestamp;
+            }
+            Calendar cal = Calendar.getInstance();
+            cal.setTimeInMillis(timestamp);
+            return s_sdf.format(cal.getTime()) + (fromEXIF ? "" : "*") + "=";
+
+        } catch (Exception e) {
+            return NO_TIME_STR;
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    protected static long _getExifDateTimestamp(File file, TimeStampShift shiftTimeStamp) {
+
+        try {
+            Metadata metadata = ImageMetadataReader.readMetadata(file);
+            ExifSubIFDDirectory dir = metadata.getDirectory(ExifSubIFDDirectory.class);
+            Date d = dir.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
+            
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(d);
+
+            cal.add(Calendar.SECOND, shiftTimeStamp.secs);
+            cal.add(Calendar.MINUTE, shiftTimeStamp.mins);
+            cal.add(Calendar.HOUR_OF_DAY, shiftTimeStamp.hours);
+            cal.add(Calendar.DAY_OF_MONTH, shiftTimeStamp.days);
+            cal.add(Calendar.MONTH, shiftTimeStamp.months);
+            cal.add(Calendar.YEAR, shiftTimeStamp.years);
+
+            return cal.getTimeInMillis();
+
+        } catch (Exception e1) {
+            return -file.lastModified();
+        }
+    }
 
     // --------------------------------------------------------------------------------------------------------
     public RenameWithTimestamp(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) {
@@ -104,52 +150,6 @@ public class RenameWithTimestamp extends BaseTask {
             }
         }
 
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    protected static long _getExifDateTimestamp(File file, TimeStampShift shiftTimeStamp) {
-
-        try {
-            Metadata metadata = JpegMetadataReader.readMetadata(file);
-            Directory dir = metadata.getDirectory(com.drew.metadata.exif.ExifDirectory.class);
-            Date d = dir.getDate(36868);// EXIF_DATE_TIME;
-
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(d);
-
-            cal.add(Calendar.SECOND, shiftTimeStamp.secs);
-            cal.add(Calendar.MINUTE, shiftTimeStamp.mins);
-            cal.add(Calendar.HOUR_OF_DAY, shiftTimeStamp.hours);
-            cal.add(Calendar.DAY_OF_MONTH, shiftTimeStamp.days);
-            cal.add(Calendar.MONTH, shiftTimeStamp.months);
-            cal.add(Calendar.YEAR, shiftTimeStamp.years);
-
-            return cal.getTimeInMillis();
-
-        } catch (Exception e1) {
-            return -file.lastModified();
-        }
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    protected static String _getExifDateStr(File file, TimeStampShift shiftTimeStamp) {
-
-        try {
-
-            long timestamp = _getExifDateTimestamp(file, shiftTimeStamp);
-
-            boolean fromEXIF = true;
-            if (timestamp < 0) {
-                fromEXIF = false;
-                timestamp = -timestamp;
-            }
-            Calendar cal = Calendar.getInstance();
-            cal.setTimeInMillis(timestamp);
-            return s_sdf.format(cal.getTime()) + (fromEXIF ? "" : "*") + "=";
-
-        } catch (Exception e) {
-            return NO_TIME_STR;
-        }
     }
 
     // --------------------------------------------------------------------------------------------------------

@@ -58,22 +58,24 @@ public class MoveFromSubfoldersUI extends BaseUI {
 
     // --------------------------------------------------------------------------------------------------------
     @Override
-    protected void checkSubclass() {
-        // Disable the check that prevents subclassing of SWT components
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public String getTaskName() {
-        return "Move from subfolders";
-    }
-
-    // --------------------------------------------------------------------------------------------------------
     public String getTaskDescription() {
         String description = "";
         description += "<p>Moves files from within subfolders to the current working folder</p>";
         description += "<p>Delete Empty: Will make all subfolders that don't have any file inside to be deleted.</p>";
         description += "<p><b>Note:</b><i> Recursive processing will move all files from within any subfolder depth.</i></p>";
         return description;
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    public String getTaskName() {
+        return "Move from subfolders";
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    protected void checkSubclass() {
+        // Disable the check that prevents subclassing of SWT components
     }
 
     // --------------------------------------------------------------------------------------------------------

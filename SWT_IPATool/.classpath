@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="src_SWT"/>
-	<classpathentry kind="src" path="resources"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/SWT__LIB"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/iPhone_SSH_jsch-0.1.42"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>

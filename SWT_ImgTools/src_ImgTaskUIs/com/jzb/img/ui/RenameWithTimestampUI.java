@@ -3,7 +3,6 @@
  */
 package com.jzb.img.ui;
 
-
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
@@ -21,12 +20,12 @@ import org.eclipse.swt.widgets.Spinner;
  */
 public class RenameWithTimestampUI extends BaseUI {
 
-    private Spinner m_spYears;
-    private Spinner m_spMonths;
-    private Spinner m_spMinutes;
     private Spinner m_spDays;
-    private Spinner m_spSeconds;
     private Spinner m_spHours;
+    private Spinner m_spMinutes;
+    private Spinner m_spMonths;
+    private Spinner m_spSeconds;
+    private Spinner m_spYears;
 
     // --------------------------------------------------------------------------------------------------------
     /**
@@ -125,22 +124,38 @@ public class RenameWithTimestampUI extends BaseUI {
 
     // --------------------------------------------------------------------------------------------------------
     @Override
-    protected void checkSubclass() {
-        // Disable the check that prevents subclassing of SWT components
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public String getTaskName() {
-        return "Rename with timestamp";
-    }
-
-    // --------------------------------------------------------------------------------------------------------
     public String getTaskDescription() {
         String description = "";
         description += "<p>Adds or removes a timestamp string with the EXIF creation time from the file's names.</p>";
         description += "<p><b>Time offset:</b> Offset to be added to (or subtracted from) the file's creation date when generating the timestamp.</p>";
         description += "<p><b>Note:</b><i> In image files without EXIF information, file's LAST MODIFICATION time will be used (adding '*' to the timestamp)</i></p>";
         return description;
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    public String getTaskName() {
+        return "Rename with timestamp";
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    protected void checkSubclass() {
+        // Disable the check that prevents subclassing of SWT components
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    private void _executeTaskRemoveTimeDate() {
+
+        final RenameWithTimestamp task = new RenameWithTimestamp(getTaskWnd().getJustCheck(), getTaskWnd().getBaseFolder(), getTaskWnd().getRecursiveProcessing());
+        Runnable runner = new Runnable() {
+
+            @Override
+            public void run() {
+                task.removeTimeDate();
+            }
+        };
+        getTaskWnd().runTask(getTaskName(), runner);
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -161,20 +176,6 @@ public class RenameWithTimestampUI extends BaseUI {
             @Override
             public void run() {
                 task.addTimeDate(timeStampShift);
-            }
-        };
-        getTaskWnd().runTask(getTaskName(), runner);
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    private void _executeTaskRemoveTimeDate() {
-
-        final RenameWithTimestamp task = new RenameWithTimestamp(getTaskWnd().getJustCheck(), getTaskWnd().getBaseFolder(), getTaskWnd().getRecursiveProcessing());
-        Runnable runner = new Runnable() {
-
-            @Override
-            public void run() {
-                task.removeTimeDate();
             }
         };
         getTaskWnd().runTask(getTaskName(), runner);

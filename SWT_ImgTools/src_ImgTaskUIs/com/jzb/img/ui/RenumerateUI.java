@@ -19,8 +19,9 @@ import org.eclipse.swt.widgets.Text;
  * 
  */
 public class RenumerateUI extends BaseUI {
-    private Text m_txtCounter;
+
     private Button m_chkResetByFolder;
+    private Text   m_txtCounter;
 
     // --------------------------------------------------------------------------------------------------------
     /**
@@ -32,53 +33,44 @@ public class RenumerateUI extends BaseUI {
     public RenumerateUI(Composite parent, int style) {
 
         super(parent, style);
-        
+
         Label lblCounter = new Label(this, SWT.NONE);
         lblCounter.setBounds(10, 19, 90, 14);
         lblCounter.setText("Initial index:");
-        
+
         m_txtCounter = new Text(this, SWT.BORDER);
         m_txtCounter.setText("10");
         m_txtCounter.setBounds(100, 17, 60, 19);
-        
+
         Label lblResetCounterBy = new Label(this, SWT.NONE);
         lblResetCounterBy.setBounds(10, 44, 90, 14);
         lblResetCounterBy.setText("Reset by folder:");
-        
+
         m_chkResetByFolder = new Button(this, SWT.CHECK);
         m_chkResetByFolder.addSelectionListener(new SelectionAdapter() {
+
             @Override
             public void widgetSelected(SelectionEvent e) {
             }
         });
         m_chkResetByFolder.setBounds(100, 42, 64, 18);
-        
-                Button btnSplit = new Button(this, SWT.NONE);
-                btnSplit.addSelectionListener(new SelectionAdapter() {
 
-                    @Override
-                    @SuppressWarnings("synthetic-access")
-                    public void widgetSelected(SelectionEvent e) {
-                        _executeTask();
-                    }
-                });
-                btnSplit.setText("Renumerate");
-                btnSplit.setBounds(166, 12, 94, 28);
+        Button btnSplit = new Button(this, SWT.NONE);
+        btnSplit.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void widgetSelected(SelectionEvent e) {
+                _executeTask();
+            }
+        });
+        btnSplit.setText("Renumerate");
+        btnSplit.setBounds(166, 12, 94, 28);
 
     }
 
     // --------------------------------------------------------------------------------------------------------
     @Override
-    protected void checkSubclass() {
-        // Disable the check that prevents subclassing of SWT components
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public String getTaskName() {
-        return "Renumerate";
-    }
-
-    // --------------------------------------------------------------------------------------------------------
     public String getTaskDescription() {
         String description = "";
         description += "<p>Assigns a sequential index number to each file following their alphabetical order. Files are given a Compound File Name.</p>";
@@ -88,11 +80,23 @@ public class RenumerateUI extends BaseUI {
     }
 
     // --------------------------------------------------------------------------------------------------------
+    @Override
+    public String getTaskName() {
+        return "Renumerate";
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    @Override
+    protected void checkSubclass() {
+        // Disable the check that prevents subclassing of SWT components
+    }
+
+    // --------------------------------------------------------------------------------------------------------
     private void _executeTask() {
 
         final ResetByFolder reset = m_chkResetByFolder.getSelection() ? ResetByFolder.YES : ResetByFolder.NO;
         final int counter = _parseInt(m_txtCounter.getText());
-        
+
         final Renumerate task = new Renumerate(getTaskWnd().getJustCheck(), getTaskWnd().getBaseFolder(), getTaskWnd().getRecursiveProcessing());
         Runnable runner = new Runnable() {
 

@@ -28,13 +28,13 @@ public class NameComposer {
     private static final DecimalFormat   s_indexDF        = new DecimalFormat("'#'00000");
 
     private String                       m_fExt           = "";
+    private String                       m_forcedName     = null;
     private ArrayList<String>            m_groupNames     = new ArrayList<String>();
     private String                       m_imgFileName    = "";
     private int                          m_index          = 0;
     private String                       m_name           = null;
     private ArrayList<String>            m_subgroupNames  = new ArrayList<String>();
     private String                       m_timestamp      = null;
-    private String                       m_forcedName     = null;
 
     // --------------------------------------------------------------------------------------------------------
     public static boolean isCompoundName(String name) {
@@ -75,16 +75,6 @@ public class NameComposer {
     }
 
     // --------------------------------------------------------------------------------------------------------
-    public ArrayList<String> getGroupNames() {
-        return m_groupNames;
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public ArrayList<String> getSubgroupNames() {
-        return m_subgroupNames;
-    }
-
-    // --------------------------------------------------------------------------------------------------------
     public String cleanName() {
         return m_imgFileName + m_fExt;
     }
@@ -93,11 +83,10 @@ public class NameComposer {
     // --------------------------------------------------------------------------------------------------------
     public String compose() {
 
-        if(m_forcedName!=null) {
+        if (m_forcedName != null) {
             return m_forcedName;
         }
-        
-        
+
         StringBuilder sb = new StringBuilder();
 
         // Composes Timestamp part
@@ -130,6 +119,31 @@ public class NameComposer {
         sb.append(m_fExt);
 
         return sb.toString();
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    public void emptyName() {
+        m_name = null;
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    public ArrayList<String> getGroupNames() {
+        return m_groupNames;
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    public int getIndex() {
+        return m_index;
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    public String getName() {
+        return m_name;
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    public ArrayList<String> getSubgroupNames() {
+        return m_subgroupNames;
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -199,6 +213,17 @@ public class NameComposer {
     }
 
     // --------------------------------------------------------------------------------------------------------
+    public void resetValues() {
+        m_timestamp = null;
+        m_index = 0;
+        m_groupNames.clear();
+        m_subgroupNames.clear();
+        m_name = null;
+        m_imgFileName = "";
+        m_fExt = "";
+    }
+
+    // --------------------------------------------------------------------------------------------------------
     public void setFileExt(String fExt) {
         if (fExt == null || fExt.trim().length() == 0) {
             throw new IllegalArgumentException("Invalid file extension. It shouldn't be null or just spaces.");
@@ -235,22 +260,12 @@ public class NameComposer {
     }
 
     // --------------------------------------------------------------------------------------------------------
-    public int getIndex() {
-        return m_index;
-    }
-
-    // --------------------------------------------------------------------------------------------------------
     public void setName(String name) {
         if (name == null || name.trim().length() == 0) {
             throw new IllegalArgumentException("Invalid name section. It shouldn't be null or just spaces.");
         } else {
             m_name = _cleanName(name);
         }
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public String getName() {
-        return m_name;
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -301,22 +316,6 @@ public class NameComposer {
         for (String subgroupName : subgroupNames) {
             addSubgroupName(subgroupName);
         }
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    public void emptyName() {
-        m_name = null;
-    }
-    
-    // --------------------------------------------------------------------------------------------------------
-    public void resetValues() {
-        m_timestamp = null;
-        m_index = 0;
-        m_groupNames.clear();
-        m_subgroupNames.clear();
-        m_name = null;
-        m_imgFileName = "";
-        m_fExt = "";
     }
 
     // --------------------------------------------------------------------------------------------------------
