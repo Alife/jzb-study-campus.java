@@ -93,7 +93,7 @@ public class SplitByDate extends BaseTask {
             @SuppressWarnings("synthetic-access")
             TGroupingInfo info = new TGroupingInfo();
             info.fImg = fImg;
-            info.timestamp = RenameWithTimestamp._getExifDateTimestamp(fImg, shiftTimeStamp);
+            info.timestamp = _getExifDateTimestamp(fImg, shiftTimeStamp);
             if (info.timestamp < 0) {
                 info.timestamp = -info.timestamp;
                 info.hasEXIFDate = false;
@@ -219,7 +219,7 @@ public class SplitByDate extends BaseTask {
         for (File fImg : allFiles) {
 
             String fName = fImg.getName();
-            String dateTimeFolderName = RenameWithTimestamp._getExifDateStr(fImg, shiftTimeStamp);
+            String dateTimeFolderName = _getExifDateStr(fImg, shiftTimeStamp);
 
             if (fImg.getParentFile().getName().equals(dateTimeFolderName)) {
                 Tracer._debug("File already in folder with 'date' name: '" + fName + "'");

@@ -15,25 +15,6 @@ import com.jzb.util.Tracer;
 public class DeleteEmptyFolders extends BaseTask {
 
     // --------------------------------------------------------------------------------------------------------
-    protected static void _deleteFolder(File folder, JustCheck justChecking) {
-        boolean done = justChecking == JustCheck.YES ? false : folder.delete();
-        if (justChecking == JustCheck.YES || done) {
-            Tracer._debug("Deleted empty folder: '" + folder.getName() + "'");
-        } else {
-            Tracer._error("Deleting empty folder: '" + folder.getName() + "'");
-        }
-    }
-
-    // --------------------------------------------------------------------------------------------------------
-    protected static void _deleteMacDS_Store(File folder) {
-        for (File f : folder.listFiles()) {
-            if (f.getName().equals(".DS_Store")) {
-                f.delete();
-            }
-        }
-    }
-
-    // --------------------------------------------------------------------------------------------------------
     public DeleteEmptyFolders(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) {
         super(justChecking, baseFolder, recursive);
     }
@@ -71,7 +52,7 @@ public class DeleteEmptyFolders extends BaseTask {
 
         // ---------------------------------------------
         // Delete MAC OS X special files
-        _deleteMacDS_Store(folder);
+        _deleteMacDotFiles(folder);
 
         // ---------------------------------------------
         // Delete empty subfolders

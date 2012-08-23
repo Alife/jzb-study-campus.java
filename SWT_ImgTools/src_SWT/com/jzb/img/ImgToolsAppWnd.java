@@ -56,12 +56,12 @@ public class ImgToolsAppWnd implements ITaskWnd {
             "com.jzb.img.ui.UndoActionUI", //
             "com.jzb.img.ui.RenumerateUI", //
             "com.jzb.img.ui.SplitByDateUI", //
-            "com.jzb.img.ui.CleanNameUI", //
             "com.jzb.img.ui.RenameWithFoldersUI", //
             "com.jzb.img.ui.MoveFromSubfoldersUI", //
             "com.jzb.img.ui.SplitByCompoundNameUI", //
-            "com.jzb.img.ui.DeleteEmptyFoldersUI", //
             "com.jzb.img.ui.RenameWithTimestampUI", //
+            "com.jzb.img.ui.CleanNameUI", //
+            "com.jzb.img.ui.DeleteEmptyFoldersUI", //
             "com.jzb.img.ui.RenameWithRegExprUI" //
                                                    };
     private Browser                 m_brwDescription;

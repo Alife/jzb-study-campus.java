@@ -62,9 +62,9 @@ public class MoveFromSubfolders extends BaseTask {
             }
 
             if (deleteEmpty == DeleteEmpty.YES) {
-                DeleteEmptyFolders._deleteMacDS_Store(folder);
+                _deleteMacDotFiles(folder);
                 if (folder.listFiles() != null && folder.listFiles().length == 0) {
-                    DeleteEmptyFolders._deleteFolder(folder, m_justChecking);
+                    _deleteFolder(folder, m_justChecking);
                 }
             }
         }

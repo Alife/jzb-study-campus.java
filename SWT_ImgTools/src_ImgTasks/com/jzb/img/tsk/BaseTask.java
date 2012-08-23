@@ -8,8 +8,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
+import com.drew.imaging.ImageMetadataReader;
+import com.drew.metadata.Metadata;
+import com.drew.metadata.exif.ExifSubIFDDirectory;
 import com.jzb.util.Tracer;
 
 /**
@@ -49,15 +55,26 @@ public abstract class BaseTask {
         public File origFile;
     }
 
-    protected File                m_baseFolder;
-    protected JustCheck           m_justChecking;
+    protected static final String         NO_TIME_STR = "$0000=00=00 00=00=00$=";
+    private static final SimpleDateFormat s_sdf       = new SimpleDateFormat("$yyyy=MM=dd HH=mm=ss$");
 
-    protected NameComposer        m_nc = new NameComposer();
-    protected RecursiveProcessing m_recursive;
+    protected File                        m_baseFolder;
+    protected JustCheck                   m_justChecking;
 
-    private boolean               m_dontUndo;
+    protected NameComposer                m_nc        = new NameComposer();
 
-    private File                  m_undoFile;
+    protected RecursiveProcessing         m_recursive;
+    private boolean                       m_dontUndo;
+    private File                          m_undoFile;
+
+    // --------------------------------------------------------------------------------------------------------
+    protected static void _deleteMacDotFiles(File folder) {
+        for (File f : folder.listFiles()) {
+            if (f.getName().equals(".DS_Store") || f.getName().equals("._.DS_Store")) {
+                f.delete();
+            }
+        }
+    }
 
     // --------------------------------------------------------------------------------------------------------
     protected BaseTask(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) {
@@ -78,6 +95,62 @@ public abstract class BaseTask {
     protected void _checkBaseFolder() throws IllegalArgumentException {
         if (m_baseFolder == null || !m_baseFolder.exists()) {
             throw new IllegalArgumentException("Base folder doesn't exist: '" + m_baseFolder + "'");
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    protected void _deleteFolder(File folder, JustCheck justChecking) {
+        boolean done = justChecking == JustCheck.YES ? false : folder.delete();
+        if (justChecking == JustCheck.YES || done) {
+            Tracer._debug("Deleted empty folder: '" + folder.getName() + "'");
+        } else {
+            Tracer._error("Deleting empty folder: '" + folder.getName() + "'");
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    protected String _getExifDateStr(File file, TimeStampShift shiftTimeStamp) {
+
+        try {
+
+            long timestamp = _getExifDateTimestamp(file, shiftTimeStamp);
+
+            boolean fromEXIF = true;
+            if (timestamp < 0) {
+                fromEXIF = false;
+                timestamp = -timestamp;
+            }
+            Calendar cal = Calendar.getInstance();
+            cal.setTimeInMillis(timestamp);
+            return s_sdf.format(cal.getTime()) + (fromEXIF ? "" : "*") + "=";
+
+        } catch (Exception e) {
+            return NO_TIME_STR;
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    protected long _getExifDateTimestamp(File file, TimeStampShift shiftTimeStamp) {
+
+        try {
+            Metadata metadata = ImageMetadataReader.readMetadata(file);
+            ExifSubIFDDirectory dir = metadata.getDirectory(ExifSubIFDDirectory.class);
+            Date d = dir.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(d);
+
+            cal.add(Calendar.SECOND, shiftTimeStamp.secs);
+            cal.add(Calendar.MINUTE, shiftTimeStamp.mins);
+            cal.add(Calendar.HOUR_OF_DAY, shiftTimeStamp.hours);
+            cal.add(Calendar.DAY_OF_MONTH, shiftTimeStamp.days);
+            cal.add(Calendar.MONTH, shiftTimeStamp.months);
+            cal.add(Calendar.YEAR, shiftTimeStamp.years);
+
+            return cal.getTimeInMillis();
+
+        } catch (Exception e1) {
+            return -file.lastModified();
         }
     }
 
