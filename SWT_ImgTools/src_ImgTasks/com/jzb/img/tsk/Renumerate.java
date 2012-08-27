@@ -16,11 +16,7 @@ import com.jzb.util.Tracer;
  */
 public class Renumerate extends BaseTask {
 
-    public static enum ResetByFolder {
-        NO, YES
-    }
-
-    private static final int COUNTER_INCREMENT = 5;
+    private static final int COUNTER_INCREMENT = 10;
 
     // --------------------------------------------------------------------------------------------------------
     public Renumerate(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) {
@@ -28,18 +24,29 @@ public class Renumerate extends BaseTask {
     }
 
     // --------------------------------------------------------------------------------------------------------
-    public void renumerate(int baseCounter, ResetByFolder resetByFolder) {
+    public void renumerate(int baseCounter) {
 
         try {
             _checkBaseFolder();
-            _renumerate(m_baseFolder, baseCounter, resetByFolder);
+            _renumerate(m_baseFolder, baseCounter, COUNTER_INCREMENT);
         } catch (Exception ex) {
             Tracer._error("Error processing action", ex);
         }
     }
 
     // --------------------------------------------------------------------------------------------------------
-    private int _renumerate(File folder, int baseCounter, ResetByFolder resetByFolder) throws Exception {
+    public void setIndexToZero() {
+
+        try {
+            _checkBaseFolder();
+            _renumerate(m_baseFolder, 0, 0);
+        } catch (Exception ex) {
+            Tracer._error("Error processing action", ex);
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    private int _renumerate(File folder, int baseCounter, int counterIncrement) throws Exception {
 
         Tracer._debug("");
         Tracer._debug("Renumerating file's names" + (m_recursive == RecursiveProcessing.YES ? " * RECURSIVELY * " : " ") + "in folder: '" + folder + "'");
@@ -68,7 +75,7 @@ public class Renumerate extends BaseTask {
             String fName = fImg.getName();
             m_nc.parse(fName);
             m_nc.setIndex(counter);
-            counter += COUNTER_INCREMENT;
+            counter += counterIncrement;
             String newName = m_nc.compose();
             File newFile = new File(fImg.getParentFile(), newName);
             _renameFile(fImg, newFile);
@@ -78,13 +85,7 @@ public class Renumerate extends BaseTask {
         // Iterate subfolders
         if (m_recursive == RecursiveProcessing.YES) {
             for (File sfolder : subFolders) {
-                if (sfolder.isDirectory()) {
-                    if (resetByFolder == ResetByFolder.YES) {
-                        _renumerate(sfolder, baseCounter, resetByFolder);
-                    } else {
-                        counter = _renumerate(sfolder, counter, resetByFolder);
-                    }
-                }
+                counter = _renumerate(sfolder, counter, counterIncrement);
             }
         }
 

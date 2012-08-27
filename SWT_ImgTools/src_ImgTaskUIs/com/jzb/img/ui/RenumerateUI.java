@@ -10,7 +10,6 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
 import com.jzb.img.tsk.Renumerate;
-import com.jzb.img.tsk.Renumerate.ResetByFolder;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
@@ -19,8 +18,6 @@ import org.eclipse.swt.widgets.Text;
  * 
  */
 public class RenumerateUI extends BaseUI {
-
-    private Button m_chkResetByFolder;
     private Text   m_txtCounter;
 
     // --------------------------------------------------------------------------------------------------------
@@ -42,30 +39,28 @@ public class RenumerateUI extends BaseUI {
         m_txtCounter.setText("10");
         m_txtCounter.setBounds(100, 17, 60, 19);
 
-        Label lblResetCounterBy = new Label(this, SWT.NONE);
-        lblResetCounterBy.setBounds(10, 44, 90, 14);
-        lblResetCounterBy.setText("Reset by folder:");
-
-        m_chkResetByFolder = new Button(this, SWT.CHECK);
-        m_chkResetByFolder.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-            }
-        });
-        m_chkResetByFolder.setBounds(100, 42, 64, 18);
-
         Button btnSplit = new Button(this, SWT.NONE);
         btnSplit.addSelectionListener(new SelectionAdapter() {
 
             @Override
             @SuppressWarnings("synthetic-access")
             public void widgetSelected(SelectionEvent e) {
-                _executeTask();
+                _executeRenumerate();
             }
         });
         btnSplit.setText("Renumerate");
         btnSplit.setBounds(166, 12, 94, 28);
+        
+        Button btnReset = new Button(this, SWT.NONE);
+        btnReset.addSelectionListener(new SelectionAdapter() {
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void widgetSelected(SelectionEvent e) {
+                _executeResetIndex();
+            }
+        });
+        btnReset.setText("Set to Zero");
+        btnReset.setBounds(289, 12, 94, 28);
 
     }
 
@@ -73,9 +68,10 @@ public class RenumerateUI extends BaseUI {
     @Override
     public String getTaskDescription() {
         String description = "";
-        description += "<p>Assigns a sequential index number to each file following their alphabetical order. Files are given a Compound File Name.</p>";
+        description += "<p><b>Renumerate:</b> Assigns a sequential index number to each file following their alphabetical order. Files are given a Compound File Name.<br/>";
+        description += "<b>Set to zero:</b> Assigns a zero index number to each file. Files are given a Compound File Name.</p>";
         description += "<table><tr><td><b>Initial Counter:</b></td><td>Establishes the initial index to be given.</td></tr>";
-        description += "<tr><td><b>Reset by folder:</b></td><td>If checked, index is reset to the initial value for every subfolder.</td></tr></table>";
+        description += "</table>";
         return description;
     }
 
@@ -92,9 +88,8 @@ public class RenumerateUI extends BaseUI {
     }
 
     // --------------------------------------------------------------------------------------------------------
-    private void _executeTask() {
+    private void _executeRenumerate() {
 
-        final ResetByFolder reset = m_chkResetByFolder.getSelection() ? ResetByFolder.YES : ResetByFolder.NO;
         final int counter = _parseInt(m_txtCounter.getText());
 
         final Renumerate task = new Renumerate(getTaskWnd().getJustCheck(), getTaskWnd().getBaseFolder(), getTaskWnd().getRecursiveProcessing());
@@ -102,7 +97,21 @@ public class RenumerateUI extends BaseUI {
 
             @Override
             public void run() {
-                task.renumerate(counter, reset);
+                task.renumerate(counter);
+            }
+        };
+        getTaskWnd().runTask(getTaskName(), runner);
+    }
+    
+    // --------------------------------------------------------------------------------------------------------
+    private void _executeResetIndex() {
+
+        final Renumerate task = new Renumerate(getTaskWnd().getJustCheck(), getTaskWnd().getBaseFolder(), getTaskWnd().getRecursiveProcessing());
+        Runnable runner = new Runnable() {
+
+            @Override
+            public void run() {
+                task.setIndexToZero();
             }
         };
         getTaskWnd().runTask(getTaskName(), runner);

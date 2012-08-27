@@ -18,7 +18,6 @@ import com.jzb.img.tsk.SplitByDate;
 import com.jzb.img.tsk.BaseTask.JustCheck;
 import com.jzb.img.tsk.BaseTask.RecursiveProcessing;
 import com.jzb.img.tsk.MoveFromSubfolders.DeleteEmpty;
-import com.jzb.img.tsk.Renumerate.ResetByFolder;
 import com.jzb.img.tsk.SplitByDate.GroupByCloseness;
 
 /**
@@ -156,9 +155,9 @@ public class _TestTasks {
     }
 
     // --------------------------------------------------------------------------------------------------------
-    private void _test_Renumerate(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive, int baseCounter, ResetByFolder resetByFolder) throws Exception {
+    private void _test_Renumerate(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive, int baseCounter) throws Exception {
         Renumerate task = new Renumerate(justChecking, baseFolder, recursive);
-        task.renumerate(baseCounter, resetByFolder);
+        task.renumerate(baseCounter);
     }
 
     // --------------------------------------------------------------------------------------------------------
