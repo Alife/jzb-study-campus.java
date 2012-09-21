@@ -44,8 +44,8 @@ public class KKMas {
     }
 
     public void doIt(String[] args) throws Exception {
-        TPOIFileData fd= KMLFileLoader.loadFile(new File("C:\\Users\\n63636\\Documents\\kmls\\HT_Francia_2011.kml"));
-        OV2FileWriter.saveFile(new File("C:\\Users\\n63636\\Documents\\ov2s\\HT_Francia_2011_Java.ov2"),fd.getAllPOIs());
+        TPOIFileData fd= KMLFileLoader.loadFile(new File("/Users/jzarzuela/Desktop/pp/_KMLs_/HT_Bilbao_2012.kml"));
+        OV2FileWriter.saveFile(new File("/Users/jzarzuela/Desktop/pp/_OV2s_/HT_Bilbao_2012.ov2"),fd.getAllPOIs());
     }
 
     public void doIt5(String[] args) throws Exception {

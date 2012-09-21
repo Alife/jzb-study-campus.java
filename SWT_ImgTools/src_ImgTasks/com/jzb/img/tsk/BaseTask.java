@@ -55,17 +55,24 @@ public abstract class BaseTask {
         public File origFile;
     }
 
-    protected static final String         NO_TIME_STR = "$0000=00=00 00=00=00$=";
-    private static final SimpleDateFormat s_sdf       = new SimpleDateFormat("$yyyy=MM=dd HH=mm=ss$");
+    protected static final String         NO_TIME_STR            = "$0000=00=00 00=00=00$=";
+    private static final SimpleDateFormat s_sdf                  = new SimpleDateFormat("$yyyy=MM=dd HH=mm=ss$");
 
     protected File                        m_baseFolder;
     protected JustCheck                   m_justChecking;
 
-    protected NameComposer                m_nc        = new NameComposer();
+    protected NameComposer                m_nc                   = new NameComposer();
 
     protected RecursiveProcessing         m_recursive;
     private boolean                       m_dontUndo;
     private File                          m_undoFile;
+
+    private boolean                       m_someFileProcessed;
+
+    public static final String            SUBGROUP_NOTHING       = "!NOTHING!";
+    public static final String            SUBGROUP_MARKER        = "@";
+    public static final char              SUBGROUP_COUNTER_CHAR1 = '*';
+    public static final char              SUBGROUP_COUNTER_CHAR2 = '%';
 
     // --------------------------------------------------------------------------------------------------------
     protected static void _deleteMacDotFiles(File folder) {
@@ -190,7 +197,7 @@ public abstract class BaseTask {
         }
 
         if (!oldFile.canWrite()) {
-            Tracer._debug("File '" + oldFile.getName() + "' can't be written (maybe read-only)");
+            Tracer._warn("File '" + oldFile.getName() + "' can't be written (maybe read-only)");
             return;
         }
 
@@ -204,12 +211,17 @@ public abstract class BaseTask {
 
         _updateUndoFile(oldFile, newFile);
 
+        if(!m_someFileProcessed) {
+            Tracer._info("Some files needed to be processed");
+        }
+        m_someFileProcessed=true;
+        
         boolean done = m_justChecking == JustCheck.YES ? false : oldFile.renameTo(newFile);
         if (m_justChecking == JustCheck.YES || done) {
             if (oldFile.getParentFile().equals(newFile.getParentFile())) {
-                Tracer._debug("File processed from     '" + oldFile.getName() + "'     to     '" + newFile.getName() + "'");
+                Tracer._debug("Processed file from     '" + oldFile.getName() + "'     to     '" + newFile.getName() + "'");
             } else {
-                Tracer._debug("File processed from     '" + oldFile.getName() + "'     to     '" + newFile.getParentFile().getName() + File.separator + newFile.getName() + "'");
+                Tracer._debug("Processed file from     '" + oldFile.getName() + "'     to     '" + newFile.getParentFile().getName() + File.separator + newFile.getName() + "'");
             }
         } else {
             if (oldFile.getParentFile().equals(newFile.getParentFile())) {

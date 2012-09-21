@@ -236,6 +236,12 @@ public class NameComposer {
     }
 
     // --------------------------------------------------------------------------------------------------------
+    public void clearGroupNames() {
+
+        m_groupNames.clear();
+    }
+    
+    // --------------------------------------------------------------------------------------------------------
     public void setGroupNames(String groupNames[]) {
 
         m_groupNames.clear();
@@ -268,6 +274,13 @@ public class NameComposer {
         }
     }
 
+    // --------------------------------------------------------------------------------------------------------
+    public void clearSubgroupNames() {
+
+        m_subgroupNames.clear();
+        
+    }
+    
     // --------------------------------------------------------------------------------------------------------
     public void setSubgroupNames(String subgroupNames[]) {
 

@@ -9,6 +9,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
+import com.jzb.img.tsk.BaseTask;
 import com.jzb.img.tsk.SplitByCompoundName;
 
 /**
@@ -47,7 +48,9 @@ public class SplitByCompoundNameUI extends BaseUI {
     public String getTaskDescription() {
         String description = "";
         description += "<p>Splits files moving them into subfolders named after the parts of the compound name.</p>";
-        description += "<p><b>Note:</b><i> No recursive processing is done and files without a compound name won't be moved.</i></p>";
+        description += "<p><b>Note 1:</b><i> No recursive processing is done and files without a compound name won't be moved.</i><br/>";
+        description += "<b>Note 2:</b><i> Subgroup names will be ordered using a counter followed by <font color='red'><b>'" + BaseTask.SUBGROUP_COUNTER_CHAR1 + "'</b></font>.</i><br/>";
+        description += "<b>Note 3:</b><i> It could be necessary to create folders named <font color='red'><b>'" + BaseTask.SUBGROUP_NOTHING + "'</b></font> to keep the order</i></p>";
         return description;
     }
 

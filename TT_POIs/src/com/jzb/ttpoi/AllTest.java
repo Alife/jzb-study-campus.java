@@ -45,8 +45,8 @@ public class AllTest {
      */
     public void doIt(String[] args) throws Exception {
         
-        File kmlFolder = new File("C:\\Users\\n63636\\Desktop\\Nueva carpeta\\_KMLs_");
-        File ov2Folder = new File("C:\\Users\\n63636\\Desktop\\Nueva carpeta\\_OV2s_");
+        File kmlFolder = new File("/Users/jzarzuela/Desktop/pp/_KMLs_");
+        File ov2Folder = new File("/Users/jzarzuela/Desktop/pp/_OV2s_");
         
         KMLDownload.downloadAllMaps(kmlFolder);
         FileTransform.transformAllKMLtoOV2(kmlFolder,ov2Folder, true);

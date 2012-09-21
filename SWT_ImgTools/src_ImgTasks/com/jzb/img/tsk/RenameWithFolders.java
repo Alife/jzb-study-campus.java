@@ -16,8 +16,6 @@ import com.jzb.util.Tracer;
  */
 public class RenameWithFolders extends BaseTask {
 
-    public static final String SUBGROUP_MARKER = "@";
-
     // --------------------------------------------------------------------------------------------------------
     public RenameWithFolders(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) {
         super(justChecking, baseFolder, recursive);
@@ -70,10 +68,28 @@ public class RenameWithFolders extends BaseTask {
 
                 String pathParts[] = folderPath.split(SUBGROUP_MARKER);
                 String groupNames[] = pathParts[0].split(File.separator);
-                m_nc.setGroupNames(groupNames);
+                
+                m_nc.clearGroupNames();
+                for (String name : groupNames) {
+                    if (name.length() > 2 && (name.charAt(1) == SUBGROUP_COUNTER_CHAR1 || name.charAt(1) == SUBGROUP_COUNTER_CHAR2)) {
+                        name = name.substring(2);
+                    }
+                    m_nc.addGroupName(name);
+                }
+                
+                
                 if (pathParts.length > 1) {
                     String subgroupNames[] = pathParts[1].split(File.separator);
-                    m_nc.setSubgroupNames(subgroupNames);
+                    m_nc.clearSubgroupNames();
+                    for (String name : subgroupNames) {
+                        if (name.length() > 2 && (name.charAt(1) == SUBGROUP_COUNTER_CHAR1 || name.charAt(1) == SUBGROUP_COUNTER_CHAR2)) {
+                            name = name.substring(2);
+                        }
+                        if (name.equals(SUBGROUP_NOTHING)) {
+                            continue;
+                        }
+                        m_nc.addSubgroupName(name);
+                    }
                 }
 
                 String newName = m_nc.compose();
