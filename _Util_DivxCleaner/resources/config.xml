@@ -1,59 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 
-    <process>
-        <srcPath>Z:\_Incoming\_traces</srcPath>
-        <dstPath>Z:\_Incoming</dstPath>
-        <!-- 
-        <srcPath>/home/jzarzuela/p2p/jdownloader</srcPath>
-        <srcPath>/home/jzarzuela/p2p/amule</srcPath>
-	    <srcPath>/home/jzarzuela/p2p/torrent-end</srcPath>
-        <dstPath>/media/Elements/disco_c/Videos_DivX/_Incoming</dstPath>
-		-->
-        <exts>avi;mkv;mpg;mp4;srt</exts>
-    </process>
-    
-	<filterRules>
-		<!--  modes: REMOVE, REPLACE, CUTRIGHT, SERIE_NAME, PREFIX, CHAPTER  -->
+	<process>
+		<srcPath>/Volumes/jzarzuela/p2p/jdownloader</srcPath>
+		<srcPath>/Volumes/jzarzuela/p2p/amule</srcPath>
+		<srcPath>/Volumes/jzarzuela/p2p/torrent-end</srcPath>
+		<dstPath>/Volumes/Videos_DivX/_Incoming</dstPath>
 
-        <!-- Limpiar el nombre antes de empezar -->
+		<exts>avi;mkv;mpg;mp4;srt</exts>
+	</process>
+
+	<filterRules>
+		<!-- modes: REMOVE, REPLACE, CUTRIGHT, SERIE_NAME, PREFIX, CHAPTER -->
+
+		<!-- Limpiar el nombre antes de empezar -->
 		<filter mode="REPLACE" regexp="[\._-]" data=" " />
 		<filter mode="REPLACE" regexp=" ( )+" data=" " />
+		<filter mode="REPLACE" regexp="\[bluray" data=" " />
 
 
-        <!-- Antes de eliminar partes busca pistas de si es VOSE  -->
-		<filter mode="PREFIX"  regexp="[^a-z]vos[^a-z]|[^a-z]v o s[^a-z]|[^a-z]v o[^a-z]|[^a-z]vose[^a-z]|[^a-z]v o s e[^a-z]"	data="VOS_" />
+		<!-- Antes de eliminar partes busca pistas de si es VOSE -->
+		<filter mode="PREFIX"
+			regexp="[^a-z]vos[^a-z]|[^a-z]v o s[^a-z]|[^a-z]v o[^a-z]|[^a-z]vose[^a-z]|[^a-z]v o s e[^a-z]"
+			data="VOS_" />
 		<filter mode="REPLACE" regexp=" ( )+" data=" " />
 		<filter mode="REPLACE" regexp="^VOS " data="VOS_" />
 
+        <!-- Busca patrones de numero de capitulo para ponerlo al principio -->
+        <filter mode="CHAPTER" regexp="\[cap.[0-9][0-9][0-9]\]" data="" />
+        <filter mode="CHAPTER" regexp=" [0-9][0-9][0-9] " data="" />
+        <filter mode="CHAPTER" regexp="s[0-9]?[0-9]e[0-9]?[0-9]" data="" />
+        <filter mode="CHAPTER" regexp="[0-9]?[0-9]x[0-9]?[0-9]" data="" />
+        <filter mode="REPLACE" regexp="- |--" data="-" />
 
-        <!-- Elimina a partir de ciertas cadenas de texto -->
-		<filter mode="CUTRIGHT" regexp=" Bdrip| hdrip| mp3| dvd| dvd.dvb| 5 1|\[dvd"	data="" />
-		<filter mode="CUTRIGHT" regexp=" repack| esp| Subs| hdtv| xvid| lol| www"	data="" />
+		<!-- Elimina a partir de ciertas cadenas de texto -->
+		<filter mode="CUTRIGHT" regexp=" Bdrip| hdrip| mp3| dvd| dvd.dvb| 5 1|\[dvd" data="" />
+		<filter mode="CUTRIGHT" regexp=" repack| esp| Subs| hdtv| xvid| lol| www" data="" />
 		<filter mode="CUTRIGHT" regexp=" ([^ ]*)Screener" data="" />
 		<filter mode="CUTRIGHT" regexp=" [0-9][0-9][0-9][0-9]" data="" />
 		<filter mode="CUTRIGHT" regexp=" by cowboysgroup" data="" />
 		<filter mode="CUTRIGHT" regexp=" dvb rip" data="" />
 
 
-        <!-- Busca patrones de numero de capitulo para ponerlo al principio QUE ESTEN ENTRE PARENTESIS-->
-		<filter mode="CHAPTER" regexp="\[cap.[0-9][0-9][0-9]\]" data="" />
-
-
-        <!--  Elimina los textos entre parentesis y corchetes-->
+		<!-- Elimina los textos entre parentesis y corchetes -->
 		<filter mode="REMOVE" regexp="\([^\(]*\)" data="" />
 		<filter mode="REMOVE" regexp="\[[^\[]*\]" data="" />
 		<filter mode="REMOVE" regexp=" [0-9]*mb " data="" />
 
 
-        <!-- Busca patrones de numero de capitulo para ponerlo al principio -->
-		<filter mode="CHAPTER" regexp=" [0-9][0-9][0-9] " data="" />
-		<filter mode="CHAPTER" regexp="s[0-9]?[0-9]e[0-9]?[0-9]" data="" />
-		<filter mode="CHAPTER" regexp="[0-9]?[0-9]x[0-9]?[0-9]" data="" />
-		<filter mode="REPLACE" regexp="- |--" data="-" />
 
-
-        <!-- Limpia espacios sobrantes y ciertas cadenas como tarea final -->
+		<!-- Limpia espacios sobrantes y ciertas cadenas como tarea final -->
 		<filter mode="REPLACE" regexp="ac3" data=" " />
 		<filter mode="REPLACE" regexp="\[spanish" data=" " />
 		<filter mode="REPLACE" regexp=" ( )+" data=" " />
@@ -61,8 +57,9 @@
 
 
 
-        <!-- ******************************************************************************** -->
-        <!-- Busca nombres de series y solo deja eso y el capitulo como nombre de fichero -->
+		<!-- ******************************************************************************** -->
+		<!-- Busca nombres de series y solo deja eso y el capitulo como nombre 
+			de fichero -->
 		<filter mode="SERIE_NAME" regexp="Chuck" data="Chuck" />
 		<filter mode="SERIE_NAME" regexp="Persons Unknown" data="Persons Unknown" />
 		<filter mode="SERIE_NAME" regexp="Gravedad Cero" data="Gravedad Cero" />
@@ -90,7 +87,8 @@
 		<filter mode="SERIE_NAME" regexp="american horror story" data="american horror story" />
 		<filter mode="SERIE_NAME" regexp="person of interest" data="person of interest" />
 		<filter mode="SERIE_NAME" regexp="tbbt" data="TBBT" />
-		<filter mode="SERIE_NAME" regexp="the gates ciudad de vampiros" data="the gates ciudad de vampiros" />
+		<filter mode="SERIE_NAME" regexp="the gates ciudad de vampiros"
+			data="the gates ciudad de vampiros" />
 		<filter mode="SERIE_NAME" regexp="once upon a time" data="once upon a time" />
 		<filter mode="SERIE_NAME" regexp="terra nova" data="terra nova" />
 		<filter mode="SERIE_NAME" regexp="the body farm" data="the body farm" />
@@ -103,7 +101,30 @@
 		<filter mode="SERIE_NAME" regexp="eleventh hour" data="eleventh hour" />
 		<filter mode="SERIE_NAME" regexp="11thhr" data="eleventh hour" />
 		<filter mode="SERIE_NAME" regexp="borgia" data="borgia" />
-
+		<filter mode="SERIE_NAME" regexp="new girl" data="new girl" />
+		<filter mode="SERIE_NAME" regexp="alcatraz" data="alcatraz" />
+		<filter mode="SERIE_NAME" regexp="eternal law" data="eternal law" />
+		<filter mode="SERIE_NAME" regexp="work it" data="work it" />
+		<filter mode="SERIE_NAME" regexp="the finder" data="the finder" />
+		<filter mode="SERIE_NAME" regexp="are you there chelsea" data="are you there chelsea" />
+		<filter mode="SERIE_NAME" regexp="are you there, chelsea" data="are you there chelsea" />
+		<filter mode="SERIE_NAME" regexp="spartacus" data="spartacus blood and sand" />
+		<filter mode="SERIE_NAME" regexp="rob!" data="rob!" />
+		<filter mode="SERIE_NAME" regexp="the river" data="the river" />
+		<filter mode="SERIE_NAME" regexp="erase una vez" data="erase una vez" />
+		<filter mode="SERIE_NAME" regexp="touch" data="touch" />
+		<filter mode="SERIE_NAME" regexp="juego de tronos" data="juego de tronos" />
+		<filter mode="SERIE_NAME" regexp="awake" data="awake" />
+		<filter mode="SERIE_NAME" regexp="sinbad" data="sinbad" />
+		<filter mode="SERIE_NAME" regexp="men at work" data="men at work" />
+		<filter mode="SERIE_NAME" regexp="teen wolf" data="teen wolf" />
+		<filter mode="SERIE_NAME" regexp="continuum" data="continuum" />
+		<filter mode="SERIE_NAME" regexp="dead boss" data="dead boss" />
+		<filter mode="SERIE_NAME" regexp="anger management" data="anger management" />
+		<filter mode="SERIE_NAME" regexp="world without end" data="world without end" />
+		<filter mode="SERIE_NAME" regexp="strike back" data="strike back" />
+		<filter mode="SERIE_NAME" regexp="elementary" data="elementary" />
+		<filter mode="SERIE_NAME" regexp="revolution" data="revolution" />
 
 	</filterRules>
 

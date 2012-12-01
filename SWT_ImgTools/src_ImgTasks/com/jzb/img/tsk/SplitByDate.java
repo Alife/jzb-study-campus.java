@@ -219,7 +219,7 @@ public class SplitByDate extends BaseTask {
         for (File fImg : allFiles) {
 
             String fName = fImg.getName();
-            String dateTimeFolderName = _getExifDateStr(fImg, shiftTimeStamp);
+            String dateTimeFolderName = _getExifDateStr(fImg, shiftTimeStamp, true);
 
             if (fImg.getParentFile().getName().equals(dateTimeFolderName)) {
                 Tracer._debug("File already in folder with 'date' name: '" + fName + "'");

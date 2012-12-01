@@ -56,7 +56,8 @@ public abstract class BaseTask {
     }
 
     protected static final String         NO_TIME_STR            = "$0000=00=00 00=00=00$=";
-    private static final SimpleDateFormat s_sdf                  = new SimpleDateFormat("$yyyy=MM=dd HH=mm=ss$");
+    private static final SimpleDateFormat s_sdf_full             = new SimpleDateFormat("$yyyy=MM=dd HH=mm=ss$");
+    private static final SimpleDateFormat s_sdf_days             = new SimpleDateFormat("$yyyy=MM=dd 00=00=00$");
 
     protected File                        m_baseFolder;
     protected JustCheck                   m_justChecking;
@@ -116,7 +117,7 @@ public abstract class BaseTask {
     }
 
     // --------------------------------------------------------------------------------------------------------
-    protected String _getExifDateStr(File file, TimeStampShift shiftTimeStamp) {
+    protected String _getExifDateStr(File file, TimeStampShift shiftTimeStamp, boolean justDay) {
 
         try {
 
@@ -129,7 +130,11 @@ public abstract class BaseTask {
             }
             Calendar cal = Calendar.getInstance();
             cal.setTimeInMillis(timestamp);
-            return s_sdf.format(cal.getTime()) + (fromEXIF ? "" : "*") + "=";
+            if (justDay) {
+                return s_sdf_days.format(cal.getTime()) + (fromEXIF ? "" : "*") + "=";
+            } else {
+                return s_sdf_full.format(cal.getTime()) + (fromEXIF ? "" : "*") + "=";
+            }
 
         } catch (Exception e) {
             return NO_TIME_STR;
@@ -211,11 +216,11 @@ public abstract class BaseTask {
 
         _updateUndoFile(oldFile, newFile);
 
-        if(!m_someFileProcessed) {
+        if (!m_someFileProcessed) {
             Tracer._info("Some files needed to be processed");
         }
-        m_someFileProcessed=true;
-        
+        m_someFileProcessed = true;
+
         boolean done = m_justChecking == JustCheck.YES ? false : oldFile.renameTo(newFile);
         if (m_justChecking == JustCheck.YES || done) {
             if (oldFile.getParentFile().equals(newFile.getParentFile())) {

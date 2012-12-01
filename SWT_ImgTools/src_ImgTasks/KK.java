@@ -1,4 +1,18 @@
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.net.URL;
+import java.util.HashSet;
+
+import javax.imageio.ImageIO;
+
+import com.jzb.img.tsk.BaseTask.JustCheck;
+import com.sun.image.codec.jpeg.JPEGCodec;
+import com.sun.image.codec.jpeg.JPEGDecodeParam;
+import com.sun.image.codec.jpeg.JPEGEncodeParam;
+import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 /**
  * 
@@ -43,70 +57,50 @@ public class KK {
      */
     public void doIt(String[] args) throws Exception {
 
-        File baseFolder = new File("/Users/jzarzuela/Documents/_TMP_/100CANON-PRAGA/Filtradas_NO");
-        _cleanNames(baseFolder);
-    }
+        String urlBase = "http://hm.stadtdigital.de/(S(pljdmk5lazmy24llcrly0vwy))/plaene/5663/High/";
 
-    // --------------------------------------------------------------------------------------------------------
-    private void _cleanNames2(File folder) throws Exception {
-        
-        System.out.println("Cleaning names in folder: " + folder);
-        for (File f : folder.listFiles()) {
-            if (f.isDirectory()) {
-                _cleanNames(f);
-                if(f.getName().startsWith("@")) {
-                    String newName = f.getName().substring(1);
-                    File newFile = new File(f.getParentFile(), newName);
-                    if (!f.renameTo(newFile)) {
-                        System.out.println("  Error cleaning file: " + f);
-                    }
-                }
-            }
-        }
-    }
+        BufferedImage imgOut = new BufferedImage(256 * 20, 256 * 14, BufferedImage.TYPE_3BYTE_BGR);
+        Graphics g = imgOut.getGraphics();
 
-    // --------------------------------------------------------------------------------------------------------
-    private void _cleanNames(File folder) throws Exception {
-
-        System.out.println("Cleaning names in folder: " + folder);
-        for (File f : folder.listFiles()) {
-            if (f.isDirectory()) {
-                _cleanNames(f);
-            } else {
-                String newName = f.getName();
-                if (newName.toLowerCase().endsWith(".jpg")) {
-                    newName = newName.replaceAll("0\\*", "");
-                    newName = newName.replaceAll("1\\*", "");
-                    newName = newName.replaceAll("2\\*", "");
-                    newName = newName.replaceAll("3\\*", "");
-                    newName = newName.replaceAll("4\\*", "");
-                    newName = newName.replaceAll("5\\*", "");
-                    newName = newName.replaceAll("6\\*", "");
-                    newName = newName.replaceAll("7\\*", "");
-                    newName = newName.replaceAll("8\\*", "");
-                    newName = newName.replaceAll("9\\*", "");
-
-                    newName = newName.replaceAll("0\\%", "");
-                    newName = newName.replaceAll("1\\%", "");
-                    newName = newName.replaceAll("2\\%", "");
-                    newName = newName.replaceAll("3\\%", "");
-                    newName = newName.replaceAll("4\\%", "");
-                    newName = newName.replaceAll("5\\%", "");
-                    newName = newName.replaceAll("6\\%", "");
-                    newName = newName.replaceAll("7\\%", "");
-                    newName = newName.replaceAll("8\\%", "");
-                    newName = newName.replaceAll("9\\%", "");
-
-                    newName = newName.replaceAll("-SIN NADA", "");
-
-                    File newFile = new File(f.getParentFile(), newName);
-                    if (!f.renameTo(newFile)) {
-                        System.out.println("  Error cleaning file: " + f);
-                    }
-                }
+        for (int y = 0; y < 7; y++) {
+            for (int x = 0; x < 20; x++) {
+                URL url = new URL(urlBase + "TileGroup0/5-" + x + "-" + y + ".jpg");
+                System.out.println("Downloading image = " + url);
+                Image img = ImageIO.read(url);
+                g.drawImage(img, x * 256, y * 256, null);
             }
         }
 
+        for (int y = 7; y < 14; y++) {
+            for (int x = 0; x < 20; x++) {
+                URL url = new URL(urlBase + "TileGroup1/5-" + x + "-" + y + ".jpg");
+                System.out.println("Downloading image = " + url);
+                Image img = ImageIO.read(url);
+                g.drawImage(img, x * 256, y * 256, null);
+            }
+        }
+
+        g.dispose();
+
+        File fout = new File("/Users/jzarzuela/Desktop/fout.jpg");
+        _writeImage(imgOut, fout);
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    private void _writeImage(BufferedImage bufImg, File dstFile) throws Exception {
+
+        dstFile.getParentFile().mkdirs();
+        FileOutputStream out = new FileOutputStream(dstFile);
+
+        JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
+        JPEGEncodeParam param = encoder.getDefaultJPEGEncodeParam(bufImg);
+        param.setQuality(0.99f, true);
+        param.setDensityUnit(JPEGDecodeParam.DENSITY_UNIT_DOTS_INCH);
+        param.setXDensity(300);
+
+        encoder.setJPEGEncodeParam(param);
+        encoder.encode(bufImg);
+        out.close();
     }
 
 }

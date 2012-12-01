@@ -5,6 +5,6 @@
 	<classpathentry kind="src" path="src_IPACode"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/SWT__LIB"/>
-	<classpathentry kind="lib" path="lib/ant.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/_JZB__LIB_iPhone"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

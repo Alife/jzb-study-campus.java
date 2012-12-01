@@ -75,7 +75,7 @@ public class RenameWithTimestamp extends BaseTask {
 
             // Check if was already renamed with TimeDate
             Matcher matcher = m_checkDateRE.matcher(fName);
-            String timestampStr = _getExifDateStr(fImg, shiftTimeStamp);
+            String timestampStr = _getExifDateStr(fImg, shiftTimeStamp, false);
             if (matcher.find()) {
                 newName = timestampStr + fName.substring(NO_TIME_STR.length());
             } else {

@@ -23,17 +23,17 @@ public class SplitByCompoundName extends BaseTask {
     }
 
     // --------------------------------------------------------------------------------------------------------
-    public void splitByCompoundName() {
+    public void splitByCompoundName(boolean keepOrder, boolean stopAtFirstSubgroup) {
         try {
             _checkBaseFolder();
-            _splitByCompoundName(m_baseFolder);
+            _splitByCompoundName(m_baseFolder, keepOrder, stopAtFirstSubgroup);
         } catch (Exception ex) {
             Tracer._error("Error processing action", ex);
         }
     }
 
     // --------------------------------------------------------------------------------------------------------
-    private void _splitByCompoundName(File folder) throws Exception {
+    private void _splitByCompoundName(File folder, boolean keepOrder, boolean stopAtFirstSubgroup) throws Exception {
 
         HashMap<String, Character> subgroupCounters = new HashMap<String, Character>();
         ArrayList<String> prevSGs = new ArrayList<String>();
@@ -48,6 +48,10 @@ public class SplitByCompoundName extends BaseTask {
         for (File fImg : fList) {
             if (NameComposer.isCompoundName(fImg.getName())) {
 
+                if (fImg.getName().startsWith("New York-#00470-Lower Manhattan-Wall Street_[IMP2011-IMG_1765#CR2]")) {
+                    System.out.println("pp");
+                }
+
                 m_nc.parse(fImg.getName());
 
                 StringBuffer newName = new StringBuffer();
@@ -57,8 +61,14 @@ public class SplitByCompoundName extends BaseTask {
                 }
 
                 String grpNames = "#" + m_nc.getGroupNames().toString();
-                String sgPath = _calSubgroupsPath(subgroupCounters, grpNames, prevSGs, m_nc.getSubgroupNames());
+                String sgPath = _calSubgroupsPath(keepOrder, subgroupCounters, grpNames, prevSGs, m_nc.getSubgroupNames());
                 prevSGs = new ArrayList(m_nc.getSubgroupNames());
+                if (stopAtFirstSubgroup) {
+                    int index = 1 + sgPath.indexOf(File.separatorChar);
+                    if (index < sgPath.length()) {
+                        sgPath = sgPath.substring(0, index);
+                    }
+                }
                 newName.append(sgPath);
 
                 newName.append(fImg.getName());
@@ -93,7 +103,7 @@ public class SplitByCompoundName extends BaseTask {
                 } else {
                     newFile = new File(fImg.getParentFile() + File.separator + "0" + SUBGROUP_COUNTER_CHAR1 + SUBGROUP_NOTHING, fImg.getName());
                 }
-                
+
                 _renameFile(fImg, newFile);
             }
 
@@ -105,32 +115,61 @@ public class SplitByCompoundName extends BaseTask {
     }
 
     // --------------------------------------------------------------------------------------------------------
-    private char _getCurrentCounter(HashMap<String, Character> subgroupCounters, String sgPath) {
-        Character counter = subgroupCounters.get(sgPath);
-        if (counter == null) {
-            subgroupCounters.put(sgPath, '1');
-            return '1';
+    private char _getCurrentCounter(boolean keepOrder, String cuSG, HashMap<String, Character> subgroupCounters, String sgPath) {
+
+        Character counterParent = subgroupCounters.get(sgPath);
+        if (counterParent == null) {
+            counterParent = '1';
+            subgroupCounters.put(sgPath, counterParent);
+        }
+
+        Character counterMine = subgroupCounters.get(sgPath + "$$" + cuSG);
+        if (counterMine == null) {
+            counterMine = '1';
+            subgroupCounters.put(sgPath + "$$" + cuSG, counterMine);
+        }
+
+        if (!keepOrder) {
+            return counterMine;
         } else {
-            return counter;
+            return counterParent;
         }
+
     }
 
     // --------------------------------------------------------------------------------------------------------
-    private char _getNextCounter(HashMap<String, Character> subgroupCounters, String sgPath) {
-        char val = '1';
-        Character counter = subgroupCounters.get(sgPath);
-        if (counter != null) {
-            val = (char) ((int) counter + 1);
-            if (val > '9') {
-                val = 'p';
+    private char _getNextCounter(boolean keepOrder, String cuSG, HashMap<String, Character> subgroupCounters, String sgPath) {
+
+        if (!keepOrder) {
+            
+            Character counterMine = subgroupCounters.get(sgPath + "$$" + cuSG);
+            if (counterMine == null) {
+                counterMine = _getNextCounter(true, cuSG, subgroupCounters, sgPath);
+                subgroupCounters.put(sgPath + "$$" + cuSG, counterMine);
             }
+            return counterMine;
+
+        } else {
+
+            Character counterParent = subgroupCounters.get(sgPath);
+            if (counterParent == null) {
+                counterParent = '1';
+            }
+            counterParent = (char) ((int) counterParent + 1);
+            if (counterParent > '9' && counterParent < 'a') {
+                counterParent = 'a';
+            }
+            if (counterParent > 'a' && counterParent < 'A') {
+                counterParent = 'A';
+            }
+            subgroupCounters.put(sgPath, counterParent);
+            return counterParent;
         }
-        subgroupCounters.put(sgPath, val);
-        return val;
+
     }
 
     // --------------------------------------------------------------------------------------------------------
-    private String _calSubgroupsPath(HashMap<String, Character> subgroupCounters, String basePath, ArrayList<String> prevSGs, ArrayList<String> curSGs) {
+    private String _calSubgroupsPath(boolean keepOrder, HashMap<String, Character> subgroupCounters, String basePath, ArrayList<String> prevSGs, ArrayList<String> curSGs) {
 
         String sgPath = basePath;
         boolean firstOne = true;
@@ -142,9 +181,9 @@ public class SplitByCompoundName extends BaseTask {
 
             char counter;
             if (cuSG.equals(pvSG)) {
-                counter = _getCurrentCounter(subgroupCounters, sgPath);
+                counter = _getCurrentCounter(keepOrder, cuSG, subgroupCounters, sgPath);
             } else {
-                counter = _getNextCounter(subgroupCounters, sgPath);
+                counter = _getNextCounter(keepOrder, cuSG, subgroupCounters, sgPath);
             }
 
             if (firstOne) {
@@ -158,12 +197,12 @@ public class SplitByCompoundName extends BaseTask {
         }
 
         if (curSGs.size() > 0 && prevSGs.size() > 0 && curSGs.size() < prevSGs.size() && curSGs.get(curSGs.size() - 1).equals(prevSGs.get(prevSGs.size() - 2))) {
-            char counter = _getNextCounter(subgroupCounters, sgPath);
+            char counter = _getNextCounter(keepOrder, SUBGROUP_NOTHING, subgroupCounters, sgPath);
             sb.append(counter).append('*').append(SUBGROUP_NOTHING).append(File.separator);
             subgroupCounters.put(sgPath + SUBGROUP_NOTHING, '0');
         } else {
             if (subgroupCounters.get(sgPath + SUBGROUP_NOTHING) != null) {
-                char counter = _getCurrentCounter(subgroupCounters, sgPath);
+                char counter = _getCurrentCounter(keepOrder, SUBGROUP_NOTHING, subgroupCounters, sgPath);
                 sb.append(counter).append('*').append(SUBGROUP_NOTHING).append(File.separator);
             }
         }

@@ -8,6 +8,7 @@ import java.util.Calendar;
 import com.jzb.img.tsk.BaseTask;
 import com.jzb.img.tsk.CleanName;
 import com.jzb.img.tsk.CleanName.ForceClean;
+import com.jzb.img.tsk.IPadResize;
 import com.jzb.img.tsk.MoveFromSubfolders;
 import com.jzb.img.tsk.NameComposer;
 import com.jzb.img.tsk.RenameWithRegExpr;
@@ -77,8 +78,22 @@ public class _TestTasks {
         // _test_Renumerate(JustCheck.YES, baseFolder, RecursiveProcessing.YES, 10, ResetByFolder.YES);
         // _test_SearchNamePattern(JustCheck.YES, baseFolder, RecursiveProcessing.YES);
         // _test_RanameByPattern(JustCheck.YES, baseFolder, RecursiveProcessing.YES,"Dublin_(@@@@@)-([^-]*)-IMGP(@@@@@)","Dublin-#\\1_\\2_[IMGP\\3]");
-        _test_RanameTryCompoundName(JustCheck.YES, baseFolder, RecursiveProcessing.YES);
+        // _test_RanameTryCompoundName(JustCheck.YES, baseFolder, RecursiveProcessing.YES);
 
+        baseFolder = new File("/Users/jzarzuela/Documents/_TMP_/test/__done__/Business_Jose/2012_11_15-Zurich/Organizadas/");
+        baseFolder = new File("/Users/jzarzuela/Desktop/pp");
+        baseFolder = new File("/Users/jzarzuela/Documents/_TMP_/test/__done__");
+        _test_IPadResize(JustCheck.YES, baseFolder, RecursiveProcessing.YES);
+
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    private void _test_IPadResize(JustCheck justChecking, File baseFolder, RecursiveProcessing recursive) throws Exception {
+
+        File dstFolder = new File("/Users/jzarzuela/Desktop/Zurich-ipad2");
+
+        IPadResize task = new IPadResize(justChecking, baseFolder, recursive);
+        task.resize(dstFolder,"Filtradas_NO","Organizadas");
     }
 
     // --------------------------------------------------------------------------------------------------------

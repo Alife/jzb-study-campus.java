@@ -53,6 +53,7 @@ public class ImgToolsAppWnd implements ITaskWnd {
     private static AppPreferences   s_prefs        = new AppPreferences(APP_NAME);
     private static final String     UI_CLASSES[]   = {
                                                    //
+            "com.jzb.img.ui.CheckCompoundNamesUI", //
             "com.jzb.img.ui.UndoActionUI", //
             "com.jzb.img.ui.RenumerateUI", //
             "com.jzb.img.ui.SplitByDateUI", //
@@ -62,7 +63,8 @@ public class ImgToolsAppWnd implements ITaskWnd {
             "com.jzb.img.ui.RenameWithTimestampUI", //
             "com.jzb.img.ui.CleanNameUI", //
             "com.jzb.img.ui.DeleteEmptyFoldersUI", //
-            "com.jzb.img.ui.RenameWithRegExprUI" //
+            "com.jzb.img.ui.RenameWithRegExprUI", //
+            "com.jzb.img.ui.IPadResizeUI" //
                                                    };
     private Browser                 m_brwDescription;
 
@@ -97,6 +99,7 @@ public class ImgToolsAppWnd implements ITaskWnd {
             ImgToolsAppWnd window = new ImgToolsAppWnd();
             window.open();
             s_prefs.save();
+            System.exit(0);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -138,7 +141,7 @@ public class ImgToolsAppWnd implements ITaskWnd {
         createContents();
         m_shell.open();
         m_shell.layout();
-
+                
         _setWndPosition();
         _initFields();
 
@@ -216,7 +219,18 @@ public class ImgToolsAppWnd implements ITaskWnd {
             @Override
             public void widgetSelected(final SelectionEvent e) {
                 DirectoryDialog dd = new DirectoryDialog(m_shell);
-                dd.setFilterPath(m_txtBaseFolder.getText());
+                File folder = new File(m_txtBaseFolder.getText());
+                while(folder!=null) {
+                    if(folder.exists()) break;
+                    folder = folder.getParentFile();
+                }
+                if(folder==null) {
+                    folder = new File(System.getProperty("user.home")+File.separator+"Documents");
+                    if(!folder.exists()) {
+                        folder=folder.getParentFile();
+                    }
+                }
+                dd.setFilterPath(folder.getAbsolutePath());
                 String newValue = dd.open();
                 if (newValue != null)
                     m_txtBaseFolder.setText(newValue);
@@ -306,6 +320,7 @@ public class ImgToolsAppWnd implements ITaskWnd {
                 Class<BaseUI> clazz = (Class<BaseUI>) Class.forName(ui_class);
                 Constructor<BaseUI> c = clazz.getConstructor(Composite.class, int.class);
                 BaseUI ui = c.newInstance(m_compOperation, SWT.NONE);
+                ui.setPrefs(s_prefs);
                 ui.setTaskWnd(this);
                 ui.setVisible(false);
                 ui.setBounds(0, 0, m_compOperation.getSize().x, m_compOperation.getSize().y);

@@ -31,6 +31,7 @@ public class NameComposer {
     private String                       m_forcedName     = null;
     private ArrayList<String>            m_groupNames     = new ArrayList<String>();
     private String                       m_imgFileName    = "";
+    
     private int                          m_index          = 0;
     private String                       m_name           = null;
     private ArrayList<String>            m_subgroupNames  = new ArrayList<String>();
@@ -134,6 +135,14 @@ public class NameComposer {
     // --------------------------------------------------------------------------------------------------------
     public int getIndex() {
         return m_index;
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    /**
+     * @return the imgFileName
+     */
+    public String getImgFileName() {
+        return m_imgFileName;
     }
 
     // --------------------------------------------------------------------------------------------------------
