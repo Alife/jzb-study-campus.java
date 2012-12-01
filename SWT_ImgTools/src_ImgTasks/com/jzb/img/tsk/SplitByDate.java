@@ -56,6 +56,7 @@ public class SplitByDate extends BaseTask {
     // --------------------------------------------------------------------------------------------------------
     public void splitByDate(GroupByCloseness group, TimeStampShift shiftTimeStamp) {
         try {
+            _checkBaseFolder();
             if (group == GroupByCloseness.YES) {
                 _groupByDateCloseness(m_baseFolder, shiftTimeStamp);
             } else {
