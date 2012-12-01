@@ -6,6 +6,7 @@ package com.jzb.util;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
+import java.util.Formatter;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -58,11 +59,44 @@ public abstract class Tracer {
         return false;
     }
 
-    public static void _debug(Object msg) {
+    public static void _debug(String fmt, Object... args) {
+        if (fmt != null) {
+            StringBuilder sb = new StringBuilder();
+            Formatter formatter = new Formatter(sb);
+            formatter.format(fmt, args);
+            s_tracer.__debug(sb.toString());
+        } else {
+            s_tracer.__debug(null);
+        }
+    }
+
+    public static void _debug(String msg) {
         if (msg != null)
             s_tracer.__debug(msg.toString());
         else
             s_tracer.__debug(null);
+    }
+
+    public static void _error(String fmt, Object... args) {
+        if (fmt != null) {
+            StringBuilder sb = new StringBuilder();
+            Formatter formatter = new Formatter(sb);
+            formatter.format(fmt, args);
+            s_tracer.__error(sb.toString());
+        } else {
+            s_tracer.__error(null);
+        }
+    }
+
+    public static void _error(String fmt, Throwable th, Object... args) {
+        if (fmt != null) {
+            StringBuilder sb = new StringBuilder();
+            Formatter formatter = new Formatter(sb);
+            formatter.format(fmt, args);
+            s_tracer.__error(sb.toString(), th);
+        } else {
+            s_tracer.__error(null);
+        }
     }
 
     public static void _error(String msg) {
@@ -79,11 +113,44 @@ public abstract class Tracer {
             s_tracer.__error(null, th);
     }
 
+    public static void _info(String fmt, Object... args) {
+        if (fmt != null) {
+            StringBuilder sb = new StringBuilder();
+            Formatter formatter = new Formatter(sb);
+            formatter.format(fmt, args);
+            s_tracer.__info(sb.toString());
+        } else {
+            s_tracer.__info(null);
+        }
+    }
+
     public static void _info(String msg) {
         if (msg != null)
             s_tracer.__info(msg.toString());
         else
             s_tracer.__info(null);
+    }
+
+    public static void _warn(String fmt, Object... args) {
+        if (fmt != null) {
+            StringBuilder sb = new StringBuilder();
+            Formatter formatter = new Formatter(sb);
+            formatter.format(fmt, args);
+            s_tracer.__warn(sb.toString());
+        } else {
+            s_tracer.__warn(null);
+        }
+    }
+
+    public static void _warn(String fmt, Throwable th, Object... args) {
+        if (fmt != null) {
+            StringBuilder sb = new StringBuilder();
+            Formatter formatter = new Formatter(sb);
+            formatter.format(fmt, args);
+            s_tracer.__warn(sb.toString(), th);
+        } else {
+            s_tracer.__warn(null);
+        }
     }
 
     public static void _warn(String msg) {
