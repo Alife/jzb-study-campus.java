@@ -16,10 +16,18 @@ public class GenericFilterRule implements IFilterRule {
         REMOVE, REPLACE, CUTRIGHT, SERIE_NAME, PREFIX, CHAPTER
     };
 
-    private Pattern m_pattern;
-    private MODE    m_mode;
-    private String  m_data;
+    private Pattern      m_pattern;
+    private MODE         m_mode;
+    private String       m_data;
     public static String lastSerieNameMatched = null;
+
+    /**
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "GenericFilterRule - Mode: '" + m_mode + "', Pattern: '" + m_pattern + "', Data:'" + m_data + "'";
+    }
 
     public static final MODE getMode(String mode) throws Exception {
         mode = mode.toLowerCase();
@@ -79,12 +87,17 @@ public class GenericFilterRule implements IFilterRule {
 
         Matcher mc = m_pattern.matcher(name);
 
-        if (name.charAt(4) != '-' || !mc.find()) {
-            return name;
+        if (mc.find()) {
+            if (name.charAt(4) != '-') {
+                throw new Exception("File matched a SERIE's name but no CHAPTER was found");
+            } else {
+                lastSerieNameMatched = this.m_data;
+                return name.substring(0, 5) + m_data;
+            }
         } else {
-            lastSerieNameMatched = this.m_data;
-            return name.substring(0, 5) + m_data;
+            return name;
         }
+
     }
 
     private String filter_prefix(String name) throws Exception {

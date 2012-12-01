@@ -17,6 +17,9 @@ import com.jzb.img.tsk.SplitByCompoundName;
  * 
  */
 public class SplitByCompoundNameUI extends BaseUI {
+    
+    private Button m_btnStopAtFirst;
+    private Button m_btnKeepOrder;
 
     // --------------------------------------------------------------------------------------------------------
     /**
@@ -39,7 +42,16 @@ public class SplitByCompoundNameUI extends BaseUI {
             }
         });
         btnSplit.setText("Split");
-        btnSplit.setBounds(10, 10, 94, 28);
+        btnSplit.setBounds(267, 6, 94, 28);
+        
+        m_btnStopAtFirst = new Button(this, SWT.CHECK);
+        m_btnStopAtFirst.setBounds(109, 10, 152, 18);
+        m_btnStopAtFirst.setText("Stop At First Subgroup");
+        
+        m_btnKeepOrder = new Button(this, SWT.CHECK);
+        m_btnKeepOrder.setSelection(true);
+        m_btnKeepOrder.setBounds(10, 10, 93, 18);
+        m_btnKeepOrder.setText("Keep Order");
 
     }
 
@@ -48,6 +60,7 @@ public class SplitByCompoundNameUI extends BaseUI {
     public String getTaskDescription() {
         String description = "";
         description += "<p>Splits files moving them into subfolders named after the parts of the compound name.</p>";
+        description += "<p><b>Stop At First Subgroup:</b> Will stop creating subfolders at the first subgroup part.</p>";
         description += "<p><b>Note 1:</b><i> No recursive processing is done and files without a compound name won't be moved.</i><br/>";
         description += "<b>Note 2:</b><i> Subgroup names will be ordered using a counter followed by <font color='red'><b>'" + BaseTask.SUBGROUP_COUNTER_CHAR1 + "'</b></font>.</i><br/>";
         description += "<b>Note 3:</b><i> It could be necessary to create folders named <font color='red'><b>'" + BaseTask.SUBGROUP_NOTHING + "'</b></font> to keep the order</i></p>";
@@ -68,16 +81,18 @@ public class SplitByCompoundNameUI extends BaseUI {
 
     // --------------------------------------------------------------------------------------------------------
     private void _executeTask() {
-
+        
+        final boolean keepOrder = m_btnKeepOrder.getSelection();
+        final boolean stopAtFirstSubgroup = m_btnStopAtFirst.getSelection();
+        
         final SplitByCompoundName task = new SplitByCompoundName(getTaskWnd().getJustCheck(), getTaskWnd().getBaseFolder(), getTaskWnd().getRecursiveProcessing());
         Runnable runner = new Runnable() {
 
             @Override
             public void run() {
-                task.splitByCompoundName();
+                task.splitByCompoundName(keepOrder, stopAtFirstSubgroup);
             }
         };
         getTaskWnd().runTask(getTaskName(), runner);
     }
-
 }

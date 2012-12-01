@@ -5,6 +5,8 @@ package com.jzb.img.ui;
 
 import org.eclipse.swt.widgets.Composite;
 
+import com.jzb.util.AppPreferences;
+
 /**
  * @author jzarzuela
  * 
@@ -12,6 +14,8 @@ import org.eclipse.swt.widgets.Composite;
 public abstract class BaseUI extends Composite {
 
     private ITaskWnd m_taskWnd;
+    private AppPreferences m_prefs;
+    
 
     // --------------------------------------------------------------------------------------------------------
     public BaseUI(Composite parent, int style) {
@@ -41,6 +45,23 @@ public abstract class BaseUI extends Composite {
         } catch (NumberFormatException nfex) {
             return 0;
         }
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    /**
+     * @return the prefs
+     */
+    public AppPreferences getPrefs() {
+        return m_prefs;
+    }
+
+    
+    // --------------------------------------------------------------------------------------------------------
+    /**
+     * @param prefs the prefs to set
+     */
+    public void setPrefs(AppPreferences prefs) {
+        m_prefs = prefs;
     }
 
 }
