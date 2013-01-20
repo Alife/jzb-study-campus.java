@@ -13,7 +13,6 @@
 	<classpathentry kind="lib" path="C:/JZarzuela/Java/eclipse-helios-SDK/plugins/org.eclipse.core.databinding_1.3.100.I20100601-0800.jar" sourcepath="C:/JZarzuela/Java/eclipse-helios-SDK/plugins/org.eclipse.core.databinding.source_1.3.100.I20100601-0800.jar"/>
 	<classpathentry kind="lib" path="C:/JZarzuela/Java/eclipse-helios-SDK/plugins/org.eclipse.core.databinding.beans_1.2.100.I20100601-0800.jar" sourcepath="C:/JZarzuela/Java/eclipse-helios-SDK/plugins/org.eclipse.core.databinding.beans.source_1.2.100.I20100601-0800.jar"/>
 	<classpathentry kind="lib" path="C:/JZarzuela/Java/eclipse-helios-SDK/plugins/org.eclipse.jface.databinding_1.4.0.I20100601-0800.jar" sourcepath="C:/JZarzuela/Java/eclipse-helios-SDK/plugins/org.eclipse.jface.databinding.source_1.4.0.I20100601-0800.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/SWT_Prefuse"/>
 	<classpathentry kind="lib" path="swt-grouplayout.jar"/>
 	<classpathentry kind="lib" path="baseline.jar"/>
 	<classpathentry kind="output" path="bin"/>

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.jzb.ipa.plist;
+package kkkkk.com.jzb.ipa.plist;
 
 
 /**

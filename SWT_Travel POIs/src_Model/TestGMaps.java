@@ -79,8 +79,8 @@ public class TestGMaps {
         // System.out.println("----------------------------------------------------------------------");
         // getMapInfo(myService);
 
-        // System.out.println("----------------------------------------------------------------------");
-        // updateMap(myService);
+        //System.out.println("----------------------------------------------------------------------");
+        //updateMap(myService);
 
         // System.out.println("----------------------------------------------------------------------");
         // createMap(myService);
@@ -94,11 +94,11 @@ public class TestGMaps {
         // System.out.println("----------------------------------------------------------------------");
         // updateFeature(myService);
 
-        System.out.println("----------------------------------------------------------------------");
-        getFeatureInfo(myService);
-
         // System.out.println("----------------------------------------------------------------------");
-        // createFeature(myService);
+        // getFeatureInfo(myService);
+
+        System.out.println("----------------------------------------------------------------------");
+        createFeature(myService);
 
         //System.out.println("----------------------------------------------------------------------");
         //batchUpdateMap(myService);
@@ -219,7 +219,7 @@ public class TestGMaps {
         // Use the feature feed's #post URL as the Edit URL for this map
         // Replace userID and mapID with appropriate values for your map
 
-        final URL featureEditUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004b5a757bcd80415f84/full");
+        final URL featureEditUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004bd1e01bfb85b8b669/full");
 
         // Create a blank FeatureEntry object
         FeatureEntry featureEntry = new FeatureEntry();
@@ -241,7 +241,9 @@ public class TestGMaps {
         }
 
         // Insert the feature entry using the #post URL
-        return myService.insert(featureEditUrl, featureEntry);
+       FeatureEntry entry = myService.insert(featureEditUrl, featureEntry);
+       _dumpProperties(entry);
+       return entry; 
     }
 
     private MapEntry createMap(MapsService myService) throws ServiceException, IOException {
@@ -268,7 +270,7 @@ public class TestGMaps {
     private void getFeatureInfo(MapsService myService) throws ServiceException, IOException {
 
         // Get a feature entry from its self URL (returned in the feature feed)
-        final URL featureEntryUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004c209ce96e61cbf972/full/0004c209cf319b70ede3c");
+        final URL featureEntryUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004bd1e01bfb85b8b669/full/0004c209cf319b70ede3c");
 
         FeatureEntry entry = myService.getEntry(featureEntryUrl, FeatureEntry.class);
 
@@ -288,7 +290,7 @@ public class TestGMaps {
     private void getFeatures(MapsService myService) throws ServiceException, IOException {
 
         // Get a feature feed for a specific map
-        final URL featureFeedUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004c209ce96e61cbf972/full");
+        final URL featureFeedUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004bd1e01bfb85b8b669/full");
         FeatureFeed featureFeed = myService.getFeed(featureFeedUrl, FeatureFeed.class);
 
         System.out.println("Features of the Map:");
@@ -319,7 +321,7 @@ public class TestGMaps {
         // Request the self link on a particular map
         // Note that you should replace the URL to a self link of
         // a particular map
-        final URL mapSelfUrl = new URL("http://maps.google.com/maps/feeds/maps/212026791974164037226/full/0004c209ce96e61cbf972");
+        final URL mapSelfUrl = new URL("http://maps.google.com/maps/feeds/maps/212026791974164037226/full/0004bd1e01bfb85b8b669");
         MapEntry map = myService.getEntry(mapSelfUrl, MapEntry.class);
 
         _dumpProperties(map);
@@ -366,7 +368,7 @@ public class TestGMaps {
         // Request the default metafeed
         // Replace userID, mapID and featureID with appropriate values for your map
 
-        final URL featureEditUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004c209ce96e61cbf972/full/0004c209cf319b70ede3c");
+        final URL featureEditUrl = new URL("http://maps.google.com/maps/feeds/features/212026791974164037226/0004bd1e01bfb85b8b669/full/0004c209cf319b70ede3c");
         FeatureEntry featureEntry = myService.getEntry(featureEditUrl, FeatureEntry.class);
         featureEntry.setTitle(new PlainTextConstruct("Otro Nombre 2"));
         featureEntry.setSummary(new PlainTextConstruct("que sera esto?"));
@@ -394,11 +396,12 @@ public class TestGMaps {
     private MapEntry updateMap(MapsService myService) throws ServiceException, IOException {
 
         // Use the map entry's post (edit) URL
-        final URL editMapUrl = new URL("http://maps.google.com/maps/feeds/maps/212026791974164037226/full/0004b6dcbec20d9576aad");
+        final URL editMapUrl = new URL("http://maps.google.com/maps/feeds/maps/212026791974164037226/full/0004bd1e01bfb85b8b669");
 
         // Create a MapEntry object and replace the title to 'Demo Map 2'
         MapEntry myEntry = new MapEntry();
-        myEntry.setTitle(new PlainTextConstruct("@@Test-2-12"));
+        myEntry.setTitle(new PlainTextConstruct("@otroMapa"));
+        myEntry.setSummary(new PlainTextConstruct("@@Un texto"));
         return myService.update(editMapUrl, myEntry);
     }
 }

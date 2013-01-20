@@ -239,7 +239,7 @@ public class IPATool2AppWnd {
                     m_btnRenameIPAs = new Button(composite_1, SWT.NONE);
                     m_btnRenameIPAs.setBackground(SWTResourceManager.getColor(SWT.COLOR_RED));
                     m_btnRenameIPAs.setLocation(120, 137);
-                    m_btnRenameIPAs.setSize(90, 25);
+                    m_btnRenameIPAs.setSize(94, 25);
                     m_btnRenameIPAs.addSelectionListener(new SelectionAdapter() {
 
                         @Override
@@ -258,7 +258,7 @@ public class IPATool2AppWnd {
                         updateIPAs();
                     }
                 });
-                m_btnUpdateIPAs.setBounds(216, 137, 90, 25);
+                m_btnUpdateIPAs.setBounds(216, 137, 94, 25);
                 m_btnUpdateIPAs.setText("Update IPAs");
 
                 m_chkUseAllFolders = new Button(composite_1, SWT.CHECK);
@@ -280,7 +280,7 @@ public class IPATool2AppWnd {
 
                 m_btnCleanJPGs = new Button(composite_1, SWT.NONE);
                 m_btnCleanJPGs.setBackground(SWTResourceManager.getColor(SWT.COLOR_RED));
-                m_btnCleanJPGs.setBounds(310, 137, 90, 25);
+                m_btnCleanJPGs.setBounds(310, 137, 94, 25);
                 m_btnCleanJPGs.addSelectionListener(new SelectionAdapter() {
 
                     @Override

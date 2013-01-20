@@ -5,8 +5,11 @@ package com.jzb.ipa.ren;
 
 import java.util.StringTokenizer;
 
+import com.dd.plist.NSArray;
+import com.dd.plist.NSNumber;
+import com.dd.plist.NSObject;
+import com.dd.plist.NSString;
 import com.jzb.ipa.bundle.T_BundleData;
-import com.jzb.ipa.plist.T_PLArray;
 import com.jzb.util.Tracer;
 
 /**
@@ -18,15 +21,12 @@ public class NameComposer {
     public static boolean isComposedName(String composedName) {
 
         composedName = composedName.toLowerCase();
-        
+
         char cLegal = _getLegal(composedName);
         char cType = getType(composedName);
 
-        if ((cType == 'm' || cType == 't' || cType == 'u') && 
-            (cLegal == '_' || cLegal == '$' || cLegal == '#') && 
-             composedName.contains("_pk[") && 
-             composedName.contains("_v[") && 
-             composedName.contains("_os["))
+        if ((cType == 'm' || cType == 't' || cType == 'u') && (cLegal == '_' || cLegal == '$' || cLegal == '#') && composedName.contains("_pk[") && composedName.contains("_v[")
+                && composedName.contains("_os["))
             return true;
         else
             return false;
@@ -35,25 +35,25 @@ public class NameComposer {
     private static char _getLegal(String composedName) {
         return composedName.charAt(0);
     }
-    
+
     public static char getType(String composedName) {
         return composedName.charAt(1);
     }
-    
+
     public static boolean isIPhoneIPA(String composedName) {
-        return getType(composedName.toLowerCase())=='m';
+        return getType(composedName.toLowerCase()) == 'm';
     }
 
     public static boolean isIPadIPA(String composedName) {
-        return getType(composedName.toLowerCase())=='t';
+        return getType(composedName.toLowerCase()) == 't';
     }
 
     public static boolean isUniversalIPA(String composedName) {
-        return getType(composedName.toLowerCase())=='u';
+        return getType(composedName.toLowerCase()) == 'u';
     }
 
     public static boolean isLegalIPA(String composedName) {
-        return _getLegal(composedName.toLowerCase())=='_';
+        return _getLegal(composedName.toLowerCase()) == '$';
     }
 
     public static String parseName(String composedName) {
@@ -115,12 +115,12 @@ public class NameComposer {
 
         String CFBundleName = ipaInfo.dict.getStrValue("CFBundleName");
         String CFBundleDisplayName = ipaInfo.dict.getStrValue("CFBundleDisplayName");
-        if(CFBundleName==null && CFBundleDisplayName==null) {
-            CFBundleName=ipaInfo.dict.getStrValue("CFBundleIdentifier");
+        if (CFBundleName == null && CFBundleDisplayName == null) {
+            CFBundleName = ipaInfo.dict.getStrValue("CFBundleIdentifier");
         }
-        
+
         String name = _mergeNames(CFBundleName, CFBundleDisplayName);
-        name=name.replace(':','_');
+        name = name.replace(':', '_');
         String pkg = ipaInfo.dict.getStrValue("CFBundleIdentifier");
         String ver = ipaInfo.dict.getStrValue("CFBundleVersion");
         String os = ipaInfo.dict.getStrValue("MinimumOSVersion");
@@ -144,20 +144,20 @@ public class NameComposer {
 
     private static String _calcAppType(T_BundleData ipaInfo) {
 
-        T_PLArray disps = (T_PLArray) ipaInfo.dict.getValue("UIDeviceFamily");
+        NSArray disps = (NSArray) ipaInfo.dict.objectForKey("UIDeviceFamily");
         if (disps == null) {
             return "m";
         } else {
-            if (disps.getSize() > 1) {
+            if (disps.count() > 1) {
                 return "u";
             } else {
                 int type;
 
-                Object obj = disps.getValue(0);
-                if (obj instanceof Number) {
-                    type = ((Number) obj).intValue();
-                } else if (obj instanceof String) {
-                    type = Integer.parseInt((String) obj);
+                NSObject obj = disps.objectAtIndex(0);
+                if (obj instanceof NSNumber) {
+                    type = ((NSNumber) obj).intValue();
+                } else if (obj instanceof NSString) {
+                    type = Integer.parseInt(obj.toString());
                 } else {
                     Tracer._error("Unknown device type class: " + obj.getClass());
                     type = -1;

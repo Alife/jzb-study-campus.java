@@ -6,16 +6,14 @@ package com.jzb.ipa;
 import java.io.File;
 import java.text.SimpleDateFormat;
 
-import com.jzb.ipa.plist.PListParser;
-import com.jzb.ipa.plist.T_PLDict;
+import com.dd.plist.NSDictionary;
+import com.dd.plist.PropertyListParser;
 
 /**
  * @author n63636
  * 
  */
 public class TestLegal {
-
-    private PListParser      m_plistParser = new PListParser();
 
     private SimpleDateFormat m_sdf         = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -44,7 +42,7 @@ public class TestLegal {
 
     public boolean _readLegalInfo(File afile) throws Exception {
 
-        T_PLDict dict = m_plistParser.parsePList(afile);
+        NSDictionary dict= (NSDictionary)PropertyListParser.parse(afile);
         if (dict != null) {
 
             String appleId = dict.getStrValue("appleId");

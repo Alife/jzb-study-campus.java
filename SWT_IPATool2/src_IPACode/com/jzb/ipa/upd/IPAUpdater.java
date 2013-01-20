@@ -110,7 +110,7 @@ public class IPAUpdater {
                     }
 
                     Tracer._debug("Moving new files to existing folder");
-                    if (upIPA.ipaFile != null  && upIPA.ipaFile.exists()) {
+                    if (upIPA.ipaFile != null && upIPA.ipaFile.exists()) {
                         newFile = new File(exIPA.ipaFile.getParentFile(), upIPA.ipaFile.getName());
                         if (!upIPA.ipaFile.renameTo(newFile)) {
                             Tracer._error("Moving new IPA file to existing folder: " + newFile);
@@ -150,8 +150,23 @@ public class IPAUpdater {
 
             Tracer._debug("Moving new IPA files to a single folder");
 
+            char isLegal = upIPA.ipaFile.getName().charAt(0);
+            String legalFolder;
+            switch (isLegal) {
+                case '$':
+                    legalFolder = "_legal" + File.separator;
+                    break;
+                case '#':
+                    legalFolder = "_cracked" + File.separator;
+                    break;
+                default:
+                    legalFolder = "_dontKnow" + File.separator;
+                    break;
+
+            }
+            
             File newFile;
-            File newSubFolder = new File(newfFolder, upIPA.ipaFile.getName().substring(1, 2));
+            File newSubFolder = new File(newfFolder, legalFolder + upIPA.ipaFile.getName().substring(1, 2));
             newSubFolder.mkdirs();
 
             newFile = new File(newSubFolder, upIPA.ipaFile.getName());
@@ -213,7 +228,7 @@ public class IPAUpdater {
                         Tracer._error("IPA file duplicated found reading folder info:");
                         Tracer._error("  " + ii.ipaFile);
                         Tracer._error("  " + oo.ipaFile);
-                        if(ii.ver.compareTo(oo.ver) < 0) {
+                        if (ii.ver.compareTo(oo.ver) < 0) {
                             // Deja en la hashmap la version mas nueva
                             IPAs.put(oo.pkg, oo);
                         }
@@ -222,7 +237,7 @@ public class IPAUpdater {
 
                     // Apuntamos el JPG como un IPA "fantasma" para poder recolocar el nuevo
                     // Si sólo queda el JPG en la carpeta
-                    File ipaFile = new File(f.getParentFile(), fname.substring(0,fname.length() - 3) + "ipa");
+                    File ipaFile = new File(f.getParentFile(), fname.substring(0, fname.length() - 3) + "ipa");
                     if (!ipaFile.exists()) {
 
                         String pkg = NameComposer.parsePkg(f.getName());
@@ -233,7 +248,7 @@ public class IPAUpdater {
                         ii.imgFile = f;
                         ii.pkg = pkg;
                         ii.ver = ver;
-                        
+
                         TIPAInfo oo = IPAs.put(ii.pkg, ii);
                         if (oo != null) {
                             Tracer._error("IPA (from old JPEG) file duplicated found reading folder info:");

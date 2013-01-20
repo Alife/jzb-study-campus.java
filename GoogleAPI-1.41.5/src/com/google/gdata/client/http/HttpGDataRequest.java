@@ -347,7 +347,7 @@ public class HttpGDataRequest implements GDataRequest {
     }
 
     // Request compressed response format
-    setHeader("Accept-Encoding", "gzip");
+    //setHeader("Accept-Encoding", "gzip");
 
     httpConn.setDoOutput(expectsInput);
   }

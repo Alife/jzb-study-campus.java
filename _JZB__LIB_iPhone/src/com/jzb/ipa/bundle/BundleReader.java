@@ -14,8 +14,8 @@ import java.util.Enumeration;
 import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipFile;
 
-import com.jzb.ipa.plist.PListParser;
-import com.jzb.ipa.plist.T_PLDict;
+import com.dd.plist.NSDictionary;
+import com.dd.plist.PropertyListParser;
 
 /**
  * @author n63636
@@ -24,8 +24,6 @@ import com.jzb.ipa.plist.T_PLDict;
 public class BundleReader {
 
     private SimpleDateFormat m_sdf         = new SimpleDateFormat("yyyy-MM-dd");
-
-    private PListParser      m_plistParser = new PListParser();
 
     public BundleReader() {
     }
@@ -44,20 +42,15 @@ public class BundleReader {
 
             if (!imdProcessed && zentry.getName().endsWith("iTunesMetadata.plist")) {
                 byte buffer[] = _readBuffer((int) zentry.getSize(), zf.getInputStream(zentry));
-                T_PLDict dict2 = m_plistParser.parsePList(buffer);
+                NSDictionary dict2 = (NSDictionary)PropertyListParser.parse(buffer);
 
                 // Es legal si existe una de los dos
                 String appleId1 = dict2.getStrValue("appleId");
                 String appleId2 = dict2.getStrValue("com.apple.iTunesStore.downloadInfo/accountInfo/AppleID");
-                String purchaseDate = dict2.getStrValue("com.apple.iTunesStore.downloadInfo/purchaseDate");
-                if (appleId1 == null && appleId2 == null && purchaseDate == null) {
+                if ((appleId1 != null && appleId1.toLowerCase().contains("jzarzuela")) || (appleId2 != null && appleId2.toLowerCase().contains("jzarzuela"))) {
                     data.isLegal = '$';
                 } else {
-                    if ((appleId1 != null && appleId1.toLowerCase().contains("jzarzuela")) || (appleId2 != null && appleId2.toLowerCase().contains("jzarzuela"))) {
-                        data.isLegal = '_';
-                    } else {
-                        data.isLegal = '#';
-                    }
+                    data.isLegal = '#';
                 }
 
                 imdProcessed = true;
@@ -65,7 +58,7 @@ public class BundleReader {
 
             if (!plistProcessed && zentry.getName().endsWith(".app/Info.plist")) {
                 byte buffer[] = _readBuffer((int) zentry.getSize(), zf.getInputStream(zentry));
-                data.dict = m_plistParser.parsePList(buffer);
+                data.dict = (NSDictionary)PropertyListParser.parse(buffer);
                 data.fdate = m_sdf.format(new Date(zentry.getTime()));
                 plistProcessed = true;
             }

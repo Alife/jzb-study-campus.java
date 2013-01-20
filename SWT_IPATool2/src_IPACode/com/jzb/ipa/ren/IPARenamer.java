@@ -21,6 +21,7 @@ public class IPARenamer {
     public void rename(File folders[], boolean recurse) {
 
         for (File folder : folders) {
+            Tracer._info("Renaming base: ----------------------------------------------");
             _rename(folder, recurse);
         }
     }
