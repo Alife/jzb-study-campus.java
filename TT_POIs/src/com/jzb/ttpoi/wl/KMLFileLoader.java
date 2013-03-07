@@ -5,6 +5,7 @@ package com.jzb.ttpoi.wl;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
@@ -32,10 +33,9 @@ public class KMLFileLoader {
 
         TPOIFileData fileData = new TPOIFileData();
         HashMap<String, String> styleCatMap = ConversionUtil.getDefaultParseCategories();
-
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = factory.newDocumentBuilder();
-        Document doc = docBuilder.parse(new InputSource(new FileInputStream(kmlFile)));
+        Document doc = docBuilder.parse(new InputSource(new InputStreamReader(new FileInputStream(kmlFile), "UTF8")));
 
         XPathFactory xpathFactory = XPathFactory.newInstance();
         XPath xpath = xpathFactory.newXPath();
@@ -79,6 +79,9 @@ public class KMLFileLoader {
                 if (val.charAt(0) == '#')
                     val = val.substring(1);
                 val = xpath.evaluate("/kml/Document/Style[@id=\"" + val + "\"]/IconStyle/Icon/href/text()", node);
+                if(val.trim().length()==0) {
+                    val = "http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png";
+                }
                 poi.setIconStyle(val);
                 val = ConversionUtil.getCategoryFromStyle(val);
                 poi.setCategory(val);
@@ -100,12 +103,19 @@ public class KMLFileLoader {
 
     private static String _cleanHTML(String txt) {
         txt = txt.replaceAll("\\<[^<>]*\\>", "");
+        txt = txt.replaceAll("&lt;","<");
+        txt = txt.replaceAll("&gt;",">");
+        txt = txt.replaceAll("&nbsp;"," ");
+        txt = txt.replaceAll("&amp;","&");
+        
         return txt;
     }
 
     private static void _parseCategories(HashMap<String, String> styleCatMap, String cats) {
 
         cats = _cleanHTML(cats);
+        if(cats.indexOf("<TTInfo>")>0) return;
+        
         StringTokenizer st1 = new StringTokenizer(cats, "#");
         while (st1.hasMoreTokens()) {
             String str = st1.nextToken();

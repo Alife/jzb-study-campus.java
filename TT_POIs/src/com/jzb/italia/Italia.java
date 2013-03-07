@@ -56,8 +56,8 @@ public class Italia {
      */
     public void doIt(String[] args) throws Exception {
 
-        File kmlFolder = new File("/Users/jzarzuela/Desktop/kmls");
-        File ov2Folder = new File("/Users/jzarzuela/Desktop/ov2s");
+        File kmlFolder = new File("/Users/jzarzuela/Desktop/pois/kmls");
+        File ov2Folder = new File("/Users/jzarzuela/Desktop/pois/ov2s");
 
         // Se baja y carga en memoria el mapa
         File kmlFile = KMLDownload.downloadMap(kmlFolder, "HT_Roma_2012");
@@ -178,7 +178,7 @@ public class Italia {
         styleCatMap.put("hospitals", "Iglesias");
         styleCatMap.put("red-dot", "Otros");
         styleCatMap.put("yellow-dot", "Roma");
-        FileTransform.transformKMLtoOV2(kmlFile, ov2Folder, false);
+        FileTransform.transformKMLtoOV2(null,kmlFile, ov2Folder, false);
     }
 
     private void _deleteFolderContent(File folder) {

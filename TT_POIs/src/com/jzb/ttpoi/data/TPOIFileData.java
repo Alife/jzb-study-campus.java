@@ -50,7 +50,7 @@ public class TPOIFileData {
         } else {
             double dif1 = Math.abs(poi.getLat() - poi2.getLat());
             double dif2 = Math.abs(poi.getLng() - poi2.getLng());
-            System.out.println("** WARING, duplicated POI:");
+            System.out.println("** WARNING, duplicated POI:");
             System.out.println("      " + poi2);
             System.out.println("      " + poi);
             System.out.println("      latDif=" + dif1 + ", lngDif=" + dif2);

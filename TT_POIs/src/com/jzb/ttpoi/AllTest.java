@@ -47,46 +47,97 @@ public class AllTest {
      * @throws Exception
      *             if something fails during the execution
      */
-    public void doIt2(String[] args) throws Exception {
+    public void doIt1(String[] args) throws Exception {
 
-        File kmlFolder = new File("/Users/jzarzuela/Desktop/pp/_KMLs_");
-        File ov2Folder = new File("/Users/jzarzuela/Desktop/pp/_OV2s_");
+        File kmlFolder = new File("/Users/jzarzuela/Desktop/pois/_KMLs_");
+        kmlFolder.mkdirs();
+        File ov2Folder = new File("/Users/jzarzuela/Desktop/pois/_OV2s_");
+        ov2Folder.mkdirs();
 
         KMLDownload.downloadAllMaps(kmlFolder);
         FileTransform.transformAllKMLtoOV2(kmlFolder, ov2Folder, true);
     }
 
-    public void doIt(String[] args) throws Exception {
+    
+    public void doIt2(String[] args) throws Exception {
         
-        File kmlFile = new File("/Users/jzarzuela/Desktop/pp/_KMLs_/BT_DEVOXX_2012.kml");
-        File ov2Folder = new File("/Users/jzarzuela/Desktop/pp/_OV2s_");
-        boolean nameSorted = true;
+        File kmlFolder = new File("/Users/jzarzuela/Desktop/pois/_KMLs_");
+        kmlFolder.mkdirs();
+        File ov2Folder = new File("/Users/jzarzuela/Desktop/pois/_OV2s_");
+        ov2Folder.mkdirs();
         
-        /*
-        ConversionUtil.getDefaultParseCategories().clear();
-        System.out.println("--- Categories ---");
-        TPOIFileData info = KMLFileLoader.loadFile(kmlFile);
-        for(String cat:info.getCategories()) {
-            System.out.println(cat);
-        }
-        */
-/*
+        File kmlFile = new File(kmlFolder, "BT_NewYork_2009-2011.kml");
+
+        
         HashMap<String, String> styleCatMap = ConversionUtil.getDefaultParseCategories();
-        styleCatMap.put("blue-dot", "Interes");
-        styleCatMap.put("ltblue-dot", "Interes");
-        styleCatMap.put("cabs", "Varios");
-        styleCatMap.put("green-dot", "Parques");
-        styleCatMap.put("homegardenbusiness", "Varios");
-        styleCatMap.put("hospitals", "Centro");
-        styleCatMap.put("red-dot", "Centro");
-        styleCatMap.put("shopping", "Varios");
-        styleCatMap.put("tree", "Parques");
-        styleCatMap.put("purple", "Alrededores");
-        styleCatMap.put("purple-dot", "Alrededores");
-        styleCatMap.put("yellow-dot", "Compras");
-        styleCatMap.put("ylw-pushpin", "Compras");
-        */
-        FileTransform.transformKMLtoOV2(kmlFile, ov2Folder, nameSorted);
+        styleCatMap.put("blue-dot", "Gramercy-Chelsea");
+        styleCatMap.put("blue-pushpin", "Upper West");
+        styleCatMap.put("green-dot", "Theater Dist-Midtown");
+        styleCatMap.put("ltblue-dot", "LtItaly-ChTown");
+        styleCatMap.put("pink-dot", "Lower Manhattan");
+        styleCatMap.put("ferry", "Lower Manhattan");
+        styleCatMap.put("red-dot", "SoHo-GrVillage");
+        styleCatMap.put("red", "East Village");
+        styleCatMap.put("yellow-dot", "Seaport-Civic Center");
+        styleCatMap.put("hiker", "Seaport-Civic Center");
+        styleCatMap.put("ylw-pushpin", "Brooklyn");
+        styleCatMap.put("camera", "NY_Otros");
+        styleCatMap.put("tree", "Central Park");
+        styleCatMap.put("rail", "Brooklyn");
+        
+        
+        
+        boolean nameSorted = true;
+        FileTransform.transformKMLtoOV2("NY", kmlFile, ov2Folder, nameSorted);
     }
 
+    public void doIt(String[] args) throws Exception {
+        
+        File kmlFolder = new File("/Users/jzarzuela/Desktop/pois/_KMLs_");
+        kmlFolder.mkdirs();
+        File ov2Folder = new File("/Users/jzarzuela/Desktop/pois/_OV2s_");
+        ov2Folder.mkdirs();
+        
+        File kmlFile = new File(kmlFolder, "BT_Boston_2010_2013.kml");
+
+        HashMap<String, String> styleCatMap = ConversionUtil.getDefaultParseCategories();
+        styleCatMap.put("green-dot", "Hardvard");
+        styleCatMap.put("red", "Salem");
+        styleCatMap.put("red-dot", "Salem");
+        styleCatMap.put("yellow-dot", "Costa-Sur");
+        styleCatMap.put("hiker_maps", "FreedomTrial");
+        styleCatMap.put("blue-dot", "Boston");
+        styleCatMap.put("ltblue-dot", "Interior");
+        styleCatMap.put("purple-dot", "Costa-Norte");
+        
+        
+        boolean nameSorted = true;
+        FileTransform.transformKMLtoOV2("BSTN", kmlFile, ov2Folder, nameSorted);
+    }
+    
+    public void doIt3(String[] args) throws Exception {
+        
+        boolean nameSorted = true;
+
+        File kmlFolder = new File("/Users/jzarzuela/Desktop/pois/_KMLs_");
+        kmlFolder.mkdirs();
+        File ov2Folder = new File("/Users/jzarzuela/Desktop/pois/_OV2s_");
+        ov2Folder.mkdirs();
+        
+
+        
+        File kmlFile;
+        ConversionUtil.getDefaultParseCategories().clear();
+        kmlFile = new File(kmlFolder, "BT_SFCO_2008.kml");
+        FileTransform.transformKMLtoOV2("SCFCO", kmlFile, ov2Folder, nameSorted);
+        
+        ConversionUtil.getDefaultParseCategories().clear();
+        kmlFile = new File(kmlFolder, "BT_Miami_2010.kml");
+        FileTransform.transformKMLtoOV2("Miami", kmlFile, ov2Folder, nameSorted);
+        
+        ConversionUtil.getDefaultParseCategories().clear();
+        kmlFile = new File(kmlFolder, "BT_Las Vegas_2008-2011.kml");
+        FileTransform.transformKMLtoOV2("Las Vegas", kmlFile, ov2Folder, nameSorted);
+        
+    }
 }

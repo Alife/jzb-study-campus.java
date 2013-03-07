@@ -97,7 +97,7 @@ public class ConversionUtil {
     }
 
     public static String getOV2Text(String text) {
-        return text;
+        return text.trim();
     }
 
     public static byte[] getStrANSIValue(String text) throws CharacterCodingException {
