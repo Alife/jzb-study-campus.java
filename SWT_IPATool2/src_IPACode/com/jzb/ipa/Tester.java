@@ -7,6 +7,7 @@ import java.io.File;
 
 import com.jzb.ipa.bundle.BundleReader;
 import com.jzb.ipa.bundle.T_BundleData;
+import com.jzb.ipa.ren.IPARenamer;
 import com.jzb.ipa.ren.NameComposer;
 import com.jzb.ipa.upd.IPAUpdater;
 import com.jzb.util.Tracer;
@@ -63,13 +64,11 @@ public class Tester {
 
     public void doIt(String[] args) throws Exception {
 
-        File f=new File("C:\\JZarzuela\\iPhone\\IPAs\\iPhone-iPad-mixtas\\_games\\mlN[Tiki Premium]_PK[com.spokko.TikiPremium]_V[1.5.3]_OS[3.0]_D[2011-04-21].ipa");
+        File f=new File("/Users/jzarzuela/Documents/personal/iPhone/IPAs/_legal/iPad/#uN[Devoxx '12]_PK[be.ida-mediafoundry.Devoxx--11]_V[2.1.0]_OS[5.0]_D[2012-11-02].ipa");
         Tracer._debug("Processing IPA file: " + f);
-        BundleReader m_ipaReader = new BundleReader();
-        T_BundleData ipaInfo = m_ipaReader.readInfo(f);
-        String newName = NameComposer.composeName(ipaInfo);
-        
-        System.out.println(newName);
+        IPARenamer ipaRenamer = new IPARenamer();
+        File newFile = ipaRenamer.processIPA(f);
+        System.out.println(newFile);
     }
 
 }

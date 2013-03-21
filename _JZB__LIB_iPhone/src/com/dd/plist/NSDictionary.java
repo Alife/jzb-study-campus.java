@@ -42,6 +42,22 @@ public class NSDictionary extends NSObject {
         dict = new LinkedHashMap<String, NSObject>();
     }
 
+    public String getStrCompoundValue(String key) {
+        int p1 = key.indexOf('/');
+        if(p1>0) {
+            String subkey = key.substring(0,p1);
+            String subkey2 = key.substring(p1+1);
+            NSObject obj = objectForKey(subkey);
+            if(obj!=null && obj instanceof NSDictionary) {
+                return ((NSDictionary)obj).getStrCompoundValue(subkey2);
+            } else {
+                return null;
+            }
+        } else {
+            return getStrValue(key);
+        }
+    }
+    
     public String getStrValue(String key) {
         NSObject obj = objectForKey(key);
         return obj != null ? obj.toString() : null;

@@ -47,7 +47,7 @@ public class AllTest {
      * @throws Exception
      *             if something fails during the execution
      */
-    public void doIt1(String[] args) throws Exception {
+    public void doIt(String[] args) throws Exception {
 
         File kmlFolder = new File("/Users/jzarzuela/Desktop/pois/_KMLs_");
         kmlFolder.mkdirs();
@@ -91,7 +91,7 @@ public class AllTest {
         FileTransform.transformKMLtoOV2("NY", kmlFile, ov2Folder, nameSorted);
     }
 
-    public void doIt(String[] args) throws Exception {
+    public void doIt4(String[] args) throws Exception {
         
         File kmlFolder = new File("/Users/jzarzuela/Desktop/pois/_KMLs_");
         kmlFolder.mkdirs();

@@ -46,7 +46,7 @@ public class BundleReader {
 
                 // Es legal si existe una de los dos
                 String appleId1 = dict2.getStrValue("appleId");
-                String appleId2 = dict2.getStrValue("com.apple.iTunesStore.downloadInfo/accountInfo/AppleID");
+                String appleId2 = dict2.getStrCompoundValue("com.apple.iTunesStore.downloadInfo/accountInfo/AppleID");
                 if ((appleId1 != null && appleId1.toLowerCase().contains("jzarzuela")) || (appleId2 != null && appleId2.toLowerCase().contains("jzarzuela"))) {
                     data.isLegal = '$';
                 } else {
