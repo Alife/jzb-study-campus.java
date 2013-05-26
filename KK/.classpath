@@ -4,7 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/_JZB__LIB"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/HTTPClient"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/HTML Unit-2.8"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/SWT_IPATool2"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/HTML Unit-2.8"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

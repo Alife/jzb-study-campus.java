@@ -33,6 +33,17 @@ public class TPOIFileData {
     /**
      * 
      */
+    private String                               fileName;
+    
+    /**
+     * 
+     */
+    private Boolean                               wasKMLFile;
+    
+    
+    /**
+     * 
+     */
     public TPOIFileData() {
     }
 
@@ -44,17 +55,14 @@ public class TPOIFileData {
     
     public void addPOI(TPOIData poi) {
         TPOIData poi2 = _searchPOI(poi);
-        if (poi2 == null) {
-            getAllPOIs().add(poi);
-            getCategory(poi.getCategory()).add(poi);
-        } else {
-            double dif1 = Math.abs(poi.getLat() - poi2.getLat());
-            double dif2 = Math.abs(poi.getLng() - poi2.getLng());
-            System.out.println("** WARNING, duplicated POI:");
+        if (poi2 != null) {
+            System.out.println("** WARNING, duplicated POI name:");
             System.out.println("      " + poi2);
             System.out.println("      " + poi);
-            System.out.println("      latDif=" + dif1 + ", lngDif=" + dif2);
+            System.out.println("      distance(m) = " + poi.distance(poi2));
         }
+        getAllPOIs().add(poi);
+        getCategory(poi.getCategory()).add(poi);
     }
 
     private TPOIData _searchPOI(TPOIData poi) {
@@ -93,6 +101,20 @@ public class TPOIFileData {
         return name;
     }
 
+    /**
+     * @return the name
+     */
+    public boolean getWasKMLFile() {
+        return wasKMLFile;
+    }
+    
+    /**
+     * @return the fileName
+     */
+    public String getFileName() {
+        return fileName;
+    }
+    
     public Set<String> getCategories() {
         return categorizedPOIs.keySet();
     }
@@ -128,6 +150,22 @@ public class TPOIFileData {
         this.name = name;
     }
 
+    /**
+     * @param wasKMLFile
+     *            the wasKMLFile to set
+     */
+    public void setWasKMLFile(boolean wasKMLFile) {
+        this.wasKMLFile = wasKMLFile;
+    }
+    
+    /**
+     * @param fileName
+     *            the fileName to set
+     */
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+    
     public void translateCategories(HashMap<String, String> transMap) {
 
         // La conversion es con expresiones regulares

@@ -8,7 +8,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.core.runtime_3.7.0.v20110110.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.equinox.common_3.6.0.v20110523.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.equinox.registry_3.5.101.R37x_v20110810-1611.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.jface_3.7.0.v20110928-1505.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.jface_3.7.0.v20110928-1505.jar" sourcepath="lib/org.eclipse.jface.source_3.7.0.v20110928-1505.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.jface.text_3.7.2.v20111213-1208.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.osgi_3.7.2.v20120110-1415.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.swt.cocoa.macosx.x86_64_3.7.2.v3740f.jar" sourcepath="lib/org.eclipse.swt.cocoa.macosx.x86_64.source_3.7.2.v3740f.jar"/>

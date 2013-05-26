@@ -32,6 +32,9 @@ public class KMLFileLoader {
     public static TPOIFileData loadFile(File kmlFile) throws Exception {
 
         TPOIFileData fileData = new TPOIFileData();
+        fileData.setFileName(kmlFile.getAbsolutePath());
+        fileData.setWasKMLFile(true);
+        
         HashMap<String, String> styleCatMap = ConversionUtil.getDefaultParseCategories();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = factory.newDocumentBuilder();

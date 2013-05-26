@@ -18,6 +18,9 @@ public class OV2FileLoader {
     public static TPOIFileData loadFile(File ov2File) throws Exception {
 
         TPOIFileData fileData = new TPOIFileData();
+        fileData.setFileName(ov2File.getAbsolutePath());
+        fileData.setWasKMLFile(false);
+
         fileData.setName(_getFName(ov2File));
 
         FileInputStream fis = new FileInputStream(ov2File);

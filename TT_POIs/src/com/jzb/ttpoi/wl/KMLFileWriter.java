@@ -81,6 +81,7 @@ public class KMLFileWriter {
 
         pw.println("  <Placemark>");
         pw.println("    <name>" + _escape(poi.getName()) + "</name>");
+        pw.println("    <description><![CDATA[" + _escape(poi.getDesc()) + "]]></description>");
         pw.println("    <styleUrl>#style" + sIndex.intValue() + "</styleUrl>");
         pw.println("    <Point>");
         pw.println("      <coordinates>" + poi.getLng() + "," + poi.getLat() + ",0.000000</coordinates>");

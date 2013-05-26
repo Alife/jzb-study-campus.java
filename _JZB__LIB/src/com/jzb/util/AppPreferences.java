@@ -75,6 +75,16 @@ public class AppPreferences {
         }
     }
 
+    public double getPrefDouble(String name, double defValue) {
+        String str = m_prefs.getProperty(name);
+        if (str != null) {
+            return Double.parseDouble(str);
+        } else {
+            setPrefDouble(name, defValue);
+            return defValue;
+        }
+    }
+    
     public void load(boolean clearFirst) throws Exception {
         if (clearFirst)
             m_prefs.clear();
@@ -114,6 +124,11 @@ public class AppPreferences {
         return str != null ? Long.parseLong(str) : 0;
     }
 
+    public long setPrefDouble(String name, double value) {
+        String str = (String) m_prefs.setProperty(name, Double.toString(value));
+        return str != null ? Long.parseLong(str) : 0;
+    }
+    
     public File getPrefFile() {
 
         File prefBaseFolder = new File(System.getProperty("user.home") + File.separatorChar + ".prefs");

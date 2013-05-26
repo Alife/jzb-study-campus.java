@@ -46,7 +46,7 @@ public class TestFilters {
 
         Config.loadConfig(new File("/Users/jzarzuela/Documents/java-Campus/_Util_DivxCleaner/resources/config.xml"));
         
-        String newName = Filters.filterName("Revolution.2012.S01E04.HDTV.x264-LOL.mp4");
+        String newName = Filters.filterName("Llama A La Comadrona - Temporada 1 [HDTV][Cap.103][Español Castellano]/LlaALComad103 [www.newpct.com]");
         System.out.println(newName);
     }
 }

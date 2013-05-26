@@ -133,7 +133,13 @@ public class TPOIData implements Comparable<TPOIData> {
      */
     @Override
     public boolean equals(Object obj) {
-        return (obj instanceof TPOIData) && m_name.equals(((TPOIData) obj).m_name);
+        if(!(obj instanceof TPOIData)) return false;
+        
+        TPOIData poi2 = (TPOIData) obj;
+        return  m_name.equals(poi2.m_name) &&
+                m_desc.equals(poi2.m_desc) &&
+                m_lat == poi2.m_lat &&
+                m_lng == poi2.m_lng;
     }
 
     /**
@@ -230,7 +236,7 @@ public class TPOIData implements Comparable<TPOIData> {
     public void setName(String name) {
         if (name == null)
             name = "";
-        m_name = name;
+        m_name = name.trim();
     }
 
     /**

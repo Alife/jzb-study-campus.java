@@ -47,11 +47,11 @@ public class AllTest {
      * @throws Exception
      *             if something fails during the execution
      */
-    public void doIt(String[] args) throws Exception {
+    public void doIt2(String[] args) throws Exception {
 
-        File kmlFolder = new File("/Users/jzarzuela/Desktop/pois/_KMLs_");
+        File kmlFolder = new File("/Users/jzarzuela/Downloads/_tmp_/pois/_KMLs_");
         kmlFolder.mkdirs();
-        File ov2Folder = new File("/Users/jzarzuela/Desktop/pois/_OV2s_");
+        File ov2Folder = new File("/Users/jzarzuela/Downloads/_tmp_/pois/_OV2s_");
         ov2Folder.mkdirs();
 
         KMLDownload.downloadAllMaps(kmlFolder);
@@ -59,36 +59,51 @@ public class AllTest {
     }
 
     
-    public void doIt2(String[] args) throws Exception {
+    public void doIt(String[] args) throws Exception {
         
-        File kmlFolder = new File("/Users/jzarzuela/Desktop/pois/_KMLs_");
+        File kmlFolder = new File("/Users/jzarzuela/Downloads/_tmp_/pois/_KMLs_");
         kmlFolder.mkdirs();
-        File ov2Folder = new File("/Users/jzarzuela/Desktop/pois/_OV2s_");
+        File ov2Folder = new File("/Users/jzarzuela/Downloads/_tmp_/pois/_OV2s_");
         ov2Folder.mkdirs();
         
-        File kmlFile = new File(kmlFolder, "BT_NewYork_2009-2011.kml");
+        File kmlFile = new File(kmlFolder, "HT_Belgica_2013.kml");
 
         
         HashMap<String, String> styleCatMap = ConversionUtil.getDefaultParseCategories();
-        styleCatMap.put("blue-dot", "Gramercy-Chelsea");
+        styleCatMap.put("blue-dot", "Gante");
+        styleCatMap.put("homegardenbusiness", "Gante");
+        
+        
+        styleCatMap.put("green-dot", "Brujas");
+        styleCatMap.put("ferry", "Brujas");
+        styleCatMap.put("green", "Brujas");
+        
+        styleCatMap.put("yellow-dot", "Amberes");
+        styleCatMap.put("ylw-pushpin", "Amberes");
+        
+        styleCatMap.put("red-dot", "Bruselas");
+        styleCatMap.put("red", "Bruselas");
+        styleCatMap.put("plane", "Bruselas");
+        styleCatMap.put("caution", "Bruselas");
+        
+        
+        /*
         styleCatMap.put("blue-pushpin", "Upper West");
-        styleCatMap.put("green-dot", "Theater Dist-Midtown");
         styleCatMap.put("ltblue-dot", "LtItaly-ChTown");
         styleCatMap.put("pink-dot", "Lower Manhattan");
         styleCatMap.put("ferry", "Lower Manhattan");
-        styleCatMap.put("red-dot", "SoHo-GrVillage");
         styleCatMap.put("red", "East Village");
-        styleCatMap.put("yellow-dot", "Seaport-Civic Center");
         styleCatMap.put("hiker", "Seaport-Civic Center");
         styleCatMap.put("ylw-pushpin", "Brooklyn");
         styleCatMap.put("camera", "NY_Otros");
         styleCatMap.put("tree", "Central Park");
         styleCatMap.put("rail", "Brooklyn");
+        */
         
         
         
         boolean nameSorted = true;
-        FileTransform.transformKMLtoOV2("NY", kmlFile, ov2Folder, nameSorted);
+        FileTransform.transformKMLtoOV2("BLG", kmlFile, ov2Folder, nameSorted);
     }
 
     public void doIt4(String[] args) throws Exception {
