@@ -44,8 +44,8 @@ public class DelClones {
      */
     public void doIt(String[] args) throws Exception {
 
-        File dataFile = new File("C:\\WKSPs\\Consolidado\\_Util_FindDuplicatedFiles\\out\\pp.txt");
-
+        File dataFile = new File("/Users/jzarzuela/Documents/java-Campus/_Util_FindDuplicatedFiles/diffs.txt");
+                
         BufferedReader br = new BufferedReader(new FileReader(dataFile));
         while (br.ready()) {
             String line = br.readLine();
@@ -53,15 +53,13 @@ public class DelClones {
                 continue;
             
             File f = new File(line);
-            if (f.exists()) {
-                //System.out.println("Deleting file: " + f);
-                if (!f.delete()) {
-                    System.out.println("Error deleting file: " + f);
+            if (f.exists() && f.getAbsolutePath().contains("/iphonePrados/")) {
+                
+                File newFile = new File(f.getAbsolutePath().replace("/iphonePrados/","/iphonePrados_dup/"));
+                if (!f.renameTo(newFile)) {
+                    System.out.println("Error moving file: " + f);
                 }
-            } else {
-                System.out.println("File doesn't exist: " + f);
-            }
-
+            } 
         }
         br.close();
 

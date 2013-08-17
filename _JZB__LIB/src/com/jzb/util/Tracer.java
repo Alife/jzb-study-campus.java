@@ -10,6 +10,7 @@ import java.util.Formatter;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 /**
  * @author n63636
  * 
@@ -20,23 +21,28 @@ public abstract class Tracer {
         DEBUG, ERROR, INFO, WARN
     }
 
-    private static Tracer          s_tracer   = new PStreamTracer();
+    private static Tracer                       s_tracer       = new PStreamTracer();
 
-    private StringBuffer           m_sbDebug  = new StringBuffer();
-    private StringBuffer           m_sbError  = new StringBuffer();
-    private StringBuffer           m_sbInfo   = new StringBuffer();
-    private StringBuffer           m_sbWarn   = new StringBuffer();
+    private volatile transient StringBuffer     m_sbDebug      = new StringBuffer();
+    private volatile transient StringBuffer     m_sbError      = new StringBuffer();
+    private volatile transient StringBuffer     m_sbInfo       = new StringBuffer();
+    private volatile transient StringBuffer     m_sbWarn       = new StringBuffer();
 
-    private volatile transient int m_cntDebug = 0;
-    private int                    m_cntError = 0;
-    private int                    m_cntInfo  = 0;
-    private int                    m_cntWarn  = 0;
+    private volatile transient int              m_cntDebug     = 0;
+    private volatile transient int              m_cntError     = 0;
+    private volatile transient int              m_cntInfo      = 0;
+    private volatile transient int              m_cntWarn      = 0;
 
-    private Timer                  m_flushTimer;
+    private volatile transient Timer            m_flushTimer;
 
-    private SimpleDateFormat       m_sdf      = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
+    private volatile transient SimpleDateFormat m_sdf          = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
 
-    private boolean                m_buffered;
+    private volatile transient static boolean   s_debugEnabled = true;
+    private volatile transient static boolean   s_infoEnabled  = true;
+    private volatile transient static boolean   s_warnEnabled  = true;
+    private volatile transient static boolean   s_errorEnabled = true;
+
+    private volatile transient boolean          m_buffered;
 
     public Tracer(boolean buffered) {
         m_buffered = buffered;
@@ -52,6 +58,44 @@ public abstract class Tracer {
             };
 
             m_flushTimer.schedule(flushTask, 2000, 2000);
+        }
+    }
+
+    public static void setLevelEnabled(Level level, boolean enabled) {
+        switch (level) {
+            case DEBUG:
+                s_debugEnabled = enabled;
+                break;
+            case INFO:
+                s_infoEnabled = enabled;
+                if (s_tracer._propagateLevels(level)) {
+                    setLevelEnabled(Level.DEBUG, enabled);
+                }
+                break;
+            case WARN:
+                s_warnEnabled = enabled;
+                break;
+            case ERROR:
+                s_errorEnabled = enabled;
+                if (s_tracer._propagateLevels(level)) {
+                    setLevelEnabled(Level.WARN, enabled);
+                }
+                break;
+        }
+    }
+
+    public static boolean isLevelEnabled(Level level) {
+        switch (level) {
+            case DEBUG:
+                return s_debugEnabled;
+            case INFO:
+                return s_infoEnabled;
+            case WARN:
+                return s_warnEnabled;
+            case ERROR:
+                return s_errorEnabled;
+            default:
+                return false;
         }
     }
 
@@ -205,7 +249,7 @@ public abstract class Tracer {
     protected void __error(String msg) {
         _addTraceText(Level.ERROR, msg);
         if (_propagateLevels(Level.ERROR)) {
-            _addTraceText(Level.WARN, msg);
+            __warn(msg);
         }
     }
 
@@ -216,15 +260,14 @@ public abstract class Tracer {
         _addTraceText(Level.ERROR, msg);
         _addTraceText(Level.ERROR, sw.getBuffer().toString());
         if (_propagateLevels(Level.ERROR)) {
-            _addTraceText(Level.WARN, msg);
-            _addTraceText(Level.WARN, sw.getBuffer().toString());
+            __warn(msg, th);
         }
     }
 
     protected void __info(String msg) {
         _addTraceText(Level.INFO, msg);
         if (_propagateLevels(Level.INFO)) {
-            _addTraceText(Level.DEBUG, msg);
+            __debug(msg);
         }
     }
 
@@ -265,23 +308,25 @@ public abstract class Tracer {
 
     private void _addTraceText(final Level level, final String msg) {
 
-        String threadName = Thread.currentThread().getName();
-        String fullMsg = Tracer.getLevelText(level) + " " + m_sdf.format(System.currentTimeMillis()) + " " + threadName + "\t- " + (msg != null ? msg : "null") + "\r\n";
+        if (isLevelEnabled(level)) {
+            String threadName = Thread.currentThread().getName();
+            String fullMsg = Tracer.getLevelText(level) + " " + m_sdf.format(System.currentTimeMillis()) + " " + threadName + "\t- " + (msg != null ? msg : "null") + "\r\n";
 
-        int counter;
-        StringBuffer sb = _getStringBuffer(level);
-        synchronized (sb) {
-            sb.append(fullMsg);
-            counter = _incBufferCount(level);
-        }
+            int counter;
+            StringBuffer sb = _getStringBuffer(level);
+            synchronized (sb) {
+                sb.append(fullMsg);
+                counter = _incBufferCount(level);
+            }
 
-        if (!m_buffered || counter >= 50) {
-            _resetBufferCount(level);
-            _showTraceText(level, sb);
+            if (!m_buffered || counter >= 50) {
+                _resetBufferCount(level);
+                _showTraceText(level, sb);
+            }
         }
     }
 
-    private synchronized int _incBufferCount(Level level) {
+    protected synchronized int _incBufferCount(Level level) {
         switch (level) {
             case DEBUG:
                 return ++m_cntDebug;
@@ -297,7 +342,7 @@ public abstract class Tracer {
         }
     }
 
-    private synchronized void _resetBufferCount(Level level) {
+    protected synchronized void _resetBufferCount(Level level) {
         switch (level) {
             case DEBUG:
                 m_cntDebug = 0;
@@ -313,7 +358,7 @@ public abstract class Tracer {
         }
     }
 
-    private StringBuffer _getStringBuffer(Level level) {
+    protected StringBuffer _getStringBuffer(Level level) {
         switch (level) {
             case DEBUG:
                 return m_sbDebug;

@@ -19,6 +19,8 @@ import java.util.Map;
  */
 public class FindClones {
 
+    private HashMap<String, ArrayList<String>> m_data = new HashMap<String, ArrayList<String>>();
+
     /**
      * Static Main starting method
      * 
@@ -36,7 +38,7 @@ public class FindClones {
             System.out.println("***** TEST FINISHED [" + (t2 - t1) + "]*****");
         } catch (Throwable th) {
             System.out.println("***** TEST FAILED *****");
-            th.printStackTrace(System.out);
+            th.printStackTrace(System.err);
         }
     }
 
@@ -98,8 +100,6 @@ public class FindClones {
 
     }
 
-    private HashMap<String, ArrayList<String>> m_data = new HashMap<String, ArrayList<String>>();
-
     private ArrayList<String> _getArray(String hash) {
         ArrayList<String> array = m_data.get(hash);
         if (array == null) {
@@ -119,8 +119,19 @@ public class FindClones {
             String fname = line.substring(0, p1);
             String hash = line.substring(p1 + 2);
 
-            _getArray(hash).add(fname);
+            if(!_skipFileProcessing(fname)) {
+                _getArray(hash).add(fname);
+            }
         }
         br.close();
     }
+    
+
+    private boolean _skipFileProcessing(String fname) throws Exception {
+        if(fname.contains("/.git")) {
+            return true;
+        }
+        return false;
+    }
+
 }

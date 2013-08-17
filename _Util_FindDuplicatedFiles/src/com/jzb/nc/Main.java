@@ -11,6 +11,8 @@ import java.io.File;
  */
 public class Main {
 
+    private static long s_initTime = 0;
+
     /**
      * Static Main starting method
      * 
@@ -19,16 +21,17 @@ public class Main {
      */
     public static void main(String[] args) {
         try {
-            long t1, t2;
+            long t2;
             System.out.println("***** TEST STARTED *****");
             Main me = new Main();
-            t1 = System.currentTimeMillis();
+            s_initTime = System.currentTimeMillis();
             me.doIt(args);
             t2 = System.currentTimeMillis();
-            System.out.println("***** TEST FINISHED [" + (t2 - t1) + "]*****");
+            System.out.println("***** TEST FINISHED [" + (t2 - s_initTime) + "]*****");
             System.exit(0);
         } catch (Throwable th) {
-            System.out.println("***** TEST FAILED *****");
+            long t2 = System.currentTimeMillis();
+            System.out.println("***** TEST FAILED [" + (t2 - s_initTime) + "]*****");
             th.printStackTrace(System.out);
         }
     }
@@ -49,7 +52,9 @@ public class Main {
 
         // ********************************************************************************
         // ********************************************************************************
-        final File baseFolders[] = { new File("/Users/jzarzuela/Documents/personal/Viajes/_Fotos_/__SIN COLOCAR__") 
+        final File baseFolders[] = { new File("/Users/jzarzuela/Downloads/_tmp_/_extracted_IPAs_")
+        // new File("/Users/jzarzuela/Documents/personal/backup-discoextr/_Backup_/Imagenes/")
+        // new File("/Volumes/Seagate Expansion Drive/_Backup_/Imagenes/")
         };
         // ********************************************************************************
         // ********************************************************************************
@@ -57,7 +62,7 @@ public class Main {
         final File outputFolder = new File("/Users/jzarzuela/Documents/java-Campus/_Util_FindDuplicatedFiles/out");
         outputFolder.mkdirs();
 
-        m_pf = new ProcessFiles();
+        m_pf = new ProcessFiles(s_initTime);
 
         new Thread(new Runnable() {
 
@@ -92,11 +97,15 @@ public class Main {
             m_pf.setFileCount(m_count);
         }
 
-        for (File f : folder.listFiles()) {
-            if (f.isDirectory()) {
-                _iterateFolder(f);
-            } else {
-                m_count++;
+        File lfiles[] = folder.listFiles();
+        if (lfiles != null) {
+            for (File f : lfiles) {
+                System.out.println("*** " + f + " - " + f.exists());
+                if (f.isDirectory()) {
+                    _iterateFolder(f);
+                } else {
+                    m_count++;
+                }
             }
         }
 

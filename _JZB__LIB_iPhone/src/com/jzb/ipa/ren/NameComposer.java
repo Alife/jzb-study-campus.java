@@ -25,7 +25,7 @@ public class NameComposer {
         char cLegal = _getLegal(composedName);
         char cType = getType(composedName);
 
-        if ((cType == 'm' || cType == 't' || cType == 'u') && (cLegal == '_' || cLegal == '$' || cLegal == '#') && composedName.contains("_pk[") && composedName.contains("_v[")
+        if ((cType == 'm' || cType == 't' || cType == 'u') && (cLegal == '?' || cLegal == '$' || cLegal == '#') && composedName.contains("_pk[") && composedName.contains("_v[")
                 && composedName.contains("_os["))
             return true;
         else
@@ -125,7 +125,7 @@ public class NameComposer {
         String ver = ipaInfo.dict.getStrValue("CFBundleVersion");
         String os = ipaInfo.dict.getStrValue("MinimumOSVersion");
 
-        sb.append(ipaInfo.isLegal);
+        sb.append(ipaInfo.isLegal.getLetter());
         sb.append(_calcAppType(ipaInfo));
         sb.append("N[");
         sb.append(name);

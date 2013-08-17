@@ -16,6 +16,7 @@ import org.apache.tools.zip.ZipFile;
 
 import com.dd.plist.NSDictionary;
 import com.dd.plist.PropertyListParser;
+import com.jzb.ipa.bundle.T_BundleData.LEGAL_TYPE;
 
 /**
  * @author n63636
@@ -23,7 +24,7 @@ import com.dd.plist.PropertyListParser;
  */
 public class BundleReader {
 
-    private SimpleDateFormat m_sdf         = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat m_sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     public BundleReader() {
     }
@@ -42,15 +43,15 @@ public class BundleReader {
 
             if (!imdProcessed && zentry.getName().endsWith("iTunesMetadata.plist")) {
                 byte buffer[] = _readBuffer((int) zentry.getSize(), zf.getInputStream(zentry));
-                NSDictionary dict2 = (NSDictionary)PropertyListParser.parse(buffer);
+                NSDictionary dict2 = (NSDictionary) PropertyListParser.parse(buffer);
 
                 // Es legal si existe una de los dos
                 String appleId1 = dict2.getStrValue("appleId");
                 String appleId2 = dict2.getStrCompoundValue("com.apple.iTunesStore.downloadInfo/accountInfo/AppleID");
                 if ((appleId1 != null && appleId1.toLowerCase().contains("jzarzuela")) || (appleId2 != null && appleId2.toLowerCase().contains("jzarzuela"))) {
-                    data.isLegal = '$';
+                    data.isLegal = LEGAL_TYPE.LEGAL;
                 } else {
-                    data.isLegal = '#';
+                    data.isLegal = LEGAL_TYPE.CRACKED;
                 }
 
                 imdProcessed = true;
@@ -58,7 +59,7 @@ public class BundleReader {
 
             if (!plistProcessed && zentry.getName().endsWith(".app/Info.plist")) {
                 byte buffer[] = _readBuffer((int) zentry.getSize(), zf.getInputStream(zentry));
-                data.dict = (NSDictionary)PropertyListParser.parse(buffer);
+                data.dict = (NSDictionary) PropertyListParser.parse(buffer);
                 data.fdate = m_sdf.format(new Date(zentry.getTime()));
                 plistProcessed = true;
             }
@@ -71,6 +72,11 @@ public class BundleReader {
             if (plistProcessed && imageProcessed && imdProcessed) {
                 break;
             }
+        }
+
+        // Faltaba el archivo "iTunesMetadata.plist"
+        if (!imdProcessed) {
+            data.isLegal = LEGAL_TYPE.UNKNOWN;
         }
 
         zf.close();

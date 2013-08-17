@@ -4,7 +4,7 @@
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="src" path="resources_test"/>
 	<classpathentry kind="src" path="src_test"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/JZarzuela/Java/eclipse-helios-SDK/plugins/org.eclipse.osgi_3.6.2.R36x_v20110210.jar" sourcepath="C:/JZarzuela/Java/eclipse-helios-SDK/plugins/org.eclipse.osgi.source_3.6.2.R36x_v20110210.jar"/>
 	<classpathentry kind="lib" path="C:/JZarzuela/Java/eclipse-helios-SDK/plugins/org.eclipse.ui.forms_3.5.2.r36_v20100702.jar" sourcepath="C:/JZarzuela/Java/eclipse-helios-SDK/plugins/org.eclipse.ui.forms.source_3.5.2.r36_v20100702.jar"/>
 	<classpathentry kind="lib" path="C:/JZarzuela/Java/eclipse-helios-SDK/plugins/org.eclipse.core.commands_3.6.0.I20100512-1500.jar" sourcepath="C:/JZarzuela/Java/eclipse-helios-SDK/plugins/org.eclipse.core.commands.source_3.6.0.I20100512-1500.jar"/>

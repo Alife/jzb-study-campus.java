@@ -1,0 +1,92 @@
+
+***** EXECUTION STARTED *****
+
+------------------------------------------------------------
+APP_ICON_9403 => ../Resources/Eclipse.icns
+Apple_PubSub_Socket_Render => /tmp/launch-Iw1Mez/Render
+Apple_Ubiquity_Message => /tmp/launch-5pLyVg/Apple_Ubiquity_Message
+COMMAND_MODE => unix2003
+DISPLAY => /tmp/launch-dBL23J/org.macosforge.xquartz:0
+HOME => /Users/jzarzuela
+JAVA_MAIN_CLASS_9412 => CheckFileUTF8
+JAVA_STARTED_ON_FIRST_THREAD_9403 => 1
+LANG => es_ES.UTF-8
+LC_CTYPE => es_ES.UTF-8
+LOGNAME => jzarzuela
+PATH => /usr/bin:/bin:/usr/sbin:/sbin
+SHELL => /bin/bash
+SSH_AUTH_SOCK => /tmp/launch-1VApOJ/Listeners
+TMPDIR => /var/folders/85/qzyn5k8x4h5d45r2qpw48p000000gn/T/
+USER => jzarzuela
+__CF_USER_TEXT_ENCODING => 0x1F5:0:0
+
+
+------------------------------------------------------------
+awt.toolkit => sun.lwawt.macosx.LWCToolkit
+file.encoding => UTF-8
+file.encoding.pkg => sun.io
+file.separator => /
+ftp.nonProxyHosts => local|*.local|169.254/16|*.169.254/16
+gopherProxySet => false
+http.nonProxyHosts => local|*.local|169.254/16|*.169.254/16
+java.awt.graphicsenv => sun.awt.CGraphicsEnvironment
+java.awt.printerjob => sun.lwawt.macosx.CPrinterJob
+java.class.path => /Users/jzarzuela/Documents/java-Campus/_Util_FindDuplicatedFiles/bin:/Users/jzarzuela/Documents/java-Campus/_JZB__LIB/bin:/Users/jzarzuela/Documents/java-Campus/HTTPClient/bin:/Users/jzarzuela/Documents/java-Campus/_JZB__LIB/lib/joda-time-2.2.jar:/Users/jzarzuela/Documents/java-Campus/_JZB__LIB/lib/jFuzzyLogic_v3.0.jar:/Users/jzarzuela/Documents/java-Campus/_JZB__LIB_iPhone/bin:/Users/jzarzuela/Documents/java-Campus/_JZB__LIB_iPhone/lib/ant.jar
+java.class.version => 51.0
+java.endorsed.dirs => /Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/endorsed
+java.ext.dirs => /Users/jzarzuela/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java
+java.home => /Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre
+java.io.tmpdir => /var/folders/85/qzyn5k8x4h5d45r2qpw48p000000gn/T/
+java.library.path => /Users/jzarzuela/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+java.runtime.name => Java(TM) SE Runtime Environment
+java.runtime.version => 1.7.0_21-b12
+java.specification.name => Java Platform API Specification
+java.specification.vendor => Oracle Corporation
+java.specification.version => 1.7
+java.vendor => Oracle Corporation
+java.vendor.url => http://java.oracle.com/
+java.vendor.url.bug => http://bugreport.sun.com/bugreport/
+java.version => 1.7.0_21
+java.vm.info => mixed mode
+java.vm.name => Java HotSpot(TM) 64-Bit Server VM
+java.vm.specification.name => Java Virtual Machine Specification
+java.vm.specification.vendor => Oracle Corporation
+java.vm.specification.version => 1.7
+java.vm.vendor => Oracle Corporation
+java.vm.version => 23.21-b01
+line.separator => 
+
+os.arch => x86_64
+os.name => Mac OS X
+os.version => 10.8.4
+path.separator => :
+socksNonProxyHosts => local|*.local|169.254/16|*.169.254/16
+sun.arch.data.model => 64
+sun.boot.class.path => /Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/JObjC.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/classes
+sun.boot.library.path => /Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib
+sun.cpu.endian => little
+sun.cpu.isalist => 
+sun.io.unicode.encoding => UnicodeBig
+sun.java.command => CheckFileUTF8
+sun.java.launcher => SUN_STANDARD
+sun.jnu.encoding => UTF-8
+sun.management.compiler => HotSpot 64-Bit Tiered Compilers
+sun.os.patch.level => unknown
+user.country => US
+user.country.format => ES
+user.dir => /Users/jzarzuela/Documents/java-Campus/_Util_FindDuplicatedFiles
+user.home => /Users/jzarzuela
+user.language => en
+user.language.format => es
+user.name => jzarzuela
+user.timezone => 
+
+
+------------------------------------------------------------
+*** /Users/jzarzuela/Documents/personal/backup-discoextr/_Backup_/Imagenes/.DS_Store - true
+*** /Users/jzarzuela/Documents/personal/backup-discoextr/_Backup_/Imagenes/Galería multimedia de Microsoft - true
+*** /Users/jzarzuela/Documents/personal/backup-discoextr/_Backup_/Imagenes/Icons - true
+*** /Users/jzarzuela/Documents/personal/backup-discoextr/_Backup_/Imagenes/IMG_MSN - true
+
+***** EXECUTION FINISHED [8]*****
+

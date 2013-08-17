@@ -156,11 +156,8 @@ public class IPAUpdater {
                 case '$':
                     legalFolder = "_legal" + File.separator;
                     break;
-                case '#':
-                    legalFolder = "_cracked" + File.separator;
-                    break;
                 default:
-                    legalFolder = "_dontKnow" + File.separator;
+                    legalFolder = "_cracked" + File.separator;
                     break;
 
             }

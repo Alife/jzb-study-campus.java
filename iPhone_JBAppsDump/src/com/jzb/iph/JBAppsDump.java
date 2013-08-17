@@ -11,10 +11,10 @@ import java.util.Formatter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.dd.plist.NSDictionary;
+import com.dd.plist.PropertyListParser;
 import com.jzb.futil.FileExtFilter;
 import com.jzb.futil.FileExtFilter.IncludeFolders;
-import com.jzb.ipa.plist.PListParser;
-import com.jzb.ipa.plist.T_PLDict;
 import com.jzb.util.Tracer;
 
 import HTTPClient.HTTPConnection;
@@ -28,7 +28,6 @@ public class JBAppsDump {
 
     private static final int SOCKET_TIMEOUT = 5000;
 
-    private PListParser      m_plistParser  = new PListParser();
     private PrintStream      m_psOut;
 
     /**
@@ -122,8 +121,8 @@ public class JBAppsDump {
     private void _printLine(BundleInfo bi) throws Exception {
 
         Formatter fmt = new Formatter();
-        fmt.format("%s¬%s¬%s¬%s¬%s¬%s¬%s¬%s¬NO¬=IF(INDIRECT(ADDRESS(ROW();COLUMN()-1))=\"SI\"; INDIRECT(ADDRESS(ROW();COLUMN()-4));0)", bi.ipaFile.getParentFile().getName(), bi.itemId, bi.playlistName, bi.type,
-                bi.bundleVersion, bi.price, bi.lastBundleVersion, bi.isCracked() ? "SI" : "NO");
+        fmt.format("%s¬%s¬%s¬%s¬%s¬%s¬%s¬%s¬NO¬=IF(INDIRECT(ADDRESS(ROW();COLUMN()-1))=\"SI\"; INDIRECT(ADDRESS(ROW();COLUMN()-4));0)", bi.ipaFile.getParentFile().getName(), bi.itemId,
+                bi.playlistName, bi.type, bi.bundleVersion, bi.price, bi.lastBundleVersion, bi.isCracked() ? "SI" : "NO");
 
         String line = fmt.toString();
         Tracer._debug("    " + line);
@@ -164,7 +163,7 @@ public class JBAppsDump {
         BundleInfo bi;
 
         Tracer._debug("IPAFile = '%s'", ipaFile.getName());
-        T_PLDict dict = m_plistParser.parsePList(ipaFile);
+        NSDictionary dict = (NSDictionary) PropertyListParser.parse(ipaFile);
         if (dict == null) {
             bi = new BundleInfo(ipaFile);
         } else {

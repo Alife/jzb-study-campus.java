@@ -47,19 +47,19 @@ public class AllTest {
      * @throws Exception
      *             if something fails during the execution
      */
-    public void doIt2(String[] args) throws Exception {
+    public void doIt(String[] args) throws Exception {
 
         File kmlFolder = new File("/Users/jzarzuela/Downloads/_tmp_/pois/_KMLs_");
         kmlFolder.mkdirs();
         File ov2Folder = new File("/Users/jzarzuela/Downloads/_tmp_/pois/_OV2s_");
         ov2Folder.mkdirs();
 
-        KMLDownload.downloadAllMaps(kmlFolder);
+        //KMLDownload.downloadAllMaps(kmlFolder);
         FileTransform.transformAllKMLtoOV2(kmlFolder, ov2Folder, true);
     }
 
     
-    public void doIt(String[] args) throws Exception {
+    public void doIt2(String[] args) throws Exception {
         
         File kmlFolder = new File("/Users/jzarzuela/Downloads/_tmp_/pois/_KMLs_");
         kmlFolder.mkdirs();

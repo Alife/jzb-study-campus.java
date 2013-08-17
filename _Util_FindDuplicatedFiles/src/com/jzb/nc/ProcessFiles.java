@@ -18,7 +18,7 @@ public class ProcessFiles {
 
     private static final char[] hex         = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', };
 
-    //private transient int       m_baseFolderLen;
+    // private transient int m_baseFolderLen;
     private byte                m_buffer[]  = new byte[3072];
     private MessageDigest       m_md5;
     private transient File      m_outFolder;
@@ -28,7 +28,12 @@ public class ProcessFiles {
     private int                 m_fileCount = 0;
     private int                 m_count     = 0;
     private long                m_startTime = 0;
+    private long                m_initTime = 0;
 
+    public ProcessFiles(long initTime) {
+        m_initTime = initTime;
+    }
+    
     public void processFiles(final File baseFolders[], final File outFolder) throws Exception {
 
         m_thread = new Thread(new Runnable() {
@@ -99,7 +104,7 @@ public class ProcessFiles {
             if (timeLeft > 60000) {
                 long min = sec / 60;
                 sec = sec - min * 60;
-                str += " - " + min + "m " + sec +"s";
+                str += " - " + min + "m " + sec + "s";
             } else {
                 str += " - " + sec + "s";
             }
@@ -138,7 +143,7 @@ public class ProcessFiles {
             else
                 return "**UNKNOWN HASH**";
         } catch (Throwable th) {
-            return "**Error Hashing: "+th.getMessage();
+            return "**Error Hashing: " + th.getMessage();
         }
     }
 
@@ -152,15 +157,17 @@ public class ProcessFiles {
 
         m_outFolder = outFolder;
 
-        //m_baseFolderLen = baseFolder.getAbsolutePath().length();
+        // m_baseFolderLen = baseFolder.getAbsolutePath().length();
 
         m_stop = false;
-        for(File baseFolder:baseFolders) {
+        for (File baseFolder : baseFolders) {
             _processFolder(baseFolder);
         }
 
         System.out.println("*************** ENDED ***************");
         System.err.println("-- ya --");
+        long t2 = System.currentTimeMillis();
+        System.out.println("***** TEST FINISHED [" + (t2 - m_initTime) + "]*****");
         System.exit(1);
     }
 
@@ -174,32 +181,39 @@ public class ProcessFiles {
         }
 
         File outFile = getOutFile(folder);
-        if (!outFile.exists()) {
+        //if (!outFile.exists()) 
+        {
 
             // First we process folders then files
-            for (File f : folder.listFiles()) {
+            File lfiles[] = folder.listFiles();
+            if (lfiles != null) {
+                for (File f : lfiles) {
 
-                // ***** STOPPING CONDITION *****
-                if (_hasToStop())
-                    return;
+                    // ***** STOPPING CONDITION *****
+                    if (_hasToStop())
+                        return;
 
-                if (f.isDirectory()) {
-                    _processFolder(f);
+                    if (f.isDirectory() && !_skipFolderProcessing(f)) {
+                        _processFolder(f);
+                    }
                 }
             }
 
             ArrayList<String> fileData = new ArrayList<String>();
-            for (File f : folder.listFiles()) {
 
-                // ***** STOPPING CONDITION *****
-                if (_hasToStop())
-                    return;
+            if (lfiles != null) {
+                for (File f : lfiles) {
 
-                if (!f.isDirectory()) {
-                    System.out.println("   " + _getProgressText() + " - Processing file: " + f);
-                    fileData.add(f.getAbsolutePath());
-                    String hash = _processFile(f);
-                    fileData.add(hash);
+                    // ***** STOPPING CONDITION *****
+                    if (_hasToStop())
+                        return;
+
+                    if (!f.isDirectory() && !_skipFileProcessing(f)) {
+                        System.out.println("   " + _getProgressText() + " - Processing file: " + f);
+                        fileData.add(f.getAbsolutePath());
+                        String hash = _processFile(f);
+                        fileData.add(hash);
+                    }
                 }
             }
             saveOutFile(outFile, fileData);
@@ -208,6 +222,17 @@ public class ProcessFiles {
         }
     }
 
+    private boolean _skipFolderProcessing(File f) throws Exception {
+        if(f.getAbsolutePath().contains("/.git")) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean _skipFileProcessing(File f) throws Exception {
+        return false;
+    }
+    
     private String _toHex(byte hash[]) {
         StringBuffer buf = new StringBuffer(hash.length * 2);
 
@@ -219,11 +244,8 @@ public class ProcessFiles {
 
     private File getOutFile(File folder) {
         /*
-        String relativePath = folder.getAbsolutePath().substring(m_baseFolderLen).replace('\\', '#');
-        if (relativePath.length() == 0) {
-            relativePath = "_root_";
-        }
-        */
+         * String relativePath = folder.getAbsolutePath().substring(m_baseFolderLen).replace('\\', '#'); if (relativePath.length() == 0) { relativePath = "_root_"; }
+         */
         String relativePath = folder.getAbsolutePath().replace(File.separatorChar, '#').replace(':', '#');
         File outFile = new File(m_outFolder, relativePath + "_out.txt");
         return outFile;

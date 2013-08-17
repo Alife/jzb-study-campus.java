@@ -7,7 +7,7 @@ import java.io.File;
 import java.text.DecimalFormat;
 import java.util.Formatter;
 
-import com.jzb.ipa.plist.T_PLDict;
+import com.dd.plist.NSDictionary;
 import com.jzb.ipa.ren.NameComposer;
 
 /**
@@ -41,7 +41,7 @@ public class BundleInfo {
         this.lastBundleVersion = NULL_VALUE;
     }
 
-    public BundleInfo(File ipaFile, T_PLDict dict) {
+    public BundleInfo(File ipaFile, NSDictionary dict) {
         this.ipaFile = ipaFile;
         this.playlistName = _readValue(dict, "playlistName");
         this.type = "" + NameComposer.getType(ipaFile.getName());
@@ -68,12 +68,12 @@ public class BundleInfo {
         return !appleId.equals("jzarzuela@yahoo.com");
     }
 
-    private String _readValue(T_PLDict dict, String key) {
+    private String _readValue(NSDictionary dict, String key) {
         String value = dict.getStrValue(key);
         return value != null ? value : NULL_VALUE;
     }
 
-    private String _readFloatValue(T_PLDict dict, String key) {
+    private String _readFloatValue(NSDictionary dict, String key) {
         String value = dict.getStrValue(key);
         return value != null ? s_df.format(Double.parseDouble(value) / 1000.0).replace('.', ',') : "-00.00";
     }

@@ -1,7 +1,0 @@
-*** Procesing data
-*** Searching for clones
-*** Sorting 1
-*** Sorting 2
-*** Printing info
-
-/Users/jzarzuela/Documents/personal/Viajes/2012_09_06-Bilbao/Filtradas_NO/lastAction_undo.txt
